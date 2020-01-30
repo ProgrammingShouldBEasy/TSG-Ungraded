@@ -8,6 +8,15 @@ namespace HelloWorldSample
 {
     class Program
     {
+        //Stress testing the parameter inputs, optional parameters, params, output parameters, and return types of methods.
+        static public string myMethod(int x, ref int z, out int a, int y = 0, string ac=null, params int[] Z)
+        {
+            a = 5;
+            int xx = x;
+            int b = y;
+            string returnstring = ac;
+            return returnstring;
+        }
         static void Main()
         {
 
