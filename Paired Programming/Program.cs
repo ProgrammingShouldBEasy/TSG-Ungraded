@@ -10,8 +10,11 @@ namespace Paired_Programming
     {
         //Demonstrating combining local variables to return a single value that accounts for both, which works around the limitation of a method only being able to return a single value.
         // Other solutions would include returning an object and referencing the members.
-        public static string Combiner(string x, string y)
+        public static string Combiner(string x, string y, out int[] xx, out int[] yy, out int[] zz)
         {
+            xx = null;
+            yy = null;
+            zz = null;
             string a = x;
             string b = y;
             string c = a + b;
