@@ -1,0 +1,5 @@
+C:\Users\Cain\source\repos\LlamasWhalesAndDodosOhMy\bin\Debug\LlamasWhalesAndDodosOhMy.exe.config
+C:\Users\Cain\source\repos\LlamasWhalesAndDodosOhMy\bin\Debug\LlamasWhalesAndDodosOhMy.exe
+C:\Users\Cain\source\repos\LlamasWhalesAndDodosOhMy\bin\Debug\LlamasWhalesAndDodosOhMy.pdb
+C:\Users\Cain\source\repos\LlamasWhalesAndDodosOhMy\obj\Debug\LlamasWhalesAndDodosOhMy.exe
+C:\Users\Cain\source\repos\LlamasWhalesAndDodosOhMy\obj\Debug\LlamasWhalesAndDodosOhMy.pdb

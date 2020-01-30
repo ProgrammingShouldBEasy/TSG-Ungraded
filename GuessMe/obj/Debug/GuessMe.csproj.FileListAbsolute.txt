@@ -1,0 +1,5 @@
+C:\Users\Cain\source\repos\GuessMe\bin\Debug\GuessMe.exe.config
+C:\Users\Cain\source\repos\GuessMe\bin\Debug\GuessMe.exe
+C:\Users\Cain\source\repos\GuessMe\bin\Debug\GuessMe.pdb
+C:\Users\Cain\source\repos\GuessMe\obj\Debug\GuessMe.exe
+C:\Users\Cain\source\repos\GuessMe\obj\Debug\GuessMe.pdb

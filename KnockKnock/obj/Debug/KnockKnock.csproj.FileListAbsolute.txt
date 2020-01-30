@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\KnockKnock\bin\Debug\KnockKnock.exe.config
+C:\Users\Cain\source\repos\KnockKnock\bin\Debug\KnockKnock.exe
+C:\Users\Cain\source\repos\KnockKnock\bin\Debug\KnockKnock.pdb
+C:\Users\Cain\source\repos\KnockKnock\obj\Debug\KnockKnock.exe
+C:\Users\Cain\source\repos\KnockKnock\obj\Debug\KnockKnock.pdb
+C:\Users\Cain\source\repos\KnockKnock\obj\Debug\KnockKnock.csprojAssemblyReference.cache

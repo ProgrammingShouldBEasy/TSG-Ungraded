@@ -1,0 +1,5 @@
+C:\Users\Cain\source\repos\MiniMadLibs\bin\Debug\MiniMadLibs.exe.config
+C:\Users\Cain\source\repos\MiniMadLibs\bin\Debug\MiniMadLibs.exe
+C:\Users\Cain\source\repos\MiniMadLibs\bin\Debug\MiniMadLibs.pdb
+C:\Users\Cain\source\repos\MiniMadLibs\obj\Debug\MiniMadLibs.exe
+C:\Users\Cain\source\repos\MiniMadLibs\obj\Debug\MiniMadLibs.pdb

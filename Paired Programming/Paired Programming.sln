@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paired Programming", "Paired Programming.csproj", "{EC502F98-D750-4211-93D3-A57F8A92D1B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC502F98-D750-4211-93D3-A57F8A92D1B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC502F98-D750-4211-93D3-A57F8A92D1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC502F98-D750-4211-93D3-A57F8A92D1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC502F98-D750-4211-93D3-A57F8A92D1B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BBFAFD9-20AB-4E23-AB44-70EA7316A2EC}
+	EndGlobalSection
+EndGlobal

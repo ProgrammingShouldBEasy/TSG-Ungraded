@@ -1,0 +1,5 @@
+C:\Users\Cain\source\repos\AllTheTrivia\bin\Debug\AllTheTrivia.exe.config
+C:\Users\Cain\source\repos\AllTheTrivia\bin\Debug\AllTheTrivia.exe
+C:\Users\Cain\source\repos\AllTheTrivia\bin\Debug\AllTheTrivia.pdb
+C:\Users\Cain\source\repos\AllTheTrivia\obj\Debug\AllTheTrivia.exe
+C:\Users\Cain\source\repos\AllTheTrivia\obj\Debug\AllTheTrivia.pdb

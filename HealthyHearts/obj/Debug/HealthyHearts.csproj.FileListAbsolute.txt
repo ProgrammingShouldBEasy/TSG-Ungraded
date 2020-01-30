@@ -1,0 +1,5 @@
+C:\Users\Cain\source\repos\HealthyHearts\bin\Debug\HealthyHearts.exe.config
+C:\Users\Cain\source\repos\HealthyHearts\bin\Debug\HealthyHearts.exe
+C:\Users\Cain\source\repos\HealthyHearts\bin\Debug\HealthyHearts.pdb
+C:\Users\Cain\source\repos\HealthyHearts\obj\Debug\HealthyHearts.exe
+C:\Users\Cain\source\repos\HealthyHearts\obj\Debug\HealthyHearts.pdb

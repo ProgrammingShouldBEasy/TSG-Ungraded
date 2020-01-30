@@ -1,0 +1,5 @@
+C:\Users\Cain\source\repos\DontForgetToStoreIt\bin\Debug\DontForgetToStoreIt.exe.config
+C:\Users\Cain\source\repos\DontForgetToStoreIt\bin\Debug\DontForgetToStoreIt.exe
+C:\Users\Cain\source\repos\DontForgetToStoreIt\bin\Debug\DontForgetToStoreIt.pdb
+C:\Users\Cain\source\repos\DontForgetToStoreIt\obj\Debug\DontForgetToStoreIt.exe
+C:\Users\Cain\source\repos\DontForgetToStoreIt\obj\Debug\DontForgetToStoreIt.pdb

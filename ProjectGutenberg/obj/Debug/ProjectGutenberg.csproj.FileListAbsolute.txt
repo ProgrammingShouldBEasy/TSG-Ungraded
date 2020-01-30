@@ -1,0 +1,5 @@
+C:\Users\Cain\Desktop\Repos\Class-Work\ProjectGutenberg\bin\Debug\ProjectGutenberg.exe.config
+C:\Users\Cain\Desktop\Repos\Class-Work\ProjectGutenberg\bin\Debug\ProjectGutenberg.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\ProjectGutenberg\bin\Debug\ProjectGutenberg.pdb
+C:\Users\Cain\Desktop\Repos\Class-Work\ProjectGutenberg\obj\Debug\ProjectGutenberg.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\ProjectGutenberg\obj\Debug\ProjectGutenberg.pdb

@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\GettingUserInput\bin\Debug\GettingUserInput.exe.config
+C:\Users\Cain\source\repos\GettingUserInput\bin\Debug\GettingUserInput.exe
+C:\Users\Cain\source\repos\GettingUserInput\bin\Debug\GettingUserInput.pdb
+C:\Users\Cain\source\repos\GettingUserInput\obj\Debug\GettingUserInput.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\GettingUserInput\obj\Debug\GettingUserInput.exe
+C:\Users\Cain\source\repos\GettingUserInput\obj\Debug\GettingUserInput.pdb

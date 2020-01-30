@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\Paired Programming\bin\Debug\Paired Programming.exe.config
+C:\Users\Cain\source\repos\Paired Programming\bin\Debug\Paired Programming.exe
+C:\Users\Cain\source\repos\Paired Programming\bin\Debug\Paired Programming.pdb
+C:\Users\Cain\source\repos\Paired Programming\obj\Debug\Paired Programming.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\Paired Programming\obj\Debug\Paired Programming.exe
+C:\Users\Cain\source\repos\Paired Programming\obj\Debug\Paired Programming.pdb

@@ -1,0 +1,5 @@
+C:\Users\Cain\Desktop\Repos\Class-Work\CommentingCode\bin\Debug\CommentingCode.exe.config
+C:\Users\Cain\Desktop\Repos\Class-Work\CommentingCode\bin\Debug\CommentingCode.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\CommentingCode\bin\Debug\CommentingCode.pdb
+C:\Users\Cain\Desktop\Repos\Class-Work\CommentingCode\obj\Debug\CommentingCode.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\CommentingCode\obj\Debug\CommentingCode.pdb

@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\GuessingGame\bin\Debug\GuessingGame.exe.config
+C:\Users\Cain\source\repos\GuessingGame\bin\Debug\GuessingGame.exe
+C:\Users\Cain\source\repos\GuessingGame\bin\Debug\GuessingGame.pdb
+C:\Users\Cain\source\repos\GuessingGame\obj\Debug\GuessingGame.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\GuessingGame\obj\Debug\GuessingGame.exe
+C:\Users\Cain\source\repos\GuessingGame\obj\Debug\GuessingGame.pdb

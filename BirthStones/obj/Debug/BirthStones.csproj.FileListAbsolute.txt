@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\BirthStones\bin\Debug\BirthStones.exe.config
+C:\Users\Cain\source\repos\BirthStones\bin\Debug\BirthStones.exe
+C:\Users\Cain\source\repos\BirthStones\bin\Debug\BirthStones.pdb
+C:\Users\Cain\source\repos\BirthStones\obj\Debug\BirthStones.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\BirthStones\obj\Debug\BirthStones.exe
+C:\Users\Cain\source\repos\BirthStones\obj\Debug\BirthStones.pdb

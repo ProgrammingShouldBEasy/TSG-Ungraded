@@ -1,0 +1,5 @@
+C:\Users\Cain\source\repos\YourLifeInMovies\bin\Debug\YourLifeInMovies.exe.config
+C:\Users\Cain\source\repos\YourLifeInMovies\bin\Debug\YourLifeInMovies.exe
+C:\Users\Cain\source\repos\YourLifeInMovies\bin\Debug\YourLifeInMovies.pdb
+C:\Users\Cain\source\repos\YourLifeInMovies\obj\Debug\YourLifeInMovies.exe
+C:\Users\Cain\source\repos\YourLifeInMovies\obj\Debug\YourLifeInMovies.pdb

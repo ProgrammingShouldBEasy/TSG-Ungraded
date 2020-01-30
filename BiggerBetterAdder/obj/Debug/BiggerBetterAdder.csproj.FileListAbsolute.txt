@@ -1,0 +1,5 @@
+C:\Users\Cain\source\repos\BiggerBetterAdder\bin\Debug\BiggerBetterAdder.exe.config
+C:\Users\Cain\source\repos\BiggerBetterAdder\bin\Debug\BiggerBetterAdder.exe
+C:\Users\Cain\source\repos\BiggerBetterAdder\bin\Debug\BiggerBetterAdder.pdb
+C:\Users\Cain\source\repos\BiggerBetterAdder\obj\Debug\BiggerBetterAdder.exe
+C:\Users\Cain\source\repos\BiggerBetterAdder\obj\Debug\BiggerBetterAdder.pdb

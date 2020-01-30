@@ -1,0 +1,12 @@
+C:\Users\Cain\Desktop\Repos\Class Work\HelloWorldSample\bin\Debug\HelloWorldSample.exe.config
+C:\Users\Cain\Desktop\Repos\Class Work\HelloWorldSample\bin\Debug\HelloWorldSample.exe
+C:\Users\Cain\Desktop\Repos\Class Work\HelloWorldSample\bin\Debug\HelloWorldSample.pdb
+C:\Users\Cain\Desktop\Repos\Class Work\HelloWorldSample\obj\Debug\HelloWorldSample.csprojAssemblyReference.cache
+C:\Users\Cain\Desktop\Repos\Class Work\HelloWorldSample\obj\Debug\HelloWorldSample.exe
+C:\Users\Cain\Desktop\Repos\Class Work\HelloWorldSample\obj\Debug\HelloWorldSample.pdb
+C:\Users\Cain\Desktop\Repos\Class-Work\HelloWorldSample\obj\Debug\HelloWorldSample.csprojAssemblyReference.cache
+C:\Users\Cain\Desktop\Repos\Class-Work\HelloWorldSample\obj\Debug\HelloWorldSample.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\HelloWorldSample\obj\Debug\HelloWorldSample.pdb
+C:\Users\Cain\Desktop\Repos\Class-Work\HelloWorldSample\bin\Debug\HelloWorldSample.exe.config
+C:\Users\Cain\Desktop\Repos\Class-Work\HelloWorldSample\bin\Debug\HelloWorldSample.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\HelloWorldSample\bin\Debug\HelloWorldSample.pdb

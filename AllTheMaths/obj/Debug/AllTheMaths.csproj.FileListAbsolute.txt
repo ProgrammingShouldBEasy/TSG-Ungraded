@@ -1,0 +1,5 @@
+C:\Users\Cain\Desktop\Repos\Class-Work\AllTheMaths\bin\Debug\AllTheMaths.exe.config
+C:\Users\Cain\Desktop\Repos\Class-Work\AllTheMaths\bin\Debug\AllTheMaths.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\AllTheMaths\bin\Debug\AllTheMaths.pdb
+C:\Users\Cain\Desktop\Repos\Class-Work\AllTheMaths\obj\Debug\AllTheMaths.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\AllTheMaths\obj\Debug\AllTheMaths.pdb

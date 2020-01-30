@@ -1,0 +1,6 @@
+C:\Users\Cain\Desktop\Repos\Class-Work\ABeginning\bin\Debug\ABeginning.exe.config
+C:\Users\Cain\Desktop\Repos\Class-Work\ABeginning\bin\Debug\ABeginning.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\ABeginning\bin\Debug\ABeginning.pdb
+C:\Users\Cain\Desktop\Repos\Class-Work\ABeginning\obj\Debug\ABeginning.csprojAssemblyReference.cache
+C:\Users\Cain\Desktop\Repos\Class-Work\ABeginning\obj\Debug\ABeginning.exe
+C:\Users\Cain\Desktop\Repos\Class-Work\ABeginning\obj\Debug\ABeginning.pdb

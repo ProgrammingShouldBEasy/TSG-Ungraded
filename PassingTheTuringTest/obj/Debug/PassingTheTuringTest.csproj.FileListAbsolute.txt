@@ -1,0 +1,5 @@
+C:\Users\Cain\source\repos\PassingTheTuringTest\bin\Debug\PassingTheTuringTest.exe.config
+C:\Users\Cain\source\repos\PassingTheTuringTest\bin\Debug\PassingTheTuringTest.exe
+C:\Users\Cain\source\repos\PassingTheTuringTest\bin\Debug\PassingTheTuringTest.pdb
+C:\Users\Cain\source\repos\PassingTheTuringTest\obj\Debug\PassingTheTuringTest.exe
+C:\Users\Cain\source\repos\PassingTheTuringTest\obj\Debug\PassingTheTuringTest.pdb
