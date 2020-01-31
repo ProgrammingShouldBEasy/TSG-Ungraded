@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\TSG Ungraded\FizzBuzz\bin\Debug\FizzBuzz.exe.config
+C:\Users\Cain\source\repos\TSG Ungraded\FizzBuzz\bin\Debug\FizzBuzz.exe
+C:\Users\Cain\source\repos\TSG Ungraded\FizzBuzz\bin\Debug\FizzBuzz.pdb
+C:\Users\Cain\source\repos\TSG Ungraded\FizzBuzz\obj\Debug\FizzBuzz.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\TSG Ungraded\FizzBuzz\obj\Debug\FizzBuzz.exe
+C:\Users\Cain\source\repos\TSG Ungraded\FizzBuzz\obj\Debug\FizzBuzz.pdb
