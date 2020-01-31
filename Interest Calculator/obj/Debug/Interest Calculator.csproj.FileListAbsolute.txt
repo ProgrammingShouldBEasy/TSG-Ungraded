@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\TSG Ungraded\Interest Calculator\bin\Debug\Interest Calculator.exe.config
+C:\Users\Cain\source\repos\TSG Ungraded\Interest Calculator\bin\Debug\Interest Calculator.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Interest Calculator\bin\Debug\Interest Calculator.pdb
+C:\Users\Cain\source\repos\TSG Ungraded\Interest Calculator\obj\Debug\Interest Calculator.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\TSG Ungraded\Interest Calculator\obj\Debug\Interest Calculator.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Interest Calculator\obj\Debug\Interest Calculator.pdb
