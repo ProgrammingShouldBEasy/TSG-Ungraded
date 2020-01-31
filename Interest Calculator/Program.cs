@@ -16,7 +16,7 @@ namespace Interest_Calculator
             decimal interestRate = y;
             for (int i = 0; i < 4; i++)
             {
-                principalEnd = principalCurrent * (1 + (interestRate/ 4 / 100));
+                principalEnd = principalCurrent * (1 + (interestRate / 4 / 100));
                 principalCurrent = principalEnd;
             }
             return principalCurrent;
@@ -53,7 +53,7 @@ namespace Interest_Calculator
             Console.WriteLine();
             Console.WriteLine("Calculating...");
             Console.WriteLine("Calculating...");
-            for (; yearStart <= yearEnd; yearStart++)
+            for (; yearStart < yearEnd; yearStart++)
             {
                 Console.WriteLine($"Year: {yearStart+1}");
                 Console.WriteLine($"Began with: ${principalCurrent:00.00}");

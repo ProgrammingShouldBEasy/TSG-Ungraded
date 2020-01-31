@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\TSG Ungraded\Lucky Sevens\bin\Debug\Lucky Sevens.exe.config
+C:\Users\Cain\source\repos\TSG Ungraded\Lucky Sevens\bin\Debug\Lucky Sevens.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Lucky Sevens\bin\Debug\Lucky Sevens.pdb
+C:\Users\Cain\source\repos\TSG Ungraded\Lucky Sevens\obj\Debug\Lucky Sevens.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\TSG Ungraded\Lucky Sevens\obj\Debug\Lucky Sevens.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Lucky Sevens\obj\Debug\Lucky Sevens.pdb
