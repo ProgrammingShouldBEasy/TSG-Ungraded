@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\TSG Ungraded\Summative Sums\bin\Debug\Summative Sums.exe.config
+C:\Users\Cain\source\repos\TSG Ungraded\Summative Sums\bin\Debug\Summative Sums.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Summative Sums\bin\Debug\Summative Sums.pdb
+C:\Users\Cain\source\repos\TSG Ungraded\Summative Sums\obj\Debug\Summative Sums.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\TSG Ungraded\Summative Sums\obj\Debug\Summative Sums.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Summative Sums\obj\Debug\Summative Sums.pdb
