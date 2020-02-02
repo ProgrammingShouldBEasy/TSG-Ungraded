@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\TSG Ungraded\Dog Genetics\bin\Debug\Dog Genetics.exe.config
+C:\Users\Cain\source\repos\TSG Ungraded\Dog Genetics\bin\Debug\Dog Genetics.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Dog Genetics\bin\Debug\Dog Genetics.pdb
+C:\Users\Cain\source\repos\TSG Ungraded\Dog Genetics\obj\Debug\Dog Genetics.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\TSG Ungraded\Dog Genetics\obj\Debug\Dog Genetics.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Dog Genetics\obj\Debug\Dog Genetics.pdb
