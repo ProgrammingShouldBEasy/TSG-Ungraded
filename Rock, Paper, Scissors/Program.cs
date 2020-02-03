@@ -37,7 +37,7 @@ namespace Rock__Paper__Scissors
                         }
                         while (!Int32.TryParse(answer, out choice) && (choice < 0 || choice > 3));
                         // Stores a computer choice to be evaluated against.
-                        int choice2 = compChoice.Next(1, 3);
+                        int choice2 = compChoice.Next(1, 4);
                         if (choice == choice2)
                         {
                             ties++;

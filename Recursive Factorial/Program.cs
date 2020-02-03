@@ -11,8 +11,7 @@ namespace Recursive_Factorial
         public static int Recursive(int x)
         {
             int input = x;
-            int output = input;
-            input--;
+            int output = input--;
             while (input > 0)
             {
                 output += input;
