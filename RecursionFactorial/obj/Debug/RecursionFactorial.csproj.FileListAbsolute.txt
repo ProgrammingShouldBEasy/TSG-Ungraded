@@ -1,6 +1,0 @@
-C:\Users\Cain\source\repos\TSG Ungraded\RecursionFactorial\obj\Debug\RecursionFactorial.csprojAssemblyReference.cache
-C:\Users\Cain\source\repos\TSG Ungraded\RecursionFactorial\bin\Debug\RecursionFactorial.exe.config
-C:\Users\Cain\source\repos\TSG Ungraded\RecursionFactorial\bin\Debug\RecursionFactorial.exe
-C:\Users\Cain\source\repos\TSG Ungraded\RecursionFactorial\bin\Debug\RecursionFactorial.pdb
-C:\Users\Cain\source\repos\TSG Ungraded\RecursionFactorial\obj\Debug\RecursionFactorial.exe
-C:\Users\Cain\source\repos\TSG Ungraded\RecursionFactorial\obj\Debug\RecursionFactorial.pdb
