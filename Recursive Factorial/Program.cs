@@ -25,12 +25,10 @@ namespace Recursive_Factorial
         {
             int input;
             string answer;
-            bool yes;
             do
             {
                 Console.WriteLine("What number would you like factored?");
                 answer = Console.ReadLine();
-                yes = Int32.TryParse(answer, out input);
             }
              while (!Int32.TryParse(answer, out input));
             Console.WriteLine("Facorial " + input + " : " + Recursive(input));
