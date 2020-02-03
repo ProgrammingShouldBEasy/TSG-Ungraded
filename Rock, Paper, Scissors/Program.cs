@@ -76,7 +76,7 @@ namespace Rock__Paper__Scissors
                     }
                     while ((answer != "Yes") && (answer != "No"));
                 }
-
+                answer = "No";
             }
             Console.WriteLine("Thanks for playing!");
             Console.ReadLine();

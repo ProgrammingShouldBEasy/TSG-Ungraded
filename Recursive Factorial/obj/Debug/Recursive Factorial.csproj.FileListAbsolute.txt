@@ -1,0 +1,6 @@
+C:\Users\Cain\source\repos\TSG Ungraded\Recursive Factorial\bin\Debug\Recursive Factorial.exe.config
+C:\Users\Cain\source\repos\TSG Ungraded\Recursive Factorial\bin\Debug\Recursive Factorial.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Recursive Factorial\bin\Debug\Recursive Factorial.pdb
+C:\Users\Cain\source\repos\TSG Ungraded\Recursive Factorial\obj\Debug\Recursive Factorial.csprojAssemblyReference.cache
+C:\Users\Cain\source\repos\TSG Ungraded\Recursive Factorial\obj\Debug\Recursive Factorial.exe
+C:\Users\Cain\source\repos\TSG Ungraded\Recursive Factorial\obj\Debug\Recursive Factorial.pdb
