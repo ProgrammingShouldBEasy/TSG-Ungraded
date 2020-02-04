@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DishCRUD;
 
-namespace Custom_Class
+namespace DishCRUD
 {
     public class Dish
     {
@@ -13,6 +14,5 @@ namespace Custom_Class
         public bool IsBroken { get; set; }
         public bool IsASet { get; set; }
         public Purpose Use { get; set; }
-
     }
 }

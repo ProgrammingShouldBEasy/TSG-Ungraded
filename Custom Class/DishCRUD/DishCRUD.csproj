@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16A5C841-7B00-4540-A885-0A2D0AD5B141}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Custom_Class</RootNamespace>
-    <AssemblyName>Custom Class</AssemblyName>
+    <ProjectGuid>{FA06A803-3C0B-44A5-BDB9-841D7E1D6C18}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DishCRUD</RootNamespace>
+    <AssemblyName>DishCRUD</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,21 +44,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="CRUD.cs" />
+    <Compile Include="Dish.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DishCRUD\DishCRUD.csproj">
-      <Project>{fa06a803-3c0b-44a5-bdb9-841d7e1d6c18}</Project>
-      <Name>DishCRUD</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Menu\Menus.csproj">
-      <Project>{d962acb8-315b-4c1a-9478-1f624c1c2250}</Project>
-      <Name>Menus</Name>
-    </ProjectReference>
+    <Compile Include="Purpose.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
