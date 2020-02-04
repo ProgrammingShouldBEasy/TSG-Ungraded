@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F2BBD896-1967-49A4-A9D2-77E6EB20F47D}</ProjectGuid>
+    <ProjectGuid>{41A76F2D-F4AE-41DB-9C72-ADCFCE713A99}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Rock__Paper__Scissors</RootNamespace>
-    <AssemblyName>Rock, Paper, Scissors</AssemblyName>
+    <RootNamespace>Enum_Practice</RootNamespace>
+    <AssemblyName>Enum Practice</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -41,8 +41,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Utility Classes">
-      <HintPath>..\Utility Classes\Utility Classes\bin\Release\Utility Classes.dll</HintPath>
+    <Reference Include="Utility Classes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Utility Classes\Utility Classes\bin\Release\Utility Classes.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

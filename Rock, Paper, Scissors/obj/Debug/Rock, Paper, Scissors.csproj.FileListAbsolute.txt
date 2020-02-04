@@ -4,3 +4,6 @@ C:\Users\Cain\source\repos\TSG Ungraded\Rock, Paper, Scissors\bin\Debug\Rock, Pa
 C:\Users\Cain\source\repos\TSG Ungraded\Rock, Paper, Scissors\obj\Debug\Rock, Paper, Scissors.csprojAssemblyReference.cache
 C:\Users\Cain\source\repos\TSG Ungraded\Rock, Paper, Scissors\obj\Debug\Rock, Paper, Scissors.exe
 C:\Users\Cain\source\repos\TSG Ungraded\Rock, Paper, Scissors\obj\Debug\Rock, Paper, Scissors.pdb
+C:\Users\Cain\source\repos\TSG Ungraded\Rock, Paper, Scissors\bin\Debug\Utility Classes.dll
+C:\Users\Cain\source\repos\TSG Ungraded\Rock, Paper, Scissors\bin\Debug\Utility Classes.pdb
+C:\Users\Cain\source\repos\TSG Ungraded\Rock, Paper, Scissors\obj\Debug\Rock, Paper, Scissors.csproj.CopyComplete

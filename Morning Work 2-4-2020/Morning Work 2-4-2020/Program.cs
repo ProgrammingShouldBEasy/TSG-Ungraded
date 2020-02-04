@@ -38,7 +38,7 @@ namespace Morning_Work_2_4_2020
                 myArray[i] = arrayInput;
             }
 
-            for (int i=0; i<myArray.Length;i++)
+            for (int i = 0; i < myArray.Length; i++)
             {
 
                 if (myArray[i] % 2 == 0)
@@ -46,7 +46,6 @@ namespace Morning_Work_2_4_2020
                     Console.WriteLine(myArray[i]);
                 }
             }
-            Console.WriteLine();
 
             Console.ReadLine();
         }

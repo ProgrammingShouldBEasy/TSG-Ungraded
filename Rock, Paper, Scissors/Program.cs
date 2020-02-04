@@ -3,13 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utility_Classes;
 
 namespace Rock__Paper__Scissors
 {
+
     class Program
     {
+        public enum GameState
+        {
+            player = 1,
+            computer = 2,
+            tie = 3
+        }
+
+        public static GameState State { get; set; }
+        public static GameState WhoWon(int playerWins, int computerWins)
+        {
+            int a = playerWins;
+            int b = computerWins;
+
+            if (a > b)
+            {
+                State = GameState.player;
+            }
+
+            else if (b > a)
+            {
+                State = GameState.computer;
+            }
+
+            else
+            {
+                State = GameState.tie;
+            }
+
+            return State;
+        }
         static void Main(string[] args)
         {
+
             int ties = 0;
             int playerWins = 0;
             int compWins = 0;
@@ -25,49 +58,47 @@ namespace Rock__Paper__Scissors
                 {
                     for (int i = 0; i < rounds; i++)
                     {
+                        //Console.WriteLine("Pick a number: 1 for Rock, 2 for Paper, 3 for Scissors.");
+                        //answer = Console.ReadLine();
+                        //do
+                        //{
+                        //    if (!Int32.TryParse(answer, out choice) && (choice < 0 || choice > 3))
+                        //    {
+                        //        Console.WriteLine("Pick a number: 1 for Rock, 2 for Paper, 3 for Scissors.");
+                        //        answer = Console.ReadLine();
+                        //    }
+                        //}
                         Console.WriteLine("Pick a number: 1 for Rock, 2 for Paper, 3 for Scissors.");
                         answer = Console.ReadLine();
-                        do
+
+                        while (!Int32.TryParse(answer, out choice) || choice < 0 || choice > 3)
                         {
-                            if (!Int32.TryParse(answer, out choice) && (choice < 0 || choice > 3))
-                            {
-                                Console.WriteLine("Pick a number: 1 for Rock, 2 for Paper, 3 for Scissors.");
-                                answer = Console.ReadLine();
-                            }
+                            Console.WriteLine("Pick a number: 1 for Rock, 2 for Paper, 3 for Scissors.");
+                            answer = Console.ReadLine();
                         }
-                        while (!Int32.TryParse(answer, out choice) && (choice < 0 || choice > 3));
+
                         // Stores a computer choice to be evaluated against.
                         int choice2 = compChoice.Next(1, 4);
                         if (choice == choice2)
                         {
                             ties++;
+                            Console.WriteLine("Tie!");
                         }
 
                         else if ((choice == 1 && choice2 == 3) || (choice == 3 && choice2 == 2) || (choice == 2 && choice2 == 1))
                         {
                             playerWins++;
+                            Console.WriteLine("Player Win!");
                         }
 
                         else
                         {
                             compWins++;
+                            Console.WriteLine("Computer Win!");
                         }
                     }
                     Console.WriteLine("Ties: " + ties + ". Player Wins: " + playerWins + ". Computer Wins: " + compWins + ".");
-                    if ((ties > compWins) && (ties > playerWins))
-                    {
-                        Console.WriteLine("It's a tie!");
-                    }
-
-                    if (playerWins > compWins)
-                    {
-                        Console.WriteLine("The player has won!");
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("The computer has won!");
-                    }
+                    Console.WriteLine("And the winner is: " + WhoWon(playerWins, compWins));
 
                     do
                     {
@@ -76,10 +107,10 @@ namespace Rock__Paper__Scissors
                     }
                     while ((answer != "Yes") && (answer != "No"));
                 }
-                answer = "No";
             }
             Console.WriteLine("Thanks for playing!");
             Console.ReadLine();
         }
     }
 }
+
