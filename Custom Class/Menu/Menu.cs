@@ -14,15 +14,15 @@ namespace Menus
         public void Prompt()
         {
             string output = null;
-
+            int number;
             while (output != "Quit")
             {
-                Console.WriteLine("Do you want to Create, Retrieve, Retrieve All, Delete, or Quit?");
+                Console.WriteLine("Do you want to Create, Retrieve, Retrieve All, Update, Delete, or Quit?");
                 output = Console.ReadLine();
 
-                while (output != "Create" && output != "Retrieve" && output != "Retrieve All" && output != "Delete" && output != "Quit")
+                while (output != "Create" && output != "Retrieve" && output != "Retrieve All" && output != "Update" && output != "Delete" && output != "Quit")
                 {
-                    Console.WriteLine("Do you want to Create, Retrieve, Retrieve All, Delete, or Quit?");
+                    Console.WriteLine("Do you want to Create, Retrieve, Retrieve All, Update, Delete, or Quit?");
                     output = Console.ReadLine();
                 }
 
@@ -40,6 +40,9 @@ namespace Menus
                         break;
                     case "Retrieve All":
                         Controller.RetrieveAll();
+                        break;
+                    case "Update":
+                        Controller.Update();
                         break;
                     case "Delete":
                         Console.WriteLine("What location do you want to delete?");

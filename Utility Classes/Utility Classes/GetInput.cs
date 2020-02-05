@@ -22,7 +22,7 @@ namespace Utility_Classes
             //Asking input and evaluating based on provided range and min/max.
             Console.WriteLine($"Please enter a valid number between {min} and {max}.");
             answer = Console.ReadLine();
-            isValid = Int32.TryParse(answer, out returnInt);
+            isValid = Int32.TryParse(answer, out returnInt) && returnInt < min && returnInt > max;
 
             while (!isValid || returnInt < min || returnInt > max)
             {
@@ -70,7 +70,7 @@ namespace Utility_Classes
             //Asking input and evaluating based on provided range and min/max.
             Console.WriteLine($"Please enter a valid decimal number between {min} and {max}.");
             answer = Console.ReadLine();
-            isValid = Double.TryParse(answer, out returnDouble);
+            isValid = Double.TryParse(answer, out returnDouble) && returnDouble < min && returnDouble > max;
 
             while (!isValid || returnDouble < min || returnDouble > max)
             {
@@ -118,7 +118,7 @@ namespace Utility_Classes
             //Asking input and evaluating based on provided range and min/max.
             Console.WriteLine($"Please enter a valid, precise, decimal number between {min} and {max}.");
             answer = Console.ReadLine();
-            isValid = Decimal.TryParse(answer, out returnDecimal);
+            isValid = Decimal.TryParse(answer, out returnDecimal) && returnDecimal < min && returnDecimal > max;
 
             while (!isValid || returnDecimal < min || returnDecimal > max)
             {

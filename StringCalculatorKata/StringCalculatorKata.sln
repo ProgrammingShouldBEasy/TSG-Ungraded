@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCalculatorKata", "StringCalculatorKata\StringCalculatorKata.csproj", "{DE48FBCD-4D1F-4AC2-843F-5D5FEC2F98FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCalculatorKata.Tests", "StringCalculatorKata.Tests\StringCalculatorKata.Tests.csproj", "{CAADE293-1859-404F-BD7D-8F5720D5087F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{1CC4E6F3-3BD6-465A-8144-F50521CEC14F}"
+	ProjectSection(SolutionItems) = preProject
+		..\Utility Classes\Utility Classes\bin\Release\Utility Classes.dll = ..\Utility Classes\Utility Classes\bin\Release\Utility Classes.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE48FBCD-4D1F-4AC2-843F-5D5FEC2F98FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE48FBCD-4D1F-4AC2-843F-5D5FEC2F98FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE48FBCD-4D1F-4AC2-843F-5D5FEC2F98FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE48FBCD-4D1F-4AC2-843F-5D5FEC2F98FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAADE293-1859-404F-BD7D-8F5720D5087F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAADE293-1859-404F-BD7D-8F5720D5087F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAADE293-1859-404F-BD7D-8F5720D5087F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAADE293-1859-404F-BD7D-8F5720D5087F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1CFBBEF-EE01-4D7C-9A1A-0034C03A8779}
+	EndGlobalSection
+EndGlobal

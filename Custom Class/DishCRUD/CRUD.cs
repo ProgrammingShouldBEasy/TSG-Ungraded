@@ -60,17 +60,23 @@ namespace DishCRUD
             }
         }
 
-        public void Update(int y)
+        public void Update()
         {
             string attribute = null;
             string name = null;
             int quantity;
             bool isBroken;
             bool isASet;
-            int index = y;
+            Console.WriteLine("What index do you want to update?");
+            int index = GetInput.ForInt();
             string answer = null;
-            Dish localDish = new Dish();
-            localDish = localArray[index];
+            Dish localDish = localArray[index];
+            while (localDish == null)
+            {
+                Console.WriteLine("There is no dish here. What index do you want to update?");
+                index = GetInput.ForInt();
+                localDish = localArray[index];
+            };
 
             while (attribute != "Name" || attribute != "Quantity" || attribute != "IsBroken" || attribute != "IsASet" || attribute != "Purpose")
             {
