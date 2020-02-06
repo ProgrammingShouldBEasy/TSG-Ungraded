@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{141DA375-0E65-4CDE-AF12-FCDDBA297B63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UIL", "UIL", "{F8D83196-D8A5-49A0-B81B-2A8024DA2DFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{5D3D3541-096B-4D05-98F0-D5AB53123B8A}"
+	ProjectSection(SolutionItems) = preProject
+		..\Utility Classes\Utility Classes\bin\Release\Utility Classes.dll = ..\Utility Classes\Utility Classes\bin\Release\Utility Classes.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeUI", "TicTacToeUI\TicTacToeUI.csproj", "{14C87D33-73AF-43BD-AA2D-F442DBD38B12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeBLL", "TicTacToeBLL\TicTacToeBLL.csproj", "{C18649FF-886A-4E47-B0F3-20D622B2BA51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeTest", "TicTacToeTest\TicTacToeTest.csproj", "{9543E1FC-37F2-4503-B55D-AEEBA19EB2C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLLTest", "BLLTest", "{69AF099D-478D-4312-9C25-D288E81C00EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14C87D33-73AF-43BD-AA2D-F442DBD38B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C87D33-73AF-43BD-AA2D-F442DBD38B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C87D33-73AF-43BD-AA2D-F442DBD38B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C87D33-73AF-43BD-AA2D-F442DBD38B12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C18649FF-886A-4E47-B0F3-20D622B2BA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18649FF-886A-4E47-B0F3-20D622B2BA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18649FF-886A-4E47-B0F3-20D622B2BA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18649FF-886A-4E47-B0F3-20D622B2BA51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9543E1FC-37F2-4503-B55D-AEEBA19EB2C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9543E1FC-37F2-4503-B55D-AEEBA19EB2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9543E1FC-37F2-4503-B55D-AEEBA19EB2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9543E1FC-37F2-4503-B55D-AEEBA19EB2C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14C87D33-73AF-43BD-AA2D-F442DBD38B12} = {F8D83196-D8A5-49A0-B81B-2A8024DA2DFC}
+		{C18649FF-886A-4E47-B0F3-20D622B2BA51} = {141DA375-0E65-4CDE-AF12-FCDDBA297B63}
+		{9543E1FC-37F2-4503-B55D-AEEBA19EB2C7} = {69AF099D-478D-4312-9C25-D288E81C00EE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D2827ED2-102D-4413-A1BC-E356FDF25C44}
+	EndGlobalSection
+EndGlobal
