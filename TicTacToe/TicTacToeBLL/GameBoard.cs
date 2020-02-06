@@ -171,17 +171,6 @@ namespace TicTacToeBLL
             one = player1;
             two = player2;
         }
-
-        public bool checkTable(int x, int y)
-        {
-            bool isAvailable = false;
-            if (playTable[x, y] == ' ')
-            {
-                isAvailable = true;
-            }
-
-            return isAvailable;
-        }
     }
 }
 

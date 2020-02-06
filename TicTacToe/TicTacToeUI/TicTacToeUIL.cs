@@ -20,8 +20,8 @@ namespace TicTacToeUI
         }
         static void Main(string[] args)
         {
-            bool willParse = false;
-            string answer = null;
+            bool willParse;
+            string answer;
             int choice;
             bool willQuit = false;
             bool isAvailable = false;
@@ -46,7 +46,7 @@ namespace TicTacToeUI
                     //Shuffle names.
                     game.assignPlayers(player1, player2);
 
-                    //Return names.
+                    //Return names from object to local variables.
                     game.getPlayers(out player1, out player2);
 
                     //Display board.
@@ -127,7 +127,7 @@ namespace TicTacToeUI
                                 willParse = Int32.TryParse(answer, out choice);
                                 if (willParse && choice > 0 && choice < 10)
                                 {
-                                    isAvailable = game.AssignBoard(choice, "player1");
+                                    isAvailable = game.AssignBoard(choice, "player2");
                                     while (!isAvailable)
                                     {
                                         isAvailable = game.AssignBoard(GetInput.ForInt(1, 9), "player2");
@@ -177,6 +177,10 @@ namespace TicTacToeUI
                         playAgain = true;
                         willQuit = false;
                         isWinner = false;
+                    }
+                    else if (answer =="No")
+                    {
+                        playAgain = false;
                     }
                 }
             }
