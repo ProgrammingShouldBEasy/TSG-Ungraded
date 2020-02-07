@@ -21,16 +21,16 @@ namespace Factorizor.BLL
             //Number of factor pairs.
             int count = 0;
             //Default array if number is not greater than 0.
-            string[] noFactors = new string[1] {"This number cannot be factored."};
+            string[] noFactors = new string[1] { "This number cannot be factored." };
 
             //Validates number is great han 0.
             if (number > 0)
             {
 
                 //Determining number of factored pairs.
-                for (int i = 0; i < number; i++)
+                for (int ii = 0; ii < number; ii++)
                 {
-                    for (i = 0; i < number; i++)
+                    for (int i = 0; i <= number; i++)
                     {
                         if (one * two == number)
                         {
@@ -38,24 +38,30 @@ namespace Factorizor.BLL
                         }
                         two++;
                     }
+                    two = 0;
                     one++;
                 }
+                one = 0;
+                two = 0;
 
                 //Generating a string array of correct size.
                 string[] factors = new string[count];
 
+                int iiii = 0;
                 //Storing factored pairs into the string array.
-                for (int i = 0; i < number; i++)
+                for (int ii = 0; ii < number; ii++)
                 {
-                    for (i = 0; i < number; i++)
+                    for (int i = 0; i <= number; i++)
                     {
                         if (one * two == number)
                         {
                             result = $"{one} x {two} {number}.";
-                            factors.Append(result);
+                            factors[iiii] = result;
+                            iiii++;
                         }
                         two++;
                     }
+                    two = 0;
                     one++;
                 }
 
@@ -74,7 +80,7 @@ namespace Factorizor.BLL
             //Holds if it's perfect.
             bool isPerfect = false;
             //Stores result;
-            int sum = 0;
+            int sum;
             //One of the pairs.
             int one = 0;
             //Two of the pairs.
@@ -86,9 +92,9 @@ namespace Factorizor.BLL
             if (number > 0)
             {
                 //Determines number of proper divisors.
-                for (int i = 0; i < number; i++)
+                for (int ii = 0; ii < number; ii++)
                 {
-                    for (i = 0; i < number; i++)
+                    for (int i = 0; i <= number; i++)
                     {
                         if (one * two == number)
                         {
@@ -96,31 +102,34 @@ namespace Factorizor.BLL
                         }
                         two++;
                     }
+                    two = 0;
                     one++;
                 }
+                one = 0;
+                two = 0;
 
                 //Holds array of proper divisors.
                 int[] divisors = new int[count];
 
+                int iii = 0;
                 //Determines proper divisor.
-                for (int i = 0; i < number; i++)
+                for (int ii = 0; ii < number; ii++)
                 {
-                    for (i = 0; i < number; i++)
+                    for (int i = 0; i <= number; i++)
                     {
                         if (one * two == number)
                         {
-                            divisors.Append(one);
+                            divisors[iii] = one;
+                            iii++;
                         }
                         two++;
                     }
+                    two = 0;
                     one++;
                 }
 
                 //Sums the divisors.
-                for (int i = 0; i < divisors.Length; i++)
-                {
-                    sum += divisors[i];
-                }
+                sum = divisors.Sum();
 
                 //Calculates if the sum is equal to the number.
                 if (sum == number)
