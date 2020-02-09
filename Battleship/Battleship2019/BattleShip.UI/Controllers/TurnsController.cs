@@ -13,10 +13,10 @@ namespace BattleShip.UI.Controllers
 {
     public class TurnsController
     {
-        public void CoordinatePrompt()
+        public void CoordinatePrompt(out int Row, out int Column)
         {
             string coordinate;
-            int coordinateRow;
+            int coordinateRow = 0;
             int coordinateColumn;
             string newString;
             Console.WriteLine("Please enter a coordinate from A - J and from 1 - 10. Example: A10.");
@@ -91,6 +91,9 @@ namespace BattleShip.UI.Controllers
             }
 
             coordinateColumn = Int32.Parse(newString);
+
+            Row = coordinateRow;
+            Column = coordinateColumn;
         }
         public void Cycle(string player1In, string player2In, Board board1In, Board board2In)
         {
