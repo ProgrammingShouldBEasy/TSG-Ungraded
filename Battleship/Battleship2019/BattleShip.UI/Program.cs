@@ -44,6 +44,7 @@ namespace BattleShip.UI
                 Names.Randomize(player1, player2, out player1, out player2);
                 Place.PlaceFirst(player1, Board1, out Board1);
                 Place.PlaceSecond(player2, Board2, out Board2);
+                Turns.CoordinatePrompt();
                 Turns.Cycle(player1, player2, Board1, Board2);
                 End.Display(out play);
             }
