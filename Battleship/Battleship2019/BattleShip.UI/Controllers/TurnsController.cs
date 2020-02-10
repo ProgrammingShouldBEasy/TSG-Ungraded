@@ -63,7 +63,7 @@ namespace BattleShip.UI.Controllers
                     default:
                         break;
                 }
-
+                PrintBoard.Display(board2);
                 Console.WriteLine("Press any key to clear the board and continue.");
                 Console.ReadKey();
                 Console.Clear();
@@ -99,6 +99,7 @@ namespace BattleShip.UI.Controllers
                             break;
                     }
 
+                    PrintBoard.Display(board1);
                     Console.WriteLine("Press any key to clear the board and continue.");
                     Console.ReadKey();
                     Console.Clear();

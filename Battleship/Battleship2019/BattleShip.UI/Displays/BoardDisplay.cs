@@ -14,11 +14,9 @@ namespace BattleShip.UI.Displays
     {
         public void Display (Board boardIn)
         {
-            Board localBoard = boardIn;
             int x = 1;
             int y = 1;
             string localY = null;
-
             Coordinate localCoordinate = new Coordinate(x, y);
 
             Console.WriteLine("Board");
@@ -65,7 +63,7 @@ namespace BattleShip.UI.Displays
                 {
                     localCoordinate.XCoordinate = x;
                     localCoordinate.YCoordinate = y;
-                    switch (localBoard.CheckCoordinate(localCoordinate))
+                    switch (boardIn.CheckCoordinate(localCoordinate))
                     {
                         case ShotHistory.Hit:
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -88,6 +86,8 @@ namespace BattleShip.UI.Displays
                 x = 1;
                 y++;
             }
+            x = 1;
+            y = 1;
         }
     }
 }

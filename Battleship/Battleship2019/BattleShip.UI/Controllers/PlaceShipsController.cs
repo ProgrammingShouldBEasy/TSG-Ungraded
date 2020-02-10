@@ -40,6 +40,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Destroyer.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Destroyer: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Destroyer: Up, Down, Left, or Right.");
@@ -67,6 +69,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             valid = false;
@@ -76,6 +82,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Submarine.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Submarine: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Submarine: Up, Down, Left, or Right.");
@@ -103,6 +111,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             valid = false;
@@ -112,6 +124,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Cruiser.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Cruiser: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Cruiser: Up, Down, Left, or Right.");
@@ -139,6 +153,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             valid = false;
@@ -148,6 +166,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Battleship.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Battleship: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Battleship: Up, Down, Left, or Right.");
@@ -175,6 +195,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             valid = false;
@@ -184,6 +208,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Carrier.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Carrier: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Carrier: Up, Down, Left, or Right.");
@@ -211,6 +237,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             board1Out = localBoard;
@@ -237,6 +267,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Destroyer.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Destroyer: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Destroyer: Up, Down, Left, or Right.");
@@ -264,6 +296,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             valid = false;
@@ -273,6 +309,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Submarine.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Submarine: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Submarine: Up, Down, Left, or Right.");
@@ -300,6 +338,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             valid = false;
@@ -309,6 +351,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Cruiser.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Cruiser: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Cruiser: Up, Down, Left, or Right.");
@@ -336,6 +380,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             valid = false;
@@ -345,6 +393,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Battleship.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Battleship: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Battleship: Up, Down, Left, or Right.");
@@ -372,6 +422,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             valid = false;
@@ -381,6 +435,8 @@ namespace BattleShip.UI.Controllers
             {
                 Console.WriteLine("Provide a starting coordinate for your Carrier.");
                 GetCoordinate.CoordinatePrompt(out row, out column);
+                Console.WriteLine("Provide a direction for your Carrier: Up, Down, Left, or Right.");
+                direction = Console.ReadLine();
                 while (direction != "Up" && direction != "Down" && direction != "Left" && direction != "Right")
                 {
                     Console.WriteLine("Provide a direction for your Carrier: Up, Down, Left, or Right.");
@@ -408,6 +464,10 @@ namespace BattleShip.UI.Controllers
                 ShipPlacement localEnum = localBoard.PlaceShip(Placer);
                 if (localEnum == ShipPlacement.Ok)
                     valid = true;
+                else
+                {
+                    Console.WriteLine("That was not a valid placement. Please try again.");
+                }
             }
 
             board2Out = localBoard;
