@@ -29,7 +29,6 @@ namespace BattleShip.UI.Controllers
             Board board1 = board1In;
             Board board2 = board2In;
             BoardDisplay PrintBoard = new BoardDisplay();
-            Coordinate localCoordinate = new Coordinate(column, row);
             FireShotResponse localFireShotResponse = new FireShotResponse();
             CoordinatePromptController GetCoordinate = new CoordinatePromptController();
 
@@ -41,8 +40,9 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine($"{player1}, here's your board. Please choose a valid, unused coordinate to fire at.");
                     PrintBoard.Display(board2);
                     GetCoordinate.CoordinatePrompt(out row, out column);
-                    localCoordinate.XCoordinate = column;
-                    localCoordinate.YCoordinate = row;
+                    Coordinate localCoordinate = new Coordinate(column, row);
+                    //localCoordinate.XCoordinate = column;
+                    //localCoordinate.YCoordinate = row;
                     localFireShotResponse = board2.FireShot(localCoordinate);
                 }
 
@@ -76,8 +76,9 @@ namespace BattleShip.UI.Controllers
                         Console.WriteLine($"{player2}, here's your board. Please choose a valid, unused coordinate to fire at.");
                         PrintBoard.Display(board1);
                         GetCoordinate.CoordinatePrompt(out row, out column);
-                        localCoordinate.XCoordinate = column;
-                        localCoordinate.YCoordinate = row;
+                        Coordinate localCoordinate = new Coordinate(column, row);
+                        //localCoordinate.XCoordinate = column;
+                        //localCoordinate.YCoordinate = row;
                         localFireShotResponse = board1.FireShot(localCoordinate);
                     }
 

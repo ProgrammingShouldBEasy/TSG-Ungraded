@@ -26,7 +26,7 @@ namespace BattleShip.UI.Controllers
         {
             int row;
             int column;
-            string direction = null;
+            string direction;
             PlaceShipRequest Placer = new PlaceShipRequest();
             string player = player1;
             Console.WriteLine($"{player}, it's your turn to place your ships.");
