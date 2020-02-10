@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CoordinatePromptController.cs" />
     <Compile Include="Controllers\EndController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NamesController.cs" />

@@ -10,9 +10,25 @@ namespace BattleShip.UI.Controllers
     {
         public void Display (out bool play)
         {
-            bool localBool = false;
-            play = localBool;
+            bool localBool;
+            string answer = null;
+            while (answer != "Yes" && answer != "No")
+            {
+                Console.WriteLine("The game is over. Would you like to play again? Yes or No?");
+                answer = Console.ReadLine();
+            }
 
+            if (answer == "Yes")
+            {
+                localBool = true;
+            }
+
+            else
+            {
+                localBool = false;
+            }
+
+            play = localBool;
         }
     }
 }

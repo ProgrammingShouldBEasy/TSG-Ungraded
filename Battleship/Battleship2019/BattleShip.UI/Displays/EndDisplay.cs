@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleShip.UI.Displays
 {
-    class EndDisplay
+    public class EndDisplay
     {
     }
 }

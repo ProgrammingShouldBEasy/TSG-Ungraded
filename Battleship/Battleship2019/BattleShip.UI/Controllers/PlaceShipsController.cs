@@ -8,6 +8,7 @@ using BattleShip.BLL.Requests;
 using BattleShip.BLL.Responses;
 using BattleShip.BLL.Ships;
 using BattleShip.UI.Controllers;
+using BattleShip.UI.Displays;
 
 namespace BattleShip.UI.Controllers
 {
@@ -19,17 +20,21 @@ namespace BattleShip.UI.Controllers
     //Carrier
     public class PlaceShipsController
     {
-        TurnsController GetCoordinate = new TurnsController();
+        CoordinatePromptController GetCoordinate = new CoordinatePromptController();
+        BoardDisplay localDisplay = new BoardDisplay();
         public void PlaceFirst(string player1, Board board1In, out Board board1Out)
         {
-            int row = 0;
-            int column = 0;
+            int row;
+            int column;
             string direction = null;
             PlaceShipRequest Placer = new PlaceShipRequest();
             string player = player1;
             Console.WriteLine($"{player}, it's your turn to place your ships.");
             Board localBoard = board1In;
             bool valid = false;
+
+            Console.WriteLine("Here's your board.");
+            localDisplay.Display(localBoard);
 
             while (!valid)
             {
@@ -65,6 +70,7 @@ namespace BattleShip.UI.Controllers
             }
 
             valid = false;
+            direction = null;
 
             while (!valid)
             {
@@ -100,6 +106,7 @@ namespace BattleShip.UI.Controllers
             }
 
             valid = false;
+            direction = null;
 
             while (!valid)
             {
@@ -135,6 +142,7 @@ namespace BattleShip.UI.Controllers
             }
 
             valid = false;
+            direction = null;
 
             while (!valid)
             {
@@ -170,6 +178,7 @@ namespace BattleShip.UI.Controllers
             }
 
             valid = false;
+            direction = null;
 
             while (!valid)
             {
@@ -205,18 +214,24 @@ namespace BattleShip.UI.Controllers
             }
 
             board1Out = localBoard;
+            Console.WriteLine($"{player}, your ships have been placed. Press any key to clear the board and let the next player place their ships.");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         public void PlaceSecond(string player2, Board board2In, out Board board2Out)
         {
-            int row = 0;
-            int column = 0;
+            int row;
+            int column;
             string direction = null;
             PlaceShipRequest Placer = new PlaceShipRequest();
             string player = player2;
             Console.WriteLine($"{player}, it's your turn to place your ships.");
             Board localBoard = board2In;
             bool valid = false;
+
+            Console.WriteLine("Here's your board.");
+            localDisplay.Display(localBoard);
 
             while (!valid)
             {
@@ -252,6 +267,7 @@ namespace BattleShip.UI.Controllers
             }
 
             valid = false;
+            direction = null;
 
             while (!valid)
             {
@@ -287,6 +303,7 @@ namespace BattleShip.UI.Controllers
             }
 
             valid = false;
+            direction = null;
 
             while (!valid)
             {
@@ -322,6 +339,7 @@ namespace BattleShip.UI.Controllers
             }
 
             valid = false;
+            direction = null;
 
             while (!valid)
             {
@@ -357,6 +375,7 @@ namespace BattleShip.UI.Controllers
             }
 
             valid = false;
+            direction = null;
 
             while (!valid)
             {
@@ -392,6 +411,10 @@ namespace BattleShip.UI.Controllers
             }
 
             board2Out = localBoard;
+
+            Console.WriteLine($"{player}, your ships have been placed. Press any key to clear the board and begin play.");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }

@@ -21,10 +21,6 @@ namespace BattleShip.UI
             string player1;
             string player2;
 
-            //Player board instances.
-            Board Board1 = new Board();
-            Board Board2 = new Board();
-
             //Will play bool.
             bool play = true;
 
@@ -38,6 +34,10 @@ namespace BattleShip.UI
             //Game execution.
             while (play == true)
             {
+                //Player board instances. Placed inside the while play iterator so a new Board instance is created per play session, the old ones will be garbage collected.
+                Board Board1 = new Board();
+                Board Board2 = new Board();
+
                 Menu.Display();
                 Names.GetFirst(out player1);
                 Names.GetSecond(out player2);
