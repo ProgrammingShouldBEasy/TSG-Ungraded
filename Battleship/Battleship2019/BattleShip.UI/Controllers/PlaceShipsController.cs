@@ -45,7 +45,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Destroyer: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":
@@ -81,7 +81,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Submarine: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":
@@ -117,7 +117,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Cruiser: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":
@@ -153,7 +153,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Battleship: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":
@@ -189,7 +189,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Carrier: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":
@@ -242,7 +242,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Destroyer: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":
@@ -278,7 +278,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Submarine: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":
@@ -314,7 +314,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Cruiser: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":
@@ -350,7 +350,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Battleship: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":
@@ -386,7 +386,7 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine("Provide a direction for your Carrier: Up, Down, Left, or Right.");
                     direction = Console.ReadLine();
                 }
-                Placer.Coordinate = new Coordinate(row, column);
+                Placer.Coordinate = new Coordinate(column, row);
                 switch (direction)
                 {
                     case "Up":

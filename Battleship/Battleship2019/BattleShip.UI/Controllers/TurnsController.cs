@@ -29,12 +29,13 @@ namespace BattleShip.UI.Controllers
             Board board1 = board1In;
             Board board2 = board2In;
             BoardDisplay PrintBoard = new BoardDisplay();
-            Coordinate localCoordinate = new Coordinate(row, column);
+            Coordinate localCoordinate = new Coordinate(column, row);
             FireShotResponse localFireShotResponse = new FireShotResponse();
             CoordinatePromptController GetCoordinate = new CoordinatePromptController();
 
             while (localFireShotResponse.ShotStatus != ShotStatus.Victory)
             {
+                localFireShotResponse.ShotStatus = ShotStatus.Invalid;
                 while (localFireShotResponse.ShotStatus == ShotStatus.Duplicate || localFireShotResponse.ShotStatus == ShotStatus.Invalid)
                 {
                     Console.WriteLine($"{player1}, here's your board. Please choose a valid, unused coordinate to fire at.");
@@ -48,7 +49,7 @@ namespace BattleShip.UI.Controllers
                 switch (localFireShotResponse.ShotStatus)
                 {
                     case ShotStatus.Hit:
-                        Console.WriteLine($"That's a hit! {player2}'s {localFireShotResponse.ShipImpacted} has been struck!");
+                        Console.WriteLine($"That's a hit!");
                         break;
                     case ShotStatus.HitAndSunk:
                         Console.WriteLine($"That's a hit and you sunk {player2}'s {localFireShotResponse.ShipImpacted}!");
@@ -69,6 +70,7 @@ namespace BattleShip.UI.Controllers
 
                 if (localFireShotResponse.ShotStatus != ShotStatus.Victory)
                 {
+                    localFireShotResponse.ShotStatus = ShotStatus.Invalid;
                     while (localFireShotResponse.ShotStatus == ShotStatus.Duplicate || localFireShotResponse.ShotStatus == ShotStatus.Invalid)
                     {
                         Console.WriteLine($"{player2}, here's your board. Please choose a valid, unused coordinate to fire at.");
@@ -82,7 +84,7 @@ namespace BattleShip.UI.Controllers
                     switch (localFireShotResponse.ShotStatus)
                     {
                         case ShotStatus.Hit:
-                            Console.WriteLine($"That's a hit! {player2}'s {localFireShotResponse.ShipImpacted} has been struck!");
+                            Console.WriteLine($"That's a hit!");
                             break;
                         case ShotStatus.HitAndSunk:
                             Console.WriteLine($"That's a hit and you sunk {player2}'s {localFireShotResponse.ShipImpacted}!");

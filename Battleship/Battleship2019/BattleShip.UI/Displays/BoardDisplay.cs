@@ -19,7 +19,7 @@ namespace BattleShip.UI.Displays
             int y = 1;
             string localY = null;
 
-            Coordinate localCoordinate = new Coordinate(x,y);
+            Coordinate localCoordinate = new Coordinate(x, y);
             ShotHistory localEnum;
 
             Console.WriteLine("Board");
