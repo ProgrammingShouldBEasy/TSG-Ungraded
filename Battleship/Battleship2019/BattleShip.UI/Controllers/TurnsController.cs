@@ -41,8 +41,8 @@ namespace BattleShip.UI.Controllers
                     Console.WriteLine($"{player1}, here's your board. Please choose a valid, unused coordinate to fire at.");
                     PrintBoard.Display(board2);
                     GetCoordinate.CoordinatePrompt(out row, out column);
-                    localCoordinate.XCoordinate = row;
-                    localCoordinate.YCoordinate = column;
+                    localCoordinate.XCoordinate = column;
+                    localCoordinate.YCoordinate = row;
                     localFireShotResponse = board2.FireShot(localCoordinate);
                 }
 
@@ -76,8 +76,8 @@ namespace BattleShip.UI.Controllers
                         Console.WriteLine($"{player2}, here's your board. Please choose a valid, unused coordinate to fire at.");
                         PrintBoard.Display(board1);
                         GetCoordinate.CoordinatePrompt(out row, out column);
-                        localCoordinate.XCoordinate = row;
-                        localCoordinate.YCoordinate = column;
+                        localCoordinate.XCoordinate = column;
+                        localCoordinate.YCoordinate = row;
                         localFireShotResponse = board1.FireShot(localCoordinate);
                     }
 

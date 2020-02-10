@@ -20,7 +20,6 @@ namespace BattleShip.UI.Displays
             string localY = null;
 
             Coordinate localCoordinate = new Coordinate(x, y);
-            ShotHistory localEnum;
 
             Console.WriteLine("Board");
             Console.WriteLine(" ||1||2||3||4||5||6||7||8||9|10|");
@@ -66,8 +65,7 @@ namespace BattleShip.UI.Displays
                 {
                     localCoordinate.XCoordinate = x;
                     localCoordinate.YCoordinate = y;
-                    localEnum = localBoard.CheckCoordinate(localCoordinate);
-                    switch (localEnum)
+                    switch (localBoard.CheckCoordinate(localCoordinate))
                     {
                         case ShotHistory.Hit:
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -87,7 +85,7 @@ namespace BattleShip.UI.Displays
                     x++;
                 }
                 Console.WriteLine();
-                x = 0;
+                x = 1;
                 y++;
             }
         }
