@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Globalization;
 
 namespace DateTimeLab
 {
@@ -43,9 +45,7 @@ namespace DateTimeLab
         /// </summary>
         public DateTime GetDateTimeObjectFromString(string date)
         {
-            string inputDate = date;
-            DateTime resultDate = DateTime.Parse(inputDate);
-            return resultDate;
+            return DateTime.Parse(date);
             throw new NotImplementedException();
         }
 
@@ -98,20 +98,22 @@ namespace DateTimeLab
         public DateTime[] GetNextWednesdays(int count, string startDate)
         {
             DateTime dateToChange = DateTime.Parse(startDate);
-            List<DateTime> dates = new List<DateTime>();
+            DateTime[] dates = new DateTime[count];
+            int index = 0;
 
             for (int i = 0; i < 7*count; i++)
             {
                 {
                     if (dateToChange.DayOfWeek == DayOfWeek.Wednesday)
                     {
-                        dates.Add(dateToChange);
+                        dates[index] = dateToChange;
+                        index++;
                     }
                     dateToChange = dateToChange.AddDays(1);
                 }
             }
-
-            return dates.ToArray();
+            Console.WriteLine(CultureInfo.CurrentCulture.Name);
+            return dates;
             throw new NotImplementedException();
         }
     }
