@@ -20,10 +20,10 @@ namespace Banking_Application
             {
 
                 int choice;
-                int accountNumber = 0;
-                decimal money = 0;
+                int accountNumber;
+                decimal money;
                 string name = null;
-                decimal balance = 0;
+                decimal balance;
 
                 Console.Clear();
                 Console.WriteLine("Welcome to the First National Bank of TSG!");
@@ -36,9 +36,8 @@ namespace Banking_Application
                                   "6. Get an account by name.\n" +
                                   "7. Get an account by Account Number.\n" +
                                   "8. Get all accounts with balance of $10,000 or greater.\n" +
-                                  "9. Get the date that an account was created.\n" +
-                                  "10. Quit.");
-                choice = GetInput.ForInt(1, 10);
+                                  "9. Quit.");
+                choice = GetInput.ForInt(1, 9);
                 Console.Clear();
 
                 switch (choice)
@@ -92,8 +91,21 @@ namespace Banking_Application
                         }
                         break;
                     case 5:
-                        List<Account> AllAccounts = FirstNational.DisplayAllAccounts();
-                        foreach (Account x in AllAccounts)
+                        foreach (Account a in FirstNational.DisplayAllAccounts())
+                        {
+                            Console.WriteLine("=====================================================\n" +
+                                              $"The Name on the Account is: {a.GetAccountName()}\n" +
+                                              $"The Account Number is: {a.GetAccountNumber()}\n" +
+                                              $"The Balance is: {a.GetBalance()}\n" +
+                                              $"The Date Created is: " + a.GetDateCreated().Date.ToShortDateString() + "\n" +
+                                              "=====================================================\n");
+                        }
+                        break;
+                    case 6:
+                        Console.WriteLine("What is the name on the account you would like displayed?");
+                        name = Console.ReadLine();
+                        Account x = FirstNational.DisplayAccountByName(name);
+                        if (x != null)
                         {
                             Console.WriteLine("=====================================================\n" +
                                               $"The Name on the Account is: {x.GetAccountName()}\n" +
@@ -102,16 +114,41 @@ namespace Banking_Application
                                               $"The Date Created is: " + x.GetDateCreated().Date.ToShortDateString() + "\n" +
                                               "=====================================================\n");
                         }
-                        break;
-                    case 6:
+                        else
+                        {
+                            Console.WriteLine("There is no account by that name.");
+                        }
                         break;
                     case 7:
+                        Console.WriteLine("What is the name on the account you would like displayed?");
+                        accountNumber = GetInput.ForInt();
+                        Account z = FirstNational.DisplayAccountByNumber(accountNumber);
+                        if (z != null)
+                        {
+                            Console.WriteLine("=====================================================\n" +
+                                              $"The Name on the Account is: {z.GetAccountName()}\n" +
+                                              $"The Account Number is: {z.GetAccountNumber()}\n" +
+                                              $"The Balance is: {z.GetBalance()}\n" +
+                                              $"The Date Created is: " + z.GetDateCreated().Date.ToShortDateString() + "\n" +
+                                              "=====================================================\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("There is no account by that name.");
+                        }
                         break;
                     case 8:
+                        foreach (Account y in FirstNational.GetHighRollers())
+                        {
+                            Console.WriteLine("=====================================================\n" +
+                                              $"The Name on the Account is: {y.GetAccountName()}\n" +
+                                              $"The Account Number is: {y.GetAccountNumber()}\n" +
+                                              $"The Balance is: {y.GetBalance()}\n" +
+                                              $"The Date Created is: " + y.GetDateCreated().Date.ToShortDateString() + "\n" +
+                                              "=====================================================\n");
+                        }
                         break;
                     case 9:
-                        break;
-                    case 10:
                         quit = true;
                         break;
                     default:
