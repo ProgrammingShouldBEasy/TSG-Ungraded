@@ -47,20 +47,12 @@ namespace BLL
 
         public Account DisplayAccountByName(string name)
         {
-            return = DataBase.RetrieveOneByName(name);
-            //return $"The Name on the Account is: {localAccount.GetAccountName()}\n" +
-            //       $"The Account Number is: {localAccount.GetAccountNumber()}\n" +
-            //       $"The Balance is: {localAccount.GetBalance()}\n" +
-            //       $"The Date Created is: {localAccount.GetDateCreated().Date}";
+            return DataBase.RetrieveOneByName(name);
         }
 
         public Account DisplayAccountByNumber(int accountNumber)
         {
             return DataBase.RetrieveOneByAccountNumber(accountNumber);
-            //return $"The Name on the Account is: {localAccount.GetAccountName()}\n" +
-            //       $"The Account Number is: {localAccount.GetAccountNumber()}\n" +
-            //       $"The Balance is: {localAccount.GetBalance()}\n" +
-            //       $"The Date Created is: {localAccount.GetDateCreated().Date}";
         }
 
         public List<Account> DisplayAllAccounts()
