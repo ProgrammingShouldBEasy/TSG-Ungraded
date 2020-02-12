@@ -157,8 +157,6 @@ namespace Banking_Application
                 Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
             }
-
-            Console.ReadLine();
         }
     }
 }
