@@ -67,27 +67,27 @@ namespace Banking_Application
                         accountNumber = GetInput.ForInt();
                         if (FirstNational.Deposit(money, accountNumber, out balance))
                         {
-                            Console.WriteLine($"{name} has deposited ${money} and the new balance is {balance}.");
+                            Console.WriteLine(FirstNational.DisplayAccountByNumber(accountNumber).GetAccountName() + $" has deposited {money:C} and the new balance is {balance:C}.");
                         }
 
                         else
                         {
-                            Console.WriteLine($"{name} cannot deposit ${money}, as that would leave a negative balance.");
+                            Console.WriteLine(FirstNational.DisplayAccountByNumber(accountNumber).GetAccountName() + $" cannot deposit {money:C}, as that would leave a negative balance.");
                         }
                         break;
                     case 4:
-                        Console.WriteLine("How much would you like to deposit?");
+                        Console.WriteLine("How much would you like to withdraw?");
                         money = GetInput.ForDecimal();
                         Console.WriteLine("What is the account number?");
                         accountNumber = GetInput.ForInt();
                         if (FirstNational.Withdraw(money, accountNumber, out balance))
                         {
-                            Console.WriteLine($"{name} has deposited ${money} and the new balance is {balance}.");
+                            Console.WriteLine(FirstNational.DisplayAccountByNumber(accountNumber).GetAccountName() + $" has withdrawn {money:C} and the new balance is {balance:C}.");
                         }
 
                         else
                         {
-                            Console.WriteLine($"{name} cannot deposit ${money}, as that would leave a negative balance.");
+                            Console.WriteLine(FirstNational.DisplayAccountByNumber(accountNumber).GetAccountName() + $" cannot withdraw {money:C}, as that would leave a negative balance.");
                         }
                         break;
                     case 5:
@@ -96,7 +96,7 @@ namespace Banking_Application
                             Console.WriteLine("=====================================================\n" +
                                               $"The Name on the Account is: {a.GetAccountName()}\n" +
                                               $"The Account Number is: {a.GetAccountNumber()}\n" +
-                                              $"The Balance is: {a.GetBalance()}\n" +
+                                              $"The Balance is: {a.GetBalance():C}\n" +
                                               $"The Date Created is: " + a.GetDateCreated().Date.ToShortDateString() + "\n" +
                                               "=====================================================\n");
                         }
@@ -110,7 +110,7 @@ namespace Banking_Application
                             Console.WriteLine("=====================================================\n" +
                                               $"The Name on the Account is: {x.GetAccountName()}\n" +
                                               $"The Account Number is: {x.GetAccountNumber()}\n" +
-                                              $"The Balance is: {x.GetBalance()}\n" +
+                                              $"The Balance is: {x.GetBalance():C}\n" +
                                               $"The Date Created is: " + x.GetDateCreated().Date.ToShortDateString() + "\n" +
                                               "=====================================================\n");
                         }
@@ -128,7 +128,7 @@ namespace Banking_Application
                             Console.WriteLine("=====================================================\n" +
                                               $"The Name on the Account is: {z.GetAccountName()}\n" +
                                               $"The Account Number is: {z.GetAccountNumber()}\n" +
-                                              $"The Balance is: {z.GetBalance()}\n" +
+                                              $"The Balance is: {z.GetBalance():C}\n" +
                                               $"The Date Created is: " + z.GetDateCreated().Date.ToShortDateString() + "\n" +
                                               "=====================================================\n");
                         }
