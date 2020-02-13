@@ -22,7 +22,7 @@ namespace Banking_Application
                 int choice;
                 int accountNumber;
                 decimal money;
-                string name = null;
+                string name;
                 decimal balance;
 
                 Console.Clear();
@@ -62,7 +62,7 @@ namespace Banking_Application
                         break;
                     case 3:
                         Console.WriteLine("How much would you like to deposit?");
-                        money = GetInput.ForDecimal();
+                        money = GetInput.ForDecimal(0, int.MaxValue);
                         Console.WriteLine("What is the account number?");
                         accountNumber = GetInput.ForInt();
                         if (FirstNational.Deposit(money, accountNumber, out balance))
@@ -77,7 +77,7 @@ namespace Banking_Application
                         break;
                     case 4:
                         Console.WriteLine("How much would you like to withdraw?");
-                        money = GetInput.ForDecimal();
+                        money = GetInput.ForDecimal(0, int.MaxValue);
                         Console.WriteLine("What is the account number?");
                         accountNumber = GetInput.ForInt();
                         if (FirstNational.Withdraw(money, accountNumber, out balance))
