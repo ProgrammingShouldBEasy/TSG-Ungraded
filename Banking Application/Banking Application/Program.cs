@@ -18,7 +18,6 @@ namespace Banking_Application
 
             while (!quit)
             {
-
                 int choice;
                 int accountNumber;
                 decimal money;
