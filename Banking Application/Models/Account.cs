@@ -13,16 +13,24 @@ namespace Models
         private decimal _balance;
         readonly DateTime _DateCreated = DateTime.Now;
 
-        public DateTime GetDateCreated()
-        {
-            return _DateCreated;
-        }
-
         public Account (int accountNumber, string name, decimal balance)
         {
             _accountNumber = accountNumber;
             _customerName = name;
             _balance = balance;
+        }
+
+        public Account (int accountNumber, string name, decimal balance, string localDate)
+        {
+            _accountNumber = accountNumber;
+            _customerName = name;
+            _balance = balance;
+            _DateCreated = DateTime.Parse(localDate);
+        }
+
+        public DateTime GetDateCreated()
+        {
+            return _DateCreated;
         }
 
         public decimal UpdateBalance(decimal change)

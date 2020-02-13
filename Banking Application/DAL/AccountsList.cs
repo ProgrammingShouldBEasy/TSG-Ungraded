@@ -12,7 +12,7 @@ namespace DAL
     {
         private string MapAccountstoLine (Account account)
         {
-            return $"{account.GetAccountName()}::{account.GetAccountNumber()}::{account.GetBalance()}::{account.GetDateCreated()}";
+            return $"{account.GetAccountName()}~{account.GetAccountNumber()}~{account.GetBalance()}~{account.GetDateCreated()}";
         }
 
         private void WriteAllAccounts (List<Account> accounts)
@@ -26,16 +26,31 @@ namespace DAL
             }
         }
 
-        //private List<Account> ReadAllAccounts()
-        //{
-        //    return 
-        //}
+        private Account MapLinetoAccount(string line)
+        {
+            string[] props = line.Split('~');
+            Account account = new Account(int.Parse(props[1]), props[0], decimal.Parse(props[2]), props[3]);
 
+            return account;        
+        }
 
-        public List<Account> Accounts = new List<Account> { new Account(1, "John", 1.00m), new Account(2, "Johnn", 100m), new Account(3, "Johnny", 100000m) };
+        private List<Account> ReadAllAccounts()
+        {
+            List<Account> accounts = new List<Account>();
+            using(StreamReader reader = new StreamReader(@"accounts.txt"))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    accounts.Add(MapLinetoAccount(line));
+                }
+            }
+            return accounts;
+        }
 
         public int Create(string name, decimal balance)
         {
+            List<Account> Accounts = ReadAllAccounts();
             Random localRandom = new Random();
             int localInt = 0;
             bool isUnique = false;
@@ -59,29 +74,34 @@ namespace DAL
             return localInt;
         }
 
-        public Account RetrieveOneByName(string name)
+        public List<Account> RetrieveAllByName(string name)
         {
-            return Accounts.FirstOrDefault(x => x.GetAccountName() == name);
+            List<Account> Accounts = ReadAllAccounts();
+            return Accounts.FindAll(x => x.GetAccountName() == name);
         }
 
         public Account RetrieveOneByAccountNumber (int accountNumber)
         {
+            List<Account> Accounts = ReadAllAccounts();
             return Accounts.FirstOrDefault(x => x.GetAccountNumber() == accountNumber);
         }
 
         public List<Account> RetrieveAll()
         {
-            return Accounts.Where(x => x.GetBalance() >= 0).ToList();
+            List<Account> Accounts = ReadAllAccounts();
+            return Accounts;
         }
 
         public void Update(decimal change, int accountNumber)
         {
+            List<Account> Accounts = ReadAllAccounts();
             Accounts.FirstOrDefault(x => x.GetAccountNumber() == accountNumber).UpdateBalance(change);
             WriteAllAccounts(Accounts);
         }
 
         public void Delete(int accountNumber)
         {
+            List<Account> Accounts = ReadAllAccounts();
             Accounts.RemoveAll(x => x.GetAccountNumber() == accountNumber);
             WriteAllAccounts(Accounts);
         }

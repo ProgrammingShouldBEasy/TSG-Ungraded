@@ -42,12 +42,12 @@ namespace BLL
 
         public List<Account> GetHighRollers()
         {
-            return DataBase.Accounts.Where(x => x.GetBalance() >= 10000).ToList();
+            return DataBase.RetrieveAll().Where(x => x.GetBalance() >= 10000).ToList();
         }
 
-        public Account DisplayAccountByName(string name)
+        public List<Account> DisplayAccountByName(string name)
         {
-            return DataBase.RetrieveOneByName(name);
+            return DataBase.RetrieveAllByName(name);
         }
 
         public Account DisplayAccountByNumber(int accountNumber)

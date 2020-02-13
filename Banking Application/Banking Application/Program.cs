@@ -104,15 +104,18 @@ namespace Banking_Application
                     case 6:
                         Console.WriteLine("What is the name on the account you would like displayed?");
                         name = Console.ReadLine();
-                        Account x = FirstNational.DisplayAccountByName(name);
-                        if (x != null)
+                        List<Account> accounts = FirstNational.DisplayAccountByName(name);
+                        if (accounts.Count() != 0)
                         {
-                            Console.WriteLine("=====================================================\n" +
-                                              $"The Name on the Account is: {x.GetAccountName()}\n" +
-                                              $"The Account Number is: {x.GetAccountNumber()}\n" +
-                                              $"The Balance is: {x.GetBalance():C}\n" +
-                                              $"The Date Created is: " + x.GetDateCreated() + "\n" +
-                                              "=====================================================\n");
+                            foreach (Account x in accounts)
+                            {
+                                Console.WriteLine("=====================================================\n" +
+                                                  $"The Name on the Account is: {x.GetAccountName()}\n" +
+                                                  $"The Account Number is: {x.GetAccountNumber()}\n" +
+                                                  $"The Balance is: {x.GetBalance():C}\n" +
+                                                  $"The Date Created is: " + x.GetDateCreated() + "\n" +
+                                                  "=====================================================\n");
+                            }
                         }
                         else
                         {
