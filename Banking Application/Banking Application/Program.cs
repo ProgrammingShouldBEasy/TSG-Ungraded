@@ -97,7 +97,7 @@ namespace Banking_Application
                                               $"The Name on the Account is: {a.GetAccountName()}\n" +
                                               $"The Account Number is: {a.GetAccountNumber()}\n" +
                                               $"The Balance is: {a.GetBalance():C}\n" +
-                                              $"The Date Created is: " + a.GetDateCreated().Date.ToShortDateString() + "\n" +
+                                              $"The Date Created is: " + a.GetDateCreated() + "\n" +
                                               "=====================================================\n");
                         }
                         break;
@@ -111,7 +111,7 @@ namespace Banking_Application
                                               $"The Name on the Account is: {x.GetAccountName()}\n" +
                                               $"The Account Number is: {x.GetAccountNumber()}\n" +
                                               $"The Balance is: {x.GetBalance():C}\n" +
-                                              $"The Date Created is: " + x.GetDateCreated().Date.ToShortDateString() + "\n" +
+                                              $"The Date Created is: " + x.GetDateCreated() + "\n" +
                                               "=====================================================\n");
                         }
                         else
@@ -129,7 +129,7 @@ namespace Banking_Application
                                               $"The Name on the Account is: {z.GetAccountName()}\n" +
                                               $"The Account Number is: {z.GetAccountNumber()}\n" +
                                               $"The Balance is: {z.GetBalance():C}\n" +
-                                              $"The Date Created is: " + z.GetDateCreated().Date.ToShortDateString() + "\n" +
+                                              $"The Date Created is: " + z.GetDateCreated() + "\n" +
                                               "=====================================================\n");
                         }
                         else
@@ -144,7 +144,7 @@ namespace Banking_Application
                                               $"The Name on the Account is: {y.GetAccountName()}\n" +
                                               $"The Account Number is: {y.GetAccountNumber()}\n" +
                                               $"The Balance is: {y.GetBalance()}\n" +
-                                              $"The Date Created is: " + y.GetDateCreated().Date.ToShortDateString() + "\n" +
+                                              $"The Date Created is: " + y.GetDateCreated() + "\n" +
                                               "=====================================================\n");
                         }
                         break;

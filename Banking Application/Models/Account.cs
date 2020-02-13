@@ -15,7 +15,7 @@ namespace Models
 
         public DateTime GetDateCreated()
         {
-            return _DateCreated.Date;
+            return _DateCreated;
         }
 
         public Account (int accountNumber, string name, decimal balance)

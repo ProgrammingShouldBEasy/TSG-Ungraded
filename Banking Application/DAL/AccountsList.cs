@@ -17,11 +17,11 @@ namespace DAL
 
         private void WriteAllAccounts (List<Account> accounts)
         {
-            using (StreamWriter writer = new StreamWriter("."))
+            using (StreamWriter writer = new StreamWriter(@"accounts.txt"))
             {
                 foreach (Account x in accounts)
                 {
-                    MapAccountstoLine(x);
+                    writer.WriteLine(MapAccountstoLine(x));
                 }
             }
         }
