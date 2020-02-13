@@ -33,7 +33,7 @@ namespace Banking_Application
                                   "3. Deposit funds.\n" +
                                   "4. Withdraw funds.\n" +
                                   "5. Get all accounts.\n" +
-                                  "6. Get an account by name.\n" +
+                                  "6. Get all accounts by name.\n" +
                                   "7. Get an account by Account Number.\n" +
                                   "8. Get all accounts with balance of $10,000 or greater.\n" +
                                   "9. Quit.");
