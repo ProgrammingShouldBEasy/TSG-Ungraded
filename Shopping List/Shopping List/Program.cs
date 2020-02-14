@@ -40,8 +40,11 @@ namespace Shopping_List
                 {
                     case 1:
                         //Display all items by iterating for each in the List<Item>
-                        List<Item
-                        Console.WriteLine(List.DisplayAllItems());
+                        List<Item> items = List.DisplayAllItems();
+                        foreach (Item x in items)
+                        {
+                            Console.WriteLine($"{x.GetName()} - {x.GetQuantity()}");
+                        }
                         break;
                     case 2:
                         break;
