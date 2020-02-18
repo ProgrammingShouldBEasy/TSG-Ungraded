@@ -10,19 +10,18 @@ namespace Item_Manager.Data
 {
     public class BookRepository
     {
-        private static string _filePath = @"C:\Users\Cain\source\repos\TSG Ungraded\Item Manager\Item Manager\Data\BookList.txt";
-
+        private string _filePath;
         public BookRepository(string filePath)
         {
             _filePath = filePath;
         }
 
-        private static string BookWriteToTxt(Book book)
+        private string BookWriteToTxt(Book book)
         {
             return $"{book.Title},{book.AuthorFirstName},{book.AuthorLastName},{book.PageCount},{book.ChapterCount}";
         }
 
-        private static List<Book> ReadBooksfromFile()
+        private List<Book> ReadBooksfromFile()
         {
             using (StreamReader sr = new StreamReader(_filePath))
             {
@@ -47,7 +46,7 @@ namespace Item_Manager.Data
             }
         }
 
-        private static void WriteBookstoFile(List<Book> list)
+        private void WriteBookstoFile(List<Book> list)
         {
             if (File.Exists(_filePath))
             {

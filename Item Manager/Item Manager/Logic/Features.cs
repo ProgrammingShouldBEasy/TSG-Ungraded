@@ -11,12 +11,23 @@ namespace Item_Manager.Logic
     //add, edit, list all, search by a unique identifier, and delete from your list of items
     public class Features
     {
-        private static string _filePath = @"C:\Users\Cain\source\repos\TSG Ungraded\Item Manager\Item Manager\Data\BookList.txt";
+        private string _filePath;
 
-        BookRepository bookShelf = new BookRepository(_filePath);
+        public Features(string filepath)
+        {
+            _filePath = filepath;
+        }
+
+        public Features()
+        {
+            _filePath = @"C:\Users\Cain\source\repos\TSG Ungraded\Item Manager\Item Manager\Data\BookList.txt";
+        }
+
+
 
         public bool Add(string title, string author, int pageCount, int chapterCount)
         {
+            BookRepository bookShelf = new BookRepository(_filePath);
             int currentCount = bookShelf.ReturnAll().Count();
             Book book = new Book();
             string[] name = author.Split(' ');
@@ -32,6 +43,7 @@ namespace Item_Manager.Logic
 
         public bool Edit(string title, string author, int pageCount, int chapterCount, int index)
         {
+            BookRepository bookShelf = new BookRepository(_filePath);
             Book currentBook = bookShelf.ReturnBookByIndex(index);
             Book book = new Book();
             book.Title = title;
@@ -53,27 +65,31 @@ namespace Item_Manager.Logic
 
         public List<Book> ListAll()
         {
+            BookRepository bookShelf = new BookRepository(_filePath);
             return bookShelf.ReturnAll();
         }
 
         public Book SearchByIndex(int index, out bool isNull)
         {
-            Book book = bookShelf.ReturnBookByIndex(index);
-            if (book == null)
+            BookRepository bookShelf = new BookRepository(_filePath);
+            if (index  >= bookShelf.ReturnAll().Count())
             {
+                Book book = new Book();
                 isNull = true;
+                return book;
             }
 
             else
             {
+                Book book = bookShelf.ReturnBookByIndex(index);
                 isNull = false;
+                return book;
             }
-
-            return book;
         }
 
         public int DeleteAll()
         {
+            BookRepository bookShelf = new BookRepository(_filePath);
             List<Book> list = bookShelf.ReturnAll();
             int count = list.Count();
             for (int i = 0; i < count; i++)

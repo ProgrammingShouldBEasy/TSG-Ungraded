@@ -99,7 +99,7 @@ namespace Item_Manager
                 case "3":
                     if (processor.ListAll().Count > 0)
                     {
-                        index = ChooseBookfromList(processor.ListAll());
+                        int index = ChooseBookfromList(processor.ListAll());
                         bool exists;
                         Book localBook = processor.SearchByIndex(index, out exists);
                         if (exists)
