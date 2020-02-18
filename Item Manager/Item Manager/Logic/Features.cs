@@ -76,7 +76,10 @@ namespace Item_Manager.Logic
         {
             List<Book> list = bookShelf.ReturnAll();
             int count = list.Count();
-            list.RemoveRange(0, count);
+            for (int i = 0; i < count; i++)
+            {
+                bookShelf.Delete(i);
+            }
             return count;
         }
     }

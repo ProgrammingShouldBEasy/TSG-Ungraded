@@ -1,3 +1,1 @@
 Title,AuthorLastName,AuthorFirstName,PageCount,ChapterCount
-RedWall,Brian,Jacques,756,15
-Dictionary,Mirriam,Webster,1500, 100

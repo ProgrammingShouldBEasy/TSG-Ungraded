@@ -23,7 +23,7 @@ namespace Item_Manager
             Console.WriteLine("1. Add a book.");
             Console.WriteLine("2. Edit a book.");
             Console.WriteLine("3. Look-up a book.");
-            Console.WriteLine("4. Delete a book.");
+            Console.WriteLine("4. Display all books.");
             Console.WriteLine("5. Delete the entire library.");
             Console.WriteLine("Q - Quit");
             Console.WriteLine(bar);
@@ -76,30 +76,75 @@ namespace Item_Manager
                     }
                     break;
                 case "2":
-                    int index = ChooseBookfromList(processor.ListAll());
-                    Console.WriteLine("What would you like to replace this book with?");
-                    bookData = GetBookData().Split(',');
-                    bool wasSuccessful = processor.Edit(bookData[0], bookData[1], int.Parse(bookData[2]), int.Parse(bookData[3]), index - 1);
-                    if (wasSuccessful)
+                    if (processor.ListAll().Count > 0)
                     {
-                        Console.WriteLine("Your edit was successful!");
+                        int index = ChooseBookfromList(processor.ListAll());
+                        Console.WriteLine("What would you like to replace this book with?");
+                        bookData = GetBookData().Split(',');
+                        bool wasSuccessful = processor.Edit(bookData[0], bookData[1], int.Parse(bookData[2]), int.Parse(bookData[3]), index - 1);
+                        if (wasSuccessful)
+                        {
+                            Console.WriteLine("Your edit was successful!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your edit was unsuccessful.");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Your edit was unsuccessful.");
+                        Console.WriteLine("You have no books, please add a book first.");
                     }
                     break;
                 case "3":
+                    if (processor.ListAll().Count > 0)
+                    {
+                        index = ChooseBookfromList(processor.ListAll());
+                        bool exists;
+                        Book localBook = processor.SearchByIndex(index, out exists);
+                        if (exists)
+                        {
+                            Console.WriteLine("Title: " + localBook.Title);
+                            Console.WriteLine("Author: " + localBook.AuthorFirstName + " " + localBook.AuthorLastName);
+                            Console.WriteLine("Chapters: " + localBook.ChapterCount);
+                            Console.WriteLine("Pages: " + localBook.PageCount);
+                        }
+                        else
+                        {
+                            Console.WriteLine("That book does not exist.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have no books, please add a book first.");
+                    }
                     break;
                 case "4":
+                    if (processor.ListAll().Count > 0)
+                    {
+                        foreach (var x in processor.ListAll())
+                        {
+                            Console.WriteLine("Title: " + x.Title);
+                            Console.WriteLine("Author: " + x.AuthorFirstName + " " + x.AuthorLastName);
+                            Console.WriteLine("Chapters: " + x.ChapterCount);
+                            Console.WriteLine("Pages: " + x.PageCount);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have no books, please add a book first.");
+                    }
                     break;
                 case "5":
+                    Console.WriteLine(processor.DeleteAll() + " books have been deleted.");
                     break;
                 case "Q":
                     return true;
                 default:
                     break;
             }
+            Console.WriteLine("Press any key to continue.");
+            Console.ReadKey();
             return false;
         }
 
