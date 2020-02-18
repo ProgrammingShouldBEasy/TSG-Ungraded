@@ -393,7 +393,7 @@ namespace LINQ
         /// </summary>
         static void Exercise19()
         {
-            foreach (var x in DataLoader.NumbersB.Reverse(a => a))
+            foreach (var x in DataLoader.NumbersB.Reverse())
             {
                 Console.WriteLine(x.ToString());
             }
