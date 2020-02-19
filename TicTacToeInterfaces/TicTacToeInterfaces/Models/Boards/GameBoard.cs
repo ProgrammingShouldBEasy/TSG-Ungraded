@@ -10,7 +10,7 @@ namespace TicTacToeInterfaces.Models.Boards
     {
         private string[,] board = new string[3, 3];
 
-        public GameBoard (string input)
+        public GameBoard(string input)
         {
             board[0, 0] = input;
             board[0, 1] = input;
@@ -25,43 +25,106 @@ namespace TicTacToeInterfaces.Models.Boards
 
         public GameBoard()
         { }
-        public void SetBoard (Choices input, string player)
+        public bool SetBoard(Choices input, string player)
         {
             switch (input)
             {
                 case Choices.NW:
-                    board[0, 0] = player;
-                    break;
+                    if (board[0, 0] == "X" || board[0, 0] == "O")
+                    { 
+                        return false; 
+                    }
+                    else
+                    {
+                        board[0, 0] = player;
+                        return true;
+                    }
                 case Choices.N:
-                    board[0, 1] = player;
-                    break;
+                    if (board[0, 1] == "X" || board[0, 1] == "O")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        board[0, 1] = player;
+                        return true;
+                    }
                 case Choices.NE:
-                    board[0, 2] = player;
-                    break;
+                    if (board[0, 2] == "X" || board[0, 2] == "O")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        board[0, 2] = player;
+                        return true;
+                    }
                 case Choices.W:
-                    board[1, 0] = player;
-                    break;
+                    if (board[1, 0] == "X" || board[1, 0] == "O")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        board[1, 0] = player;
+                        return true;
+                    }
                 case Choices.C:
-                    board[1, 1] = player;
-                    break;
+                    if (board[1, 1] == "X" || board[1, 1] == "O")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        board[1, 1] = player;
+                        return true;
+                    }
                 case Choices.E:
-                    board[1, 2] = player;
-                    break;
+                    if (board[1, 2] == "X" || board[1, 2] == "O")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        board[1, 2] = player;
+                        return true;
+                    }
                 case Choices.SW:
-                    board[2, 0] = player;
-                    break;
+                    if (board[2, 0] == "X" || board[2, 0] == "O")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        board[2, 0] = player;
+                        return true;
+                    }
                 case Choices.S:
-                    board[2, 1] = player;
-                    break;
+                    if (board[2, 1] == "X" || board[2, 1] == "O")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        board[2, 1] = player;
+                        return true;
+                    }
                 case Choices.SE:
-                    board[2, 2] = player;
-                    break;
+                    if (board[2, 2] == "X" || board[2, 2] == "O")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        board[2, 2] = player;
+                        return true;
+                    }
                 default:
-                    break;
+                    return false;
             }
         }
 
-        public string GetBoard (int a, int b)
+        public string GetBoard(int a, int b)
         {
             return board[a, b];
         }

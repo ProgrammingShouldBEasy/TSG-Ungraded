@@ -55,16 +55,32 @@ namespace TicTacToeInterfaces
             }
 
 
-
+            bool isValidChoice = false;
             while (gameOver == false)
             {
+                Console.WriteLine("=================================");
+                Console.WriteLine("Round: " + turnCounter);
+                Console.WriteLine("=================================");
+                Console.WriteLine("Player1");
                 DisplayBoard(gameBoard);
-                gameBoard.SetBoard(player1.GetMove(), "X");
+                Console.WriteLine("=================================");
+                while (!isValidChoice)
+                {
+                    isValidChoice = gameBoard.SetBoard(player1.GetMove(), "X");
+                }
+                isValidChoice = false;
                 gameOver = gameBoard.CheckWin();
                 if (gameOver == false)
                 {
+                    Console.WriteLine("=================================");
+                    Console.WriteLine("Player2");
                     DisplayBoard(gameBoard);
-                    gameBoard.SetBoard(player2.GetMove(), "O");
+                    Console.WriteLine("=================================");
+                    while (!isValidChoice)
+                    {
+                        isValidChoice = gameBoard.SetBoard(player2.GetMove(), "O");
+                    }
+                    isValidChoice = false;
                 }
                 turnCounter++;
                 gameOver = turnCounter > 9 || gameBoard.CheckWin();
