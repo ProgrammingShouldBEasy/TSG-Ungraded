@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Item_Manager.Models;
 using Item_Manager.Data;
+using System.IO;
 
 namespace Item_Manager.Logic
 {
@@ -12,6 +13,7 @@ namespace Item_Manager.Logic
     public class Features
     {
         private string _filePath;
+        public string errorFNF = "File not found.";
 
         public Features(string filepath)
         {
@@ -28,45 +30,73 @@ namespace Item_Manager.Logic
         public bool Add(string title, string author, int pageCount, int chapterCount)
         {
             BookRepository bookShelf = new BookRepository(_filePath);
-            int currentCount = bookShelf.ReturnAll().Count();
-            Book book = new Book();
-            string[] name = author.Split(' ');
-            book.Title = title;
-            book.AuthorFirstName = name[0];
-            book.AuthorLastName = name[1];
-            book.PageCount = pageCount;
-            book.ChapterCount = chapterCount;
+            try
+            {
+                int currentCount = bookShelf.ReturnAll().Count();
+                Book book = new Book();
+                string[] name = author.Split(' ');
+                book.Title = title;
+                book.AuthorFirstName = name[0];
+                book.AuthorLastName = name[1];
+                book.PageCount = pageCount;
+                book.ChapterCount = chapterCount;
 
-            bookShelf.Add(book);
-            return currentCount < bookShelf.ReturnAll().Count();
+                bookShelf.Add(book);
+                return currentCount < bookShelf.ReturnAll().Count();
+            }
+            catch (FileNotFoundException ex)
+            {
+                return false;
+            }
+
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool Edit(string title, string author, int pageCount, int chapterCount, int index)
         {
-            BookRepository bookShelf = new BookRepository(_filePath);
-            Book currentBook = bookShelf.ReturnBookByIndex(index);
-            Book book = new Book();
-            book.Title = title;
-            string[] name = author.Split(' ');
-            book.AuthorFirstName = name[0];
-            book.AuthorLastName = name[1];
-            book.PageCount = pageCount;
-            book.ChapterCount = chapterCount;
-            bookShelf.Edit(book, index);
+            try
+            {
+                BookRepository bookShelf = new BookRepository(_filePath);
+                Book currentBook = bookShelf.ReturnBookByIndex(index);
+                Book book = new Book();
+                book.Title = title;
+                string[] name = author.Split(' ');
+                book.AuthorFirstName = name[0];
+                book.AuthorLastName = name[1];
+                book.PageCount = pageCount;
+                book.ChapterCount = chapterCount;
+                bookShelf.Edit(book, index);
 
-            return //Checks each property of the old book (current) against new book (result of the Edit method)
-                   //Will return true if any of them differ
-               currentBook.Title != bookShelf.ReturnBookByIndex(index).Title
-            || currentBook.AuthorFirstName != bookShelf.ReturnBookByIndex(index).AuthorFirstName
-            || currentBook.AuthorLastName != bookShelf.ReturnBookByIndex(index).AuthorLastName
-            || currentBook.PageCount != bookShelf.ReturnBookByIndex(index).PageCount
-            || currentBook.ChapterCount != bookShelf.ReturnBookByIndex(index).ChapterCount;
+                return //Checks each property of the old book (current) against new book (result of the Edit method)
+                       //Will return true if any of them differ
+                   currentBook.Title != bookShelf.ReturnBookByIndex(index).Title
+                || currentBook.AuthorFirstName != bookShelf.ReturnBookByIndex(index).AuthorFirstName
+                || currentBook.AuthorLastName != bookShelf.ReturnBookByIndex(index).AuthorLastName
+                || currentBook.PageCount != bookShelf.ReturnBookByIndex(index).PageCount
+                || currentBook.ChapterCount != bookShelf.ReturnBookByIndex(index).ChapterCount;
+            }
+            catch (FileNotFoundException ex)
+            {
+                return false;
+            }
         }
 
         public List<Book> ListAll()
         {
-            BookRepository bookShelf = new BookRepository(_filePath);
-            return bookShelf.ReturnAll();
+            try
+            {
+                BookRepository bookShelf = new BookRepository(_filePath);
+                return bookShelf.ReturnAll();
+            }
+            catch (FileNotFoundException ex)
+            {
+                List<Book> emptyBook = new List<Book>();
+                emptyBook = null;
+                return emptyBook;
+            }
         }
 
         public Book SearchByIndex(int index, out bool isNull)

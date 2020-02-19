@@ -72,7 +72,7 @@ namespace Item_Manager
                     }
                     else
                     {
-                        Console.WriteLine("The book was unable to be added.");
+                        Console.WriteLine(processor.errorFNF);
                     }
                     break;
                 case "2":
@@ -88,8 +88,12 @@ namespace Item_Manager
                         }
                         else
                         {
-                            Console.WriteLine("Your edit was unsuccessful.");
+                            Console.WriteLine("Your edit was unsuccessful or " + processor.errorFNF + ".");
                         }
+                    }
+                    else if (processor.ListAll() == null)
+                    {
+                        Console.WriteLine(processor.errorFNF);
                     }
                     else
                     {
@@ -114,6 +118,10 @@ namespace Item_Manager
                             Console.WriteLine("That book does not exist.");
                         }
                     }
+                    else if (processor.ListAll() == null)
+                    {
+                        Console.WriteLine(processor.errorFNF);
+                    }
                     else
                     {
                         Console.WriteLine("You have no books, please add a book first.");
@@ -129,6 +137,10 @@ namespace Item_Manager
                             Console.WriteLine("Chapters: " + x.ChapterCount);
                             Console.WriteLine("Pages: " + x.PageCount);
                         }
+                    }
+                    else if (processor.ListAll() == null)
+                    {
+                        Console.WriteLine(processor.errorFNF);
                     }
                     else
                     {

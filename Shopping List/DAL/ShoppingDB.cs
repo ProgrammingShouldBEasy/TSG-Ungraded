@@ -30,18 +30,32 @@ namespace DAL
             }
         }
 
+        
         private List<Item> ReadAllItems()
         {
-            List<Item> items = new List<Item>();
-            using (StreamReader reader = new StreamReader("list.txt"))
+                List<Item> items = new List<Item>();
+            try
             {
-                string line;
-                while((line = reader.ReadLine()) != null)
+                using (StreamReader reader = new StreamReader("list.txt"))
                 {
-                    items.Add(MapLintoProduct(line));
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        items.Add(MapLintoProduct(line));
+                    }
                 }
             }
-            return items;
+            catch (FileNotFoundException ex)
+            {
+                return items;
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Something don't work right.");
+                Console.ReadLine();
+            }
+                return items;
         }
         public bool Create (Item item)
         {
