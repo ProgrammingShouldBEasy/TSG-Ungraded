@@ -11,6 +11,7 @@ namespace Item_Manager
 {
     class Program
     {
+        static Features processor = FeaturesFactory.Create();
         private static string bar = "========================================";
         private static void MenuDisplay()
         {
@@ -61,7 +62,7 @@ namespace Item_Manager
         }
         private static bool Execute()
         {
-            Features processor = FeaturesFactory.Create();
+            
             string choice = Console.ReadLine();
             string[] bookData;
             switch (choice)

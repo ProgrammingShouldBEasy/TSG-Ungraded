@@ -8,13 +8,10 @@ using System.IO;
 
 namespace Item_Manager.Data
 {
-    public class BookRepository
+    public class BookRepository : IBookRepo
     {
-        private string _filePath;
-        public BookRepository(string filePath)
-        {
-            _filePath = filePath;
-        }
+        private string _filePath = @"C:\Users\Cain\source\repos\TSG Ungraded\Item Manager\Item Manager\Data\BookList.txt";
+
 
         private string BookWriteToTxt(Book book)
         {

@@ -12,37 +12,32 @@ namespace Item_Manager.Logic
     //add, edit, list all, search by a unique identifier, and delete from your list of items
     public class Features
     {
-        private string _filePath;
+        private IBookRepo _selector;
+
+        public Features(IBookRepo concrete)
+        {
+            _selector = concrete;
+        }
+
+
         public string errorFNF = "File not found.";
 
-        public Features(string filepath)
+
+        public bool Add(string title, string authorFirst, string authorLast, int pageCount, int chapterCount)
         {
-            _filePath = filepath;
-        }
-
-        public Features()
-        {
-            _filePath = @"C:\Users\Cain\source\repos\TSG Ungraded\Item Manager\Item Manager\Data\BookList.txt";
-        }
-
-
-
-        public bool Add(string title, string author, int pageCount, int chapterCount)
-        {
-            BookRepository bookShelf = new BookRepository(_filePath);
             try
             {
-                int currentCount = bookShelf.ReturnAll().Count();
+                int currentCount = _selector.ReturnAll().Count();
                 Book book = new Book();
-                string[] name = author.Split(' ');
+                
                 book.Title = title;
-                book.AuthorFirstName = name[0];
-                book.AuthorLastName = name[1];
+                book.AuthorFirstName = authorFirst;
+                book.AuthorLastName = authorLast;
                 book.PageCount = pageCount;
                 book.ChapterCount = chapterCount;
 
-                bookShelf.Add(book);
-                return currentCount < bookShelf.ReturnAll().Count();
+                _selector.Add(book);
+                return currentCount < _selector.ReturnAll().Count();
             }
             catch (FileNotFoundException ex)
             {
@@ -55,28 +50,26 @@ namespace Item_Manager.Logic
             }
         }
 
-        public bool Edit(string title, string author, int pageCount, int chapterCount, int index)
+        public bool Edit(string title, string authorFirst, string authorLast, int pageCount, int chapterCount, int index)
         {
             try
             {
-                BookRepository bookShelf = new BookRepository(_filePath);
-                Book currentBook = bookShelf.ReturnBookByIndex(index);
+                Book currentBook = _selector.ReturnBookByIndex(index);
                 Book book = new Book();
                 book.Title = title;
-                string[] name = author.Split(' ');
-                book.AuthorFirstName = name[0];
-                book.AuthorLastName = name[1];
+                book.AuthorFirstName = authorFirst;
+                book.AuthorLastName = authorLast;
                 book.PageCount = pageCount;
                 book.ChapterCount = chapterCount;
-                bookShelf.Edit(book, index);
+                _selector.Edit(book, index);
 
                 return //Checks each property of the old book (current) against new book (result of the Edit method)
                        //Will return true if any of them differ
-                   currentBook.Title != bookShelf.ReturnBookByIndex(index).Title
-                || currentBook.AuthorFirstName != bookShelf.ReturnBookByIndex(index).AuthorFirstName
-                || currentBook.AuthorLastName != bookShelf.ReturnBookByIndex(index).AuthorLastName
-                || currentBook.PageCount != bookShelf.ReturnBookByIndex(index).PageCount
-                || currentBook.ChapterCount != bookShelf.ReturnBookByIndex(index).ChapterCount;
+                   currentBook.Title != _selector.ReturnBookByIndex(index).Title
+                || currentBook.AuthorFirstName != _selector.ReturnBookByIndex(index).AuthorFirstName
+                || currentBook.AuthorLastName != _selector.ReturnBookByIndex(index).AuthorLastName
+                || currentBook.PageCount != _selector.ReturnBookByIndex(index).PageCount
+                || currentBook.ChapterCount != _selector.ReturnBookByIndex(index).ChapterCount;
             }
             catch (FileNotFoundException ex)
             {
@@ -88,8 +81,7 @@ namespace Item_Manager.Logic
         {
             try
             {
-                BookRepository bookShelf = new BookRepository(_filePath);
-                return bookShelf.ReturnAll();
+                return _selector.ReturnAll();
             }
             catch (FileNotFoundException ex)
             {
@@ -101,8 +93,7 @@ namespace Item_Manager.Logic
 
         public Book SearchByIndex(int index, out bool isNull)
         {
-            BookRepository bookShelf = new BookRepository(_filePath);
-            if (index  >= bookShelf.ReturnAll().Count())
+            if (index  >= _selector.ReturnAll().Count())
             {
                 Book book = new Book();
                 isNull = true;
@@ -111,7 +102,7 @@ namespace Item_Manager.Logic
 
             else
             {
-                Book book = bookShelf.ReturnBookByIndex(index);
+                Book book = _selector.ReturnBookByIndex(index);
                 isNull = false;
                 return book;
             }
@@ -119,12 +110,11 @@ namespace Item_Manager.Logic
 
         public int DeleteAll()
         {
-            BookRepository bookShelf = new BookRepository(_filePath);
-            List<Book> list = bookShelf.ReturnAll();
+            List<Book> list = _selector.ReturnAll();
             int count = list.Count();
             for (int i = 0; i < count; i++)
             {
-                bookShelf.Delete(i);
+                _selector.Delete(i);
             }
             return count;
         }
