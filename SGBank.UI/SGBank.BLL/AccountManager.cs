@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SGBank.BLL.DepositRules;
+using SGBank.BLL.WithdrawRules;
 using SGBank.models;
 using SGBank.models.Interfaces;
 using SGBank.models.Responses;
@@ -58,6 +59,30 @@ namespace SGBank.BLL
             response = depositRule.Deposit(response.Account, amount);
 
             if(response.success)
+            {
+                _accountRepo.SaveAccount(response.Account);
+            }
+
+            return response;
+        }
+
+        public AccountWithdrawResponse WithdrawRules(string accountNumber, decimal amount)
+        {
+            AccountWithdrawResponse response = new AccountWithdrawResponse();
+
+            response.Account = _accountRepo.LoadAccount(accountNumber);
+
+            if(response.Account == null)
+            {
+                response.success = false;
+                response.message = "Account number is not valid.";
+                return response;
+            }
+
+            IWithdraw withdraw = WithdrawRulesFactory.Create(response.Account._Type);
+            response = withdraw.Withdraw(response.Account, amount);
+
+            if (response.success)
             {
                 _accountRepo.SaveAccount(response.Account);
             }
