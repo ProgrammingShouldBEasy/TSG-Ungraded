@@ -8,20 +8,25 @@ using SGBank.models.Interfaces;
 
 namespace SGBank.DAL
 {
-    class FreeAccountTestRepository : IAccountRepository
+    public class FreeAccountTestRepository : IAccountRepository
     {
-        private static Account _account = new Account("Free Account", 12345, 100m, AccountType.free);
+        private static Account _account = new Account("Free Account", "12345", 100m, AccountType.free);
 
         public Account LoadAccount(string AccountNumber)
         {
-            return _account;
-            throw new NotImplementedException();
+            if (_account._number == AccountNumber)
+            {
+                return _account;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public void SaveAccount(Account account)
         {
             _account = account;
-            throw new NotImplementedException();
         }
     }
 }

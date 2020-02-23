@@ -9,12 +9,12 @@ namespace SGBank.models
 {
     public class Account
     {
-        private string _name;
-        private int _number;
-        private decimal _balance;
-        private AccountType _Type;
+        public string _name;
+        public string _number;
+        public decimal _balance;
+        public AccountType _Type;
 
-        public Account(string name, int number, decimal balance, AccountType Type)
+        public Account(string name, string number, decimal balance, AccountType Type)
         {
             _name = name;
             _number = number;

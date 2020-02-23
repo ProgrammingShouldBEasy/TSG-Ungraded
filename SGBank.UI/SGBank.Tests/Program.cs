@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SGBank.UI
+namespace SGBank.Tests
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Menu.Start();
         }
     }
 }

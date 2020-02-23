@@ -6,10 +6,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C632E7A7-BABB-4877-A572-DA5AC01000F3}</ProjectGuid>
+    <ProjectGuid>{EA872A33-254C-4A97-B821-00334D7DDE6B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SGBank.UI</RootNamespace>
-    <AssemblyName>SGBank.UI</AssemblyName>
+    <RootNamespace>SGBank.Tests</RootNamespace>
+    <AssemblyName>SGBank.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,12 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Workflows\AccountLookupWorkflow.cs" />
-    <Compile Include="Workflows\ConsoleIO.cs" />
-    <Compile Include="Workflows\DepositWorkflow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -65,6 +61,10 @@
     <ProjectReference Include="..\SGBank.BLL\SGBank.BLL.csproj">
       <Project>{ee1ce676-b5b9-454f-8a0d-eed693883e55}</Project>
       <Name>SGBank.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGBank.DAL\SGBank.DAL.csproj">
+      <Project>{395b900b-917c-4051-bdb8-601a1891fa60}</Project>
+      <Name>SGBank.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SGBank.models\SGBank.models.csproj">
       <Project>{39aa7797-c3f5-42b4-9b59-3d2900f435cd}</Project>
