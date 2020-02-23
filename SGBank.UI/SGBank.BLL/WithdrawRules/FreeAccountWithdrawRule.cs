@@ -15,28 +15,28 @@ namespace SGBank.BLL.WithdrawRules
         {
             AccountWithdrawResponse response = new AccountWithdrawResponse();
 
-            if (response.Account._Type != AccountType.free)
+            if (account._Type != AccountType.free)
             {
                 response.success = false;
                 response.message = "Error: a non-free account hit the Free Withdraw Rule. Contact IT";
                 return response;
             }
 
-            if (response.Amount >= 0)
+            if (amount >= 0)
             {
                 response.success = false;
                 response.message = "Withdrawal amounts must be negative!";
                 return response;
             }
 
-            if (response.Amount < -100)
+            if (amount < -100)
             {
                 response.success = false;
                 response.message = "Free accounts cannot withdraw more than $100!";
                 return response;
             }
 
-            if ((response.Account._balance + amount) < 0)
+            if ((account._balance + amount) < 0)
             {
                 response.success = false;
                 response.message = "Free accounts cannot overdraft!";

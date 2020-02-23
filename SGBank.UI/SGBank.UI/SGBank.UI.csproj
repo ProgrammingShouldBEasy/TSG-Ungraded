@@ -56,6 +56,7 @@
     <Compile Include="Workflows\AccountLookupWorkflow.cs" />
     <Compile Include="Workflows\ConsoleIO.cs" />
     <Compile Include="Workflows\DepositWorkflow.cs" />
+    <Compile Include="Workflows\WithdrawWorkFlow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
