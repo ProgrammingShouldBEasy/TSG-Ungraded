@@ -13,12 +13,12 @@ using SGBank.models.Responses;
 namespace FreeAccountTests
 {
     [TestFixture]
-    public class BasicAccountTests
+    public class PremiumAccountTests
     {
-        [TestCase("33333","Basic Account",100,AccountType.free, 250, false)]
-        [TestCase("3333","Basic Account", 100, AccountType.basic, -100, false)]
-        [TestCase("3333", "Basic Account", 100, AccountType.basic, 250, true)]
-        public void BasicAccountTest(string a, string b, decimal c, AccountType d, decimal e, bool f)
+        [TestCase("11111", "Premium Account", 100, AccountType.free, 250, false)]
+        [TestCase("11111", "Premium Account", 100, AccountType.premium, -100, false)]
+        [TestCase("11111", "Premium Account", 100, AccountType.premium, 250, true)]
+        public void PremiumAccountTest (string a, string b, decimal c, AccountType d, decimal e, bool f)
         {
             string accountNumber = a;
             string name = b;
@@ -27,7 +27,7 @@ namespace FreeAccountTests
             decimal amount = e;
             bool expectedResult = f;
 
-            IDeposit deposit = DepositRulesFactory.Create(AccountType.basic);
+            IDeposit deposit = DepositRulesFactory.Create(AccountType.premium);
 
             Account account = new Account();
             account._name = name;
@@ -40,12 +40,12 @@ namespace FreeAccountTests
             Assert.AreEqual(expectedResult, response.success);
         }
 
-        [TestCase("33333","Basic Account",1500,AccountType.basic,-1000,1500,false)]
-        [TestCase("33333","Basic Account",10,AccountType.free,-100,-100,false)]
-        [TestCase("33333","Basic Account",100,AccountType.basic,100,100,false)]
-        [TestCase("33333","Basic Account",150,AccountType.basic,-50,100,true)]
-        [TestCase("33333","Basic Account",100,AccountType.basic,-150,-60,true)]
-        public void BasicAccountWithdrawRuleTest(string a, string b, decimal c, AccountType d, decimal e, decimal f, bool g)
+        [TestCase("11111", "Premium Account", 1500, AccountType.premium, -1000, 500, true)]
+        [TestCase("11111", "Premium Account", 10, AccountType.free, -100, -100, false)]
+        [TestCase("1111", "Premium Account", 100, AccountType.premium, 100, 100, false)]
+        [TestCase("11111", "Premium Account", 150, AccountType.premium, -50, 100, true)]
+        [TestCase("11111", "Premium Account", 100, AccountType.premium, -550, -450, true)]
+        public void PremiumAccountWithdrawRuleTest(string a, string b, decimal c, AccountType d, decimal e, decimal f, bool g)
         {
             string accountNumber = a;
             string name = b;
@@ -55,7 +55,7 @@ namespace FreeAccountTests
             decimal newBalance = f;
             bool expectedResult = g;
 
-            IWithdraw withdraw = WithdrawRulesFactory.Create(AccountType.basic);
+            IWithdraw withdraw = WithdrawRulesFactory.Create(AccountType.premium);
 
             Account account = new Account();
             account._name = name;
@@ -66,7 +66,7 @@ namespace FreeAccountTests
             AccountWithdrawResponse response = withdraw.Withdraw(account, amount);
 
             Assert.AreEqual(expectedResult, response.success);
-            if(response.success)
+            if (response.success)
             {
                 Assert.AreEqual(newBalance, response.Account._balance);
             }
