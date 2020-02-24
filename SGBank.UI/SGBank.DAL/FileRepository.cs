@@ -16,7 +16,7 @@ namespace SGBank.DAL
 
         private string AccountToText(Account account)
         {
-            return $"{account._number},{account._name},{account._balance},{account._Type.ToString()[0]}";
+            return $"{account._number},{account._name},{account._balance},{account._Type.ToString().ToUpper()[0]}";
         }
 
         private List<Account> ReadAccountsfromFile()
