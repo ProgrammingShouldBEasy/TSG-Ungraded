@@ -11,9 +11,9 @@ namespace SWGModels.Interfaces
     public interface IRepoOrders
     {
         OrderResponse Load(OrderRequest orderRequest);
-        void Save(OrderRequest orderRequest);
+        bool Save(OrderRequest orderRequest);
         void Edit(OrderRequest orderRequest);
         void Remove(OrderRequest orderRequest);
-
+        List<Order> LoadDate(DateTime date);
     }
 }

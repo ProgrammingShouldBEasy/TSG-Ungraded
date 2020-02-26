@@ -15,6 +15,19 @@ namespace SWGDAL
         DateTime date = DateTime.Today;
         List<Order> list = new List<Order> { new Order(1,"Wise","OH",6.25m,"Wood",100.00m,5.15m,4.75m) };
 
+        public List<Order> LoadDate(DateTime date2)
+        {
+            if(date == date2)
+            {
+                return list;
+            }
+
+            else
+            {
+                return new List<Order>();
+            }
+        }
+
         public void Edit(OrderRequest orderRequest)
         {
             if (orderRequest.Date == date)
@@ -54,12 +67,14 @@ namespace SWGDAL
             }
         }
 
-        public void Save(OrderRequest orderRequest)
+        public bool Save(OrderRequest orderRequest)
         {
             if (orderRequest.Date == date)
             {
                 list.Add(orderRequest.order);
+                return true;
             }
+            return false;
         }
     }
 }

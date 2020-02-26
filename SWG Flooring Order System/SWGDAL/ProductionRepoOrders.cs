@@ -20,6 +20,11 @@ namespace SWGDAL
             filePath = @"C:\Users\Cain\source\repos\TSG Ungraded\SWG Flooring Order System\SWGDAL\Data\";
         }
 
+        public List<Order> LoadDate(DateTime date)
+        {
+            return ReadFromFileOrders($"{filePath}Orders_" + date.ToString("MMDDYYYY") + ".txt");
+        }
+
         public OrderResponse Load(OrderRequest orderRequest)
         {
             OrderResponse response = new OrderResponse();
@@ -61,11 +66,16 @@ namespace SWGDAL
             }
         }
 
-        public void Save(OrderRequest orderRequest)
+        public bool Save(OrderRequest orderRequest)
         {
-            List<Order> list = ReadFromFileOrders($"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
-            list.Add(orderRequest.order);
-            WritetoFile(list, $"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
+            if (File.Exists($"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt"))
+            {
+                List<Order> list = ReadFromFileOrders($"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
+                list.Add(orderRequest.order);
+                WritetoFile(list, $"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
+                return true;
+            }
+            return false;
         }
 
         private void WritetoFile(List<Order> list, string filePath2)

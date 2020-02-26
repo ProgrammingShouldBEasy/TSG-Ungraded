@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SWGModels;
 using SWGModels.Interfaces;
 
-namespace SWGDAL.Data
+namespace SWGDAL
 {
     public class TestRepoTaxes : IRepoTaxes
     {
