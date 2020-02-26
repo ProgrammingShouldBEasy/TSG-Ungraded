@@ -41,8 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IFileIO.cs" />
-    <Compile Include="Interfaces\IRepo.cs" />
+    <Compile Include="Interfaces\IRepoOrders.cs" />
+    <Compile Include="Interfaces\IRepoProducts.cs" />
+    <Compile Include="Interfaces\IRepoTaxes.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

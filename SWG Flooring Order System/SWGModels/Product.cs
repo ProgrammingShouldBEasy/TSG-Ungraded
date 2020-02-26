@@ -11,5 +11,12 @@ namespace SWGModels
         public string ProductType { get; set; }
         public decimal CostPerSquareFoot { get; set; }
         public decimal LaborCostPerSquareFoot { get; set; }
+
+        public Product(string a, decimal b, decimal c)
+        {
+            ProductType = a;
+            CostPerSquareFoot = b;
+            LaborCostPerSquareFoot = c;
+        }
     }
 }

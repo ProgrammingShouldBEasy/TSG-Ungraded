@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductionRepo.cs" />
+    <Compile Include="TestRepoProducts.cs" />
+    <Compile Include="TestRepoTaxes.cs" />
+    <Compile Include="ProductionRepoOrders.cs" />
+    <Compile Include="ProductionRepoProducts.cs" />
+    <Compile Include="ProductionRepoTaxes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestRepo.cs" />
+    <Compile Include="TestRepoOrders.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SWGModels\SWGModels.csproj">
