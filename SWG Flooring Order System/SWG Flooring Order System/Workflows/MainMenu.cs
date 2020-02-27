@@ -9,7 +9,7 @@ using SWGLogic;
 namespace SWG_Flooring_Order_System.Workflows
 {
     //Make the Edit feature, refactor UI <-> Logic(Add, Edit, and Remove) to use Request(Order order, DateTime, dateTime) and Response(Order order, bool success, string message).
-    //Build in Unit Testing on the logic layer and evaluate the against the Response(success), post Response(message).
+    //Build in Unit Testing on the logic layer and evaluate the against the Response(success), post Response(message). As well, Unit Test the DisplayAll and GetOrder against the success of returning the order and list objects expected.
     public class MainMenu
     {
         public static void Execute()
