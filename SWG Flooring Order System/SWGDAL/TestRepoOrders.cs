@@ -15,29 +15,6 @@ namespace SWGDAL
         DateTime date = DateTime.Today;
         List<Order> list = new List<Order> { new Order(1,"Wise","OH",6.25m,"Wood",100.00m,5.15m,4.75m) };
 
-        public List<Order> LoadDate(DateTime date2)
-        {
-            if(date == date2)
-            {
-                return list;
-            }
-
-            else
-            {
-                return new List<Order>();
-            }
-        }
-
-        public void Edit(OrderRequest orderRequest)
-        {
-            if (orderRequest.Date == date)
-            {
-                int index = list.FindIndex(x => x.OrderNumber == orderRequest.order.OrderNumber);
-                list.RemoveAt(index);
-                list.Add(orderRequest.order);
-            }
-        }
-
         public OrderResponse Load(OrderRequest orderRequest)
         {
             OrderResponse response = new OrderResponse();
@@ -47,34 +24,14 @@ namespace SWGDAL
                 response.message = "There is no order from that date.";
                 return response;
             }
-            response.order = list.FirstOrDefault(x => x.OrderNumber == orderRequest.order.OrderNumber);
-            if(response.order == null)
-            {
-                response.message = "Order does not exist.";
-                response.success = false;
-                return response;
-            }
-
+            response.list = list;
             response.success = true;
             return response;
         }
 
-        public void Remove(OrderRequest orderRequest)
+        public void Save(OrderRequest orderRequest)
         {
-            if (orderRequest.Date == date)
-            {
-                list.RemoveAll(x => x.OrderNumber == orderRequest.order.OrderNumber);
-            }
-        }
-
-        public bool Save(OrderRequest orderRequest)
-        {
-            if (orderRequest.Date == date)
-            {
-                list.Add(orderRequest.order);
-                return true;
-            }
-            return false;
+                list = orderRequest.list;
         }
     }
 }

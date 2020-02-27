@@ -20,7 +20,7 @@ namespace SWGLogic
                 case "test":
                     return new OrderManager(new TestRepoOrders(), new TestRepoProducts(), new TestRepoTaxes());
                 default:
-                    return new OrderManager(new ProductionRepoOrders(), new ProductionRepoProducts(), new ProductionRepoTaxes());
+                    throw new Exception("Configuration file is not configured for these app settings.");
             }
         }
     }

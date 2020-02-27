@@ -20,21 +20,18 @@ namespace SWGDAL
             filePath = @"C:\Users\Cain\source\repos\TSG Ungraded\SWG Flooring Order System\SWGDAL\Data\";
         }
 
-        public List<Order> LoadDate(DateTime date)
-        {
-            return ReadFromFileOrders($"{filePath}Orders_" + date.ToString("MMDDYYYY") + ".txt");
-        }
-
         public OrderResponse Load(OrderRequest orderRequest)
         {
             OrderResponse response = new OrderResponse();
-            //Sets the response order to the order from the file at the order's order date and order number.
-            response.order = ReadFromFileOrders($"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt").FirstOrDefault(x => x.OrderNumber == orderRequest.order.OrderNumber);
+            if (File.Exists($"{filePath}Orders_" + orderRequest.Date.ToString("MMddyyyy") + ".txt"))
+            {
+                response.list = ReadFromFileOrders($"{filePath}Orders_" + orderRequest.Date.ToString("MMddyyyy") + ".txt");
+            }
 
-            if (response.order == null)
+            if (response.list == null)
             {
                 response.success = false;
-                response.message = "Order does not exist.";
+                response.message = "No orders exist at this date.";
                 return response;
             }
 
@@ -66,16 +63,9 @@ namespace SWGDAL
             }
         }
 
-        public bool Save(OrderRequest orderRequest)
+        public void Save(OrderRequest orderRequest)
         {
-            if (File.Exists($"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt"))
-            {
-                List<Order> list = ReadFromFileOrders($"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
-                list.Add(orderRequest.order);
-                WritetoFile(list, $"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
-                return true;
-            }
-            return false;
+                WritetoFile(orderRequest.list, $"{filePath}Orders_" + orderRequest.Date.ToString("MMddyyyy") + ".txt");
         }
 
         private void WritetoFile(List<Order> list, string filePath2)
@@ -93,22 +83,6 @@ namespace SWGDAL
                     sw.WriteLine(OrdertoText(x));
                 }
             }
-        }
-
-        public void Edit(OrderRequest orderRequest)
-        {
-            List<Order> list = ReadFromFileOrders($"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
-            int index = list.FindIndex(x => x.OrderNumber == orderRequest.order.OrderNumber);
-            list.RemoveAt(index);
-            list.Add(orderRequest.order);
-            WritetoFile(list, $"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
-        }
-
-        public void Remove(OrderRequest orderRequest)
-        {
-            List<Order> list = ReadFromFileOrders($"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
-            list.RemoveAll(x => x.OrderNumber == orderRequest.order.OrderNumber);
-            WritetoFile(list, $"{filePath}Orders_" + orderRequest.Date.ToString("MMDDYYYY") + ".txt");
         }
     }
 }

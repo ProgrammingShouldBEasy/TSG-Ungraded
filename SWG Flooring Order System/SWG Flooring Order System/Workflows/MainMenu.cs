@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SWG_Flooring_Order_System.Workflows;
+using SWGLogic;
 
 namespace SWG_Flooring_Order_System.Workflows
 {
+    //Make the Edit feature, refactor UI, <-> Logic(Add, Edit, and Remove) to use Request(Order order, DateTime, dateTime) and Response(Order order, bool success, string message).
+    //Build in Unit Testing on the logic layer and evaluate the against the Response(success), post Response(message).
     public class MainMenu
     {
         public static void Execute()

@@ -9,7 +9,7 @@ namespace SWGModels.Responses
 {
     public class OrderResponse
     {
-        public Order order { get; set; }
+        public List<Order> list { get; set; }
         public bool success { get; set; }
         public string message { get; set; }
     }

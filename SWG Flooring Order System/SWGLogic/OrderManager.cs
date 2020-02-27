@@ -17,6 +17,8 @@ namespace SWGLogic
         IRepoProducts ProductsDB;
         IRepoTaxes TaxesDB;
 
+        private List<Order> currentList = new List<Order>();
+
         public OrderManager(IRepoOrders a, IRepoProducts b, IRepoTaxes c)
         {
             OrdersDB = a;
@@ -24,37 +26,63 @@ namespace SWGLogic
             TaxesDB = c;
         }
 
-        public List<Order> DisplayOrders(string date)
-        {
-            OrderRequest request = new OrderRequest();
-            request.Date = DateTime.Parse(date);
-            return OrdersDB.LoadDate(DateTime.Parse(date));
-        }
-
-        public OrderResponse Display(Order order, DateTime date)
-        {
-            OrderRequest request = new OrderRequest();
-            request.order = order;
-            request.Date = date;
-            return OrdersDB.Load(request);
-        }
-
-        public bool AddOrder(Order order, DateTime date)
+        private string LoadOrders(DateTime date)
         {
             OrderRequest request = new OrderRequest();
             request.Date = date;
-            request.order = order;
-            return OrdersDB.Save(request);
+            OrderResponse response = OrdersDB.Load(request);
+            if(response.success == true)
+            {
+                currentList = response.list;
+                return "Orders have been successfully loaded.";
+            }
+            return response.message;
         }
 
-        public bool EditOrder()
+        private void Save(DateTime date)
         {
-            throw new NotImplementedException();
+            OrderRequest request = new OrderRequest();
+            request.list = currentList;
+            request.Date = date;
+            OrdersDB.Save(request);
         }
 
-        public bool RemoveOrder()
+        public List<Order> GetOrders(DateTime date)
         {
-            throw new NotImplementedException();
+            LoadOrders(date);
+            return currentList;
+        }
+
+        public void AddOrder(Order order, DateTime date)
+        {
+            LoadOrders(date);
+            currentList.Add(order);
+            Save(date);
+        }
+
+        public void EditOrder(Order order, DateTime date)
+        {
+            LoadOrders(date);
+            currentList.RemoveAll(x => x.OrderNumber == order.OrderNumber);
+            currentList.Add(order);
+            Save(date);
+        }
+
+        public void RemoveOrder(Order order, DateTime date)
+        {
+            LoadOrders(date);
+            currentList.RemoveAll(x => x.OrderNumber == order.OrderNumber);
+            Save(date);
+        }
+
+        public List<Product> GetProducts()
+        {
+            return ProductsDB.LoadProducts();
+        }
+
+        public List<Tax> GetTaxes()
+        {
+            return TaxesDB.LoadTaxes();
         }
     }
 }

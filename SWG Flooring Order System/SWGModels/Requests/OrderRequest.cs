@@ -9,7 +9,7 @@ namespace SWGModels.Requests
 {
     public class OrderRequest
     {
-        public Order order { get; set; }
+        public List<Order> list { get; set; }
         public DateTime Date { get; set; }
     }
 }
