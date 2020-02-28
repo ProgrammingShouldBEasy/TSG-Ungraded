@@ -1,5 +1,7 @@
 ﻿using SWGLogic;
 using SWGModels;
+using SWGModels.Requests;
+using SWGModels.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +35,20 @@ namespace SWG_Flooring_Order_System.Workflows
                     Console.WriteLine("Which order do you want to remove? Choose by the order number. Your entry must be an Order Number from the list.");
                     foreach (var x in orders)
                     {
-                        Console.WriteLine($"{x.CustomerName}, {x.OrderNumber}");
+                        Console.WriteLine();
+                        Console.WriteLine($"Order Number: {x.OrderNumber}" +
+                            $"\nCustomer Name: {x.CustomerName}" +
+                            $"\nState: {x.State}" +
+                            $"\nTax Rate: {x.TaxRate:P}" +
+                            $"\nProduct: {x.ProductType}" +
+                            $"\nArea: {x.Area} sq f" +
+                            $"\nCost/sq f: {x.CostPreSquareFoot:c}" +
+                            $"\nLabor Cost/sq f: {x.LaborCostPerSquareFoot:c}" +
+                            $"\nMaterial Cost: {x.MaterialCost:c}" +
+                            $"\nLabor Cost: {x.LaborCost:c}" +
+                            $"\n" +
+                            $"\nTax: {x.Tax:c}" +
+                            $"\nTotal: {x.Total:c}");
                     }
                     while (!isValid && !orders.Exists(x => x.OrderNumber == orderInt))
                     {
@@ -65,8 +80,18 @@ namespace SWG_Flooring_Order_System.Workflows
                     }
                     if (response == "Y")
                     {
-                        OM.RemoveOrder(orders.FirstOrDefault(y => y.OrderNumber == orderInt), dateTime);
-                        Console.WriteLine("Order deleted. Press any key to continue.");
+                        UI2LogicRequest request = new UI2LogicRequest();
+                        request.order = orders.FirstOrDefault(y => y.OrderNumber == orderInt);
+                        request.dateTime = dateTime;
+                        UI2LogicResponse removeResponse = OM.RemoveOrder(request);
+                        if (removeResponse.success)
+                        {
+                            Console.WriteLine("Order deleted. Press any key to continue.");
+                        }
+
+                        else
+
+                            Console.WriteLine("Something went wrong. Contact your system admin and buy them coffee.");
                         Console.ReadKey();
                     }
                 }

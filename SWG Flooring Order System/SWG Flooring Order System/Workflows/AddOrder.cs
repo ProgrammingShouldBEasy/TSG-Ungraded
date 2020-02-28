@@ -1,5 +1,6 @@
 ﻿using SWGLogic;
 using SWGModels;
+using SWGModels.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace SWG_Flooring_Order_System.Workflows
                 Console.WriteLine("What is the Customer Name? Can only include [a-z][A-Z][0-9], periods, and commas.");
                 customerName = Console.ReadLine();
                 List<char> filteredName = customerName.Where(x => Char.IsLetterOrDigit(x) || x.Equals(',') || x.Equals('.') || x.Equals(' ')).ToList();
-                isValid = filteredName.Count() == customerName.Length && customerName != null;
+                isValid = filteredName.Count() == customerName.Length && customerName != null && (customerName.ToLower().Contains("a") || customerName.ToLower().Contains("b") || customerName.ToLower().Contains("c") || customerName.ToLower().Contains("d") || customerName.ToLower().Contains("e") || customerName.ToLower().Contains("f") || customerName.ToLower().Contains("g") || customerName.ToLower().Contains("h") || customerName.ToLower().Contains("i") || customerName.ToLower().Contains("j") || customerName.ToLower().Contains("k") || customerName.ToLower().Contains("l") || customerName.ToLower().Contains("m") || customerName.ToLower().Contains("n") || customerName.ToLower().Contains("o") || customerName.ToLower().Contains("p") || customerName.ToLower().Contains("q") || customerName.ToLower().Contains("r") || customerName.ToLower().Contains("s") || customerName.ToLower().Contains("t") || customerName.ToLower().Contains("u") || customerName.ToLower().Contains("v") || customerName.ToLower().Contains("w") || customerName.ToLower().Contains("x") || customerName.ToLower().Contains("y") || customerName.ToLower().Contains("z"));
             }
             isValid = false;
             while (!isValid)
@@ -91,7 +92,10 @@ namespace SWG_Flooring_Order_System.Workflows
                 }
                 
                 Order order = new Order(orderNumber, customerName, state, OM.GetTaxes().FirstOrDefault(x => x.StateName.ToLower() == state.ToLower()).TaxRate, productType, areaDecimal, OM.GetProducts().FirstOrDefault(x => x.ProductType.ToLower() == productType.ToLower()).CostPerSquareFoot, OM.GetProducts().FirstOrDefault(x => x.ProductType.ToLower() == productType.ToLower()).LaborCostPerSquareFoot);
-                OM.AddOrder(order, dateTime);
+                UI2LogicRequest request = new UI2LogicRequest();
+                request.order = order;
+                request.dateTime = dateTime;
+                OM.AddOrder(request);
             }
         }
     }
