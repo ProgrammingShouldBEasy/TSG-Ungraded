@@ -8,8 +8,29 @@ using SWGLogic;
 
 namespace SWG_Flooring_Order_System.Workflows
 {
-    //Make the Edit feature, refactor UI <-> Logic(Add, Edit, and Remove) to use Request(Order order, DateTime dateTime) and Response(Order order, bool success, string message).
-    //Build in Unit Testing on the logic layer and evaluate the against the Response(success), post Response(message). As well, Unit Test the DisplayAll and GetOrder against the success of returning the order and list objects expected.
+    //Unit Tests:
+    //Add:
+    //1 passes
+    //invalid name
+    //invalid product
+    //invalid state
+    //date in the past
+    //area less than 100
+    //
+    //Edit:
+    //1 passes
+    //invalid product
+    //invalid state
+    //date in the past
+    //area less than 100
+    //
+    //Remove:
+    //1 passes
+    //invalid date
+    //invalid order number
+    //
+    //Load
+    //count
     public class MainMenu
     {
         public static void Execute()

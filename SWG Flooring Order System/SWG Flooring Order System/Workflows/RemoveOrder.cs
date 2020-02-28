@@ -63,7 +63,7 @@ namespace SWG_Flooring_Order_System.Workflows
                             Console.WriteLine($"Order Number: {x.OrderNumber}" +
                                 $"\nCustomer Name: {x.CustomerName}" +
                                 $"\nState: {x.State}" +
-                                $"\nTax Rate: {x.TaxRate:P}" +
+                                $"\nTax Rate: {x.TaxRate}%" +
                                 $"\nProduct: {x.ProductType}" +
                                 $"\nArea: {x.Area} sq f" +
                                 $"\nCost/sq f: {x.CostPreSquareFoot:c}" +

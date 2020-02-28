@@ -1,0 +1,4 @@
+OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
+1°Customer Name°Michigan°12°Laminate°101°27°2.10°2727°212.10°352.6920°3291.7920
+3°Second Customer°Pennsylvania°6.75°Tile°1000000°3.50°4.15°3500000.00°4150000.00°516375.000000°8166375.000000
+4°asldkfuh°Indiana°6.00°Wood°150°5.15°4.75°772.50°712.50°89.1000°1574.1000

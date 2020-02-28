@@ -33,7 +33,7 @@ namespace SWGModels
             LaborCostPerSquareFoot = laborCostPerSquareFoot;
             MaterialCost = Area * CostPreSquareFoot;
             LaborCost = Area * LaborCostPerSquareFoot;
-            Tax = (MaterialCost * LaborCost) / (TaxRate / 100);
+            Tax = (MaterialCost + LaborCost) * (TaxRate / 100);
             Total = MaterialCost + LaborCost + Tax;
         }
 
@@ -41,7 +41,7 @@ namespace SWGModels
         {
             MaterialCost = Area * CostPreSquareFoot;
             LaborCost = Area * LaborCostPerSquareFoot;
-            Tax = (MaterialCost * LaborCost) / (TaxRate / 100);
+            Tax = (MaterialCost * LaborCost) * (TaxRate / 100);
             Total = MaterialCost + LaborCost + Tax;
         }
     }

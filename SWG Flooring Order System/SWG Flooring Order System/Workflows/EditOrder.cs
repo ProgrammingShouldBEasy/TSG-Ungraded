@@ -39,7 +39,7 @@ namespace SWG_Flooring_Order_System.Workflows
                         Console.WriteLine($"Order Number: {x.OrderNumber}" +
                             $"\nCustomer Name: {x.CustomerName}" +
                             $"\nState: {x.State}" +
-                            $"\nTax Rate: {x.TaxRate:P}" +
+                            $"\nTax Rate: {x.TaxRate}%" +
                             $"\nProduct: {x.ProductType}" +
                             $"\nArea: {x.Area} sq f" +
                             $"\nCost/sq f: {x.CostPreSquareFoot:c}" +
@@ -50,11 +50,18 @@ namespace SWG_Flooring_Order_System.Workflows
                             $"\nTax: {x.Tax:c}" +
                             $"\nTotal: {x.Total:c}");
                     }
-                    while (!isValid && !orders.Exists(x => x.OrderNumber == orderInt))
+                    while (!isValid || !orders.Exists(x => x.OrderNumber == orderInt))
                     {
                         isValid = Int32.TryParse(Console.ReadLine(), out orderInt);
                     }
-                    request.order = orders.FirstOrDefault(x => x.OrderNumber == orderInt);
+
+                    Order oldOrder = orders.FirstOrDefault(x => x.OrderNumber == orderInt);
+
+                    string stateNew = null;
+                    string customerNameNew = null;
+                    string productTypeNew = null;
+                    decimal areaNew = 0;
+
                     isValid = false;
                     while (!isValid)
                     {
@@ -64,12 +71,12 @@ namespace SWG_Flooring_Order_System.Workflows
                             isValid = name == "" || filteredName.Count() == name.Length && name != null && (name.ToLower().Contains("a") || name.ToLower().Contains("b") || name.ToLower().Contains("c") || name.ToLower().Contains("d") || name.ToLower().Contains("e") || name.ToLower().Contains("f") || name.ToLower().Contains("g") || name.ToLower().Contains("h") || name.ToLower().Contains("i") || name.ToLower().Contains("j") || name.ToLower().Contains("k") || name.ToLower().Contains("l") || name.ToLower().Contains("m") || name.ToLower().Contains("n") || name.ToLower().Contains("o") || name.ToLower().Contains("p") || name.ToLower().Contains("q") || name.ToLower().Contains("r") || name.ToLower().Contains("s") || name.ToLower().Contains("t") || name.ToLower().Contains("u") || name.ToLower().Contains("v") || name.ToLower().Contains("w") || name.ToLower().Contains("x") || name.ToLower().Contains("y") || name.ToLower().Contains("z"));
                             if (isValid && name != "")
                             {
-                                request.order.CustomerName = name;
+                                customerNameNew = name;
                             }
                         
                         else
                         {
-                            request.order.CustomerName = orders.FirstOrDefault(y => y.OrderNumber == orderInt).CustomerName;
+                            customerNameNew = orders.FirstOrDefault(y => y.OrderNumber == orderInt).CustomerName;
                         }
                     }
                     isValid = false;
@@ -86,12 +93,12 @@ namespace SWG_Flooring_Order_System.Workflows
 
                         if (isValid && state != "")
                         {
-                            request.order.State = state;
+                            stateNew = state;
                         }
 
                         else
                         {
-                            request.order.State = orders.FirstOrDefault(y => y.OrderNumber == orderInt).State;
+                            stateNew = orders.FirstOrDefault(y => y.OrderNumber == orderInt).State;
                         }
                     }
 
@@ -110,12 +117,12 @@ namespace SWG_Flooring_Order_System.Workflows
 
                         if (isValid && productType != "")
                         {
-                            request.order.ProductType = productType;
+                            productTypeNew = productType;
                         }
 
                         else
                         {
-                            request.order.ProductType = orders.FirstOrDefault(y => y.OrderNumber == orderInt).ProductType;
+                            productTypeNew = orders.FirstOrDefault(y => y.OrderNumber == orderInt).ProductType;
                         }
                     }
 
@@ -129,23 +136,48 @@ namespace SWG_Flooring_Order_System.Workflows
 
                         if (isValid && areaString != "")
                         {
-                            request.order.Area = areaDecimal;
+                            areaNew = areaDecimal;
                         }
 
                         else
                         {
-                            request.order.Area = orders.FirstOrDefault(x => x.OrderNumber == orderInt).Area;
+                            areaNew = orders.FirstOrDefault(x => x.OrderNumber == orderInt).Area;
                         }
                     }
                     isValid = false;
                     while (!isValid)
                     {
+                        orders = OM.GetOrders(dateTime);
+                        int orderNumber;
+                        orderNumber = orders.FirstOrDefault(x => x.OrderNumber == orderInt).OrderNumber;
+                        request.dateTime = dateTime;
+                        decimal taxRateNew;
+                        decimal costPerSquareFootNew;
+                        decimal laborCostPerSquareFootNew;
+
+                        //Area, product, state
+                        if(oldOrder.Area != areaNew || oldOrder.ProductType.ToLower() != productTypeNew.ToLower() || oldOrder.State.ToLower() != stateNew.ToLower())
+                        {
+                            taxRateNew = OM.GetTaxes().FirstOrDefault(x => x.StateName.ToLower() == stateNew.ToLower()).TaxRate;
+                            costPerSquareFootNew = OM.GetProducts().FirstOrDefault(x => x.ProductType.ToLower() == productTypeNew.ToLower()).CostPerSquareFoot;
+                            laborCostPerSquareFootNew = OM.GetProducts().FirstOrDefault(x => x.ProductType.ToLower() == productTypeNew.ToLower()).LaborCostPerSquareFoot;
+                        }
+
+                        else
+                        {
+                            taxRateNew = oldOrder.TaxRate;
+                            costPerSquareFootNew = oldOrder.CostPreSquareFoot;
+                            laborCostPerSquareFootNew = oldOrder.LaborCostPerSquareFoot;
+                        }
+
+                        Order order = new Order(orderNumber, customerNameNew, stateNew, taxRateNew, productTypeNew, areaNew, costPerSquareFootNew, laborCostPerSquareFootNew);
+                        request.order = order;
                         Console.WriteLine("Is this edited order correct? Y or N.");
                         Console.WriteLine();
                         Console.WriteLine($"Order Number: {request.order.OrderNumber}" +
                             $"\nCustomer Name: {request.order.CustomerName}" +
                             $"\nState: {request.order.State}" +
-                            $"\nTax Rate: {request.order.TaxRate:P}" +
+                            $"\nTax Rate: {request.order.TaxRate}%" +
                             $"\nProduct: {request.order.ProductType}" +
                             $"\nArea: {request.order.Area} sq f" +
                             $"\nCost/sq f: {request.order.CostPreSquareFoot:c}" +
@@ -160,19 +192,7 @@ namespace SWG_Flooring_Order_System.Workflows
                     }
                     if (response == "Y")
                     {
-                        orders = OM.GetOrders(dateTime);
-                        int orderNumber;
-                        if (orders != null && orders.Count() > 0)
-                        {
-                            orderNumber = orders.Max(x => x.OrderNumber) + 1;
-                        }
-                        else
-                        {
-                            orderNumber = 1;
-                        }
-
-                        request.order.OrderNumber = orderNumber;
-                        OM.AddOrder(request);
+                        OM.EditOrder(request);
                     }
 
                     else

@@ -1,2 +1,0 @@
-OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
-1°Customer Name°Michigan°5.75°Laminate°101°1.75°2.10°176.75°212.10°651976.9565217391304347826087°652365.8065217391304347826087
