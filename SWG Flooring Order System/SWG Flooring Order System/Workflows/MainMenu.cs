@@ -8,29 +8,6 @@ using SWGLogic;
 
 namespace SWG_Flooring_Order_System.Workflows
 {
-    //Unit Tests:
-    //Add:
-    //1 passes
-    //invalid name
-    //invalid product
-    //invalid state
-    //date in the past
-    //area less than 100
-    //
-    //Edit:
-    //1 passes
-    //invalid product
-    //invalid state
-    //date in the past
-    //area less than 100
-    //
-    //Remove:
-    //1 passes
-    //invalid date
-    //invalid order number
-    //
-    //Load
-    //count
     public class MainMenu
     {
         public static void Execute()
