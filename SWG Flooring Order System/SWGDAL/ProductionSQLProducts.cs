@@ -24,7 +24,7 @@ namespace SWGDAL
             List<Product> products = new List<Product>();
 
             SqlDataReader dataReader;
-            sql = $"SELECT [product name], [price per sq f], [labor per sq ft] FROM Products";
+            sql = $"SELECT [product name], [price per sq ft], [labor per sq ft] FROM Products";
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();
             while (dataReader.Read())

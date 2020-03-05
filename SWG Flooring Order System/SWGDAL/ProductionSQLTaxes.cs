@@ -24,7 +24,7 @@ namespace SWGDAL
             List<Tax> taxes = new List<Tax>();
 
             SqlDataReader dataReader;
-            sql = $"SELECT [StateAbbreviation], [state name], [tax rate] FROM Products";
+            sql = $"SELECT [StateAbbreviation], [state name], [tax rate] FROM States";
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();
             while (dataReader.Read())

@@ -81,11 +81,26 @@ namespace SWGDAL
             {
                 products.Add(dataReader.GetValue(0).ToString()+""+dataReader.GetValue(1));
             }
+            cnn.Close();
+            cnn.Open();
+            List<string> taxes = new List<string>();
+
+            sql = $"SELECT [StateAbbreviation], [state name] FROM States";
+            command = new SqlCommand(sql, cnn);
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                taxes.Add(dataReader.GetValue(0).ToString()+ dataReader.GetValue(1));
+            }
 
             string insert = "";
             for (int i = 0; i < orderRequest.list.Count(); i++)
             {
-                insert +=$"('{orderRequest.Date.ToShortDateString()}','{orderRequest.list.ElementAt(i).CustomerName}','{orderRequest.list.ElementAt(i).State[0].ToString().ToUpper() + orderRequest.list.ElementAt(i).State[1].ToString().ToUpper()}','{products.FirstOrDefault(x=>x.Contains(orderRequest.list.ElementAt(i).ProductType))[0]}','{orderRequest.list.ElementAt(i).Area}'),";
+                insert +=$"('{orderRequest.Date.ToShortDateString()}'," +
+                    $"'{orderRequest.list.ElementAt(i).CustomerName}'," +
+                    $"'{taxes.FirstOrDefault(x => x.Contains(orderRequest.list.ElementAt(i).State))[0].ToString()+ taxes.FirstOrDefault(x => x.Contains(orderRequest.list.ElementAt(i).State))[1].ToString()}'," +
+                    $"'{products.FirstOrDefault(x=>x.Contains(orderRequest.list.ElementAt(i).ProductType))[0]}'," +
+                    $"'{orderRequest.list.ElementAt(i).Area}'),";
             }
             cnn.Close();
             cnn.Open();
