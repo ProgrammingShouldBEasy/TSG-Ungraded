@@ -32,6 +32,7 @@ namespace SWGDAL
                 taxes.Add(new Tax(dataReader.GetValue(0).ToString(), dataReader.GetValue(1).ToString(), decimal.Parse(dataReader.GetValue(2).ToString())));
             }
             cnn.Close();
+            cnn.Dispose();
             return taxes;
             throw new NotImplementedException();
         }

@@ -1,0 +1,6 @@
+	ProductID	product name	price per sq ft	labor per sq ft
+1	1	Carpet		2.25		2.10
+2	2	Laminate		20.75		2.10
+3	3	Tile		3.50		4.15
+4	4	Wood		5.15		4.75
+5	5	MarbleFlooring	20.00		25.00

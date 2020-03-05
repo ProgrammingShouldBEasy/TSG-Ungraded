@@ -1,0 +1,6 @@
+	StateAbbreviation	state name		tax rate
+1	CA		California		20.00
+2	IN		Indiana		6.00
+3	MI		Michigan		60.00
+4	OH		Ohio		6.25
+5	PA		Pennsylvania	6.75

@@ -32,6 +32,7 @@ namespace SWGDAL
                 products.Add(new Product(dataReader.GetValue(0).ToString(), decimal.Parse(dataReader.GetValue(1).ToString()), decimal.Parse(dataReader.GetValue(2).ToString())));
             }
             cnn.Close();
+            command.Dispose();
             return products;
             throw new NotImplementedException();
         }
