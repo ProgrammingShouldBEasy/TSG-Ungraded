@@ -10,7 +10,7 @@ function validateForm() {
         validate.style.visibility = "visible";
         return false;
     }
-    if (category == "search category" || category == "")
+    if (category == "")
     {
         validate.style.visibility = "visible";
         return false;
