@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!-- 
+    Color Theme:
+    #5CDB95
+    body background
+
+    #379683
+    element background
+
+    #8EE4AF
+    accent
+
+    #EDF5E1
+    text
+
+    #05386B
+    header/footer
+
+ -->
+<html>
+
+<head>
+    <title>DVDs and DVD accessories</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/splash.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="flex-container">
+                <button type="button" onclick=displayCreate() id="create-dvd">Create DVD</button>
+                <form id="search-block" onsubmit="return validateForm()">
+                    <button type="button" id="search-button">Search</button>
+
+                    <select id="dvds" name="dvds">
+                        <option value="search category">Search Category</option>"
+                        <option value="title">Title</option>
+                        <option value="release year">Release Year</option>
+                        <option value="director name">Director Name</option>
+                        <option value="rating">Rating</option>
+                    </select>
+
+                    <input type="search" id="search" name="search" value="Search Term">
+                </form>
+            </div>
+            <hr>
+        </nav>
+    </header>
+
+    <main>
+        <div class="search-validation" id="search-validation">
+            Both Search Category and Search Term are required.
+        </div>
+        <table class="dvd-results">
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Release Date
+                </th>
+                <th>
+                    Director
+                </th>
+                <th>
+                    Rating
+                </th>
+                <th>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick=displayDVD()>A Great Tale</button>
+                </td>
+                <td>
+                    2015
+                </td>
+                <td>
+                    Jones
+                </td>
+                <td>
+                    PG
+                </td>
+                <td>
+                    <button type="button" onclick=displayEdit()>Edit</button>
+                    <button type="button" onclick=deleteDVD()>Delete</button>
+                </td>
+            </tr>
+        </table>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <div class="display-dvd-card" id="display-dvd-card">
+        <header>
+            <nav>
+                A Great Tale
+                <hr>
+            </nav>
+        </header>
+
+        <main id="display-dvd-form">
+            <table>
+                <tr>
+                    <td>
+                        Release Year:
+                    </td>
+                    <td>
+                        2015
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Director:
+                    </td>
+                    <td>
+                        Jones
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Rating:
+                    </td>
+                    <td>
+                        PG
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes:
+                    </td>
+                    <td>
+                        This really is a great tale!
+                    </td>
+                </tr>
+            </table>
+            <button type="button" onclick=resetDisplay()>Back</button>
+        </main>
+
+        <footer>
+
+        </footer>
+    </div>
+
+    <div class="edit-dvd-card" id="edit-dvd-card">
+        <header>
+            <nav>
+                Edit DVD: A Great Tale
+                <hr>
+            </nav>
+        </header>
+
+        <main id="edit-dvd-form">
+            <form>
+                <table>
+                    <tr>
+
+                        <td>
+                <label for="edit-title">DVD Title:</label>
+                        </td>
+                        <td>
+
+                <input type="text" id="edit-title" name="edit-title" value="Enter Title">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                <label for="edit-release-year">Release Year:</label>
+                        </td>
+                        <td>
+                <input type="text" id="edit-release-year" name="edit-release-year" value="Enter Release Year">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                <label for="edit-director">Director:</label>
+                        </td>
+                        <td>
+                <input type="text" id="edit-director" name="director" value="Enter Director">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="edit-rating">Rating:</label>
+                            </td>
+                            <td>
+                            <select id="edit-rating" name="edit-rating">
+                                <option value="choose rating">Choose Rating</option>"
+                                <option value="G">G</option>
+                                <option value="PG">PG</option>
+                                <option value="PG-13">PG-13</option>
+                                <option value="R">R</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                <label for="edit-notes">Notes:</label>
+                        </td>
+                        <td>
+                <input type="text" id="edit-notes" name="edit-notes" value="Enter Note">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <button type="button" onclick=resetDisplay()>Cancel</button>
+            <button type="button" onclick=resetDisplay()>Save Changes</button>
+        </main>
+
+        <footer>
+
+        </footer>
+    </div>
+
+    <div class="create-dvd-card" id="create-dvd-card">
+        <header>
+            <nav>
+                Create DVD
+                <hr>
+            </nav>
+
+        </header>
+
+        <main id="create-dvd-form">
+            <form>
+                <table>
+                    <tr>
+
+                        <td>
+                <label for="create-title">DVD Title:</label>
+                        </td>
+                        <td>
+
+                <input type="text" id="create-title" name="create-title" value="Enter Title">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                <label for="create-release-year">Release Year:</label>
+                        </td>
+                        <td>
+                <input type="text" id="create-release-year" name="create-release-year" value="Enter Release Year">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                <label for="create-director">Director:</label>
+                        </td>
+                        <td>
+                <input type="text" id="create-director" name="director" value="Enter Director">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="create-rating">Rating:</label>
+                            </td>
+                            <td>
+                            <select id="create-rating" name="create-rating">
+                                <option value="choose rating">Choose Rating</option>"
+                                <option value="G">G</option>
+                                <option value="PG">PG</option>
+                                <option value="PG-13">PG-13</option>
+                                <option value="R">R</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                <label for="create-notes">Notes:</label>
+                        </td>
+                        <td>
+                <input type="text" id="create-notes" name="create-notes" value="Enter Note">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <button type="button" onclick=resetDisplay()>Cancel</button>
+            <button type="button" onclick=resetDisplay()>Save Changes</button>
+        </main>
+
+        <footer>
+
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="../JS/scripts.js"></script>
+</body>
+
+</html>
