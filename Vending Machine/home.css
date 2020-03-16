@@ -35,7 +35,7 @@ header > hr {
     height: 250px; */
     width: 90%;
     height: 25%;
-    border: 3px dotted black;
+    /* border: 3px dotted black; */
     margin: 8%;
 }
 
@@ -51,16 +51,16 @@ header > hr {
     margin: auto;
 }
 
-#middle {
+#middle, #bottom {
     border-top: 3px solid black;
-    border-bottom: 3px solid black;
+    /* border-bottom: 3px solid black; */
 }
 
 header {
     text-align: center;
 }
 
-.money-block {
+.money-block, .business-block, .change-block, .menu-options > button {
     font-size: 1.2vw;
     margin: auto;
     text-align: center;
