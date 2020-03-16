@@ -132,9 +132,6 @@
         </header>
 
         <main id="edit-dvd-form">
-            <form style="visibility: hidden;">
-                <input type="text" id="editdvdID" value="">
-            </form>
             <form>
                 <table>
                     <tr>
@@ -186,6 +183,9 @@
                         </td>
                     </tr>
                 </table>
+            </form>
+            <form style="visibility: hidden;">
+                <input type="text" id="editdvdID" value="">
             </form>
             <button type="button" onclick=resetDisplay()>Cancel</button>
             <button type="button" id="edit-save" onclick=resetDisplay()>Save Changes</button>
@@ -258,6 +258,7 @@
                     </tr>
                 </table>
             </form>
+            <br>
             <button type="button" onclick=resetDisplay() id="cancel changes">Cancel</button>
             <button type="button" onclick=resetDisplay() id="create-save">Save Changes</button>
         </main>
