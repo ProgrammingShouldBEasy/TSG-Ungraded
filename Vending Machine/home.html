@@ -15,16 +15,7 @@
     </header>
     <main class="container-fluid">
         <div class="row">
-            <div class="menu-container col-9">
-                <div class="menu-selections"></div>
-                <div class="menu-selections"></div>
-                <div class="menu-selections"></div>
-                <div class="menu-selections"></div>
-                <div class="menu-selections"></div>
-                <div class="menu-selections"></div>
-                <div class="menu-selections"></div>
-                <div class="menu-selections"></div>
-                <div class="menu-selections"></div>
+            <div class="menu-container col-9" id="menu">
             </div>
             <div class="menu-options-container col-3">
                 <div class="menu-options">
@@ -36,15 +27,15 @@
                         </div>
 
                         <div>
-                            <input type="text" id="mAmount" name="mAmount">
+                            <input type="text" id="mAmount" name="mAmount" value="0.00">
                         </div>
                     </form>
 
                     <div id="coins">
-                            <button type="button">Add Dollar</button>
-                            <button type="button">Add Quarter</button>
-                            <button type="button">Add Dime</button>
-                            <button type="button">Add Nickel</button>
+                            <button type="button" id="add-Dollar">Add Dollar</button>
+                            <button type="button" id="add-Quarter">Add Quarter</button>
+                            <button type="button" id="add-Dime">Add Dime</button>
+                            <button type="button" id="add-Nickel">Add Nickel</button>
                     </div>
                 </div>
                 <div class="menu-options" id="middle">

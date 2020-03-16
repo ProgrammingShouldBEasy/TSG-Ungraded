@@ -27,6 +27,7 @@ header > hr {
     height: 25%;
     border: 3px solid black;
     margin: 2% 3%;
+    font-size: 1.2vw;
 }
 
 .menu-options {
@@ -37,6 +38,12 @@ header > hr {
     border: 3px dotted black;
     margin: 8%;
 }
+
+.item-id {
+    margin-top: 0px;
+    text-align: left;
+}
+
 
 .menu-options > div {
     width: 80%;
@@ -56,8 +63,13 @@ header {
 .money-block {
     font-size: 1.2vw;
     margin: auto;
+    text-align: center;
 }
 
+input {
+    text-align: center;
+    margin: auto;
+  }
 
 #coins {
     margin: auto;
