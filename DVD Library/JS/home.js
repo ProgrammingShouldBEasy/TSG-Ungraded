@@ -194,6 +194,7 @@ $("#edit-save").click(function () {
     $("#edit-rating").val() = "choose rating";
     $("#edit-notes").empty();
 });
+
 function displayDVD(id) {
     var card = document.getElementById("display-dvd-card")
     card.style.visibility = "visible";
@@ -234,30 +235,31 @@ function resetDisplay() {
     $("#display-notes").empty();
     $("#create-release-year").empty();
     $("#create-director").empty();
-    $("#create-rating").val() = "choose rating";
+    $("#create-rating").val("choose rating");
     $("#create-notes").empty();
     $("#edit-release-year").empty();
     $("#edit-director").empty();
-    $("#edit-rating").val() = "choose rating";
+    $("#edit-rating").val("choose rating");
     $("#edit-notes").empty();
 }
 
 function deleteDVD(id) {
     //If I run it through another div element then I'm not sure how to pass the dvdId.
-    // $("#confirm-delete").css("visibility", "visible");
-    var isDelete = confirm("Are you sure you want to delete this dvd?");
-    if (isDelete) {
-        $.ajax({
-            type: "DELETE",
-            url: "http://localhost:8080/dvd/" + id,
-            contentType: "application/json;charset=UTF-8",
-            success: function () {
-            },
-            error: function (xhr, status, error) {
-                alert(xhr.responseText);
-            }
-        });
-    }
+    $("#confirm-delete").css("visibility", "visible");
+    $("#deletedvdID").val(id);
+    // var isDelete = confirm("Are you sure you want to delete this dvd?");
+    // if (isDelete) {
+    //     $.ajax({
+    //         type: "DELETE",
+    //         url: "http://localhost:8080/dvd/" + id,
+    //         contentType: "application/json;charset=UTF-8",
+    //         success: function () {
+    //         },
+    //         error: function (xhr, status, error) {
+    //             alert(xhr.responseText);
+    //         }
+    //     });
+    // }
     // $("#deleteConfirmed").click(function(id){
     //     $.ajax({
     //         type: "DELETE",
@@ -271,6 +273,19 @@ function deleteDVD(id) {
     //     });
     // });
 }
+
+$("#deleteConfirmed").click(function() {
+    $.ajax({
+        type: "DELETE",
+        url: "http://localhost:8080/dvd/" + $("#deletedvdID").val(),
+        contentType: "application/json;charset=UTF-8",
+        success: function () {
+        },
+        error: function(xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
+});
 
 $("#create-save").click(function () {
     $.ajax({

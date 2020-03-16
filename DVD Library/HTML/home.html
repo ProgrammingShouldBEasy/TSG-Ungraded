@@ -272,9 +272,9 @@
         <hr>
         <div id="confirm-text">
             Are you sure you want to delete this DVD from your collection?
-            <br>
-            <br>
-            <br>
+            <form style="visibility: hidden;">
+                <input type="text" id="deletedvdID" value="">
+            </form>
             <div>
             <button type="button" onclick=resetDisplay()>Cancel</button>
             <button type="button" id="deleteConfirmed" onclick=resetDisplay()>Yes</button>
