@@ -90,32 +90,28 @@
                     <td>
                         Release Year:
                     </td>
-                    <td>
-                        2015
+                    <td id="display-year">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Director:
                     </td>
-                    <td>
-                        Jones
+                    <td id="display-director">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Rating:
                     </td>
-                    <td>
-                        PG
+                    <td id="display-rating">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Notes:
                     </td>
-                    <td>
-                        This really is a great tale!
+                    <td id="display-notes">
                     </td>
                 </tr>
             </table>
@@ -266,6 +262,23 @@
         <footer>
 
         </footer>
+    </div>
+
+    <div id="confirm-delete">
+        Confirmation
+        <hr>
+        <div id="confirm-text">
+            Are you sure you want to delete this DVD from your collection?
+            <br>
+            <br>
+            <br>
+            <div>
+            <button type="button" onclick=resetDisplay()>Cancel</button>
+            <button type="button" id="deleteConfirmed" onclick=resetDisplay()>Yes</button>
+            </div>
+            <br>
+        </div>
+        <hr>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
