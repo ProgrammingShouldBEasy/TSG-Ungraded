@@ -164,8 +164,36 @@ $(document).ready(function () {
 function displayEdit(id) {
     var card = document.getElementById("edit-dvd-card")
     card.style.visibility = "visible";
+    $("#editdvdID").val() = id;
 }
 
+$("#edit-save").click(function () {
+    $.ajax({
+        type: "PUT",
+        url: "http://localhost:8080/dvd/" + $("#editdvdID").val(),
+        data: JSON.stringify({
+            dvdId: $("#editdvdID").val(),
+            title: $("#create-title").val(),
+            releaseYear: $("#create-release-year").val(),
+            director: $("#create-director").val(),
+            rating: $("#create-rating").val(),
+            notes: $("#create-notes").val()
+        }),
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        success: function () {
+        },
+        error: function (xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
+    $("#edit-release-year").empty();
+    $("#edit-director").empty();
+    $("#edit-rating").val() = "choose rating";
+    $("#edit-notes").empty();
+});
 function displayDVD(id) {
     var card = document.getElementById("display-dvd-card")
     card.style.visibility = "visible";
@@ -244,7 +272,7 @@ function deleteDVD(id) {
     // });
 }
 
-$("#create-save").click(function() {
+$("#create-save").click(function () {
     $.ajax({
         type: "POST",
         url: "http://localhost:8080/dvd",

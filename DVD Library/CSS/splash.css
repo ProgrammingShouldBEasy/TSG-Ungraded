@@ -19,6 +19,10 @@ hr {
     border-bottom: 3px solid #5CDB95;
 }
 
+#editdvdID {
+    visibility: hidden;
+}
+
 .flex-container {
     display: flex;
     flex-direction: row;
