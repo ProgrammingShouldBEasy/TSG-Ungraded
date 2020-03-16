@@ -40,3 +40,7 @@ $("#add-Nickel").click(function(){
     sum += parseFloat(".05");
     $("#mAmount").val(sum.toFixed(2));
 });
+
+$(".menu-selections").click(function() {
+    $("#item-id").val($(this).attr('id'));
+});
