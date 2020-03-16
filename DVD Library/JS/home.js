@@ -18,8 +18,7 @@
 
 $("#search-button").click(function () {
 
-    $("#dvd-results-table").empty();
-    $("#dvd-results-table").append("<tr><th>Title</th><th>Release Date</th><th>Director</th><th>Rating</th><th></th></tr>").text();
+    $("#rows").empty();
     if ($("dvds").val() == "search category" || $("#search").val() == "" || $("#search").val() == "Search Term") {
         $("#search-validation").css("visibility", "visible");
     }
@@ -33,7 +32,7 @@ $("#search-button").click(function () {
                 contentType: "application/json;charset=UTF-8",
                 success: function (dvdArray) {
                     $.each(dvdArray, function (index, dvd) {
-                        $("#dvd-results-table").append("<tr id="
+                        $("#rows").append("<tr id="
                             + dvd.dvdId
                             + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                             + dvd.title
@@ -60,7 +59,7 @@ $("#search-button").click(function () {
                 contentType: "application/json;charset=UTF-8",
                 success: function (dvdArray) {
                     $.each(dvdArray, function (index, dvd) {
-                        $("#dvd-results-table").append("<tr id="
+                        $("#rows").append("<tr id="
                             + dvd.dvdId
                             + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                             + dvd.title
@@ -87,7 +86,7 @@ $("#search-button").click(function () {
                 contentType: "application/json;charset=UTF-8",
                 success: function (dvdArray) {
                     $.each(dvdArray, function (index, dvd) {
-                        $("#dvd-results-table").append("<tr id="
+                        $("#rows").append("<tr id="
                             + dvd.dvdId
                             + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                             + dvd.title
@@ -114,7 +113,7 @@ $("#search-button").click(function () {
                 contentType: "application/json;charset=UTF-8",
                 success: function (dvdArray) {
                     $.each(dvdArray, function (index, dvd) {
-                        $("#dvd-results-table").append("<tr id="
+                        $("#rows").append("<tr id="
                             + dvd.dvdId
                             + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                             + dvd.title
@@ -142,7 +141,7 @@ $(document).ready(function () {
         contentType: "application/json;charset=UTF-8",
         success: function (dvdArray) {
             $.each(dvdArray, function (index, dvd) {
-                $("#dvd-results-table").append("<tr id="
+                $("#rows").append("<tr id="
                     + dvd.dvdId
                     + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                     + dvd.title
@@ -193,6 +192,32 @@ $("#edit-save").click(function () {
     $("#edit-director").empty();
     $("#edit-rating").val("choose rating");
     $("#edit-notes").empty();
+    setTimeout(function(){
+        $("#rows").empty();
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/dvds",
+        contentType: "application/json;charset=UTF-8",
+        success: function (dvdArray) {
+            $.each(dvdArray, function (index, dvd) {
+                $("#rows").append("<tr id="
+                    + dvd.dvdId
+                    + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
+                    + dvd.title
+                    + "</button></td><td>"
+                    + dvd.realeaseYear
+                    + "</td><td>"
+                    + dvd.director
+                    + "</td><td>"
+                    + dvd.rating
+                    + "</td><td><button type='button' onclick=displayEdit(" + dvd.dvdId + ")>Edit</button><button type='button' onclick=deleteDVD(" + dvd.dvdId + ")>Delete</button></td></tr>").text();
+            })
+        },
+        error: function (xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
+    }, 1000);
 });
 
 function displayDVD(id) {
@@ -285,6 +310,32 @@ $("#deleteConfirmed").click(function() {
             alert(xhr.responseText);
         }
     });
+    setTimeout(function(){
+        $("#rows").empty();
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/dvds",
+        contentType: "application/json;charset=UTF-8",
+        success: function (dvdArray) {
+            $.each(dvdArray, function (index, dvd) {
+                $("#rows").append("<tr id="
+                    + dvd.dvdId
+                    + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
+                    + dvd.title
+                    + "</button></td><td>"
+                    + dvd.realeaseYear
+                    + "</td><td>"
+                    + dvd.director
+                    + "</td><td>"
+                    + dvd.rating
+                    + "</td><td><button type='button' onclick=displayEdit(" + dvd.dvdId + ")>Edit</button><button type='button' onclick=deleteDVD(" + dvd.dvdId + ")>Delete</button></td></tr>").text();
+            })
+        },
+        error: function (xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
+    }, 1000);
 });
 
 $("#create-save").click(function () {
@@ -312,4 +363,30 @@ $("#create-save").click(function () {
     $("#create-director").empty();
     $("#create-rating").val("choose rating");
     $("#create-notes").empty();
+    setTimeout(function(){
+        $("#rows").empty();
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/dvds",
+        contentType: "application/json;charset=UTF-8",
+        success: function (dvdArray) {
+            $.each(dvdArray, function (index, dvd) {
+                $("#rows").append("<tr id="
+                    + dvd.dvdId
+                    + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
+                    + dvd.title
+                    + "</button></td><td>"
+                    + dvd.realeaseYear
+                    + "</td><td>"
+                    + dvd.director
+                    + "</td><td>"
+                    + dvd.rating
+                    + "</td><td><button type='button' onclick=displayEdit(" + dvd.dvdId + ")>Edit</button><button type='button' onclick=deleteDVD(" + dvd.dvdId + ")>Delete</button></td></tr>").text();
+            })
+        },
+        error: function (xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
+    }, 1000);
 });

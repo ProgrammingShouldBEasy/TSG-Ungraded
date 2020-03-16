@@ -6,7 +6,7 @@ $(document).ready(function (){
             $.each(itemArray, function(index, item) {
                 $("#menu").append(
                 "<button type='button'class='menu-selections' id="
-                +item.id+"><div class='item-id'>"+item.id
+                +item.id+" onclick='select(this)'><div class='item-id'>"+item.id
                 +"</div><br>"+item.name
                 +"<br>$"+item.price.toFixed(2)
                 +"<br><br>Quantity Left: "+item.quantity
@@ -41,6 +41,10 @@ $("#add-Nickel").click(function(){
     $("#mAmount").val(sum.toFixed(2));
 });
 
-$(".menu-selections").click(function() {
-    $("#item-id").val($(this).attr('id'));
-});
+// $(".menu-selections").click(function() {
+//     $("#item-id").val($(this).attr('id'));
+// });
+
+function select(x) {
+    $("#item-id").val($(x).attr('id'));
+};
