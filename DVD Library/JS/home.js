@@ -215,6 +215,7 @@ function resetDisplay() {
 }
 
 function deleteDVD(id) {
+    //If I run it through another div element then I'm not sure how to pass the dvdId.
     // $("#confirm-delete").css("visibility", "visible");
     var isDelete = confirm("Are you sure you want to delete this dvd?");
     if (isDelete) {
