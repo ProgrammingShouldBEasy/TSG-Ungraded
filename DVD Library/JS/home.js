@@ -164,7 +164,7 @@ $(document).ready(function () {
 function displayEdit(id) {
     var card = document.getElementById("edit-dvd-card")
     card.style.visibility = "visible";
-    $("#editdvdID").val() = id;
+    $("#editdvdID").val(id);
 }
 
 $("#edit-save").click(function () {
@@ -173,11 +173,11 @@ $("#edit-save").click(function () {
         url: "http://localhost:8080/dvd/" + $("#editdvdID").val(),
         data: JSON.stringify({
             dvdId: $("#editdvdID").val(),
-            title: $("#create-title").val(),
-            releaseYear: $("#create-release-year").val(),
-            director: $("#create-director").val(),
-            rating: $("#create-rating").val(),
-            notes: $("#create-notes").val()
+            title: $("#edit-title").val(),
+            releaseYear: $("#edit-release-year").val(),
+            director: $("#edit-director").val(),
+            rating: $("#edit-rating").val(),
+            notes: $("#edit-notes").val()
         }),
         headers: {
             "Content-Type": "application/json",
@@ -191,7 +191,7 @@ $("#edit-save").click(function () {
     });
     $("#edit-release-year").empty();
     $("#edit-director").empty();
-    $("#edit-rating").val() = "choose rating";
+    $("#edit-rating").val("choose rating");
     $("#edit-notes").empty();
 });
 
@@ -310,6 +310,6 @@ $("#create-save").click(function () {
     });
     $("#create-release-year").empty();
     $("#create-director").empty();
-    $("#create-rating").val() = "choose rating";
+    $("#create-rating").val("choose rating");
     $("#create-notes").empty();
 });
