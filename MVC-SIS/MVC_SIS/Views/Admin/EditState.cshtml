@@ -7,6 +7,6 @@
     <form method="post">
         @Html.AntiForgeryToken()
         <input type="text" name="StateName" value="" />
-        @Html.DisplayFor(x => x.StateAbbreviation)
-        @Html.ActionLink("Submit", "EditState", "Admin", @Model)
+        <input type="text" name="StateAbbreviation" value="@Model.StateAbbreviation" readonly/>
+        @Html.ActionLink("Submit", "EditState", "Admin")
     </form>
