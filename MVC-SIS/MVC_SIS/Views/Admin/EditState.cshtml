@@ -1,0 +1,12 @@
+﻿@model Exercises.Models.Data.State
+@{
+    ViewBag.Title = "EditState";
+}
+
+<h2>EditState</h2>
+    <form method="post">
+        @Html.AntiForgeryToken()
+        <input type="text" name="StateName" value="" />
+        @Html.DisplayFor(x => x.StateAbbreviation)
+        @Html.ActionLink("Submit", "EditState", "Admin", @Model)
+    </form>

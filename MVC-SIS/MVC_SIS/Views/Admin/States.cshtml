@@ -1,0 +1,23 @@
+﻿@model List<Exercises.Models.Data.State>
+@{
+    ViewBag.Title = "States";
+}
+
+<h2>States</h2>
+
+<table>
+    <tr>
+        <th>State Name</th>
+        <th>State Abbreviation</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.StateName</td>
+            <td>@item.StateAbbreviation</td>
+            <td>@Html.ActionLink("Edit", "EditState", "Admin", @item.StateAbbreviation)</td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Add State", "AddState", "Admin")
