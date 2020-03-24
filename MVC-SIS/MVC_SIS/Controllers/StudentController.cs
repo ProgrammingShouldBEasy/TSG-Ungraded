@@ -63,25 +63,46 @@ namespace Exercises.Controllers
             student.SetCourseItems(CourseRepository.GetAll());
             student.SetMajorItems(MajorRepository.GetAll());
             student.SetStateItems(StateRepository.GetAll());
+            List<Course> studentCourseList = StudentRepository.GetAll().ToList().FirstOrDefault(x => x.StudentId == studentId).Courses.ToList();
+            List<int> CourseIDs = new List<int>();
+            foreach(Course z in studentCourseList)
+            {
+                CourseIDs.Add(z.CourseId);
+            }
+            student.SelectedCourseIds = CourseIDs;
             return View(student);
         }
 
         [HttpPost]
-        public ActionResult Edit(StudentVM student)
+        public ActionResult Edit(StudentVM editStudent)
         {
-
+            editStudent.SetCourseItems(CourseRepository.GetAll());
+            editStudent.SetMajorItems(MajorRepository.GetAll());
+            editStudent.SetStateItems(StateRepository.GetAll());
+            editStudent.Student.Courses = new List<Course>();
+            foreach(Course x in CourseRepository.GetAll().ToList())
+            {
+                if(editStudent.SelectedCourseIds.Contains(x.CourseId))
+                {
+                    editStudent.Student.Courses.Add(x);
+                }
+            }
+            editStudent.Student.Address.State.StateName = StateRepository.GetAll().FirstOrDefault(x => x.StateAbbreviation == editStudent.Student.Address.State.StateAbbreviation).StateName;
+            editStudent.Student.Major = MajorRepository.GetAll().FirstOrDefault(x => x.MajorId == editStudent.Student.Major.MajorId);
+            StudentRepository.SaveAddress(editStudent.Student.StudentId, editStudent.Student.Address);
+            ModelState.Remove("State");
             if (!ModelState.IsValid)
             {
-                return View("Edit", student);
+                return View("Edit", editStudent);
             }
             try
             {
-                StudentRepository.Edit(student.Student);
+                StudentRepository.Edit(editStudent.Student);
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $@"Unable to edit record: {ex.Message}");
-                return View("Edit", student);
+                return View("Edit", editStudent);
             }
             return RedirectToAction("Index");
         }
@@ -95,10 +116,6 @@ namespace Exercises.Controllers
         [HttpPost]
         public ActionResult Delete(Student student)
         {
-            if (!ModelState.IsValid)
-            {
-                return View("Delete", student);
-            }
             try
             {
                 StudentRepository.Delete(student.StudentId);
