@@ -2,10 +2,29 @@
 @{
     ViewBag.Title = "Add State";
 }
+<div class="row">
+    <div class="col-xs-12">
+        <h2>AddState</h2>
+        @Html.ActionLink("Return to States", "States", "Admin")
+    </div>
+</div>
 
-<h2>AddState</h2>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label>State</label>
+                @Html.TextBoxFor(m => m.StateName, new { @class = "form-control", placeholder = "State Name" })
+                @Html.TextBoxFor(m => m.StateAbbreviation, new { @class = "form-control", placeholder = "State Abbreviation" })
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>
 
-@using (Html.BeginForm("AddState", "Admin", FormMethod.Post))
+@*@using (Html.BeginForm("AddState", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <label for="stateName">State Name</label>
@@ -13,7 +32,7 @@
     <label for="stateAbbr">State Abbreviation</label>
     <input type="text" name="StateAbbreviation" value="" id="stateAbbr" />
     <button type="submit">Add State</button>
-}
+}*@
 
 
 

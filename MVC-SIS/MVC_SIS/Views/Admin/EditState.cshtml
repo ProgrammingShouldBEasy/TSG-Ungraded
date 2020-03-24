@@ -3,10 +3,24 @@
     ViewBag.Title = "EditState";
 }
 
-<h2>EditState</h2>
-    <form method="post">
-        @Html.AntiForgeryToken()
-        <input type="text" name="StateName" value="" />
-        <input type="text" name="StateAbbreviation" value="@Model.StateAbbreviation" readonly/>
-        @Html.ActionLink("Submit", "EditState", "Admin")
-    </form>
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Edit States</h3>
+        @Html.ActionLink("Return to States", "States", "Admin")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.StateAbbreviation, htmlAttributes: new { @id = "stateAbbr" })
+            <div class="form-group">
+                <label>State</label>
+                @Html.TextBoxFor(m => m.StateName, new { @class = "form-control", placeholder = "State Name" })
+                @Html.TextBoxFor(m => m.StateAbbreviation, new { @class = "form-control", placeholder = "State Abbreviation" })
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>

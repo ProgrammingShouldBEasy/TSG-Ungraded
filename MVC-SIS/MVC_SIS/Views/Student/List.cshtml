@@ -25,12 +25,14 @@
                     <tbody>
                         @foreach(var student in Model)
                         {
-                            <tr>
-                                <td>@student.FirstName</td>
-                                <td>@student.LastName</td>
-                                <td>@student.Major.MajorName</td>
-                                <td>@student.GPA</td>
-                            </tr>
+                        <tr>
+                            <td>@student.FirstName</td>
+                            <td>@student.LastName</td>
+                            <td>@student.Major.MajorName</td>
+                            <td>@student.GPA</td>
+                            <td>@Html.ActionLink("Edit", "Edit", "Student", new { studentId = student.StudentId }, null)</td>
+                            <td>@Html.ActionLink("Delete", "Delete", "Student", new { studentId = student.StudentId }, null)</td>
+                        </tr>
                         }
                     </tbody>
                 </table>

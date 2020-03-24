@@ -47,9 +47,9 @@ namespace Exercises.Controllers
         [HttpGet]
         public ActionResult EditState(string stateAbbr)
         {
-            var model = new State();
+            State model = new State();
             model.StateAbbreviation = stateAbbr;
-            model.StateName = "";
+            model.StateName = StateRepository.GetAll().FirstOrDefault(x => x.StateAbbreviation == stateAbbr).StateName;
             return View(model);
         }
 
@@ -59,7 +59,7 @@ namespace Exercises.Controllers
         {
             if(!ModelState.IsValid)
             {
-                return View("EditState", state.StateAbbreviation);
+                return View("EditState", state);
             }
             try
             {
@@ -68,10 +68,136 @@ namespace Exercises.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $@"Unable to edit record: {ex.Message}");
-                return View("EditState", state.StateAbbreviation);
+                return View("EditState", state);
             }
-            StateRepository.Edit(state);
             return RedirectToAction("States");
+        }
+
+        [HttpGet]
+        public ActionResult DeleteState(string stateAbbr)
+        {
+            State model = new State();
+            model.StateAbbreviation = stateAbbr;
+            model.StateName = StateRepository.GetAll().FirstOrDefault(x => x.StateAbbreviation == stateAbbr).StateName;
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteState(State state)
+        {
+            if (state.StateName != "")
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("DeleteState", state);
+                }
+                try
+                {
+                    StateRepository.Delete(state.StateAbbreviation);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, $@"Unable to delete record: {ex.Message}");
+                    return View("DeleteState", state);
+                }
+                StateRepository.Delete(state.StateAbbreviation);
+            }
+            return RedirectToAction("States");
+        }
+        [HttpGet]
+        public ActionResult Courses()
+        {
+            var model = CourseRepository.GetAll();
+            return View(model.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult AddCourse()
+        {
+            var model = new Course();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCourse(Course course)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(course);
+            }
+            try
+            {
+                CourseRepository.Add(course.CourseName);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $@"Unable to create record: {ex.Message}");
+                return View(course);
+            }
+            return RedirectToAction("Courses");
+        }
+
+        [HttpGet]
+        public ActionResult EditCourse(int courseID)
+        {
+            Course model = new Course();
+            model.CourseId = courseID;
+            model.CourseName = CourseRepository.GetAll().FirstOrDefault(x => x.CourseId == courseID).CourseName;
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCourse(Course course)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("EditCourse", course);
+            }
+            try
+            {
+                CourseRepository.Edit(course);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $@"Unable to edit record: {ex.Message}");
+                return View("EditCourse", course);
+            }
+            return RedirectToAction("Courses");
+        }
+
+        [HttpGet]
+        public ActionResult DeleteCourse(int courseID)
+        {
+            Course model = new Course();
+            model.CourseId = courseID;
+            model.CourseName = CourseRepository.GetAll().FirstOrDefault(x => x.CourseId == courseID).CourseName;
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCourse(Course course)
+        {
+            if (course.CourseName != "")
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("DeleteCourse", course);
+                }
+                try
+                {
+                    CourseRepository.Delete(course.CourseId);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, $@"Unable to delete record: {ex.Message}");
+                    return View("DeleteCourse", course);
+                }
+            }
+            return RedirectToAction("Courses");
         }
 
         [HttpGet]

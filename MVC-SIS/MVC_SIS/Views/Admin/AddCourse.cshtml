@@ -1,0 +1,41 @@
+﻿@model Exercises.Models.Data.Course
+@{
+    ViewBag.Title = "Add Course";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Add Course</h2>
+        @Html.ActionLink("Return to Courses", "Courses", "Admin")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label>Course</label>
+                @Html.TextBoxFor(m => m.CourseName, new { @class = "form-control", placeholder = "Course Name" })
+                @Html.TextBoxFor(m => m.CourseId, new { @class = "form-control", placeholder = "Course ID" })
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>
+
+@*<h2>AddState</h2>
+
+@using (Html.BeginForm("AddCourse", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <label for="courseName">Course Name</label>
+    <input type="text" name="CourseName" value="" id="courseName" />
+    <label for="courseID">Course ID</label>
+    <input type="number" name="CourseId" value="" id="courseID" />
+    <button type="submit">Add Course</button>
+}*@
+
+
+

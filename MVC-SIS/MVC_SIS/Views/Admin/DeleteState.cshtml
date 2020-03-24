@@ -1,0 +1,40 @@
+﻿@model Exercises.Models.Data.State
+@{
+    ViewBag.Title = "DeleteState";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Delete State</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.StateAbbreviation, htmlAttributes: new { @id = "stateAbbr" })
+            <p>Are you sure that you wish to delete the state @Html.DisplayFor(m => m.StateName)?</p>
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "States", "Admin", null, new { @class = "btn btn-sm btn-info" })
+        }
+    </div>
+</div>
+
+@*<h2>EditState</h2>
+@using (Html.BeginForm(actionName: "DeleteState", controllerName: "Admin", method: FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.StateName)
+    @Html.HiddenFor(x => x.StateAbbreviation)
+    @Html.DisplayFor(x => x.StateName)
+    @*<input type="text" name="StateName" id="StateName" value="" />
+        <input type="text" name="StateAbbreviation" id="StateAbbreviation" value="@Model.StateAbbreviation" readonly/>
+    <button id="deleteBtn" type="submit">Confirm Delete</button>}
+@Html.ActionLink("Do Not Delete", "States", "Admin")
+<script>
+        $(document).ready(function () {
+            $("#StateAbbreviation").val(@Model.StateAbbreviation.ToString());
+        })
+    </script>*@

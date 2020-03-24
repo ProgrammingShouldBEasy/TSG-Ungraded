@@ -3,21 +3,34 @@
     ViewBag.Title = "States";
 }
 
-<h2>States</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <h3>States</h3>
+        <h3>@Html.ActionLink("Add State", "AddState", "Admin", null, new { @class="btn btn-primary"})</h3>
+    </div>
+</div>
 
-<table>
-    <tr>
-        <th>State Name</th>
-        <th>State Abbreviation</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.StateName</td>
-            <td>@item.StateAbbreviation</td>
-            <td>@Html.ActionLink("Edit", "EditState", "Admin", @item.StateAbbreviation)</td>
-        </tr>
-    }
-</table>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-striped" style="width: auto;">
+            <thead>
+                <tr>
+                    <th>State Name</th>
+                    <th>Abbreviation</th>
+                </tr>
+            </thead>
+            <tbody>
 
-@Html.ActionLink("Add State", "AddState", "Admin")
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.StateName</td>
+                        <td>@item.StateAbbreviation</td>
+                        <td>@Html.ActionLink(linkText: "Edit", actionName: "EditState", controllerName: "Admin", routeValues: new { stateAbbr = item.StateAbbreviation }, htmlAttributes: null)</td>
+                        <td>@Html.ActionLink(linkText: "Delete", actionName: "DeleteState", controllerName: "Admin", routeValues: new { stateAbbr = item.StateAbbreviation }, htmlAttributes: null)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

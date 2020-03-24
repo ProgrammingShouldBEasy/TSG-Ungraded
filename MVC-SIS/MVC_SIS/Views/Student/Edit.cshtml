@@ -1,0 +1,72 @@
+﻿@model Exercises.Models.ViewModels.StudentVM
+@{
+    ViewBag.Title = "Edit Student";
+}
+
+<h2>EditState</h2>
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Student", method: FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<table>
+    <tr>
+        <td>@Html.TextBoxFor(x => x.Student.Address.Street1)</td>
+        <td>@Html.TextBoxFor(x => x.Student.Address.Street2)</td>
+        <td>@Html.TextBoxFor(x => x.Student.Address.City)</td>
+
+        <td>
+            @Html.DropDownListFor(x => x.Student.Address.State, Model.StateItems)
+        </td>
+
+    <td>@Html.TextBoxFor(x => x.Student.Address.PostalCode)</td>
+    <td>@Html.TextBoxFor(x => x.Student.Address.AddressId)</td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ListBoxFor(x => x.Student.Courses, Model.CourseItems)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.EditorFor(x => x.Student.FirstName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.Student.FirstName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.EditorFor(x => x.Student.LastName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.Student.LastName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.EditorFor(x => x.Student.GPA)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(x => x.Student.GPA)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DropDownListFor(x => x.Student.Major, Model.MajorItems)
+        </td>
+    </tr>
+</table>
+    @*<input type="text" name="StateName" id="StateName" value="" />
+        <input type="text" name="StateAbbreviation" id="StateAbbreviation" value="@Model.StateAbbreviation" readonly/>*@
+    <button id="deleteBtn" type="submit">Confirm Edit</button>}
+@Html.ActionLink("Do Not Edit", "Edit", "Student")
+@*<script>
+        $(document).ready(function () {
+            $("#StateAbbreviation").val(@Model.StateAbbreviation.ToString());
+        })
+    </script>*@

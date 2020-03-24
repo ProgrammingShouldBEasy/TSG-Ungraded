@@ -1,0 +1,56 @@
+﻿@model List<Exercises.Models.Data.Course>
+@{
+    ViewBag.Title = "Courses";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Courses</h3>
+        <h3>@Html.ActionLink("Add Course", "AddCourse", "Admin", null, new { @class = "btn btn-primary" })</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-striped" style="width: auto;">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CourseName</td>
+                        <td>@item.CourseId</td>
+                        <td>@Html.ActionLink(linkText: "Edit", actionName: "EditCourse", controllerName: "Admin", routeValues: new { courseID = item.CourseId }, htmlAttributes: null)</td>
+                        <td>@Html.ActionLink(linkText: "Delete", actionName: "DeleteCourse", controllerName: "Admin", routeValues: new { courseID = item.CourseId }, htmlAttributes: null)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@*<h2>States</h2>
+
+<table>
+    <tr>
+        <th>Course Name</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CourseName</td>
+            <td>@Html.ActionLink(linkText: "Edit", actionName: "EditCourse", controllerName: "Admin", routeValues: new { courseID = item.CourseId }, htmlAttributes: null)</td>
+            <td>@Html.ActionLink(linkText: "Delete", actionName: "DeleteCourse", controllerName: "Admin", routeValues: new { courseID = item.CourseId }, htmlAttributes: null)</td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Add Course", "AddCourse", "Admin")*@
