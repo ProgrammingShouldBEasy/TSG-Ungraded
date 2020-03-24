@@ -3,25 +3,25 @@
     ViewBag.Title = "Delete Student";
 }
 
-<h2>EditState</h2>
-@using (Html.BeginForm(actionName: "Delete", controllerName: "Student", method: FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(x => x.Address)
-    @Html.HiddenFor(x => x.Courses)
-    @Html.HiddenFor(x => x.FirstName)
-    @Html.HiddenFor(x => x.LastName)
-    @Html.HiddenFor(x => x.GPA)
-    @Html.HiddenFor(x => x.Major)
-    @Html.HiddenFor(x => x.StudentId)
-    @Html.DisplayFor(x => x.FirstName)
-    @Html.DisplayFor(x => x.LastName)
-    @*<input type="text" name="StateName" id="StateName" value="" />
-        <input type="text" name="StateAbbreviation" id="StateAbbreviation" value="@Model.StateAbbreviation" readonly/>*@
-    <button id="deleteBtn" type="submit">Confirm Delete</button>}
-@Html.ActionLink("Do Not Delete", "List", "Student")
-@*<script>
-        $(document).ready(function () {
-            $("#StateAbbreviation").val(@Model.StateAbbreviation.ToString());
-        })
-    </script>*@
+<div class="row">
+    <div class="col-xs-12 col-sm-3">
+        @Html.Partial("StudentNav")
+    </div>
+    <div class="col-xs-12 col-sm-9">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Address)
+            @Html.HiddenFor(x => x.Courses)
+            @Html.HiddenFor(x => x.FirstName)
+            @Html.HiddenFor(x => x.LastName)
+            @Html.HiddenFor(x => x.GPA)
+            @Html.HiddenFor(x => x.Major)
+            @Html.HiddenFor(x => x.StudentId, htmlAttributes: new { @id = "studentId" })
+            <p>Are you sure that you wish to delete the state @Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)?</p>
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "Index", "Student", null, new { @class = "btn btn-sm btn-info" })
+        }
+    </div>
+</div>
+

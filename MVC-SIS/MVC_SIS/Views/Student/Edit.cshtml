@@ -3,7 +3,55 @@
     ViewBag.Title = "Edit Student";
 }
 
-<h2>EditState</h2>
+    <div class="row">
+        <div class="col-xs-12 col-sm-3">
+            @Html.Partial("StudentNav")
+        </div>
+        <div class="col-xs-12 col-sm-9">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Edit Student</h3>
+                    <div class="row">
+                        @using (Html.BeginForm())
+                        {
+                            <div class="col-xs-12 col-sm-7">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Personal Details</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label>First Name:</label>
+                                            @Html.TextBoxFor(m => m.Student.FirstName, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Last Name:</label>
+                                            @Html.TextBoxFor(m => m.Student.LastName, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Major:</label>
+                                            @Html.DropDownListFor(m => m.Student.Major.MajorId, Model.MajorItems, "-Choose One-", new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>GPA:</label>
+                                            @Html.TextBoxFor(m => m.Student.GPA, new { @class = "form-control" })
+                                        </div>
+                                        <h4>Courses</h4>
+                                        <div class="form-group">
+                                            @Html.ListBoxFor(m => m.SelectedCourseIds, Model.CourseItems, new { @class = "form-control" })
+                                        </div>
+                                        <button class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@*<h2>EditState</h2>
 @using (Html.BeginForm(actionName: "Edit", controllerName: "Student", method: FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -60,13 +108,4 @@
             @Html.DropDownListFor(x => x.Student.Major, Model.MajorItems)
         </td>
     </tr>
-</table>
-    @*<input type="text" name="StateName" id="StateName" value="" />
-        <input type="text" name="StateAbbreviation" id="StateAbbreviation" value="@Model.StateAbbreviation" readonly/>*@
-    <button id="deleteBtn" type="submit">Confirm Edit</button>}
-@Html.ActionLink("Do Not Edit", "Edit", "Student")
-@*<script>
-        $(document).ready(function () {
-            $("#StateAbbreviation").val(@Model.StateAbbreviation.ToString());
-        })
-    </script>*@
+</table>*@
