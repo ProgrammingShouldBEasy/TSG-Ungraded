@@ -8,7 +8,7 @@ using DVDAPI.Models.Responses;
 
 namespace DVDAPI.Models.Intefaces
 {
-    interface IDvdRepository
+    public interface IDvdRepository
     {
         ResponseDVDs GetAll();
         ResponseDVDs GetByID(int id);
