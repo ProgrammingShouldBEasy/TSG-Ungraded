@@ -28,7 +28,7 @@ $("#search-button").click(function () {
             var search = $("#search").val();
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/dvds/title/" + search,
+                url: "http://localhost:44300/dvds/title/" + search,
                 contentType: "application/json;charset=UTF-8",
                 success: function (dvdArray) {
                     $.each(dvdArray, function (index, dvd) {
@@ -55,7 +55,7 @@ $("#search-button").click(function () {
             var search = $("#search").val();
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/dvds/year/" + search,
+                url: "http://localhost:44300/dvds/year/" + search,
                 contentType: "application/json;charset=UTF-8",
                 success: function (dvdArray) {
                     $.each(dvdArray, function (index, dvd) {
@@ -82,7 +82,7 @@ $("#search-button").click(function () {
             var search = $("#search").val();
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/dvds/director/" + search,
+                url: "http://localhost:44300/dvds/director/" + search,
                 contentType: "application/json;charset=UTF-8",
                 success: function (dvdArray) {
                     $.each(dvdArray, function (index, dvd) {
@@ -109,7 +109,7 @@ $("#search-button").click(function () {
             var search = $("#search").val();
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/dvds/rating/" + search,
+                url: "http://localhost:44300/dvds/rating/" + search,
                 contentType: "application/json;charset=UTF-8",
                 success: function (dvdArray) {
                     $.each(dvdArray, function (index, dvd) {
@@ -137,7 +137,7 @@ $("#search-button").click(function () {
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/dvds",
+        url: "http://localhost:44300/dvds",
         contentType: "application/json;charset=UTF-8",
         success: function (dvdArray) {
             $.each(dvdArray, function (index, dvd) {
@@ -169,7 +169,7 @@ function displayEdit(id) {
 $("#edit-save").click(function () {
     $.ajax({
         type: "PUT",
-        url: "http://localhost:8080/dvd/" + $("#editdvdID").val(),
+        url: "http://localhost:44300/dvd/" + $("#editdvdID").val(),
         data: JSON.stringify({
             dvdId: $("#editdvdID").val(),
             title: $("#edit-title").val(),
@@ -196,7 +196,7 @@ $("#edit-save").click(function () {
         $("#rows").empty();
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/dvds",
+        url: "http://localhost:44300/dvds",
         contentType: "application/json;charset=UTF-8",
         success: function (dvdArray) {
             $.each(dvdArray, function (index, dvd) {
@@ -225,7 +225,7 @@ function displayDVD(id) {
     card.style.visibility = "visible";
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/dvd/" + id,
+        url: "http://localhost:44300/dvd/" + id,
         contentType: "application/json;charset=UTF-8",
         success: function (dvd) {
             $("#display-year").append(dvd.realeaseYear).text();
@@ -276,7 +276,7 @@ function deleteDVD(id) {
     // if (isDelete) {
     //     $.ajax({
     //         type: "DELETE",
-    //         url: "http://localhost:8080/dvd/" + id,
+    //         url: "http://localhost:44300/dvd/" + id,
     //         contentType: "application/json;charset=UTF-8",
     //         success: function () {
     //         },
@@ -288,7 +288,7 @@ function deleteDVD(id) {
     // $("#deleteConfirmed").click(function(id){
     //     $.ajax({
     //         type: "DELETE",
-    //         url: "http://localhost:8080/dvd/" + id,
+    //         url: "http://localhost:44300/dvd/" + id,
     //         contentType: "application/json;charset=UTF-8",
     //         success: function () {
     //         },
@@ -302,7 +302,7 @@ function deleteDVD(id) {
 $("#deleteConfirmed").click(function() {
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/dvd/" + $("#deletedvdID").val(),
+        url: "http://localhost:44300/dvd/" + $("#deletedvdID").val(),
         contentType: "application/json;charset=UTF-8",
         success: function () {
         },
@@ -314,7 +314,7 @@ $("#deleteConfirmed").click(function() {
         $("#rows").empty();
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/dvds",
+        url: "http://localhost:44300/dvds",
         contentType: "application/json;charset=UTF-8",
         success: function (dvdArray) {
             $.each(dvdArray, function (index, dvd) {
@@ -341,7 +341,7 @@ $("#deleteConfirmed").click(function() {
 $("#create-save").click(function () {
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/dvd",
+        url: "http://localhost:44300/dvd",
         data: JSON.stringify({
             title: $("#create-title").val(),
             releaseYear: $("#create-release-year").val(),
@@ -367,7 +367,7 @@ $("#create-save").click(function () {
         $("#rows").empty();
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/dvds",
+        url: "http://localhost:44300/dvds",
         contentType: "application/json;charset=UTF-8",
         success: function (dvdArray) {
             $.each(dvdArray, function (index, dvd) {

@@ -22,7 +22,7 @@ namespace DVDAPI.Models.Repos
         {
             if (DvdLibrary == null)
             {
-                DVD Tremors = new DVD(0, "Tremors", "Ron Underwood", "PG-13", DateTime.Parse("1990"), "Worms!");
+                DVD Tremors = new DVD(0, "Tremors", "Ron Underwood", "PG-13", DateTime.Parse("01/01/1990"), "Worms!");
                 DvdLibrary = new List<DVD>();
                 DvdLibrary.Add(Tremors);
             }

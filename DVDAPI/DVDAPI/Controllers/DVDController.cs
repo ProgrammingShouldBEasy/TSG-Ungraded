@@ -9,13 +9,15 @@ using DVDAPI.Models.Intefaces;
 using DVDAPI.Models.Repos;
 using DVDAPI.Models.POCOs;
 using DVDAPI.Models.Responses;
+using System.Web.Http.Cors;
 
 namespace DVDAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DVDController : ApiController
     {
         IDvdRepository Repo = Factory.Create();
-        [Route("/dvd/{id}")]
+        [Route("dvd/{id}")]
         [AcceptVerbs("GET")]
         public IHttpActionResult Dvd(int id)
         {
@@ -30,21 +32,21 @@ namespace DVDAPI.Controllers
             }
         }
 
-        [Route("/dvds/title/{title}")]
+        [Route("dvds/title/{title}")]
         [AcceptVerbs("GET")]
         public IHttpActionResult Title(string title)
         {
             return Ok(Repo.GetByTitle(title).DVDs);
         }
 
-        [Route("/dvds")]
+        [Route("dvds")]
         [AcceptVerbs("GET")]
         public IHttpActionResult All()
         {
             return Ok(Repo.GetAll().DVDs);
         }
 
-        [Route("/dvds/year/{releaseYear}")]
+        [Route("dvds/year/{releaseYear}")]
         [AcceptVerbs("GET")]
         public IHttpActionResult Year(string releaseYear)
         {
@@ -52,21 +54,21 @@ namespace DVDAPI.Controllers
             return Ok(Repo.GetByYear(date).DVDs);
         }
 
-        [Route("/dvds/director/{directorName}")]
+        [Route("dvds/director/{directorName}")]
         [AcceptVerbs("GET")]
         public IHttpActionResult Director(string directorName)
         {
             return Ok(Repo.GetByDirector(directorName).DVDs);
         }
 
-        [Route("/dvds/rating/{rating}")]
+        [Route("dvds/rating/{rating}")]
         [AcceptVerbs("GET")]
         public IHttpActionResult Rating(string rating)
         {
             return Ok(Repo.GetByRating(rating).DVDs);
         }
 
-        [Route("/dvd")]
+        [Route("dvd")]
         [AcceptVerbs("POST")]
         public IHttpActionResult New(AddDVDRequest request)
         {
@@ -81,14 +83,14 @@ namespace DVDAPI.Controllers
                 dvd.DvdId = Repo.GetAll().DVDs.Count;
                 dvd.Notes = request.notes;
                 dvd.Rating = request.rating;
-                dvd.ReleaseYear = DateTime.Parse(request.releaseYear);
+                dvd.ReleaseYear = DateTime.Parse("01/01/" + request.releaseYear);
                 dvd.Title = request.title;
                 Repo.NewDVD(dvd);
                 return Created($"dvd/{dvd.DvdId}", dvd);
             }
         }
 
-        [Route("/dvd/{id}")]
+        [Route("dvd/{id}")]
         [AcceptVerbs("PUT")]
         public IHttpActionResult Edit(int id, AddDVDRequest request)
         {
@@ -108,7 +110,7 @@ namespace DVDAPI.Controllers
             }
         }
 
-        [Route("/dvd/{id}")]
+        [Route("dvd/{id}")]
         [AcceptVerbs("DELETE")]
         public IHttpActionResult Delete(int id)
         {
