@@ -37,7 +37,7 @@ $("#search-button").click(function () {
                             + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                             + dvd.title
                             + "</button></td><td>"
-                            + dvd.realeaseYear
+                            + dvd.releaseYear
                             + "</td><td>"
                             + dvd.director
                             + "</td><td>"
@@ -64,7 +64,7 @@ $("#search-button").click(function () {
                             + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                             + dvd.title
                             + "</button></td><td>"
-                            + dvd.realeaseYear
+                            + dvd.releaseYear
                             + "</td><td>"
                             + dvd.director
                             + "</td><td>"
@@ -91,7 +91,7 @@ $("#search-button").click(function () {
                             + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                             + dvd.title
                             + "</button></td><td>"
-                            + dvd.realeaseYear
+                            + dvd.releaseYear
                             + "</td><td>"
                             + dvd.director
                             + "</td><td>"
@@ -118,7 +118,7 @@ $("#search-button").click(function () {
                             + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                             + dvd.title
                             + "</button></td><td>"
-                            + dvd.realeaseYear
+                            + dvd.releaseYear
                             + "</td><td>"
                             + dvd.director
                             + "</td><td>"
@@ -146,7 +146,7 @@ $(document).ready(function () {
                     + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                     + dvd.title
                     + "</button></td><td>"
-                    + dvd.realeaseYear
+                    + dvd.releaseYear
                     + "</td><td>"
                     + dvd.director
                     + "</td><td>"
@@ -164,6 +164,25 @@ function displayEdit(id) {
     var card = document.getElementById("edit-dvd-card")
     card.style.visibility = "visible";
     $("#editdvdID").val(id);
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:44300/dvd/" + id,
+        contentType: "application/json;charset=UTF-8",
+        success: function (dvd) {
+            // $("#display-year").append(dvd.releaseYear).text();
+            // $("#display-director").append(dvd.director).text();
+            // $("#display-rating").append(dvd.rating).text();
+            // $("#display-notes").append(dvd.notes).text();
+            $("#edit-title").val(dvd.title),
+            $("#edit-release-year").val(dvd.releaseYear),
+            $("#edit-director").val(dvd.director),
+            $("#edit-rating").val(dvd.rating),
+            $("#edit-notes").val(dvd.notes)
+        },
+        error: function (xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
 }
 
 $("#edit-save").click(function () {
@@ -205,7 +224,7 @@ $("#edit-save").click(function () {
                     + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                     + dvd.title
                     + "</button></td><td>"
-                    + dvd.realeaseYear
+                    + dvd.releaseYear
                     + "</td><td>"
                     + dvd.director
                     + "</td><td>"
@@ -228,7 +247,7 @@ function displayDVD(id) {
         url: "http://localhost:44300/dvd/" + id,
         contentType: "application/json;charset=UTF-8",
         success: function (dvd) {
-            $("#display-year").append(dvd.realeaseYear).text();
+            $("#display-year").append(dvd.releaseYear).text();
             $("#display-director").append(dvd.director).text();
             $("#display-rating").append(dvd.rating).text();
             $("#display-notes").append(dvd.notes).text();
@@ -323,7 +342,7 @@ $("#deleteConfirmed").click(function() {
                     + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                     + dvd.title
                     + "</button></td><td>"
-                    + dvd.realeaseYear
+                    + dvd.releaseYear
                     + "</td><td>"
                     + dvd.director
                     + "</td><td>"
@@ -376,7 +395,7 @@ $("#create-save").click(function () {
                     + "><td><button type='button' onclick=displayDVD(" + dvd.dvdId + ")>"
                     + dvd.title
                     + "</button></td><td>"
-                    + dvd.realeaseYear
+                    + dvd.releaseYear
                     + "</td><td>"
                     + dvd.director
                     + "</td><td>"

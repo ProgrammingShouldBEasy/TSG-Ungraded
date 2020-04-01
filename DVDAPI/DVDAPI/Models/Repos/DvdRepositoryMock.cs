@@ -22,7 +22,7 @@ namespace DVDAPI.Models.Repos
         {
             if (DvdLibrary == null)
             {
-                DVD Tremors = new DVD(0, "Tremors", "Ron Underwood", "PG-13", DateTime.Parse("01/01/1990"), "Worms!");
+                DVD Tremors = new DVD(0, "Tremors", "Ron Underwood", "PG-13", 1990, "Worms!");
                 DvdLibrary = new List<DVD>();
                 DvdLibrary.Add(Tremors);
             }
@@ -30,10 +30,10 @@ namespace DVDAPI.Models.Repos
         public ResponseDVDs DeleteDVD(int id)
         {
             ResponseDVDs response = new ResponseDVDs();
-            response.DVDs = DvdLibrary.Where(x => x.DvdId == id).ToList();
-            if(DvdLibrary.FirstOrDefault(x => x.DvdId == id) != null)
+            response.DVDs = DvdLibrary.Where(x => x.dvdId == id).ToList();
+            if(DvdLibrary.FirstOrDefault(x => x.dvdId == id) != null)
             {
-                DvdLibrary.RemoveAt(DvdLibrary.IndexOf(DvdLibrary.FirstOrDefault(x => x.DvdId == id)));
+                DvdLibrary.RemoveAt(DvdLibrary.IndexOf(DvdLibrary.FirstOrDefault(x => x.dvdId == id)));
                 response.Success = true;
                 response.Message = "Success! The included DVD was deleted.";
             }
@@ -59,7 +59,7 @@ namespace DVDAPI.Models.Repos
         public ResponseDVDs GetByDirector(string director)
         {
             ResponseDVDs response = new ResponseDVDs();
-            response.DVDs = DvdLibrary.Where(x => x.Director == director).ToList();
+            response.DVDs = DvdLibrary.Where(x => x.director == director).ToList();
             response.Success = true;
             response.Message = "Success!";
             return response;
@@ -69,7 +69,7 @@ namespace DVDAPI.Models.Repos
         public ResponseDVDs GetByID(int id)
         {
             ResponseDVDs response = new ResponseDVDs();
-            response.DVDs = DvdLibrary.Where(x => x.DvdId == id).ToList();
+            response.DVDs = DvdLibrary.Where(x => x.dvdId == id).ToList();
             response.Success = true;
             response.Message = "Success!";
             return response;
@@ -79,7 +79,7 @@ namespace DVDAPI.Models.Repos
         public ResponseDVDs GetByRating(string rating)
         {
             ResponseDVDs response = new ResponseDVDs();
-            response.DVDs = DvdLibrary.Where(x => x.Rating == rating).ToList();
+            response.DVDs = DvdLibrary.Where(x => x.rating == rating).ToList();
             response.Success = true;
             response.Message = "Success!";
             return response;
@@ -89,17 +89,17 @@ namespace DVDAPI.Models.Repos
         public ResponseDVDs GetByTitle(string title)
         {
             ResponseDVDs response = new ResponseDVDs();
-            response.DVDs = DvdLibrary.Where(x => x.Title == title).ToList();
+            response.DVDs = DvdLibrary.Where(x => x.title == title).ToList();
             response.Success = true;
             response.Message = "Success!";
             return response;
             throw new NotImplementedException();
         }
 
-        public ResponseDVDs GetByYear(DateTime year)
+        public ResponseDVDs GetByYear(int year)
         {
             ResponseDVDs response = new ResponseDVDs();
-            response.DVDs = DvdLibrary.Where(x => x.ReleaseYear == year).ToList();
+            response.DVDs = DvdLibrary.Where(x => x.releaseYear == year).ToList();
             response.Success = true;
             response.Message = "Success!";
             return response;
@@ -120,10 +120,10 @@ namespace DVDAPI.Models.Repos
         public ResponseDVDs UpdateDVD(int id, DVD dvd)
         {
             ResponseDVDs response = new ResponseDVDs();
-            if (DvdLibrary.FirstOrDefault(x => x.DvdId == id) != null)
+            if (DvdLibrary.FirstOrDefault(x => x.dvdId == id) != null)
             {
-                response.DVDs.Add(DvdLibrary.FirstOrDefault(x => x.DvdId == id));
-                DvdLibrary.RemoveAt(DvdLibrary.IndexOf(DvdLibrary.FirstOrDefault(x => x.DvdId == id)));
+                response.DVDs.Add(DvdLibrary.FirstOrDefault(x => x.dvdId == id));
+                DvdLibrary.RemoveAt(DvdLibrary.IndexOf(DvdLibrary.FirstOrDefault(x => x.dvdId == id)));
                 DvdLibrary.Add(dvd);
                 response.Success = true;
                 response.Message = "Success! The included DVD was updated.";

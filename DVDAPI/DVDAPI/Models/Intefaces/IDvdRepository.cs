@@ -15,7 +15,7 @@ namespace DVDAPI.Models.Intefaces
         ResponseDVDs GetByDirector(string director);
         ResponseDVDs GetByRating(string rating);
         ResponseDVDs GetByTitle(string title);
-        ResponseDVDs GetByYear(DateTime year);
+        ResponseDVDs GetByYear(int year);
         ResponseDVDs DeleteDVD(int id);
         ResponseDVDs NewDVD(DVD dvd);
         ResponseDVDs UpdateDVD(int id, DVD dvd);

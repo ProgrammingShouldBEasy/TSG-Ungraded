@@ -25,13 +25,6 @@ namespace DVDAPI.Models.Repos
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "GetByID";
 
-                cmd.Parameters.AddWithValue("@ID", id);
-                conn.Open();
-                using(SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), DateTime.Parse(dr["Release Year"].ToString()), dr["Notes"].ToString()));
-                }
-                conn.Close();
                 conn.Open();
                 cmd.CommandText = "DeleteDVD";
 
@@ -59,7 +52,7 @@ namespace DVDAPI.Models.Repos
                     while (dr.Read())
                     {
                         //(int dvdId, string title, string director, string rating, DateTime releaseYear, string notes)
-                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), DateTime.Parse(dr["Release Year"].ToString()), dr["Notes"].ToString()));
+                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), (int)dr["Release Year"], dr["Notes"].ToString()));
                     }
                 }
             }
@@ -85,7 +78,7 @@ namespace DVDAPI.Models.Repos
                     while (dr.Read())
                     {
                         //(int dvdId, string title, string director, string rating, DateTime releaseYear, string notes)
-                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), DateTime.Parse(dr["Release Year"].ToString()), dr["Notes"].ToString()));
+                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), (int)dr["Release Year"], dr["Notes"].ToString()));
                     }
                 }
             }
@@ -111,7 +104,7 @@ namespace DVDAPI.Models.Repos
                     while (dr.Read())
                     {
                         //(int dvdId, string title, string director, string rating, DateTime releaseYear, string notes)
-                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), DateTime.Parse(dr["Release Year"].ToString()), dr["Notes"].ToString()));
+                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), (int)dr["Release Year"], dr["Notes"].ToString()));
                     }
                 }
             }
@@ -137,7 +130,7 @@ namespace DVDAPI.Models.Repos
                     while (dr.Read())
                     {
                         //(int dvdId, string title, string director, string rating, DateTime releaseYear, string notes)
-                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), DateTime.Parse(dr["Release Year"].ToString()), dr["Notes"].ToString()));
+                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), (int)dr["Release Year"], dr["Notes"].ToString()));
                     }
                 }
             }
@@ -163,7 +156,7 @@ namespace DVDAPI.Models.Repos
                     while (dr.Read())
                     {
                         //(int dvdId, string title, string director, string rating, DateTime releaseYear, string notes)
-                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), DateTime.Parse(dr["Release Year"].ToString()), dr["Notes"].ToString()));
+                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), (int)dr["Release Year"], dr["Notes"].ToString()));
                     }
                 }
             }
@@ -171,7 +164,7 @@ namespace DVDAPI.Models.Repos
             throw new NotImplementedException();
         }
 
-        public ResponseDVDs GetByYear(DateTime year)
+        public ResponseDVDs GetByYear(int year)
         {
             ResponseDVDs response = new ResponseDVDs();
             using (SqlConnection conn = new SqlConnection())
@@ -182,14 +175,14 @@ namespace DVDAPI.Models.Repos
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "GetByYear";
 
-                cmd.Parameters.AddWithValue("@Year", year.Year);
+                cmd.Parameters.AddWithValue("@Year", year);
                 conn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
                         //(int dvdId, string title, string director, string rating, DateTime releaseYear, string notes)
-                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), DateTime.Parse(dr["Release Year"].ToString()), dr["Notes"].ToString()));
+                        response.DVDs.Add(new DVD((int)dr["DVD ID"], dr["Title"].ToString(), dr["Director"].ToString(), dr["Rating"].ToString(), (int)dr["Release Year"], dr["Notes"].ToString()));
                     }
                 }
             }
@@ -200,7 +193,7 @@ namespace DVDAPI.Models.Repos
         public ResponseDVDs NewDVD(DVD dvd)
         {
             ResponseDVDs response = new ResponseDVDs();
-            if (dvd != null && dvd.Director != null && dvd.DvdId >= 0 && dvd.Rating != null && dvd.ReleaseYear != null && dvd.Title != null)
+            if (dvd != null && dvd.director != null && dvd.dvdId >= 0 && dvd.rating != null && dvd.releaseYear != null && dvd.title != null)
             {
                 using (SqlConnection conn = new SqlConnection())
                 {
@@ -210,11 +203,11 @@ namespace DVDAPI.Models.Repos
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "NewDVD";
 
-                    cmd.Parameters.AddWithValue("@Title", dvd.Title);
-                    cmd.Parameters.AddWithValue("@Year", dvd.ReleaseYear.Year);
-                    cmd.Parameters.AddWithValue("@Name", dvd.Director);
-                    cmd.Parameters.AddWithValue("@Rating", dvd.Rating);
-                    cmd.Parameters.AddWithValue("@Notes", dvd.Notes);
+                    cmd.Parameters.AddWithValue("@Title", dvd.title);
+                    cmd.Parameters.AddWithValue("@Year", dvd.releaseYear);
+                    cmd.Parameters.AddWithValue("@Name", dvd.director);
+                    cmd.Parameters.AddWithValue("@Rating", dvd.rating);
+                    cmd.Parameters.AddWithValue("@Notes", dvd.notes);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
@@ -227,7 +220,7 @@ namespace DVDAPI.Models.Repos
         public ResponseDVDs UpdateDVD(int id, DVD dvd)
         {
             ResponseDVDs response = new ResponseDVDs();
-            if (dvd != null && dvd.Director != null && dvd.DvdId >= 0 && dvd.Rating != null && dvd.ReleaseYear != null && dvd.Title != null)
+            if (dvd != null && dvd.director != null && dvd.dvdId >= 0 && dvd.rating != null && dvd.releaseYear != null && dvd.title != null)
             {
                 using (SqlConnection conn = new SqlConnection())
                 {
@@ -238,11 +231,11 @@ namespace DVDAPI.Models.Repos
                     cmd.CommandText = "UpdateDVD";
 
                     cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.Parameters.AddWithValue("@Title", dvd.Title);
-                    cmd.Parameters.AddWithValue("@Year", dvd.ReleaseYear.Year);
-                    cmd.Parameters.AddWithValue("@Name", dvd.Director);
-                    cmd.Parameters.AddWithValue("@Rating", dvd.Rating);
-                    cmd.Parameters.AddWithValue("@Notes", dvd.Notes);
+                    cmd.Parameters.AddWithValue("@Title", dvd.title);
+                    cmd.Parameters.AddWithValue("@Year", dvd.releaseYear);
+                    cmd.Parameters.AddWithValue("@Name", dvd.director);
+                    cmd.Parameters.AddWithValue("@Rating", dvd.rating);
+                    cmd.Parameters.AddWithValue("@Notes", dvd.notes);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }

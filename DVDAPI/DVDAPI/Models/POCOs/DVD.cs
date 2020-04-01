@@ -7,30 +7,30 @@ namespace DVDAPI.Models.POCOs
 {
     public class DVD
     {
-        public int DvdId { get; set; }
-        public string Title { get; set; }
-        public string Director { get; set; }
-        public string Rating { get; set; }
-        public DateTime ReleaseYear { get; set; }
-        public string Notes { get; set; }
+        public int dvdId { get; set; }
+        public string title { get; set; }
+        public string director { get; set; }
+        public string rating { get; set; }
+        public int releaseYear { get; set; }
+        public string notes { get; set; }
 
         public DVD()
         {
-            DvdId = 0;
-            Title = "";
-            Director = "";
-            Rating = "";
-            ReleaseYear = DateTime.Now;
-            Notes = "";
+            dvdId = 0;
+            title = "";
+            director = "";
+            rating = "";
+            releaseYear = 1990;
+            notes = "";
         }
-        public DVD(int dvdId, string title, string director, string rating, DateTime releaseYear, string notes)
+        public DVD(int dvdIda, string titlea, string directora, string ratinga, int releaseYeara, string notesa)
         {
-            DvdId = dvdId;
-            Title = title;
-            Director = director;
-            Rating = rating;
-            ReleaseYear = releaseYear;
-            Notes = notes;
+            dvdId = dvdIda;
+            title = titlea;
+            director = directora;
+            rating = ratinga;
+            releaseYear = releaseYeara;
+            notes = notesa;
         }
     }
 }

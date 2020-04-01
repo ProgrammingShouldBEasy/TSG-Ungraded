@@ -21,7 +21,7 @@ namespace DVDAPI.Controllers
         [AcceptVerbs("GET")]
         public IHttpActionResult Dvd(int id)
         {
-            DVD dvd = Repo.GetByID(id).DVDs.FirstOrDefault(x => x.DvdId == id);
+            DVD dvd = Repo.GetByID(id).DVDs.FirstOrDefault(x => x.dvdId == id);
             if(dvd == null)
             {
                 return NotFound();
@@ -50,8 +50,7 @@ namespace DVDAPI.Controllers
         [AcceptVerbs("GET")]
         public IHttpActionResult Year(string releaseYear)
         {
-            DateTime date = DateTime.Parse(releaseYear);
-            return Ok(Repo.GetByYear(date).DVDs);
+            return Ok(Repo.GetByYear(int.Parse(releaseYear)).DVDs);
         }
 
         [Route("dvds/director/{directorName}")]
@@ -79,14 +78,14 @@ namespace DVDAPI.Controllers
             else
             {
                 DVD dvd = new DVD();
-                dvd.Director = request.director;
-                dvd.DvdId = Repo.GetAll().DVDs.Count;
-                dvd.Notes = request.notes;
-                dvd.Rating = request.rating;
-                dvd.ReleaseYear = DateTime.Parse("01/01/" + request.releaseYear);
-                dvd.Title = request.title;
+                dvd.director = request.director;
+                dvd.dvdId = Repo.GetAll().DVDs.Count;
+                dvd.notes = request.notes;
+                dvd.rating = request.rating;
+                dvd.releaseYear = int.Parse(request.releaseYear);
+                dvd.title = request.title;
                 Repo.NewDVD(dvd);
-                return Created($"dvd/{dvd.DvdId}", dvd);
+                return Created($"dvd/{dvd.dvdId}", dvd);
             }
         }
 
@@ -102,7 +101,7 @@ namespace DVDAPI.Controllers
             {
                 if (Repo.GetByID(id) != null)
                 {
-                    DVD dvd = new DVD(Repo.GetAll().DVDs.Count, request.title, request.director, request.rating, DateTime.Parse(request.releaseYear), request.notes);
+                    DVD dvd = new DVD(Repo.GetAll().DVDs.Count, request.title, request.director, request.rating, int.Parse(request.releaseYear), request.notes);
                     Repo.UpdateDVD(id, dvd);
                     return Ok(dvd);
                 }

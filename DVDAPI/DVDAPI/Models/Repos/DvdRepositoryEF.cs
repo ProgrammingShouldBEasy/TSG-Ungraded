@@ -18,11 +18,11 @@ namespace DVDAPI.Models.Repos
             if (repo.DVDs.FirstOrDefault(x => x.id == id) != null)
             {
                 DVD dvd = new DVD();
-                dvd.Director = repo.DVDs.FirstOrDefault(x => x.id == id).director;
-                dvd.DvdId = id;
-                dvd.Notes = repo.DVDs.FirstOrDefault(x => x.id == id).notes;
-                dvd.Rating = repo.DVDs.FirstOrDefault(x => x.id == id).rating;
-                dvd.ReleaseYear = DateTime.Parse(repo.DVDs.FirstOrDefault(x => x.id == id).year.ToString());
+                dvd.director = repo.DVDs.FirstOrDefault(x => x.id == id).director;
+                dvd.dvdId = id;
+                dvd.notes = repo.DVDs.FirstOrDefault(x => x.id == id).notes;
+                dvd.rating = repo.DVDs.FirstOrDefault(x => x.id == id).rating;
+                dvd.releaseYear = repo.DVDs.FirstOrDefault(x => x.id == id).year;
                 repo.DVDs.Remove(repo.DVDs.FirstOrDefault(x => x.id == id));
                 response.DVDs.Add(dvd);
                 repo.SaveChanges();
@@ -46,7 +46,7 @@ namespace DVDAPI.Models.Repos
             foreach( var item in repo.DVDs.Where(x => x.id >= 0).ToList())
             {
                 //int dvdId, string title, string director, string rating, DateTime releaseYear, string notes
-                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, DateTime.Parse(item.year.ToString()), item.notes);
+                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, item.year, item.notes);
                 response.DVDs.Add(dvd);
             }
             return response;
@@ -60,7 +60,7 @@ namespace DVDAPI.Models.Repos
             foreach (var item in repo.DVDs.Where(x => x.director != null).ToList())
             {
                 //int dvdId, string title, string director, string rating, DateTime releaseYear, string notes
-                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, DateTime.Parse(item.year.ToString()), item.notes);
+                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, item.year, item.notes);
                 response.DVDs.Add(dvd);
             }
             return response;
@@ -74,7 +74,7 @@ namespace DVDAPI.Models.Repos
             foreach (var item in repo.DVDs.Where(x => x.id == id).ToList())
             {
                 //int dvdId, string title, string director, string rating, DateTime releaseYear, string notes
-                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, DateTime.Parse(item.year.ToString()), item.notes);
+                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, item.year, item.notes);
                 response.DVDs.Add(dvd);
             }
             return response;
@@ -88,7 +88,7 @@ namespace DVDAPI.Models.Repos
             foreach (var item in repo.DVDs.Where(x => x.rating == rating).ToList())
             {
                 //int dvdId, string title, string director, string rating, DateTime releaseYear, string notes
-                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, DateTime.Parse(item.year.ToString()), item.notes);
+                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, item.year, item.notes);
                 response.DVDs.Add(dvd);
             }
             return response;
@@ -102,21 +102,21 @@ namespace DVDAPI.Models.Repos
             foreach (var item in repo.DVDs.Where(x => x.title == title).ToList())
             {
                 //int dvdId, string title, string director, string rating, DateTime releaseYear, string notes
-                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, DateTime.Parse(item.year.ToString()), item.notes);
+                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, item.year, item.notes);
                 response.DVDs.Add(dvd);
             }
             return response;
             throw new NotImplementedException();
         }
 
-        public ResponseDVDs GetByYear(DateTime year)
+        public ResponseDVDs GetByYear(int year)
         {
             DVDEntities repo = new DVDEntities();
             ResponseDVDs response = new ResponseDVDs();
-            foreach (var item in repo.DVDs.Where(x => x.year == year.Year).ToList())
+            foreach (var item in repo.DVDs.Where(x => x.year == year).ToList())
             {
                 //int dvdId, string title, string director, string rating, DateTime releaseYear, string notes
-                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, DateTime.Parse(item.year.ToString()), item.notes);
+                DVD dvd = new DVD(item.id, item.title, item.director, item.rating, item.year, item.notes);
                 response.DVDs.Add(dvd);
             }
             return response;
@@ -130,11 +130,12 @@ namespace DVDAPI.Models.Repos
             if (dvd != null)
             {
                 DVDs dvdToAdd = new DVDs();
-                dvdToAdd.id = dvd.DvdId;
-                dvdToAdd.notes = dvd.Notes;
-                dvdToAdd.rating = dvd.Rating;
-                dvdToAdd.title = dvd.Title;
-                dvdToAdd.year = dvd.ReleaseYear.Year;
+                dvdToAdd.id = dvd.dvdId;
+                dvdToAdd.notes = dvd.notes;
+                dvdToAdd.rating = dvd.rating;
+                dvdToAdd.title = dvd.title;
+                dvdToAdd.year = dvd.releaseYear;
+                dvdToAdd.director = dvd.director;
                 response.DVDs.Add(dvd);
                 repo.DVDs.Add(dvdToAdd);
                 repo.SaveChanges();
@@ -158,11 +159,12 @@ namespace DVDAPI.Models.Repos
             if (dvd != null)
             {
                 DVDs dvdToUpdate = new DVDs();
-                dvdToUpdate.id = dvd.DvdId;
-                dvdToUpdate.notes = dvd.Notes;
-                dvdToUpdate.rating = dvd.Rating;
-                dvdToUpdate.title = dvd.Title;
-                dvdToUpdate.year = dvd.ReleaseYear.Year;
+                dvdToUpdate.id = dvd.dvdId;
+                dvdToUpdate.notes = dvd.notes;
+                dvdToUpdate.rating = dvd.rating;
+                dvdToUpdate.title = dvd.title;
+                dvdToUpdate.year = dvd.releaseYear;
+                dvdToUpdate.director = dvd.director;
                 repo.DVDs.Remove(repo.DVDs.FirstOrDefault(x => x.id == id));
                 repo.DVDs.Add(dvdToUpdate);
                 response.DVDs.Add(dvd);
