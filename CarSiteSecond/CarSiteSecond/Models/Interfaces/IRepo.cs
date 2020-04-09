@@ -11,11 +11,36 @@ namespace CarSiteSecond.Models.Interfaces
 {
     public interface IRepo
     {
-        CarResponse GetCars(CarRequest carRequest);
-        ContactResponse GetContacts(ContactRequest contactRequest);
-        MakeResponse GetMakes(MakeRequest makeRequest);
-        ModelResponse GetModels(ModelRequest modelRequest);
-        SaleResponse GetSales(SaleRequest saleRequest);
-        UserResponse GetUsers(UserRequest userRequest);
+        //What CRUD methods should I have?
+        //CRUD
+        CarResponse GetCarsAll(CarRequest carRequest);
+        CarResponse GetCarsOne(CarRequest carRequest);
+        CarResponse CreateCarOne(CarRequest carRequest);
+        CarResponse UpdateCar(CarRequest carRequest);
+        CarResponse DeleteCar(CarRequest carRequest);
+
+        //C
+        ContactResponse CreateContactsOne(ContactRequest contactRequest);
+
+        //CR
+        MakeResponse GetMakesAll(MakeRequest makeRequest); 
+        MakeResponse GetMakesOne(MakeRequest makeRequest);
+        MakeResponse CreateMakesOne(MakeRequest makeRequest);
+
+        //CR
+        ModelResponse GetModelsAll(ModelRequest modelRequest); 
+        ModelResponse GetModelsOne(ModelRequest modelRequest);
+        ModelResponse CreateModelsOne(ModelRequest modelRequest);
+
+        //CR
+        SaleResponse GetSalesAll(SaleRequest saleRequest); 
+        SaleResponse GetSalesOne(SaleRequest saleRequest);
+        SaleResponse CreateSalesOne(SaleRequest saleRequest);
+
+        //CRU
+        UserResponse GetUsersAll(UserRequest userRequest); 
+        UserResponse GetUsersOne(UserRequest userRequest);
+        UserResponse CreateUsersOne(UserRequest userRequest);
+        UserResponse UpdateUsersOne(UserRequest userRequest);
     }
 }

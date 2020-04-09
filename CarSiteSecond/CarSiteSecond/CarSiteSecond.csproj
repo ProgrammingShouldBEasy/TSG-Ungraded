@@ -208,7 +208,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Data\Factory.cs" />
+    <Compile Include="Data\Repos\CarSiteRepoProduction.cs" />
+    <Compile Include="Data\Repos\CarSiteRepoQA.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -407,7 +410,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\Repos\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
