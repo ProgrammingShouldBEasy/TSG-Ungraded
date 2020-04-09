@@ -45,10 +45,11 @@
                         LockoutEndDateUtc = c.DateTime(),
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
-                    })
+                        FirstName = c.String(nullable: false, maxLength: 128),
+                        LastName = c.String(nullable: false, maxLength: 128),
+                })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+                .Index(t => new { t.FirstName, t.LastName }, unique: true, name: "UserNameIndex");
             
             CreateTable(
                 "dbo.AspNetUserClaims",
