@@ -39,7 +39,7 @@ CREATE TABLE [Sales]
 [UserID] nvarchar(128) NOT NULL,
 [PurchasePrice] decimal(15,2) NOT NULL)
 
-CREATE TABLE [Interrior]
+CREATE TABLE [Interior]
 ([id] INT Primary Key Identity (1,1),
 [Interior] nvarchar(50) NOT NULL)
 
@@ -58,7 +58,7 @@ CREATE TABLE [Cars]
 [BodyStyle] nvarchar(50) NOT NULL,
 [Transmission] nvarchar(50) NOT NULL,
 [PictureSrc] nvarchar(100) NOT NULL,
-[InterriorID] INT NOT NULL,
+[InteriorID] INT NOT NULL,
 [Mileage] INT NOT NULL,
 [VIN] nvarchar(50) NOT NULL,
 [SalePrice] decimal(15,2) NOT NULL,
@@ -68,13 +68,13 @@ CREATE TABLE [Cars]
 
 CREATE TABLE [Make]
 ([id] INT PRIMARY KEY IDENTITY(1,1),
-[Make] nvarchar(50) NOT NULL,
+[MakeName] nvarchar(50) NOT NULL,
 [DateAdded] DATE NOT NULL,
 [UserID] nvarchar(128) NOT NULL)
 
 CREATE TABLE [Model]
 ([id] INT PRIMARY KEY IDENTITY(1,1),
-[Model] nvarchar(50) NOT NULL,
+[ModelName] nvarchar(50) NOT NULL,
 [MakeID] INT NOT NULL,
 [DateAdded] DATE NOT NULL,
 [UserID] nvarchar(128) NOT NULL)
@@ -104,8 +104,8 @@ ADD CONSTRAINT FK_ModelMake
 FOREIGN KEY (MakeID) REFERENCES Make(id);
 
 ALTER TABLE Cars
-ADD CONSTRAINT FK_CarsInterrior
-FOREIGN KEY (InterriorID) REFERENCES Interrior(id);
+ADD CONSTRAINT FK_CarsInterior
+FOREIGN KEY (InteriorID) REFERENCES Interior(id);
 
 ALTER TABLE Cars
 ADD CONSTRAINT FK_CarsColor
@@ -159,7 +159,7 @@ END
 IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')) 
 BEGIN
 ALTER TABLE Cars
-DROP CONSTRAINT FK_CarsInterrior;
+DROP CONSTRAINT FK_CarsInterior;
 ALTER TABLE Cars
 DROP CONSTRAINT FK_CarsColor;
 ALTER TABLE Cars
@@ -174,9 +174,9 @@ IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Contacts'
 BEGIN
 DROP TABLE Contacts
 END
-IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Interrior')) 
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Interior')) 
 BEGIN
-DROP TABLE Interrior
+DROP TABLE Interior
 END
 IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Model')) 
 BEGIN
@@ -224,7 +224,7 @@ END
 IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')) 
 BEGIN
 ALTER TABLE Cars
-DROP CONSTRAINT FK_CarsInterrior;
+DROP CONSTRAINT FK_CarsInterior;
 ALTER TABLE Cars
 DROP CONSTRAINT FK_CarsColor;
 ALTER TABLE Cars
@@ -239,9 +239,9 @@ IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Contacts'
 BEGIN
 DROP TABLE Contacts
 END
-IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Interrior')) 
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Interior')) 
 BEGIN
-DROP TABLE Interrior
+DROP TABLE Interior
 END
 IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Model')) 
 BEGIN
@@ -284,7 +284,7 @@ CREATE TABLE [Sales]
 [UserID] nvarchar(128) NOT NULL,
 [PurchasePrice] decimal(15,2) NOT NULL)
 
-CREATE TABLE [Interrior]
+CREATE TABLE [Interior]
 ([id] INT Primary Key Identity (1,1),
 [Interior] nvarchar(50) NOT NULL)
 
@@ -303,7 +303,7 @@ CREATE TABLE [Cars]
 [BodyStyle] nvarchar(50) NOT NULL,
 [Transmission] nvarchar(50) NOT NULL,
 [PictureSrc] nvarchar(100) NOT NULL,
-[InterriorID] INT NOT NULL,
+[InteriorID] INT NOT NULL,
 [Mileage] INT NOT NULL,
 [VIN] nvarchar(50) NOT NULL,
 [SalePrice] decimal(15,2) NOT NULL,
@@ -313,13 +313,13 @@ CREATE TABLE [Cars]
 
 CREATE TABLE [Make]
 ([id] INT PRIMARY KEY IDENTITY(1,1),
-[Make] nvarchar(50) NOT NULL,
+[MakeName] nvarchar(50) NOT NULL,
 [DateAdded] DATE NOT NULL,
 [UserID] nvarchar(128) NOT NULL)
 
 CREATE TABLE [Model]
 ([id] INT PRIMARY KEY IDENTITY(1,1),
-[Model] nvarchar(50) NOT NULL,
+[ModelName] nvarchar(50) NOT NULL,
 [MakeID] INT NOT NULL,
 [DateAdded] DATE NOT NULL,
 [UserID] nvarchar(128) NOT NULL)
@@ -349,8 +349,8 @@ ADD CONSTRAINT FK_ModelMake
 FOREIGN KEY (MakeID) REFERENCES Make(id);
 
 ALTER TABLE Cars
-ADD CONSTRAINT FK_CarsInterrior
-FOREIGN KEY (InterriorID) REFERENCES Interrior(id);
+ADD CONSTRAINT FK_CarsInterior
+FOREIGN KEY (InteriorID) REFERENCES Interior(id);
 
 ALTER TABLE Cars
 ADD CONSTRAINT FK_CarsColor
