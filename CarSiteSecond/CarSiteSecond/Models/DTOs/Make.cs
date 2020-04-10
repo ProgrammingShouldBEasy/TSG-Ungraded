@@ -7,12 +7,11 @@ namespace CarSiteSecond.Models.DTOs
 {
     public class Make
     {
-        public Make(int id, string makeName, DateTime dateAdded, int myProperty, string userID)
+        public Make(int id, string makeName, DateTime dateAdded, string userID)
         {
             this.id = id;
             MakeName = makeName;
             DateAdded = dateAdded;
-            MyProperty = myProperty;
             UserID = userID;
         }
 
@@ -21,14 +20,12 @@ namespace CarSiteSecond.Models.DTOs
             this.id = 0;
             MakeName = "";
             DateAdded = DateTime.Now;
-            MyProperty = 0;
             UserID = "";
         }
 
         public int id { get; set; }
         public string MakeName { get; set; }
         public DateTime DateAdded { get; set; }
-        public int MyProperty { get; set; }
         public string UserID { get; set; }
     }
 }

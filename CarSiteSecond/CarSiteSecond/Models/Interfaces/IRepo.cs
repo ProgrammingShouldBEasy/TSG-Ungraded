@@ -44,10 +44,7 @@ namespace CarSiteSecond.Models.Interfaces
         SaleResponse GetSalesOne(SaleRequest saleRequest);
         SaleResponse CreateSalesOne(SaleRequest saleRequest);
 
-        //CRU
-        UserResponse GetUsersAll(UserRequest userRequest); 
-        UserResponse GetUsersOne(UserRequest userRequest);
-        UserResponse CreateUsersOne(UserRequest userRequest);
-        UserResponse UpdateUsersOne(UserRequest userRequest);
+        //R
+        UserResponse GetUsersAll(UserRequest userRequest);
     }
 }
