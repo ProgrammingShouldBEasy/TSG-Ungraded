@@ -11,37 +11,20 @@ namespace CarSiteSecond.Data.Repos
 {
     public class CarSiteRepoQA : IRepo
     {
+        List<Car> Cars = new List<Car>();
+        List<Contact> Contacts = new List<Contact>();
+        List<Make> Makes = new List<Make>();
+        List<Model> Models = new List<Model>();
+        List<Sale> Sales = new List<Sale>();
+        List<Special> Specials = new List<Special>();
+        List<User> Users = new List<User>();
 
         public CarResponse CreateCarsOne(CarRequest carRequest)
         {
             CarResponse response = new CarResponse();
             if (carRequest.Cars.Count == 1 && carRequest.Cars.FirstOrDefault() != null && carRequest.Cars.FirstOrDefault().ModelID > 0 && carRequest.Cars.FirstOrDefault().Year > 1900 && carRequest.Cars.FirstOrDefault().BodyStyle != "" && carRequest.Cars.FirstOrDefault().Transmission != "" && carRequest.Cars.FirstOrDefault().PictureSrc != "" && carRequest.Cars.FirstOrDefault().InteriorID > 0 && carRequest.Cars.FirstOrDefault().Mileage > 0 && carRequest.Cars.FirstOrDefault().VIN != "" && carRequest.Cars.FirstOrDefault().SalePrice > 0 && carRequest.Cars.FirstOrDefault().MSRP > 0 && carRequest.Cars.FirstOrDefault().ColorID > 0)
             {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        Connection = conn,
-                        CommandType = CommandType.StoredProcedure,
-                        CommandText = "CreateCarsOne"
-                    };
-
-                    cmd.Parameters.AddWithValue("@ModelID", carRequest.Cars.FirstOrDefault().ModelID);
-                    cmd.Parameters.AddWithValue("@Year", carRequest.Cars.FirstOrDefault().Year);
-                    cmd.Parameters.AddWithValue("@BodyStyle", carRequest.Cars.FirstOrDefault().BodyStyle);
-                    cmd.Parameters.AddWithValue("@Transmission", carRequest.Cars.FirstOrDefault().Transmission);
-                    cmd.Parameters.AddWithValue("@PictureSrc", carRequest.Cars.FirstOrDefault().PictureSrc);
-                    cmd.Parameters.AddWithValue("@InteriorID", carRequest.Cars.FirstOrDefault().InteriorID);
-                    cmd.Parameters.AddWithValue("@Mileage", carRequest.Cars.FirstOrDefault().Mileage);
-                    cmd.Parameters.AddWithValue("@VIN", carRequest.Cars.FirstOrDefault().VIN);
-                    cmd.Parameters.AddWithValue("@SalePrice", carRequest.Cars.FirstOrDefault().SalePrice);
-                    cmd.Parameters.AddWithValue("@MSRP", carRequest.Cars.FirstOrDefault().MSRP);
-                    cmd.Parameters.AddWithValue("@Featured", carRequest.Cars.FirstOrDefault().Featured);
-                    cmd.Parameters.AddWithValue("@ColorID", carRequest.Cars.FirstOrDefault().ColorID);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                Cars.Add(carRequest.Cars.FirstOrDefault());
             }
             response.Cars.Add(carRequest.Cars.FirstOrDefault());
             return response;
@@ -53,24 +36,7 @@ namespace CarSiteSecond.Data.Repos
             ContactResponse response = new ContactResponse();
             if (contactRequest.Contacts.Count == 1 && contactRequest.Contacts.FirstOrDefault() != null && contactRequest.Contacts.FirstOrDefault().Name != "" && contactRequest.Contacts.FirstOrDefault().Email != "" && contactRequest.Contacts.FirstOrDefault().Phone != "" && contactRequest.Contacts.FirstOrDefault().Message != "")
             {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        Connection = conn,
-                        CommandType = CommandType.StoredProcedure,
-                        CommandText = "CreateContactsOne"
-                    };
-
-                    cmd.Parameters.AddWithValue("@Name", contactRequest.Contacts.FirstOrDefault().Name);
-                    cmd.Parameters.AddWithValue("@Email", contactRequest.Contacts.FirstOrDefault().Email);
-                    cmd.Parameters.AddWithValue("@Phone", contactRequest.Contacts.FirstOrDefault().Phone);
-                    cmd.Parameters.AddWithValue("@Message", contactRequest.Contacts.FirstOrDefault().Message);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                Contacts.Add(contactRequest.Contacts.FirstOrDefault());
             }
             response.Contacts.Add(contactRequest.Contacts.FirstOrDefault());
             return response;
@@ -82,23 +48,7 @@ namespace CarSiteSecond.Data.Repos
             MakeResponse response = new MakeResponse();
             if (makeRequest.Makes.Count == 1 && makeRequest.Makes.FirstOrDefault() != null && makeRequest.Makes.FirstOrDefault().id > 0 && makeRequest.Makes.FirstOrDefault().MakeName != "" && makeRequest.Makes.FirstOrDefault().DateAdded <= DateTime.Now && makeRequest.Makes.Count == 1 && makeRequest.Makes.FirstOrDefault() != null && makeRequest.Makes.FirstOrDefault().id > 0 && makeRequest.Makes.FirstOrDefault().MakeName != "" && makeRequest.Makes.FirstOrDefault().UserID != "")
             {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        Connection = conn,
-                        CommandType = CommandType.StoredProcedure,
-                        CommandText = "CreateMakesOne"
-                    };
-
-                    cmd.Parameters.AddWithValue("@MakeName", makeRequest.Makes.FirstOrDefault().MakeName);
-                    cmd.Parameters.AddWithValue("@DateAdded", makeRequest.Makes.FirstOrDefault().DateAdded);
-                    cmd.Parameters.AddWithValue("@UserID", makeRequest.Makes.FirstOrDefault().UserID);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                Makes.Add(makeRequest.Makes.FirstOrDefault());
             }
             response.Makes.Add(makeRequest.Makes.FirstOrDefault());
             return response;
@@ -110,24 +60,7 @@ namespace CarSiteSecond.Data.Repos
             ModelResponse response = new ModelResponse();
             if (modelRequest.Models.Count == 1 && modelRequest.Models.FirstOrDefault() != null && modelRequest.Models.FirstOrDefault().ModelName != "" && modelRequest.Models.FirstOrDefault().MakeID > 0 && modelRequest.Models.FirstOrDefault().DateAdded <= DateTime.Now && modelRequest.Models.FirstOrDefault().UserID != "")
             {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        Connection = conn,
-                        CommandType = CommandType.StoredProcedure,
-                        CommandText = "CreateModelsOne"
-                    };
-
-                    cmd.Parameters.AddWithValue("@ModelName", modelRequest.Models.FirstOrDefault().ModelName);
-                    cmd.Parameters.AddWithValue("@MakeID", modelRequest.Models.FirstOrDefault().MakeID);
-                    cmd.Parameters.AddWithValue("@DateAdded", modelRequest.Models.FirstOrDefault().DateAdded);
-                    cmd.Parameters.AddWithValue("@UserID", modelRequest.Models.FirstOrDefault().UserID);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                Models.Add(modelRequest.Models.FirstOrDefault());
             }
             response.Models.Add(modelRequest.Models.FirstOrDefault());
             return response;
@@ -139,32 +72,7 @@ namespace CarSiteSecond.Data.Repos
             SaleResponse response = new SaleResponse();
             if (saleRequest.Sales.Count == 1 && saleRequest.Sales.FirstOrDefault() != null && saleRequest.Sales.FirstOrDefault().PurchaseType > 0 && saleRequest.Sales.FirstOrDefault().Name != "" && saleRequest.Sales.FirstOrDefault().Email != "" && saleRequest.Sales.FirstOrDefault().Street1 != "" && saleRequest.Sales.FirstOrDefault().Street2 != "" && saleRequest.Sales.FirstOrDefault().City != "" && saleRequest.Sales.FirstOrDefault().State != "" && saleRequest.Sales.FirstOrDefault().Zip != "" && saleRequest.Sales.FirstOrDefault().Phone != "" && saleRequest.Sales.FirstOrDefault().CarID > 0 && saleRequest.Sales.FirstOrDefault().UserID != "" && saleRequest.Sales.FirstOrDefault().PurchasePrice < 0)
             {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        Connection = conn,
-                        CommandType = CommandType.StoredProcedure,
-                        CommandText = "CreateSalesOne"
-                    };
-
-                    cmd.Parameters.AddWithValue("@PurchaseType", saleRequest.Sales.FirstOrDefault().PurchaseType);
-                    cmd.Parameters.AddWithValue("@Name", saleRequest.Sales.FirstOrDefault().Name);
-                    cmd.Parameters.AddWithValue("@Email", saleRequest.Sales.FirstOrDefault().Email);
-                    cmd.Parameters.AddWithValue("@Street1", saleRequest.Sales.FirstOrDefault().Street1);
-                    cmd.Parameters.AddWithValue("@Street2", saleRequest.Sales.FirstOrDefault().Street2);
-                    cmd.Parameters.AddWithValue("@City", saleRequest.Sales.FirstOrDefault().City);
-                    cmd.Parameters.AddWithValue("@State", saleRequest.Sales.FirstOrDefault().State);
-                    cmd.Parameters.AddWithValue("@Zip", saleRequest.Sales.FirstOrDefault().Zip);
-                    cmd.Parameters.AddWithValue("@Phone", saleRequest.Sales.FirstOrDefault().Phone);
-                    cmd.Parameters.AddWithValue("@CarID", saleRequest.Sales.FirstOrDefault().CarID);
-                    cmd.Parameters.AddWithValue("@UserID", saleRequest.Sales.FirstOrDefault().UserID);
-                    cmd.Parameters.AddWithValue("@PurchasePrice", saleRequest.Sales.FirstOrDefault().PurchasePrice);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                Sales.Add(saleRequest.Sales.FirstOrDefault());
             }
             response.Sales.Add(saleRequest.Sales.FirstOrDefault());
             return response;
@@ -176,23 +84,7 @@ namespace CarSiteSecond.Data.Repos
             SpecialResponse response = new SpecialResponse();
             if (specialRequest.Specials.Count == 1 && specialRequest.Specials.FirstOrDefault() != null && specialRequest.Specials.FirstOrDefault().Title != "" && specialRequest.Specials.FirstOrDefault().Text != "")
             {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        Connection = conn,
-                        CommandType = CommandType.StoredProcedure,
-                        CommandText = "CreateSpecialsOne"
-                    };
-
-                    cmd.Parameters.AddWithValue("@Title", specialRequest.Specials.FirstOrDefault().Title);
-                    cmd.Parameters.AddWithValue("@Text", specialRequest.Specials.FirstOrDefault().Text);
-
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                Specials.Add(specialRequest.Specials.FirstOrDefault());
             }
             response.Specials.Add(specialRequest.Specials.FirstOrDefault());
             return response;
@@ -202,42 +94,8 @@ namespace CarSiteSecond.Data.Repos
         public CarResponse DeleteCarsOne(CarRequest carRequest)
         {
             CarResponse response = new CarResponse();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetCarsOne"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
-                        response.Cars.Add(new Car((int)dr["id"], (int)dr["ModelID"], (int)dr["Year"], dr["BodyStyle"].ToString(), dr["Transmission"].ToString(), dr["PictureSrc"].ToString(), (int)dr["InteriorID"], (int)dr["Mileage"], dr["VIN"].ToString(), (decimal)dr["SalePrice"], (decimal)dr["MSRP"], (bool)dr["Featured"], (int)dr["ColorID"]));
-                    }
-                }
-            }
-
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "DeleteCarsOne"
-                };
-
-                conn.Open();
-
-                cmd.Parameters.AddWithValue("@id", carRequest.Cars.FirstOrDefault().id);
-                cmd.ExecuteNonQuery();
-            }
+            response.Cars.Add(Cars.Where(c => c.id == carRequest.Cars.FirstOrDefault().id).FirstOrDefault());
+            Cars.RemoveAll(c => c.id == carRequest.Cars.FirstOrDefault().id);
             return response;
             throw new NotImplementedException();
         }
@@ -245,42 +103,8 @@ namespace CarSiteSecond.Data.Repos
         public SpecialResponse DeleteSpecialsOne(SpecialRequest specialRequest)
         {
             SpecialResponse response = new SpecialResponse();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetSpecialsOne"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, string title, string text)
-                        response.Specials.Add(new Special((int)dr["id"], dr["Title"].ToString(), dr["Text"].ToString()));
-                    }
-                }
-            }
-
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "DeleteSpecialsOne"
-                };
-
-                conn.Open();
-
-                cmd.Parameters.AddWithValue("@id", specialRequest.Specials.FirstOrDefault().id);
-                cmd.ExecuteNonQuery();
-            }
+            response.Specials.Add(Specials.Where(s => s.id == specialRequest.Specials.FirstOrDefault().id).FirstOrDefault());
+            Specials.RemoveAll(s => s.id == specialRequest.Specials.FirstOrDefault().id);
             return response;
             throw new NotImplementedException();
         }
@@ -288,25 +112,9 @@ namespace CarSiteSecond.Data.Repos
         public CarResponse GetCarsAll(CarRequest carRequest)
         {
             CarResponse response = new CarResponse();
-            using (SqlConnection conn = new SqlConnection())
+            foreach(Car c in Cars)
             {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetCarsAll"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
-                        response.Cars.Add(new Car((int)dr["id"], (int)dr["ModelID"], (int)dr["Year"], dr["BodyStyle"].ToString(), dr["Transmission"].ToString(), dr["PictureSrc"].ToString(), (int)dr["InteriorID"], (int)dr["Mileage"], dr["VIN"].ToString(), (decimal)dr["SalePrice"], (decimal)dr["MSRP"], (bool)dr["Featured"], (int)dr["ColorID"]));
-                    }
-                }
+                response.Cars.Add(c);
             }
             return response;
             throw new NotImplementedException();
@@ -315,26 +123,7 @@ namespace CarSiteSecond.Data.Repos
         public CarResponse GetCarsOne(CarRequest carRequest)
         {
             CarResponse response = new CarResponse();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetCarsOne"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
-                        response.Cars.Add(new Car((int)dr["id"], (int)dr["ModelID"], (int)dr["Year"], dr["BodyStyle"].ToString(), dr["Transmission"].ToString(), dr["PictureSrc"].ToString(), (int)dr["InteriorID"], (int)dr["Mileage"], dr["VIN"].ToString(), (decimal)dr["SalePrice"], (decimal)dr["MSRP"], (bool)dr["Featured"], (int)dr["ColorID"]));
-                    }
-                }
-            }
+            response.Cars.Add(Cars.Where(c => c.id == carRequest.Cars.FirstOrDefault().id).FirstOrDefault());
             return response;
             throw new NotImplementedException();
         }
@@ -342,25 +131,9 @@ namespace CarSiteSecond.Data.Repos
         public MakeResponse GetMakesAll(MakeRequest makeRequest)
         {
             MakeResponse response = new MakeResponse();
-            using (SqlConnection conn = new SqlConnection())
+            foreach (Make m in Makes)
             {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetMakesAll"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //int id, string makeName, DateTime dateAdded, string userID
-                        response.Makes.Add(new Make((int)dr["id"], dr["MakeName"].ToString(), (DateTime)dr["DateAdded"], dr["UserID"].ToString()));
-                    }
-                }
+                response.Makes.Add(m);
             }
             return response;
             throw new NotImplementedException();
@@ -369,26 +142,7 @@ namespace CarSiteSecond.Data.Repos
         public MakeResponse GetMakesOne(MakeRequest makeRequest)
         {
             MakeResponse response = new MakeResponse();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetMakesOne"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //int id, string makeName, DateTime dateAdded, string userID
-                        response.Makes.Add(new Make((int)dr["id"], dr["MakeName"].ToString(), (DateTime)dr["DateAdded"], dr["UserID"].ToString()));
-                    }
-                }
-            }
+            response.Makes.Add(Makes.Where(m => m.id == makeRequest.Makes.FirstOrDefault().id).FirstOrDefault());
             return response;
             throw new NotImplementedException();
         }
@@ -396,25 +150,9 @@ namespace CarSiteSecond.Data.Repos
         public ModelResponse GetModelsAll(ModelRequest modelRequest)
         {
             ModelResponse response = new ModelResponse();
-            using (SqlConnection conn = new SqlConnection())
+            foreach (Model m in Models)
             {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetModelsAll"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, string modelName, int makeID, DateTime dateAdded, string userID)
-                        response.Models.Add(new Model((int)dr["id"], dr["ModelName"].ToString(), (int)dr["MakeID"], (DateTime)dr["DateAdded"], dr["UserID"].ToString()));
-                    }
-                }
+                response.Models.Add(m);
             }
             return response;
             throw new NotImplementedException();
@@ -423,26 +161,7 @@ namespace CarSiteSecond.Data.Repos
         public ModelResponse GetModelsOne(ModelRequest modelRequest)
         {
             ModelResponse response = new ModelResponse();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetModelsOne"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, string modelName, int makeID, DateTime dateAdded, string userID)
-                        response.Models.Add(new Model((int)dr["id"], dr["ModelName"].ToString(), (int)dr["MakeID"], (DateTime)dr["DateAdded"], dr["UserID"].ToString()));
-                    }
-                }
-            }
+            response.Models.Add(Models.Where(m => m.id == modelRequest.Models.FirstOrDefault().id).FirstOrDefault());
             return response;
             throw new NotImplementedException();
         }
@@ -450,25 +169,9 @@ namespace CarSiteSecond.Data.Repos
         public SaleResponse GetSalesAll(SaleRequest saleRequest)
         {
             SaleResponse response = new SaleResponse();
-            using (SqlConnection conn = new SqlConnection())
+            foreach (Sale s in Sales)
             {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetSalesAll"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, int purchaseType, string name, string email, string street1, string street2, string city, string state, string zip, string phone, int carID, string userID, decimal purchasePrice)
-                        response.Sales.Add(new Sale((int)dr["id"], (int)dr["PurchaseType"], dr["Name"].ToString(), dr["Email"].ToString(), dr["Street1"].ToString(), dr["Street2"].ToString(), dr["City"].ToString(), dr["State"].ToString(), dr["Zip"].ToString(), dr["Phone"].ToString(), (int)dr["CarID"], dr["UserID"].ToString(), (decimal)dr["PurchasePrice"]));
-                    }
-                }
+                response.Sales.Add(s);
             }
             return response;
             throw new NotImplementedException();
@@ -477,26 +180,8 @@ namespace CarSiteSecond.Data.Repos
         public SaleResponse GetSalesOne(SaleRequest saleRequest)
         {
             SaleResponse response = new SaleResponse();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetSalesOne"
-                };
+            response.Sales.Add(Sales.Where(s => s.id == saleRequest.Sales.FirstOrDefault().id).FirstOrDefault());
 
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, int purchaseType, string name, string email, string street1, string street2, string city, string state, string zip, string phone, int carID, string userID, decimal purchasePrice)
-                        response.Sales.Add(new Sale((int)dr["id"], (int)dr["PurchaseType"], dr["Name"].ToString(), dr["Email"].ToString(), dr["Street1"].ToString(), dr["Street2"].ToString(), dr["City"].ToString(), dr["State"].ToString(), dr["Zip"].ToString(), dr["Phone"].ToString(), (int)dr["CarID"], dr["UserID"].ToString(), (decimal)dr["PurchasePrice"]));
-                    }
-                }
-            }
             return response;
             throw new NotImplementedException();
         }
@@ -504,25 +189,9 @@ namespace CarSiteSecond.Data.Repos
         public SpecialResponse GetSpecialsAll(SpecialRequest specialRequest)
         {
             SpecialResponse response = new SpecialResponse();
-            using (SqlConnection conn = new SqlConnection())
+            foreach (Special s in Specials)
             {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetSpecialsAll"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, string title, string text)
-                        response.Specials.Add(new Special((int)dr["id"], dr["Title"].ToString(), dr["Text"].ToString()));
-                    }
-                }
+                response.Specials.Add(s);
             }
             return response;
             throw new NotImplementedException();
@@ -531,26 +200,8 @@ namespace CarSiteSecond.Data.Repos
         public SpecialResponse GetSpecialsOne(SpecialRequest specialRequest)
         {
             SpecialResponse response = new SpecialResponse();
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetSpecialsOne"
-                };
+            response.Specials.Add(Specials.Where(s => s.id == specialRequest.Specials.FirstOrDefault().id).FirstOrDefault());
 
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(int id, string title, string text)
-                        response.Specials.Add(new Special((int)dr["id"], dr["Title"].ToString(), dr["Text"].ToString()));
-                    }
-                }
-            }
             return response;
             throw new NotImplementedException();
         }
@@ -558,25 +209,9 @@ namespace CarSiteSecond.Data.Repos
         public UserResponse GetUsersAll(UserRequest userRequest)
         {
             UserResponse response = new UserResponse();
-            using (SqlConnection conn = new SqlConnection())
+            foreach (User u in Users)
             {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                SqlCommand cmd = new SqlCommand
-                {
-                    Connection = conn,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetUsersAll"
-                };
-
-                conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                    {
-                        //(string id, string email, string phoneNumber, string firstName, string lastName)
-                        response.Users.Add(new User(dr["Id"].ToString(), dr["Email"].ToString(), dr["PhoneNumber"].ToString(), dr["FirstName"].ToString(), dr["LastName"].ToString()));
-                    }
-                }
+                response.Users.Add(u);
             }
             return response;
             throw new NotImplementedException();
@@ -587,33 +222,8 @@ namespace CarSiteSecond.Data.Repos
             CarResponse response = new CarResponse();
             if (carRequest.Cars.Count == 1 && carRequest.Cars.FirstOrDefault() != null && carRequest.Cars.FirstOrDefault().ModelID > 0 && carRequest.Cars.FirstOrDefault().Year > 1900 && carRequest.Cars.FirstOrDefault().BodyStyle != "" && carRequest.Cars.FirstOrDefault().Transmission != "" && carRequest.Cars.FirstOrDefault().PictureSrc != "" && carRequest.Cars.FirstOrDefault().InteriorID > 0 && carRequest.Cars.FirstOrDefault().Mileage > 0 && carRequest.Cars.FirstOrDefault().VIN != "" && carRequest.Cars.FirstOrDefault().SalePrice > 0 && carRequest.Cars.FirstOrDefault().MSRP > 0 && carRequest.Cars.FirstOrDefault().ColorID > 0)
             {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        Connection = conn,
-                        CommandType = CommandType.StoredProcedure,
-                        CommandText = "UpdateCarsOne"
-                    };
-
-                    cmd.Parameters.AddWithValue("@id", carRequest.Cars.FirstOrDefault().id);
-                    cmd.Parameters.AddWithValue("@ModelID", carRequest.Cars.FirstOrDefault().ModelID);
-                    cmd.Parameters.AddWithValue("@Year", carRequest.Cars.FirstOrDefault().Year);
-                    cmd.Parameters.AddWithValue("@BodyStyle", carRequest.Cars.FirstOrDefault().BodyStyle);
-                    cmd.Parameters.AddWithValue("@Transmission", carRequest.Cars.FirstOrDefault().Transmission);
-                    cmd.Parameters.AddWithValue("@PictureSrc", carRequest.Cars.FirstOrDefault().PictureSrc);
-                    cmd.Parameters.AddWithValue("@InteriorID", carRequest.Cars.FirstOrDefault().InteriorID);
-                    cmd.Parameters.AddWithValue("@Mileage", carRequest.Cars.FirstOrDefault().Mileage);
-                    cmd.Parameters.AddWithValue("@VIN", carRequest.Cars.FirstOrDefault().VIN);
-                    cmd.Parameters.AddWithValue("@SalePrice", carRequest.Cars.FirstOrDefault().SalePrice);
-                    cmd.Parameters.AddWithValue("@MSRP", carRequest.Cars.FirstOrDefault().MSRP);
-                    cmd.Parameters.AddWithValue("@Featured", carRequest.Cars.FirstOrDefault().Featured);
-                    cmd.Parameters.AddWithValue("@ColorID", carRequest.Cars.FirstOrDefault().ColorID);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                Cars.RemoveAt(carRequest.Cars.FirstOrDefault().id);
+                Cars.Add(carRequest.Cars.FirstOrDefault());
             }
             response.Cars.Add(carRequest.Cars.FirstOrDefault());
             return response;
@@ -626,23 +236,8 @@ namespace CarSiteSecond.Data.Repos
             if (specialRequest.Specials.Count == 1 && specialRequest.Specials.FirstOrDefault() != null && specialRequest.Specials.FirstOrDefault().Title != "" && specialRequest.Specials.FirstOrDefault().Text != "")
 
             {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        Connection = conn,
-                        CommandType = CommandType.StoredProcedure,
-                        CommandText = "UpdateSpecialsOne"
-                    };
-
-                    cmd.Parameters.AddWithValue("@id", specialRequest.Specials.FirstOrDefault().Title);
-                    cmd.Parameters.AddWithValue("@Title", specialRequest.Specials.FirstOrDefault().Title);
-                    cmd.Parameters.AddWithValue("@Text", specialRequest.Specials.FirstOrDefault().Text);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                Specials.RemoveAt(specialRequest.Specials.FirstOrDefault().id);
+                Specials.Add(specialRequest.Specials.FirstOrDefault());
             }
             response.Specials.Add(specialRequest.Specials.FirstOrDefault());
             return response;
