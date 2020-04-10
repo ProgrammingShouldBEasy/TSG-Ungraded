@@ -11,7 +11,7 @@ namespace CarSiteSecond.Data.Repos
 {
     public class CarSiteRepoProduction : IRepo
     {
-        public CarResponse CreateCarOne(CarRequest carRequest)
+        public CarResponse CreateCarsOne(CarRequest carRequest)
         {
             throw new NotImplementedException();
         }
@@ -36,12 +36,22 @@ namespace CarSiteSecond.Data.Repos
             throw new NotImplementedException();
         }
 
+        public SpecialResponse CreateSpecialsOne(SpecialRequest specialRequest)
+        {
+            throw new NotImplementedException();
+        }
+
         public UserResponse CreateUsersOne(UserRequest userRequest)
         {
             throw new NotImplementedException();
         }
 
-        public CarResponse DeleteCar(CarRequest carRequest)
+        public CarResponse DeleteCarsOne(CarRequest carRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SpecialResponse DeleteSpecialsOne(SpecialRequest specialRequest)
         {
             throw new NotImplementedException();
         }
@@ -86,6 +96,16 @@ namespace CarSiteSecond.Data.Repos
             throw new NotImplementedException();
         }
 
+        public SpecialResponse GetSpecialsAll(SpecialRequest specialRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SpecialResponse GetSpecialsOne(SpecialRequest specialRequest)
+        {
+            throw new NotImplementedException();
+        }
+
         public UserResponse GetUsersAll(UserRequest userRequest)
         {
             throw new NotImplementedException();
@@ -96,7 +116,12 @@ namespace CarSiteSecond.Data.Repos
             throw new NotImplementedException();
         }
 
-        public CarResponse UpdateCar(CarRequest carRequest)
+        public CarResponse UpdateCarsOne(CarRequest carRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SpecialResponse UpdateSpecialsOne(SpecialRequest specialRequest)
         {
             throw new NotImplementedException();
         }

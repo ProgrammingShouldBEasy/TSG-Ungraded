@@ -262,6 +262,11 @@ BEGIN
 DROP TABLE PurchaseType
 END
 
+CREATE TABLE [Specials]
+([id] INT Primary Key Identity(1,1),
+[Title] nvarchar(50) NOT NULL,
+[Text] nvarchar(500) NOT NULL)
+
 CREATE TABLE [Contacts]
 ([id] INT Primary Key Identity(1,1),
 [Name] nvarchar(50) NOT NULL,
@@ -361,6 +366,491 @@ ADD CONSTRAINT FK_CarsModel
 FOREIGN KEY (ModelID) REFERENCES Model(id);
 
 GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetUsersAll'
+)
+BEGIN
+DROP PROCEDURE [GetUsersAll]
+END
+GO
+
+CREATE PROCEDURE [GetUsersAll]
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Users')) 
+BEGIN
+Select *
+FROM [Users]
+ORDER BY [Id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetSpecialsAll'
+)
+BEGIN
+DROP PROCEDURE [GetSpecialsAll]
+END
+GO
+
+CREATE PROCEDURE [GetSpecialsAll]
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Specials')) 
+BEGIN
+Select *
+FROM [Specials]
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetSpecialsOne'
+)
+BEGIN
+DROP PROCEDURE [GetSpecialsOne]
+END
+GO
+
+CREATE PROCEDURE [GetSpecialsOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Specials')) 
+BEGIN
+Select *
+FROM [Specials]
+WHERE id = @ID
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'CreateSpecialsOne'
+)
+BEGIN
+DROP PROCEDURE [CreateSpecialsOne]
+END
+GO
+
+CREATE PROCEDURE [CreateSpecialsOne] (@Title nvarchar(50), @Text nvarchar(500))
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Specials')) 
+BEGIN
+INSERT INTO [Specials]
+([Title], [Text])
+VALUES
+(@Title, @Text)
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'UpdateSpecialsOne'
+)
+BEGIN
+DROP PROCEDURE [UpdateSpecialsOne]
+END
+GO
+
+CREATE PROCEDURE [UpdateSpecialsOne] (@ID int, @Title nvarchar(50), @Text nvarchar(500))
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Specials')) 
+BEGIN
+UPDATE [Specials]
+SET [Title] = @Title, [Text] = @Text
+WHERE
+[id] = @ID
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'DeleteSpecialsOne'
+)
+BEGIN
+DROP PROCEDURE [DeleteSpecialsOne]
+END
+GO
+
+CREATE PROCEDURE [DeleteSpecialsOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Specials')) 
+BEGIN
+DELETE FROM 
+Specials
+WHERE
+[id] = @ID
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetCarsAll'
+)
+BEGIN
+DROP PROCEDURE [GetCarsAll]
+END
+GO
+
+CREATE PROCEDURE [GetCarsAll]
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')) 
+BEGIN
+Select *
+FROM [Cars]
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetCarsOne'
+)
+BEGIN
+DROP PROCEDURE [GetCarsOne]
+END
+GO
+
+CREATE PROCEDURE [GetCarsOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')) 
+BEGIN
+Select *
+FROM [Cars]
+WHERE id = @ID
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'CreateCarsOne'
+)
+BEGIN
+DROP PROCEDURE [CreateCarsOne]
+END
+GO
+
+CREATE PROCEDURE [CreateCarsOne] (@ModelID int, @Year int, @BodyStyle nvarchar(50), 
+@Transmission nvarchar(50), @PictureSrc nvarchar(100), @InteriorID int, @Mileage int, @VIN nvarchar(50),
+@SalePrice decimal(15,2), @MSRP decimal(15,2), @Featured bit, @ColorID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')) 
+BEGIN
+INSERT INTO [Cars]
+([ModelID],[Year],[BodyStyle],[Transmission],[PictureSrc],[InteriorID],[Mileage],[VIN],[SalePrice],[MSRP],[Featured],[ColorID])
+VALUES
+(@ModelID,@Year,@BodyStyle,@Transmission,@PictureSrc,@InteriorID,@Mileage,@VIN,@SalePrice,@MSRP,@Featured,@ColorID)
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'UpdateCarsOne'
+)
+BEGIN
+DROP PROCEDURE [UpdateCarsOne]
+END
+GO
+
+CREATE PROCEDURE [UpdateCarsOne] (@ID int, @ModelID int, @Year int, @BodyStyle nvarchar(50), 
+@Transmission nvarchar(50), @PictureSrc nvarchar(100), @InteriorID int, @Mileage int, @VIN nvarchar(50),
+@SalePrice decimal(15,2), @MSRP decimal(15,2), @Featured bit, @ColorID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')) 
+BEGIN
+UPDATE [Cars]
+SET [ModelID] = @ModelID, [Year] = @Year, [BodyStyle] = @BodyStyle, [Transmission] = @Transmission, [PictureSrc] = @PictureSrc,
+[InteriorID] = @InteriorID, [Mileage] = @Mileage, [VIN] = @VIN, [SalePrice] = @SalePrice, [MSRP] = @MSRP, [Featured] = @Featured,
+[ColorID] = @ColorID
+WHERE
+[id] = @ID
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'DeleteCarsOne'
+)
+BEGIN
+DROP PROCEDURE [DeleteCarsOne]
+END
+GO
+
+CREATE PROCEDURE [DeleteCarsOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')) 
+BEGIN
+DELETE FROM 
+Cars
+WHERE
+[id] = @ID
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'CreateContactsOne'
+)
+BEGIN
+DROP PROCEDURE [CreateContactsOne]
+END
+GO
+
+CREATE PROCEDURE [CreateContactsOne] (@Name nvarchar(50), @Email nvarchar(50), @Phone nvarchar(50), @Message nvarchar(500))
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Contacts')) 
+BEGIN
+INSERT INTO [Contacts]
+([Name],[Email],[Phone],[Message])
+VALUES
+(@Name,@Email,@Phone,@Message)
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetMakesAll'
+)
+BEGIN
+DROP PROCEDURE [GetMakesAll]
+END
+GO
+
+CREATE PROCEDURE [GetMakesAll]
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Make')) 
+BEGIN
+Select *
+FROM [Make]
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetMakesOne'
+)
+BEGIN
+DROP PROCEDURE [GetMakesOne]
+END
+GO
+
+CREATE PROCEDURE [GetMakesOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Make')) 
+BEGIN
+Select *
+FROM [Make]
+WHERE id = @ID
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'CreateMakesOne'
+)
+BEGIN
+DROP PROCEDURE [CreateMakesOne]
+END
+GO
+
+CREATE PROCEDURE [CreateMakesOne] (@MakeName nvarchar(50), @DateAdded date, @UserID nvarchar(128))
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Make')) 
+BEGIN
+INSERT INTO [Make]
+([MakeName],[DateAdded],[UserID])
+VALUES
+(@MakeName, @DateAdded, @UserID)
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetModelsAll'
+)
+BEGIN
+DROP PROCEDURE [GetModelsAll]
+END
+GO
+
+CREATE PROCEDURE [GetModelsAll]
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Model')) 
+BEGIN
+Select *
+FROM [Model]
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetModelsOne'
+)
+BEGIN
+DROP PROCEDURE [GetModelsOne]
+END
+GO
+
+CREATE PROCEDURE [GetModelsOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Make')) 
+BEGIN
+Select *
+FROM [Model]
+WHERE id = @ID
+ORDER BY [id]
+END
+
+GO
+
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'CreateModelsOne'
+)
+BEGIN
+DROP PROCEDURE [CreateModelsOne]
+END
+GO
+
+CREATE PROCEDURE [CreateModelsOne] (@ModelName nvarchar(50), @MakeID int, @DateAdded date, @UserID nvarchar(128))
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Model')) 
+BEGIN
+INSERT INTO [Model]
+([ModelName],[MakeID],[DateAdded],[UserID])
+VALUES
+(@ModelName, @MakeID, @DateAdded, @UserID)
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetSalesAll'
+)
+BEGIN
+DROP PROCEDURE [GetSalesAll]
+END
+GO
+
+CREATE PROCEDURE [GetSalesAll]
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Sales')) 
+BEGIN
+Select *
+FROM [Sales]
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetSalesOne'
+)
+BEGIN
+DROP PROCEDURE [GetSalesOne]
+END
+GO
+
+CREATE PROCEDURE [GetSalesOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Sales')) 
+BEGIN
+Select *
+FROM [Sales]
+WHERE id = @ID
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'CreateSalesOne'
+)
+BEGIN
+DROP PROCEDURE [CreateSalesOne]
+END
+GO
+
+CREATE PROCEDURE [CreateSalesOne] (@PurchaseType int, @Name nvarchar(50), @Email nvarchar(50), @Street1 nvarchar(50), @Street2 nvarchar(50), @City nvarchar(50), @State nvarchar(50), @Zip varchar(10), @Phone nvarchar(50), @CarID int, @UserID nvarchar(50), @PurchasePrice decimal(15,2))
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Sales')) 
+BEGIN
+INSERT INTO [Sales]
+([PurchaseType], [Name], [Email], [Street1], [Street2], [City], [State], [Zip], [Phone], [CarID], [UserID], [PurchasePrice])
+VALUES
+(@PurchaseType, @Name, @Email, @Street1, @Street2, @City, @State, @Zip, @Phone, @CarID, @UserID, @PurchasePrice)
+END
+
+GO
+
 --IF EXISTS(
 --	SELECT *
 --	FROM INFORMATION_SCHEMA.ROUTINES

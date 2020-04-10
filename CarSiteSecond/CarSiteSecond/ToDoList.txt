@@ -1,0 +1,11 @@
+-ADO Repo
+-QA Repo
+-Shared View Header and Footer Unsecured
+-Views for each page Unsecured and without functionality
+-API Controller for Search Results
+-AJAX/JS for Search Results
+-ID Framework
+-Secure Header buttons
+-Secure protected controllers
+-Add functionality to each page
+-File Upload

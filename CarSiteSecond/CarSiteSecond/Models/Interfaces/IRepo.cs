@@ -15,9 +15,16 @@ namespace CarSiteSecond.Models.Interfaces
         //CRUD
         CarResponse GetCarsAll(CarRequest carRequest);
         CarResponse GetCarsOne(CarRequest carRequest);
-        CarResponse CreateCarOne(CarRequest carRequest);
-        CarResponse UpdateCar(CarRequest carRequest);
-        CarResponse DeleteCar(CarRequest carRequest);
+        CarResponse CreateCarsOne(CarRequest carRequest);
+        CarResponse UpdateCarsOne(CarRequest carRequest);
+        CarResponse DeleteCarsOne(CarRequest carRequest);
+
+        //CRUD
+        SpecialResponse GetSpecialsAll(SpecialRequest specialRequest);
+        SpecialResponse GetSpecialsOne(SpecialRequest specialRequest);
+        SpecialResponse CreateSpecialsOne(SpecialRequest specialRequest);
+        SpecialResponse UpdateSpecialsOne(SpecialRequest specialRequest);
+        SpecialResponse DeleteSpecialsOne(SpecialRequest specialRequest);
 
         //C
         ContactResponse CreateContactsOne(ContactRequest contactRequest);
