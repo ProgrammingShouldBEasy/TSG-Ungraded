@@ -341,6 +341,60 @@ namespace CarSiteSecond.Data.Repos
             throw new NotImplementedException();
         }
 
+        public ColorResponse GetColorsAll(ColorRequest colorRequest)
+        {
+            ColorResponse response = new ColorResponse();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "GetColorsAll"
+                };
+
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //(int id, string colorName)
+                        response.Colors.Add(new Color((int)dr["id"], dr["ColorName"].ToString()));
+                    }
+                }
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
+        public InteriorResponse GetInteriorsAll(InteriorRequest interiorRequest)
+        {
+            InteriorResponse response = new InteriorResponse();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "GetInteriorsAll"
+                };
+
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //(int id, string interiorName)
+                        response.Interiors.Add(new Interior((int)dr["id"], dr["InteriorName"].ToString()));
+                    }
+                }
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
         public MakeResponse GetMakesAll(MakeRequest makeRequest)
         {
             MakeResponse response = new MakeResponse();
@@ -442,6 +496,33 @@ namespace CarSiteSecond.Data.Repos
                     {
                         //(int id, string modelName, int makeID, DateTime dateAdded, string userID)
                         response.Models.Add(new Model((int)dr["id"], dr["ModelName"].ToString(), (int)dr["MakeID"], (DateTime)dr["DateAdded"], dr["UserID"].ToString()));
+                    }
+                }
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
+        public PurchaseTypeResponse GetPurchaseTypesAll(PurchaseTypeRequest PurchaseTypeRequest)
+        {
+            PurchaseTypeResponse response = new PurchaseTypeResponse();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "GetPurchaseTypesAll"
+                };
+
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //(int id, string type)
+                        response.PurchaseTypes.Add(new PurchaseType((int)dr["id"], dr["Type"].ToString()));
                     }
                 }
             }

@@ -18,6 +18,9 @@ namespace CarSiteSecond.Data.Repos
         List<Sale> Sales = new List<Sale>();
         List<Special> Specials = new List<Special>();
         List<User> Users = new List<User>();
+        List<Color> Colors = new List<Color>();
+        List<PurchaseType> PurchaseTypes = new List<PurchaseType>();
+        List<Interior> Interiors = new List<Interior>();
 
         public CarResponse CreateCarsOne(CarRequest carRequest)
         {
@@ -128,6 +131,28 @@ namespace CarSiteSecond.Data.Repos
             throw new NotImplementedException();
         }
 
+        public ColorResponse GetColorsAll(ColorRequest colorRequest)
+        {
+            ColorResponse response = new ColorResponse();
+            foreach (Color c in Colors)
+            {
+                response.Colors.Add(c);
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
+        public InteriorResponse GetInteriorsAll(InteriorRequest interiorRequest)
+        {
+            InteriorResponse response = new InteriorResponse();
+            foreach (Interior i in Interiors)
+            {
+                response.Interiors.Add(i);
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
         public MakeResponse GetMakesAll(MakeRequest makeRequest)
         {
             MakeResponse response = new MakeResponse();
@@ -162,6 +187,17 @@ namespace CarSiteSecond.Data.Repos
         {
             ModelResponse response = new ModelResponse();
             response.Models.Add(Models.Where(m => m.id == modelRequest.Models.FirstOrDefault().id).FirstOrDefault());
+            return response;
+            throw new NotImplementedException();
+        }
+
+        public PurchaseTypeResponse GetPurchaseTypesAll(PurchaseTypeRequest PurchaseTypeRequest)
+        {
+            PurchaseTypeResponse response = new PurchaseTypeResponse();
+            foreach (PurchaseType p in PurchaseTypes)
+            {
+                response.PurchaseTypes.Add(p);
+            }
             return response;
             throw new NotImplementedException();
         }

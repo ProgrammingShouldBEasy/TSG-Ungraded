@@ -1,12 +1,11 @@
--QA Repo
--Shared View Header and Footer Unsecured
+-Shared View Header Unsecured
 -Views for each page Unsecured and without functionality
 -API Controller for Search Results
 -AJAX/JS for Search Results
 -ID Framework
 -Secure Header buttons
 -Secure protected controllers
--Add functionality to each page
+-MVC Controllers for the Views
 -File Upload
 -Client side validation, can use alert with #id that's required
 -Server side validation for data types and sensical answers, both in DB and Controller with ModelState

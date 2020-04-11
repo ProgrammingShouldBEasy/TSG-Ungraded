@@ -41,11 +41,11 @@ CREATE TABLE [Sales]
 
 CREATE TABLE [Interior]
 ([id] INT Primary Key Identity (1,1),
-[Interior] nvarchar(50) NOT NULL)
+[InteriorName] nvarchar(50) NOT NULL)
 
 CREATE TABLE [Color]
 ([id] INT Primary Key Identity (1,1),
-[Color] nvarchar(50) NOT NULL)
+[ColorName] nvarchar(50) NOT NULL)
 
 CREATE TABLE [PurchaseType]
 ([id] INT Primary Key Identity (1,1),
@@ -262,6 +262,11 @@ BEGIN
 DROP TABLE PurchaseType
 END
 
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Specials')) 
+BEGIN
+DROP TABLE Specials
+END
+
 CREATE TABLE [Specials]
 ([id] INT Primary Key Identity(1,1),
 [Title] nvarchar(50) NOT NULL,
@@ -291,11 +296,11 @@ CREATE TABLE [Sales]
 
 CREATE TABLE [Interior]
 ([id] INT Primary Key Identity (1,1),
-[Interior] nvarchar(50) NOT NULL)
+[InteriorName] nvarchar(50) NOT NULL)
 
 CREATE TABLE [Color]
 ([id] INT Primary Key Identity (1,1),
-[Color] nvarchar(50) NOT NULL)
+[ColorName] nvarchar(50) NOT NULL)
 
 CREATE TABLE [PurchaseType]
 ([id] INT Primary Key Identity (1,1),
@@ -596,6 +601,141 @@ SET [ModelID] = @ModelID, [Year] = @Year, [BodyStyle] = @BodyStyle, [Transmissio
 [ColorID] = @ColorID
 WHERE
 [id] = @ID
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetPurchaseTypesAll'
+)
+BEGIN
+DROP PROCEDURE [GetPurchaseTypesAll]
+END
+GO
+
+CREATE PROCEDURE [GetPurchaseTypesAll]
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'PurchaseType')) 
+BEGIN
+Select *
+FROM [PurchaseType]
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetPurchaseTypesOne'
+)
+BEGIN
+DROP PROCEDURE [GetPurchaseTypesOne]
+END
+GO
+
+CREATE PROCEDURE [GetPurchaseTypesOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'PurchaseType')) 
+BEGIN
+Select *
+FROM [PurchaseType]
+WHERE id = @ID
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetInteriorsAll'
+)
+BEGIN
+DROP PROCEDURE [GetInteriorsAll]
+END
+GO
+
+CREATE PROCEDURE [GetInteriorsAll]
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Interior')) 
+BEGIN
+Select *
+FROM [Interior]
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetInteriorsOne'
+)
+BEGIN
+DROP PROCEDURE [GetInteriorsOne]
+END
+GO
+
+CREATE PROCEDURE [GetInteriorsOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Interior')) 
+BEGIN
+Select *
+FROM [Interior]
+WHERE id = @ID
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetColorsAll'
+)
+BEGIN
+DROP PROCEDURE [GetColorsAll]
+END
+GO
+
+CREATE PROCEDURE [GetColorsAll]
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Color')) 
+BEGIN
+Select *
+FROM [Color]
+ORDER BY [id]
+END
+
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'GetColorsOne'
+)
+BEGIN
+DROP PROCEDURE [GetColorsOne]
+END
+GO
+
+CREATE PROCEDURE [GetColorsOne] (@ID int)
+AS
+
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Color')) 
+BEGIN
+Select *
+FROM [Color]
+WHERE id = @ID
+ORDER BY [id]
 END
 
 GO

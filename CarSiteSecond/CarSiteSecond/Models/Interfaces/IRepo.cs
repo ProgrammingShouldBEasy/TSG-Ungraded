@@ -46,5 +46,14 @@ namespace CarSiteSecond.Models.Interfaces
 
         //R
         UserResponse GetUsersAll(UserRequest userRequest);
+
+        //R
+        ColorResponse GetColorsAll(ColorRequest colorRequest);
+
+        //R
+        InteriorResponse GetInteriorsAll(InteriorRequest interiorRequest);
+
+        //R
+        PurchaseTypeResponse GetPurchaseTypesAll(PurchaseTypeRequest PurchaseTypeRequest);
     }
 }
