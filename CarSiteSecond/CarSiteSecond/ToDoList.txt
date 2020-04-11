@@ -10,3 +10,8 @@
 -Client side validation, can use alert with #id that's required
 -Server side validation for data types and sensical answers, both in DB and Controller with ModelState
 -UnitTest QA Repo
+
+Q?s
+-Why is my styling not working on my header links?
+-Why is none of my styling getting through?
+-Why is site.CSS not able to be applied without destroying bootstrap?
