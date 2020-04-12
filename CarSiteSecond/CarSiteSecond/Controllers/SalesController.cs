@@ -6,22 +6,16 @@ using System.Web.Mvc;
 
 namespace CarSiteSecond.Controllers
 {
-    public class HomeController : Controller
+    public class SalesController : Controller
     {
+        // GET: Sales
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Specials()
+        public ActionResult Purchase(int id)
         {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

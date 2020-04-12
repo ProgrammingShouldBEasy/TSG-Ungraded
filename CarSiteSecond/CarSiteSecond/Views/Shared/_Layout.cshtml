@@ -4,22 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="flex-container border-mine">
+        <div class="container border-mine">
+            <div class="flex-container">
                 @Html.ActionLink("Home", "Index", "Home")
-                @Html.ActionLink("New Inventory", "About", "Home")
-                @Html.ActionLink("Used Inventory", "Contact", "Home")
-                @Html.ActionLink("New Inventory", "Contact", "Home")
-                @Html.ActionLink("Specials", "Contact", "Home")
+                @Html.ActionLink("New Inventory", "New", "Inventory")
+                @Html.ActionLink("Used Inventory", "Used", "Inventory")
+                @Html.ActionLink("Specials", "Specials", "Home")
                 @Html.ActionLink("Contact", "Contact", "Home")
-                @Html.ActionLink("Sales", "Contact", "Home")
-                @Html.ActionLink("Admin", "Contact", "Home")
+                @Html.ActionLink("Sales", "Index", "Sales")
+                @Html.ActionLink("Admin", "Users", "Admin")
             </div>
             </div>
         </div>

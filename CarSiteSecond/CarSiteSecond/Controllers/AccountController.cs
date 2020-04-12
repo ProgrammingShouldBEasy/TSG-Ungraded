@@ -52,6 +52,11 @@ namespace CarSiteSecond.Controllers
             }
         }
 
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]

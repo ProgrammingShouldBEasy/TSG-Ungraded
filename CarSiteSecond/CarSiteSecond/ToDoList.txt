@@ -1,4 +1,3 @@
--Shared View Header Unsecured
 -Views for each page Unsecured and without functionality
 -API Controller for Search Results
 -AJAX/JS for Search Results
