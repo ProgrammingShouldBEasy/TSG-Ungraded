@@ -228,6 +228,10 @@
     <Compile Include="Migrations\202004081845338_init.designer.cs">
       <DependentUpon>202004081845338_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004132027123_uae.cs" />
+    <Compile Include="Migrations\202004132027123_uae.designer.cs">
+      <DependentUpon>202004132027123_uae.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DTOs\Color.cs" />
@@ -485,6 +489,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004081845338_init.resx">
       <DependentUpon>202004081845338_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004132027123_uae.resx">
+      <DependentUpon>202004132027123_uae.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

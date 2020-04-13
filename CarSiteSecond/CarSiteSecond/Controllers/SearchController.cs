@@ -17,25 +17,26 @@ namespace CarSiteSecond.Controllers
 {
     public class SearchController : ApiController
     {
-        //GETs by category for searches.
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public class DVDController : ApiController
-        {
-            IRepo repo = Factory.Create();
-            [Route("home/new/{query}")]
-            [AcceptVerbs("GET")]
-            public IHttpActionResult Car()
-            {
-                CarViewModel car = new CarViewModel();
-                CarResponse carResponse = new CarResponse();
-                if (dvd == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(car);
-                }
-            }
-        }
+        ////GETs by category for searches.
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        //public class DVDController : ApiController
+        //{
+        //    IRepo repo = Factory.Create();
+        //    [Route("home/new/{query}")]
+        //    [AcceptVerbs("GET")]
+        //    public IHttpActionResult Car()
+        //    {
+        //        CarViewModel car = new CarViewModel();
+        //        CarResponse carResponse = new CarResponse();
+        //        if (dvd == null)
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            return Ok(car);
+        //        }
+        //    }
+        //}
+    }
 }
