@@ -1,4 +1,4 @@
--Views for each page Unsecured and without functionality
+-Fill Views with HTML elements
 -API Controller for Search Results
 -AJAX/JS for Search Results
 -ID Framework

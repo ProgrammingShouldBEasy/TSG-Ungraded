@@ -10,25 +10,24 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container border-mine">
-            <div class="flex-container">
-                @Html.ActionLink("Home", "Index", "Home")
-                @Html.ActionLink("New Inventory", "New", "Inventory")
-                @Html.ActionLink("Used Inventory", "Used", "Inventory")
-                @Html.ActionLink("Specials", "Specials", "Home")
-                @Html.ActionLink("Contact", "Contact", "Home")
-                @Html.ActionLink("Sales", "Index", "Sales")
-                @Html.ActionLink("Admin", "Users", "Admin")
-            </div>
+        <div class="container">
+            <div class="flex-container border-mine" style="width: 100%;">
+                <span><img src="~/Data/Pictures/logo.jpg" style="width:50px; height: 50px;" alt="logo" /></span>
+                <span class="border-right">@Html.ActionLink("Home", "Index", "Home")</span>
+                <span class="border-right">@Html.ActionLink("New Inventory", "New", "Inventory")</span>
+                <span class="border-right">@Html.ActionLink("Used Inventory", "Used", "Inventory")</span>
+                <span class="border-right">@Html.ActionLink("Specials", "Specials", "Home")</span>
+                <span class="border-right">@Html.ActionLink("Contact", "Contact", "Home")</span>
+                <span class="border-right">@Html.ActionLink("Sales", "Index", "Sales")</span>
+                <span>@Html.ActionLink("Admin", "Users", "Admin")</span>
             </div>
         </div>
+    </div>
+
+
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

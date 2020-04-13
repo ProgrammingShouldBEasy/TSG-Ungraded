@@ -27,12 +27,115 @@ textarea {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    align-items: center;
 }
 
-    .flex-container > a {
-        margin: 20px;
+    .flex-container > span {
+        margin-right: 10px;
+        padding-right: 18px;
+        padding-left: 10px;
+        position: relative;
+        height: 50%;
+        /*top: 50%;*/
+        /*-ms-transform: translateY(-50%);
+        transform: translateY(-50%);*/
     }
+
+        .flex-container > span > img {
+            position: relative;
+            margin: 0;
+            top: 50%;
+        }
 
 .border-mine {
     border: 3px solid black;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+hr.new1 {
+    border-top: 3px solid black;
+}
+
+.featured-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.featured-flex > div {
+    position: relative;
+    width: 200px;
+    margin: 3.3%;
+    height: 200px;
+}
+
+.search-table {
+    position: relative;
+    width:100%;
+    padding-bottom: 15px;
+}
+
+.left-text {
+    text-align: left;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.right-text {
+    text-align: right;
+}
+
+td > select, input {
+    margin-left:15px;
+    margin-right:5px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.results-table {
+    width: 100%;
+    text-wrap:normal;
+    font-size: 1em;
+}
+
+.results-table > tr {
+    width: 100%;
+}
+
+.results-table > tr > td {
+    width: 14%;
+}
+
+.results-table img {
+    position:relative;
+    width: 150px;
+    height: auto;
+}
+
+td {
+    vertical-align: top;
 }
