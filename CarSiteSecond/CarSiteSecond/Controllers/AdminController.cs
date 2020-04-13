@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CarSiteSecond.Models.DTOs;
 
 namespace CarSiteSecond.Controllers
 {
@@ -17,6 +18,12 @@ namespace CarSiteSecond.Controllers
         public ActionResult AddVehicle()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddVehicle(Car car)
+        {
+            return View(car);
         }
 
         public ActionResult EditVehicle()

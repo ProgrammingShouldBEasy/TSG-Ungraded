@@ -17,7 +17,7 @@ namespace CarSiteSecond.Data
             {
                 case "QA":
                     return new CarSiteRepoQA();
-                case "RPDO":
+                case "PROD":
                     return new CarSiteRepoProduction();
                 default:
                     throw new Exception("Configuration file is not configured correctly.");

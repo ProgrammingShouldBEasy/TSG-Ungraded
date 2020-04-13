@@ -19,65 +19,66 @@ CREATE DATABASE [CarSite]
 
 CREATE TABLE [Contacts]
 ([id] INT Primary Key Identity(1,1),
-[Name] nvarchar(50) NOT NULL,
-[Email] nvarchar(50) NOT NULL,
-[Phone] nvarchar(50) NOT NULL,
-[Message] nvarchar(500) NOT NULL)
+[Name] nvarchar(50) ,
+[Email] nvarchar(50) ,
+[Phone] nvarchar(50) ,
+[Message] nvarchar(500) )
 
 CREATE TABLE [Sales]
 ([id] INT Primary Key Identity(1,1),
-[PurchaseType] INT NOT NULL,
-[Name] nvarchar(50) NOT NULL,
-[Email] nvarchar(50) NOT NULL,
-[Street1] nvarchar(50) NOT NULL,
+[PurchaseType] INT ,
+[Name] nvarchar(50) ,
+[Email] nvarchar(50) ,
+[Street1] nvarchar(50) ,
 [Street2] nvarchar(50) NULL,
-[City] nvarchar(50) NOT NULL,
-[State] nvarchar(50) NOT NULL,
-[Zip] varchar(10) NOT NULL,
-[Phone] nvarchar(50) NOT NULL,
-[CarID] int NOT NULL,
-[UserID] nvarchar(128) NOT NULL,
-[PurchasePrice] decimal(15,2) NOT NULL)
+[City] nvarchar(50) ,
+[State] nvarchar(50) ,
+[Zip] varchar(10) ,
+[Phone] nvarchar(50) ,
+[CarID] int ,
+[UserID] nvarchar(128) ,
+[PurchasePrice] decimal(15,2) )
 
 CREATE TABLE [Interior]
 ([id] INT Primary Key Identity (1,1),
-[InteriorName] nvarchar(50) NOT NULL)
+[InteriorName] nvarchar(50) )
 
 CREATE TABLE [Color]
 ([id] INT Primary Key Identity (1,1),
-[ColorName] nvarchar(50) NOT NULL)
+[ColorName] nvarchar(50) )
 
 CREATE TABLE [PurchaseType]
 ([id] INT Primary Key Identity (1,1),
-[Type] nvarchar(50) NOT NULL)
+[Type] nvarchar(50) )
 
 CREATE TABLE [Cars]
 ([id] INT PRIMARY KEY IDENTITY (1,1),
-[ModelID] INT NOT NULL,
-[Year] INT NOT NULL,
-[BodyStyle] nvarchar(50) NOT NULL,
-[Transmission] nvarchar(50) NOT NULL,
-[PictureSrc] nvarchar(100) NOT NULL,
-[InteriorID] INT NOT NULL,
-[Mileage] INT NOT NULL,
-[VIN] nvarchar(50) NOT NULL,
-[SalePrice] decimal(15,2) NOT NULL,
-[MSRP] decimal(15,2) NOT NULL,
-[Featured] bit NOT NULL,
-[ColorID] INT NOT NULL)
+[ModelID] INT,
+[Year] INT,
+[BodyStyle] nvarchar(50),
+[Transmission] nvarchar(50),
+[PictureSrc] nvarchar(100),
+[InteriorID] INT,
+[Mileage] INT,
+[VIN] nvarchar(50),
+[SalePrice] decimal(15,2),
+[MSRP] decimal(15,2),
+[Featured] bit,
+[ColorID] INT,
+[Description] nvarchar(500))
 
 CREATE TABLE [Make]
 ([id] INT PRIMARY KEY IDENTITY(1,1),
-[MakeName] nvarchar(50) NOT NULL,
-[DateAdded] DATE NOT NULL,
-[UserID] nvarchar(128) NOT NULL)
+[MakeName] nvarchar(50) ,
+[DateAdded] DATE ,
+[UserID] nvarchar(128) )
 
 CREATE TABLE [Model]
 ([id] INT PRIMARY KEY IDENTITY(1,1),
-[ModelName] nvarchar(50) NOT NULL,
-[MakeID] INT NOT NULL,
-[DateAdded] DATE NOT NULL,
-[UserID] nvarchar(128) NOT NULL)
+[ModelName] nvarchar(50) ,
+[MakeID] INT ,
+[DateAdded] DATE ,
+[UserID] nvarchar(128) )
 
 ALTER TABLE Sales
 ADD CONSTRAINT FK_SalesPurchaseType
@@ -269,70 +270,71 @@ END
 
 CREATE TABLE [Specials]
 ([id] INT Primary Key Identity(1,1),
-[Title] nvarchar(50) NOT NULL,
-[Text] nvarchar(500) NOT NULL)
+[Title] nvarchar(50) ,
+[Text] nvarchar(500) )
 
 CREATE TABLE [Contacts]
 ([id] INT Primary Key Identity(1,1),
-[Name] nvarchar(50) NOT NULL,
-[Email] nvarchar(50) NOT NULL,
-[Phone] nvarchar(50) NOT NULL,
-[Message] nvarchar(500) NOT NULL)
+[Name] nvarchar(50) ,
+[Email] nvarchar(50),
+[Phone] nvarchar(50),
+[Message] nvarchar(500))
 
 CREATE TABLE [Sales]
 ([id] INT Primary Key Identity(1,1),
-[PurchaseType] INT NOT NULL,
-[Name] nvarchar(50) NOT NULL,
-[Email] nvarchar(50) NOT NULL,
-[Street1] nvarchar(50) NOT NULL,
-[Street2] nvarchar(50) NULL,
-[City] nvarchar(50) NOT NULL,
-[State] nvarchar(50) NOT NULL,
-[Zip] varchar(10) NOT NULL,
-[Phone] nvarchar(50) NOT NULL,
-[CarID] int NOT NULL,
-[UserID] nvarchar(128) NOT NULL,
-[PurchasePrice] decimal(15,2) NOT NULL)
+[PurchaseType] INT,
+[Name] nvarchar(50),
+[Email] nvarchar(50),
+[Street1] nvarchar(50),
+[Street2] nvarchar(50),
+[City] nvarchar(50),
+[State] nvarchar(50),
+[Zip] varchar(10),
+[Phone] nvarchar(50),
+[CarID] int,
+[UserID] nvarchar(128),
+[PurchasePrice] decimal(15,2))
 
 CREATE TABLE [Interior]
 ([id] INT Primary Key Identity (1,1),
-[InteriorName] nvarchar(50) NOT NULL)
+[InteriorName] nvarchar(50) )
 
 CREATE TABLE [Color]
 ([id] INT Primary Key Identity (1,1),
-[ColorName] nvarchar(50) NOT NULL)
+[ColorName] nvarchar(50) )
 
 CREATE TABLE [PurchaseType]
 ([id] INT Primary Key Identity (1,1),
-[Type] nvarchar(50) NOT NULL)
+[Type] nvarchar(50) )
 
 CREATE TABLE [Cars]
 ([id] INT PRIMARY KEY IDENTITY (1,1),
-[ModelID] INT NOT NULL,
-[Year] INT NOT NULL,
-[BodyStyle] nvarchar(50) NOT NULL,
-[Transmission] nvarchar(50) NOT NULL,
-[PictureSrc] nvarchar(100) NOT NULL,
-[InteriorID] INT NOT NULL,
-[Mileage] INT NOT NULL,
-[VIN] nvarchar(50) NOT NULL,
-[SalePrice] decimal(15,2) NOT NULL,
-[MSRP] decimal(15,2) NOT NULL,
-[Featured] bit NOT NULL,
-[ColorID] INT NOT NULL)
+[ModelID] INT ,
+[Year] INT ,
+[BodyStyle] nvarchar(50) ,
+[Transmission] nvarchar(50) ,
+[PictureSrc] nvarchar(100) ,
+[InteriorID] INT ,
+[Mileage] INT ,
+[VIN] nvarchar(50) ,
+[SalePrice] decimal(15,2) ,
+[MSRP] decimal(15,2) ,
+[Featured] bit ,
+[ColorID] INT,
+[Description] nvarchar(500))
 
 CREATE TABLE [Make]
 ([id] INT PRIMARY KEY IDENTITY(1,1),
-[MakeName] nvarchar(50) NOT NULL,
-[DateAdded] DATE NOT NULL,
-[UserID] nvarchar(128) NOT NULL)
+[MakeName] nvarchar(50) ,
+[DateAdded] DATE ,
+[UserID] nvarchar(128) )
 
 CREATE TABLE [Model]
 ([id] INT PRIMARY KEY IDENTITY(1,1),
-[ModelName] nvarchar(50) NOT NULL,
-[MakeID] INT NOT NULL,
-[DateAdded] DATE NOT NULL,
-[UserID] nvarchar(128) NOT NULL)
+[ModelName] nvarchar(50) ,
+[MakeID] INT ,
+[DateAdded] DATE ,
+[UserID] nvarchar(128) )
 
 ALTER TABLE Sales
 ADD CONSTRAINT FK_SalesPurchaseType
@@ -565,15 +567,15 @@ GO
 
 CREATE PROCEDURE [CreateCarsOne] (@ModelID int, @Year int, @BodyStyle nvarchar(50), 
 @Transmission nvarchar(50), @PictureSrc nvarchar(100), @InteriorID int, @Mileage int, @VIN nvarchar(50),
-@SalePrice decimal(15,2), @MSRP decimal(15,2), @Featured bit, @ColorID int)
+@SalePrice decimal(15,2), @MSRP decimal(15,2), @Featured bit, @ColorID int, @Description nvarchar(500))
 AS
 
 IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')) 
 BEGIN
 INSERT INTO [Cars]
-([ModelID],[Year],[BodyStyle],[Transmission],[PictureSrc],[InteriorID],[Mileage],[VIN],[SalePrice],[MSRP],[Featured],[ColorID])
+([ModelID],[Year],[BodyStyle],[Transmission],[PictureSrc],[InteriorID],[Mileage],[VIN],[SalePrice],[MSRP],[Featured],[ColorID],[Description])
 VALUES
-(@ModelID,@Year,@BodyStyle,@Transmission,@PictureSrc,@InteriorID,@Mileage,@VIN,@SalePrice,@MSRP,@Featured,@ColorID)
+(@ModelID,@Year,@BodyStyle,@Transmission,@PictureSrc,@InteriorID,@Mileage,@VIN,@SalePrice,@MSRP,@Featured,@ColorID,@Description)
 END
 
 GO
@@ -590,7 +592,7 @@ GO
 
 CREATE PROCEDURE [UpdateCarsOne] (@ID int, @ModelID int, @Year int, @BodyStyle nvarchar(50), 
 @Transmission nvarchar(50), @PictureSrc nvarchar(100), @InteriorID int, @Mileage int, @VIN nvarchar(50),
-@SalePrice decimal(15,2), @MSRP decimal(15,2), @Featured bit, @ColorID int)
+@SalePrice decimal(15,2), @MSRP decimal(15,2), @Featured bit, @ColorID int, @Description nvarchar(500))
 AS
 
 IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')) 
@@ -598,7 +600,7 @@ BEGIN
 UPDATE [Cars]
 SET [ModelID] = @ModelID, [Year] = @Year, [BodyStyle] = @BodyStyle, [Transmission] = @Transmission, [PictureSrc] = @PictureSrc,
 [InteriorID] = @InteriorID, [Mileage] = @Mileage, [VIN] = @VIN, [SalePrice] = @SalePrice, [MSRP] = @MSRP, [Featured] = @Featured,
-[ColorID] = @ColorID
+[ColorID] = @ColorID, [Description] = @Description
 WHERE
 [id] = @ID
 END

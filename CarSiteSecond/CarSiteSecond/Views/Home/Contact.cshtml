@@ -1,17 +1,60 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<h1>Contact Us</h1>
+<div class="contact-flex">
+    <div>
+        <form>
+            <table class="contact-table">
+                <tr>
+                    <td class="bold left-text">Name</td>
+                </tr>
+                <tr>
+                    <td class="left-text">
+                        <input style="margin-left:0; width: 100%;" type="text" name="name" value="" id="contact-name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bold left-text">Email</td>
+                </tr>
+                <tr>
+                    <td class="left-text">
+                        <input style="margin-left:0; width: 100%;" type="text" name="email" value="" id="contact-email" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bold left-text">Phone</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input style="margin-left:0; width: 100%;" type="text" name="phone" value="" id="contact-phone" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bold left-text">Message</td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea style="margin-left:0; width: 100%;" name="message" value="" id="contact-message"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <img src="~/Data/Pictures/address.JPG" />
+        <p>
+            15 S 5th St #600
+            <br />Minneapolis, MN 55402
+        </p>
+        <p>
+            Sales: 111-111-1111
+            <br />Service: 111-111-1112
+        </p>
+    </div>
+</div>

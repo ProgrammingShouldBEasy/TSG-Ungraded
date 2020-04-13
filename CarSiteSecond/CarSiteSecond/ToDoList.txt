@@ -11,6 +11,12 @@
 -UnitTest QA Repo
 
 Q?s
--Why is my styling not working on my header links?
--Why is none of my styling getting through?
--Why is site.CSS not able to be applied without destroying bootstrap?
+-Take a look at my models/view models, let me know if I need to make changes.
+-Why is Add Vehicle Description box not going full colspan of 2?
+-Are my models formatted and datatyped correctly?
+-How do I pass the data from controller to view with my current models?
+-Should I create View Models to aggregate data off my models and pass them through to my views?
+-How do I use filtering on the Make/Model section?
+-Should I perform more Get functions from my DB in the controller and then perform operations to pass data through a ViewModel?
+-Can I use the default Identity Views or do I need to make them match the wireframes?
+-Can we go over passing a single model from Controller to View and back?

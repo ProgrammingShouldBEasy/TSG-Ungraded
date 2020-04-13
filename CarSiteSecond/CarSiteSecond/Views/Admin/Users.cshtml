@@ -3,5 +3,33 @@
     ViewBag.Title = "Users";
 }
 
-<h2>Users</h2>
+<h1>Users</h1>
+@Html.ActionLink("Add a new User", "AddUser", "Admin")
+<table id="users" class="border-mine table table-striped">
+    <thead>
+        <tr style="background-color: lightgray;">
+            <td>Last Name</td>
+            <td>First Name</td>
+            <td>Email</td>
+            <td>Role</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Hill</td>
+            <td>Austyn</td>
+            <td>ahill@guildcars.com</td>
+            <td>Sales</td>
+            <td>edit</td>
+        </tr>
+        <tr>
+            <td>March</td>
+            <td>Corbin</td>
+            <td>cmarch@guildcars.com</td>
+            <td>Sales</td>
+            <td>edit</td>
+        </tr>
+    </tbody>
+</table>
 

@@ -3,5 +3,122 @@
     ViewBag.Title = "EditVehicle";
 }
 
-<h2>EditVehicle</h2>
+<h1>EditVehicle</h1>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <table style="width: 80%;">
+            <tr>
+                <td class="left-text bold">Make</td>
+                <td class="left-text bold">Model</td>
+            </tr>
+            <tr>
+                <td>
+                    <select style="margin-left:0; width:100%;" id="Make" name="Make">
+                        <option value="Audi">Audi</option>
+                    </select>
+                </td>
+                <td>
+                    <select style="margin-left:0; width:100%;" id="Model" name="Model">
+                        <option value="A4">A4</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Type</td>
+                <td class="left-text bold">Body Style</td>
+            </tr>
+            <tr>
+                <td>
+                    <select style="margin-left:0; width:100%;" id="Type" name="Type">
+                        <option value="New">New</option>
+                    </select>
+                </td>
+                <td>
+                    <select style="margin-left:0; width:100%;" id="BodyStyle" name="BodyStyle">
+                        <option value="Car">Car</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text body bold">Year</td>
+                <td class="left-text body bold">Transmission</td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="margin-left:0; width:100%;" type="number" id="Year" value"" />
+                </td>
+                <td>
+                    <select style="margin-left:0; width:100%;" id="Transmission">
+                        <option value="Automatic">Automatic</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Color</td>
+                <td class="left-text bold">Interior</td>
+            </tr>
+            <tr>
+                <td>
+                    <select style="margin-left:0; width:100%;" id="Color">
+                        <option value="Black">Black</option>
+                    </select>
+                </td>
+                <td>
+                    <select style="margin-left:0; width:100%;" id="Interior">
+                        <option value="Black">Black</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Mileage</td>
+                <td class="left-text bold">VIN #</td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="margin-left:0; width:100%;" type="number" id="Mileage" value="" />
+                </td>
+                <td>
+                    <input style="margin-left:0; width:100%;" type="text" id="VIN" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">MSRP</td>
+                <td class="left-text bold">Sale Price</td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="margin-left:0; width:100%;" type="number" id="MSRP" value="" />
+                </td>
+                <td>
+                    <input style="margin-left:0; width:100%;" type="number" id="SalePrice" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Description</td>
+            </tr>
+            <tr>
+                <td colspan="2"><textarea cols="2000" rows="4" style="margin-left:0; width:100%;" id="Description"></textarea></td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Picture</td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="margin-left:0; width:100%;" type="text" id="PictureSrc" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="Featured" name="Featured" />
+                    <label for="Featured">Feature this vehicle</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button type="button">Delete</button>
+    <button type="submit">Save</button>
+}
+
 

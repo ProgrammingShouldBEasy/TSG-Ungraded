@@ -1,7 +1,193 @@
-﻿
+﻿@model CarSiteSecond.Models.DTOs.Sale
 @{
     ViewBag.Title = "Purchase";
 }
 
-<h2>Purchase</h2>
+<h1>Purchase Vehicle</h1>
+<div id="details-container">
+    <div class="border-mine" style="padding:5px;">
+        <table id="purchase-results-table" class="results-table" style="padding:15px;">
+            <tr>
+                <td class="bold left-text">2016 Make Model</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="3"><img src="~/Data/Pictures/Car2.jpg" /></td>
+                <td class="bold right-text">Body Style:</td>
+                <td class="left-text">SUV</td>
+                <td class="bold right-text">Interior:</td>
+                <td class="left-text">Black</td>
+                <td class="bold right-text">Sale Price:</td>
+                <td class="left-text">$12,875</td>
+            </tr>
+            <tr>
+                <td class="bold right-text">Trans:</td>
+                <td class="left-text">Automatic</td>
+                <td class="bold right-text">Mileage:</td>
+                <td class="left-text">35,000</td>
+                <td class="bold right-text">MSRP:</td>
+                <td class="left-text">$14,875</td>
+            </tr>
+            <tr>
+                <td class="bold right-text">Color:</td>
+                <td class="left-text">Silver</td>
+                <td class="bold right-text">Vin #:</td>
+                <td class="left-text">2DS820192D78S123</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="right-text bold">Description:</td>
+                <td colspan="5" class="left-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
+<h1>Sales Information</h1>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <table>
+            <tr>
+                <td class="left-text bold">Name</td>
+                <td class="left-text bold">Phone</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="Name" value="" name="Name" />
+                </td>
+                <td>
+                    <input type="text" id="Phone" value="" name="Phone" />
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Email</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="Email" value="" name="Email" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Street 1</td>
+                <td class="left-text bold">Street 2</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="Street1" value="" name="Street1" />
+                </td>
+                <td>
+                    <input type="text" id="Street2" value="" name="Street2" />
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">City</td>
+                <td class="left-text bold">State</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="City" value=""/>
+                </td>
+                <td>
+                    <select id="State" name="State">
+                        <option value="Alabama">AL</option>
+                        <option value="Alaska">AK</option>
+                        <option value="Arizona">AZ</option>
+                        <option value="Arkansas">AR</option>
+                        <option value="California">CA</option>
+                        <option value="Colorado">CO</option>
+                        <option value="Connecticut">CT</option>
+                        <option value="Delaware">DE</option>
+                        <option value="Florida">FL</option>
+                        <option value="Georgia">GA</option>
+                        <option value="Hawaii">HI</option>
+                        <option value="Idaho">ID</option>
+                        <option value="Illinois">IL</option>
+                        <option value="Indiana">IN</option>
+                        <option value="Iowa">IA</option>
+                        <option value="Kansas">KS</option>
+                        <option value="Kentucky">KY</option>
+                        <option value="Louisiana">LA</option>
+                        <option value="Maine">ME</option>
+                        <option value="Maryland">MD</option>
+                        <option value="Massachusetts">MA</option>
+                        <option value="Michigan">MI</option>
+                        <option value="Minnesota">MN</option>
+                        <option value="Mississippi">MS</option>
+                        <option value="Missouri">MO</option>
+                        <option value="Montana">MT</option>
+                        <option value="Nebraska">NE</option>
+                        <option value="Nevada">NV</option>
+                        <option value="New Hampshire">NH</option>
+                        <option value="New Jersey">NJ</option>
+                        <option value="New Mexico">NM</option>
+                        <option value="New York">NY</option>
+                        <option value="North Carolina">NC</option>
+                        <option value="North Dakota">ND</option>
+                        <option value="Ohio">OH</option>
+                        <option value="Oklahoma">OK</option>
+                        <option value="Oregon">OR</option>
+                        <option value="Pennsylvania">PA</option>
+                        <option value="Rhode Island">RI</option>
+                        <option value="South Carolina">SC</option>
+                        <option value="South Dakota">SD</option>
+                        <option value="Tennessee">TN</option>
+                        <option value="Texas">TX</option>
+                        <option value="Utah">UT</option>
+                        <option value="Vermont">VT</option>
+                        <option value="Virginia">VA</option>
+                        <option value="Washington">WA</option>
+                        <option value="West Virginia">WV</option>
+                        <option value="Wisconsin">WI</option>
+                        <option value="Wyoming">WY</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Zipcode</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="Zip" name="Zip" value=""/>
+                </td>
+            </tr>
+            <tr class="border-bottom"></tr>
+            <tr>
+                <td class="left-text bold">Purchase Price</td>
+                <td class="left-text bold">Purchase Type</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="PurchasePrice" value="" name="PurchasePrice" />
+                </td>
+                <td>
+                    <select id="PurchaseType" name="PurchaseType">
+                        <option value="1">Bank Finance</option>
+                        <option value="2">Cash</option>
+                        <option value="3">Dealer Finance</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button type="submit">Save</button>
+}
+
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <label>State</label>
+            @Html.TextBoxFor(m => m.StateName, new { @class = "form-control", placeholder = "State Name" })
+            @Html.TextBoxFor(m => m.StateAbbreviation, new { @class = "form-control", placeholder = "State Abbreviation" })
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">Save</button>
+    }*@

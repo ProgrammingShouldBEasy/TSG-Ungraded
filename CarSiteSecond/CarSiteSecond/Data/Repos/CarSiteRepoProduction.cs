@@ -17,7 +17,7 @@ namespace CarSiteSecond.Data.Repos
         public CarResponse CreateCarsOne(CarRequest carRequest)
         {
             CarResponse response = new CarResponse();
-            if (carRequest.Cars.Count == 1 && carRequest.Cars.FirstOrDefault() != null && carRequest.Cars.FirstOrDefault().ModelID > 0 && carRequest.Cars.FirstOrDefault().Year > 1900 && carRequest.Cars.FirstOrDefault().BodyStyle != "" && carRequest.Cars.FirstOrDefault().Transmission != "" && carRequest.Cars.FirstOrDefault().PictureSrc != "" && carRequest.Cars.FirstOrDefault().InteriorID > 0 && carRequest.Cars.FirstOrDefault().Mileage > 0 && carRequest.Cars.FirstOrDefault().VIN != "" && carRequest.Cars.FirstOrDefault().SalePrice > 0 && carRequest.Cars.FirstOrDefault().MSRP > 0 && carRequest.Cars.FirstOrDefault().ColorID > 0)
+            if (carRequest.Cars.Count == 1 && carRequest.Cars.FirstOrDefault() != null && carRequest.Cars.FirstOrDefault().ModelID > 0 && carRequest.Cars.FirstOrDefault().Year > 1900 && carRequest.Cars.FirstOrDefault().BodyStyle != "" && carRequest.Cars.FirstOrDefault().Transmission != "" && carRequest.Cars.FirstOrDefault().PictureSrc != "" && carRequest.Cars.FirstOrDefault().InteriorID > 0 && carRequest.Cars.FirstOrDefault().Mileage > 0 && carRequest.Cars.FirstOrDefault().VIN != "" && carRequest.Cars.FirstOrDefault().SalePrice > 0 && carRequest.Cars.FirstOrDefault().MSRP > 0 && carRequest.Cars.FirstOrDefault().ColorID > 0 && carRequest.Cars.FirstOrDefault().Description != "")
             {
                 using (SqlConnection conn = new SqlConnection())
                 {
@@ -41,6 +41,7 @@ namespace CarSiteSecond.Data.Repos
                     cmd.Parameters.AddWithValue("@MSRP", carRequest.Cars.FirstOrDefault().MSRP);
                     cmd.Parameters.AddWithValue("@Featured", carRequest.Cars.FirstOrDefault().Featured);
                     cmd.Parameters.AddWithValue("@ColorID", carRequest.Cars.FirstOrDefault().ColorID);
+                    cmd.Parameters.AddWithValue("@Description", carRequest.Cars.FirstOrDefault().Description);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
@@ -220,7 +221,7 @@ namespace CarSiteSecond.Data.Repos
                     while (dr.Read())
                     {
                         //(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
-                        response.Cars.Add(new Car((int)dr["id"], (int)dr["ModelID"], (int)dr["Year"], dr["BodyStyle"].ToString(), dr["Transmission"].ToString(), dr["PictureSrc"].ToString(), (int)dr["InteriorID"], (int)dr["Mileage"], dr["VIN"].ToString(), (decimal)dr["SalePrice"], (decimal)dr["MSRP"], (bool)dr["Featured"], (int)dr["ColorID"]));
+                        response.Cars.Add(new Car((int)dr["id"], (int)dr["ModelID"], (int)dr["Year"], dr["BodyStyle"].ToString(), dr["Transmission"].ToString(), dr["PictureSrc"].ToString(), (int)dr["InteriorID"], (int)dr["Mileage"], dr["VIN"].ToString(), (decimal)dr["SalePrice"], (decimal)dr["MSRP"], (bool)dr["Featured"], (int)dr["ColorID"], dr["Description"].ToString()));
                     }
                 }
             }
@@ -306,7 +307,7 @@ namespace CarSiteSecond.Data.Repos
                     while (dr.Read())
                     {
                         //(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
-                        response.Cars.Add(new Car((int)dr["id"], (int)dr["ModelID"], (int)dr["Year"], dr["BodyStyle"].ToString(), dr["Transmission"].ToString(), dr["PictureSrc"].ToString(), (int)dr["InteriorID"], (int)dr["Mileage"], dr["VIN"].ToString(), (decimal)dr["SalePrice"], (decimal)dr["MSRP"], (bool)dr["Featured"], (int)dr["ColorID"]));
+                        response.Cars.Add(new Car((int)dr["id"], (int)dr["ModelID"], (int)dr["Year"], dr["BodyStyle"].ToString(), dr["Transmission"].ToString(), dr["PictureSrc"].ToString(), (int)dr["InteriorID"], (int)dr["Mileage"], dr["VIN"].ToString(), (decimal)dr["SalePrice"], (decimal)dr["MSRP"], (bool)dr["Featured"], (int)dr["ColorID"], dr["Description"].ToString()));
                     }
                 }
             }
@@ -333,7 +334,7 @@ namespace CarSiteSecond.Data.Repos
                     while (dr.Read())
                     {
                         //(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
-                        response.Cars.Add(new Car((int)dr["id"], (int)dr["ModelID"], (int)dr["Year"], dr["BodyStyle"].ToString(), dr["Transmission"].ToString(), dr["PictureSrc"].ToString(), (int)dr["InteriorID"], (int)dr["Mileage"], dr["VIN"].ToString(), (decimal)dr["SalePrice"], (decimal)dr["MSRP"], (bool)dr["Featured"], (int)dr["ColorID"]));
+                        response.Cars.Add(new Car((int)dr["id"], (int)dr["ModelID"], (int)dr["Year"], dr["BodyStyle"].ToString(), dr["Transmission"].ToString(), dr["PictureSrc"].ToString(), (int)dr["InteriorID"], (int)dr["Mileage"], dr["VIN"].ToString(), (decimal)dr["SalePrice"], (decimal)dr["MSRP"], (bool)dr["Featured"], (int)dr["ColorID"], dr["Description"].ToString()));
                     }
                 }
             }
@@ -668,7 +669,7 @@ namespace CarSiteSecond.Data.Repos
         public CarResponse UpdateCarsOne(CarRequest carRequest)
         {
             CarResponse response = new CarResponse();
-            if (carRequest.Cars.Count == 1 && carRequest.Cars.FirstOrDefault() != null && carRequest.Cars.FirstOrDefault().ModelID > 0 && carRequest.Cars.FirstOrDefault().Year > 1900 && carRequest.Cars.FirstOrDefault().BodyStyle != "" && carRequest.Cars.FirstOrDefault().Transmission != "" && carRequest.Cars.FirstOrDefault().PictureSrc != "" && carRequest.Cars.FirstOrDefault().InteriorID > 0 && carRequest.Cars.FirstOrDefault().Mileage > 0 && carRequest.Cars.FirstOrDefault().VIN != "" && carRequest.Cars.FirstOrDefault().SalePrice > 0 && carRequest.Cars.FirstOrDefault().MSRP > 0 && carRequest.Cars.FirstOrDefault().ColorID > 0)
+            if (carRequest.Cars.Count == 1 && carRequest.Cars.FirstOrDefault() != null && carRequest.Cars.FirstOrDefault().ModelID > 0 && carRequest.Cars.FirstOrDefault().Year > 1900 && carRequest.Cars.FirstOrDefault().BodyStyle != "" && carRequest.Cars.FirstOrDefault().Transmission != "" && carRequest.Cars.FirstOrDefault().PictureSrc != "" && carRequest.Cars.FirstOrDefault().InteriorID > 0 && carRequest.Cars.FirstOrDefault().Mileage > 0 && carRequest.Cars.FirstOrDefault().VIN != "" && carRequest.Cars.FirstOrDefault().SalePrice > 0 && carRequest.Cars.FirstOrDefault().MSRP > 0 && carRequest.Cars.FirstOrDefault().ColorID > 0 && carRequest.Cars.FirstOrDefault().Description != "")
             {
                 using (SqlConnection conn = new SqlConnection())
                 {
@@ -693,6 +694,7 @@ namespace CarSiteSecond.Data.Repos
                     cmd.Parameters.AddWithValue("@MSRP", carRequest.Cars.FirstOrDefault().MSRP);
                     cmd.Parameters.AddWithValue("@Featured", carRequest.Cars.FirstOrDefault().Featured);
                     cmd.Parameters.AddWithValue("@ColorID", carRequest.Cars.FirstOrDefault().ColorID);
+                    cmd.Parameters.AddWithValue("@Description", carRequest.Cars.FirstOrDefault().Description);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();

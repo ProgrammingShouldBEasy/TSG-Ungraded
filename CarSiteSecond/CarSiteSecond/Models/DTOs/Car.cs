@@ -7,7 +7,7 @@ namespace CarSiteSecond.Models.DTOs
 {
     public class Car
     {
-        public Car(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
+        public Car(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID, string description)
         {
             this.id = id;
             ModelID = modelID;
@@ -22,6 +22,7 @@ namespace CarSiteSecond.Models.DTOs
             MSRP = mSRP;
             Featured = featured;
             ColorID = colorID;
+            Description = description;
         }
 
         public Car()
@@ -39,6 +40,7 @@ namespace CarSiteSecond.Models.DTOs
             MSRP = 0m;
             Featured = false;
             ColorID = 0;
+            Description = "";
         }
 
         public int id { get; set; }
@@ -54,5 +56,6 @@ namespace CarSiteSecond.Models.DTOs
         public decimal MSRP { get; set; }
         public bool Featured { get; set; }
         public int ColorID { get; set; }
+        public string Description { get; set; }
     }
 }

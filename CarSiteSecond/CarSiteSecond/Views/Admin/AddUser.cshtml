@@ -1,7 +1,51 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "AddUser";
 }
 
-<h2>AddUser</h2>
-
+<h1>Add User</h1>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <table>
+            <tr>
+                <td class="left-text bold">First Name</td>
+                <td class="left-text bold">Last Name</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="FirstName" value="" />
+                </td>
+                <td>
+                    <input type="text" id="LastName" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Email</td>
+                <td class="left-text bold">Role</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="Email" value=""/>
+                </td>
+                <td>
+                    <select id="Role">
+                        <option value="Admin">Admin</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-text bold">Password</td>
+                <td class="left-text bold">Confirm Password</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="Password" />
+                </td>
+                <td>
+                    <input type="text" id="ConfirmPassword"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button type="submit">Save</button>
+}

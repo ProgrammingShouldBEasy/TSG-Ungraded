@@ -122,6 +122,10 @@ td > select, input {
     font-size: 1em;
 }
 
+.results > div {
+    margin-bottom: 15px;
+}
+
 .results-table > tr {
     width: 100%;
 }
@@ -138,4 +142,47 @@ td > select, input {
 
 td {
     vertical-align: top;
+}
+
+#specials-container  img {
+    position: relative;
+    width: 150px;
+    height: auto;
+}
+
+#specials-container > div {
+    margin-bottom: 15px;
+}
+
+.contact-table td {
+    padding: 5px;
+}
+
+.contact-table textarea {
+    height: 200px;
+}
+
+.contact-table {
+    width: 200%;
+}
+
+.contact-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contact-flex > div {
+    margin-right: 15px;
+    width: 40%;
+}
+
+.contact-flex img {
+    width: auto;
+    height: 400px;
+}
+
+#users  td {
+    border-right: 3px solid black;
 }
