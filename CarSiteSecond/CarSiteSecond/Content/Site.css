@@ -186,3 +186,23 @@ td {
 #users  td {
     border-right: 3px solid black;
 }
+
+.featured-cars img {
+    position: relative;
+    width: 150px;
+    height: auto;
+}
+
+.featured-cars > tr {
+    margin: auto;
+    align-content: center;
+}
+
+.featured-cars > tr > td {
+    align-content: center;
+}
+
+.featured-cars {
+    width: 100%;
+    margin: auto;
+}

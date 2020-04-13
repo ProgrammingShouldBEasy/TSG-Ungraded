@@ -32,19 +32,7 @@ namespace CarSiteSecond.Controllers
         {
             IRepo repo = Factory.Create();
             SaleRequest saleRequest = new SaleRequest();
-            if (!ModelState.IsValid)
-            {
-                return View("Purchase", sale);
-            }
-            try {
-                saleRequest.Sales.Add(sale);
-                SaleResponse saleResponse = repo.CreateSalesOne(saleRequest);
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, $@"Unable to add sale: {ex.Message}");
-                return View("Purchase", sale);
-            }
+            
             return Redirect("Index");
         }
     }

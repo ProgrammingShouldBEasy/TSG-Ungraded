@@ -4,14 +4,15 @@
 <h1>Contact Us</h1>
 <div class="contact-flex">
     <div>
-        <form>
+        @using (Html.BeginForm())
+        {
             <table class="contact-table">
                 <tr>
                     <td class="bold left-text">Name</td>
                 </tr>
                 <tr>
                     <td class="left-text">
-                        <input style="margin-left:0; width: 100%;" type="text" name="name" value="" id="contact-name" />
+                        <input style="margin-left:0; width: 100%;" type="text" name="name" value="" id="Name" />
                     </td>
                 </tr>
                 <tr>
@@ -19,7 +20,7 @@
                 </tr>
                 <tr>
                     <td class="left-text">
-                        <input style="margin-left:0; width: 100%;" type="text" name="email" value="" id="contact-email" />
+                        <input style="margin-left:0; width: 100%;" type="text" name="email" value="" id="Email" />
                     </td>
                 </tr>
                 <tr>
@@ -27,7 +28,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input style="margin-left:0; width: 100%;" type="text" name="phone" value="" id="contact-phone" />
+                        <input style="margin-left:0; width: 100%;" type="text" name="phone" value="" id="Phone" />
                     </td>
                 </tr>
                 <tr>
@@ -35,7 +36,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <textarea style="margin-left:0; width: 100%;" name="message" value="" id="contact-message"></textarea>
+                        <textarea style="margin-left:0; width: 100%;" name="message" value="" id="Message"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -44,7 +45,7 @@
                     </td>
                 </tr>
             </table>
-        </form>
+        }
     </div>
     <div>
         <img src="~/Data/Pictures/address.JPG" />

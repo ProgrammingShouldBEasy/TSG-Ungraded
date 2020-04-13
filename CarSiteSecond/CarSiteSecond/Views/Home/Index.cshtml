@@ -1,19 +1,55 @@
-﻿@{
+﻿@model CarSiteSecond.ViewModels.HomeIndexViewModel
+@{
     ViewBag.Title = "Home Page";
 }
+<div id="indexSpecialsCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <a href="@Url.Action("Specials", "Home")">
+            <div class="carousel-item active" style="text-align: center; background-color: burlywood;">
+                <div class="d-block w-100">
 
-<div class="jumbotron jumbotron-fluid" style="background-color: burlywood;">
-    <h1 style="text-align: center;">Title</h1>
-    <p style="text-align: center;">Text</p>
+                    <h1>BIG HUGE SALE!!!</h1>
+                    <p>Take a look at all of our specials!</p>
+
+                </div>
+            </div>
+            @foreach (CarSiteSecond.Models.DTOs.Special s in Model.Specials)
+            {
+                <div id="special-@s.id" class="carousel-item" style="background-color: burlywood; text-align:center;">
+                    <div class="d-block w-100">
+                        <h1>@s.Title</h1>
+                        <p>@s.Text</p>
+                    </div>
+                </div>
+            }
+        </a>
+    </div>
 </div>
 <hr class="new1" />
 <h1>Featured Vehicles</h1>
 <div class="featured-flex">
-    <div class="border-mine">Car</div>
-    <div class="border-mine">Car</div>
-    <div class="border-mine">Car</div>
-    <div class="border-mine">Car</div>
-    <div class="border-mine">Car</div>
-    <div class="border-mine">Car</div>
-    <div class="border-mine">Car</div>
+    @foreach (CarSiteSecond.ViewModels.HomeCarViewModel c in Model.HMCVMs)
+    {
+        <div id="@c.id" class="border-mine" style="padding-top:20px;">
+            <a href="@Url.Action("Details","Inventory", new { id = c.id })">
+                <table class="featured-cars">
+                    <tr>
+                        <td class="center-text">
+                            <img src="@c.PictureSrc" style="width:150px; height: auto;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="center-text">
+                            @c.Year @c.Make @c.Model
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="center-text">
+                            @c.Price.ToString("C")
+                        </td>
+                    </tr>
+                </table>
+            </a>
+        </div>
+    }
 </div>

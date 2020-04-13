@@ -1,41 +1,22 @@
-﻿
+﻿@model CarSiteSecond.Models.Responses.SpecialResponse
 @{
     ViewBag.Title = "Specials";
 }
 
 <h1>Specials</h1>
 <div id="specials-container">
-    <div id="special1" class="border-mine">
-        <table>
-            <tr>
-                <td rowspan="2"><img src="~/Data/Pictures/dollarsign.png" /></td>
-                <td class="bold left-text">Special Title</td>
-            </tr>
-            <tr>
-                <td class="left-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-        </table>
-    </div>
-    <div id="special2" class="border-mine">
-        <table>
-            <tr>
-                <td rowspan="2"><img src="~/Data/Pictures/dollarsign.png" /></td>
-                <td class="bold left-text">Special Title</td>
-            </tr>
-            <tr>
-                <td class="left-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-        </table>
-    </div>
-    <div id="special3" class="border-mine">
-        <table>
-            <tr>
-                <td rowspan="2"><img src="~/Data/Pictures/dollarsign.png" /></td>
-                <td class="bold left-text">Special Title</td>
-            </tr>
-            <tr>
-                <td class="left-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-        </table>
-    </div>
+    @foreach (CarSiteSecond.Models.DTOs.Special s in Model.Specials)
+    {
+        <div id="special-@s.id" class="border-mine">
+            <table>
+                <tr>
+                    <td rowspan="2"><img src="~/Data/Pictures/dollarsign.png" /></td>
+                    <td class="bold left-text">@s.Title</td>
+                </tr>
+                <tr>
+                    <td class="left-text">@s.Text</td>
+                </tr>
+            </table>
+        </div>
+    }
 </div>

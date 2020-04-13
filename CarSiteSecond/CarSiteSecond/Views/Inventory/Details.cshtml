@@ -1,4 +1,4 @@
-﻿
+﻿@model CarSiteSecond.ViewModels.InventoryDetailsViewModel
 @{
     ViewBag.Title = "Details";
 }
@@ -8,44 +8,54 @@
     <div class="border-mine" style="padding:5px;">
         <table id="used-results-table" class="results-table" style="padding:15px;">
             <tr>
-                <td class="bold left-text">2016 Make Model</td>
+                <td class="bold left-text">@Model.Year @Model.Make @Model.Model</td>
                 <td></td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
-                <td rowspan="3"><img src="~/Data/Pictures/Car2.jpg" /></td>
+                <td rowspan="3"><img src="@Model.PictureSrc" /></td>
                 <td class="bold right-text">Body Style:</td>
-                <td class="left-text">SUV</td>
+                <td class="left-text">@Model.BodyStyle</td>
                 <td class="bold right-text">Interior:</td>
-                <td class="left-text">Black</td>
+                <td class="left-text">@Model.Color</td>
                 <td class="bold right-text">Sale Price:</td>
-                <td class="left-text">$12,875</td>
+                <td class="left-text">@Model.SalePrice.ToString("C")</td>
             </tr>
             <tr>
                 <td class="bold right-text">Trans:</td>
-                <td class="left-text">Automatic</td>
+                <td class="left-text">@Model.Trans</td>
                 <td class="bold right-text">Mileage:</td>
-                <td class="left-text">35,000</td>
+                <td class="left-text">
+                    @if (Model.Mileage == 0)
+                    {
+                        @:New
+                    }
+                    else
+                    {
+                        @Model.Mileage.ToString()
+                    }
+                            </td>
                 <td class="bold right-text">MSRP:</td>
-                <td class="left-text">$14,875</td>
+                <td class="left-text">@Model.MSRP.ToString("C")
+                </td>
             </tr>
             <tr>
                 <td class="bold right-text">Color:</td>
-                <td class="left-text">Silver</td>
+                <td class="left-text">@Model.Color</td>
                 <td class="bold right-text">Vin #:</td>
-                <td class="left-text">2DS820192D78S123</td>
+                <td class="left-text">@Model.VIN</td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td></td>
                 <td class="right-text bold">Description:</td>
-                <td colspan="5" class="left-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+                <td colspan="5" class="left-text">@Model.Description</td>
             </tr>
             <tr>
                 <td colspan="6"></td>
-                <td><button type="button" class="contact-us">Contact Us</button></td>
+                <td><button type="button" class="contact-us" onclick="location.href='@Url.Action("Contact", "Home")'">Contact Us</button></td>
             </tr>
         </table>
     </div>

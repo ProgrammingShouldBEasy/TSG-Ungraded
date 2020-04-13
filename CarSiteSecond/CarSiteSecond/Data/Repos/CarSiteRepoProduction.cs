@@ -215,6 +215,8 @@ namespace CarSiteSecond.Data.Repos
                     CommandText = "GetCarsOne"
                 };
 
+                cmd.Parameters.AddWithValue("@ID", carRequest.Cars.FirstOrDefault().id);
+
                 conn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
@@ -325,8 +327,10 @@ namespace CarSiteSecond.Data.Repos
                 {
                     Connection = conn,
                     CommandType = CommandType.StoredProcedure,
-                    CommandText = "GetCarsOne"
+                    CommandText = "GetCarsOne",
                 };
+
+                cmd.Parameters.AddWithValue("@ID", carRequest.Cars.FirstOrDefault().id);
 
                 conn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())
@@ -436,6 +440,8 @@ namespace CarSiteSecond.Data.Repos
                     CommandText = "GetMakesOne"
                 };
 
+                cmd.Parameters.AddWithValue("@ID", makeRequest.Makes.FirstOrDefault().id);
+
                 conn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
@@ -489,6 +495,8 @@ namespace CarSiteSecond.Data.Repos
                     CommandType = CommandType.StoredProcedure,
                     CommandText = "GetModelsOne"
                 };
+
+                cmd.Parameters.AddWithValue("@ID", modelRequest.Models.FirstOrDefault().id);
 
                 conn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())
@@ -571,6 +579,8 @@ namespace CarSiteSecond.Data.Repos
                     CommandText = "GetSalesOne"
                 };
 
+                cmd.Parameters.AddWithValue("@ID", saleRequest.Sales.FirstOrDefault().id);
+
                 conn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
@@ -624,6 +634,8 @@ namespace CarSiteSecond.Data.Repos
                     CommandType = CommandType.StoredProcedure,
                     CommandText = "GetSpecialsOne"
                 };
+
+                cmd.Parameters.AddWithValue("@ID", specialRequest.Specials.FirstOrDefault().id);
 
                 conn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())

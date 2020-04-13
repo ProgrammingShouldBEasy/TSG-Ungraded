@@ -1,10 +1,9 @@
--Fill Views with HTML elements
+-Fill Views with HTML elements, create ViewModels as needed, and write the Controller logic as needed
 -API Controller for Search Results
 -AJAX/JS for Search Results
 -ID Framework
 -Secure Header buttons
 -Secure protected controllers
--MVC Controllers for the Views
 -File Upload
 -Client side validation, can use alert with #id that's required
 -Server side validation for data types and sensical answers, both in DB and Controller with ModelState
@@ -13,10 +12,12 @@
 Q?s
 -Take a look at my models/view models, let me know if I need to make changes.
 -Why is Add Vehicle Description box not going full colspan of 2?
--Are my models formatted and datatyped correctly?
--How do I pass the data from controller to view with my current models?
 -Should I create View Models to aggregate data off my models and pass them through to my views?
 -How do I use filtering on the Make/Model section?
 -Should I perform more Get functions from my DB in the controller and then perform operations to pass data through a ViewModel?
 -Can I use the default Identity Views or do I need to make them match the wireframes?
 -Can we go over passing a single model from Controller to View and back?
+-Is it okay that I use a carousel instead of a jumbotron?
+-Am I allowed to put         [DisplayFormat(DataFormatString = "{0:c}", ApplyFormatInEditMode = true)] as data annotations on View Models?
+-Am I supposed to use multiple optional parameters for the API search queries?
+-Can I translate a SQL like query into LINQ?
