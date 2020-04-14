@@ -75,20 +75,20 @@ namespace CarSiteSecond.Controllers
                     CarViewModel model = new CarViewModel();
 
                     model.id = a.id;
-                    model.Interior = interiorResponse.Interiors.FirstOrDefault(i => i.id == carResponse.Cars.FirstOrDefault().InteriorID).InteriorName;
+                    model.Interior = interiorResponse.Interiors.FirstOrDefault(i => i.id == a.InteriorID).InteriorName;
                     //Gets the MakeID by checking the ModelID of the car against the Models table, then gets the Make according to the MakeID, and outputs the MakeName
-                    model.Make = makeResponse.Makes.FirstOrDefault(y => y.id == modelResponse.Models.FirstOrDefault(x => x.id == carResponse.Cars.FirstOrDefault().ModelID).MakeID).MakeName;
-                    model.Model = modelResponse.Models.FirstOrDefault(x => x.id == carResponse.Cars.FirstOrDefault().ModelID).ModelName;
-                    model.Mileage = carResponse.Cars.FirstOrDefault().Mileage;
-                    model.MSRP = carResponse.Cars.FirstOrDefault().MSRP;
-                    model.PictureSrc = carResponse.Cars.FirstOrDefault().PictureSrc;
-                    model.SalePrice = carResponse.Cars.FirstOrDefault().SalePrice;
-                    model.Trans = carResponse.Cars.FirstOrDefault().Transmission;
-                    model.VIN = carResponse.Cars.FirstOrDefault().VIN;
-                    model.Year = carResponse.Cars.FirstOrDefault().Year;
-                    model.BodyStyle = carResponse.Cars.FirstOrDefault().BodyStyle;
-                    model.Color = colorResponse.Colors.FirstOrDefault(c => c.id == carResponse.Cars.FirstOrDefault().ColorID).ColorName;
-                    model.Description = carResponse.Cars.FirstOrDefault().Description;
+                    model.Make = makeResponse.Makes.FirstOrDefault(y => y.id == modelResponse.Models.FirstOrDefault(x => x.id == a.ModelID).MakeID).MakeName;
+                    model.Model = modelResponse.Models.FirstOrDefault(x => x.id == a.ModelID).ModelName;
+                    model.Mileage = a.Mileage;
+                    model.MSRP = a.MSRP;
+                    model.PictureSrc = a.PictureSrc;
+                    model.SalePrice = a.SalePrice;
+                    model.Trans = a.Transmission;
+                    model.VIN = a.VIN;
+                    model.Year = a.Year;
+                    model.BodyStyle = a.BodyStyle;
+                    model.Color = colorResponse.Colors.FirstOrDefault(c => c.id == a.ColorID).ColorName;
+                    model.Description = a.Description;
                     list.Add(model);
                 }
             }
@@ -116,21 +116,20 @@ namespace CarSiteSecond.Controllers
                     CarViewModel model = new CarViewModel();
 
                     model.id = a.id;
-                    model.Interior = interiorResponse.Interiors.FirstOrDefault(i => i.id == carResponse.Cars.FirstOrDefault().InteriorID).InteriorName;
+                    model.Interior = interiorResponse.Interiors.FirstOrDefault(i => i.id == a.InteriorID).InteriorName;
                     //Gets the MakeID by checking the ModelID of the car against the Models table, then gets the Make according to the MakeID, and outputs the MakeName
-                    model.Make = makeResponse.Makes.FirstOrDefault(y => y.id == modelResponse.Models.FirstOrDefault(x => x.id == carResponse.Cars.FirstOrDefault().ModelID).MakeID).MakeName;
-                    model.Model = modelResponse.Models.FirstOrDefault(x => x.id == carResponse.Cars.FirstOrDefault().ModelID).ModelName;
-                    model.Mileage = carResponse.Cars.FirstOrDefault().Mileage;
-                    model.MSRP = carResponse.Cars.FirstOrDefault().MSRP;
-                    model.PictureSrc = carResponse.Cars.FirstOrDefault().PictureSrc;
-                    model.SalePrice = carResponse.Cars.FirstOrDefault().SalePrice;
-                    model.Trans = carResponse.Cars.FirstOrDefault().Transmission;
-                    model.VIN = carResponse.Cars.FirstOrDefault().VIN;
-                    model.Year = carResponse.Cars.FirstOrDefault().Year;
-                    model.BodyStyle = carResponse.Cars.FirstOrDefault().BodyStyle;
-                    model.Color = colorResponse.Colors.FirstOrDefault(c => c.id == carResponse.Cars.FirstOrDefault().ColorID).ColorName;
-                    model.Description = carResponse.Cars.FirstOrDefault().Description;
-
+                    model.Make = makeResponse.Makes.FirstOrDefault(y => y.id == modelResponse.Models.FirstOrDefault(x => x.id == a.ModelID).MakeID).MakeName;
+                    model.Model = modelResponse.Models.FirstOrDefault(x => x.id == a.ModelID).ModelName;
+                    model.Mileage = a.Mileage;
+                    model.MSRP = a.MSRP;
+                    model.PictureSrc = a.PictureSrc;
+                    model.SalePrice = a.SalePrice;
+                    model.Trans = a.Transmission;
+                    model.VIN = a.VIN;
+                    model.Year = a.Year;
+                    model.BodyStyle = a.BodyStyle;
+                    model.Color = colorResponse.Colors.FirstOrDefault(c => c.id == a.ColorID).ColorName;
+                    model.Description = a.Description;
                     list.Add(model);
                 }
             }
@@ -158,21 +157,20 @@ namespace CarSiteSecond.Controllers
                     ColorResponse colorResponse = repo.GetColorsAll(new ColorRequest());
 
                     model.id = a.id;
-                    model.Interior = interiorResponse.Interiors.FirstOrDefault(i => i.id == carResponse.Cars.FirstOrDefault().InteriorID).InteriorName;
+                    model.Interior = interiorResponse.Interiors.FirstOrDefault(i => i.id == a.InteriorID).InteriorName;
                     //Gets the MakeID by checking the ModelID of the car against the Models table, then gets the Make according to the MakeID, and outputs the MakeName
-                    model.Make = makeResponse.Makes.FirstOrDefault(y => y.id == modelResponse.Models.FirstOrDefault(x => x.id == carResponse.Cars.FirstOrDefault().ModelID).MakeID).MakeName;
-                    model.Model = modelResponse.Models.FirstOrDefault(x => x.id == carResponse.Cars.FirstOrDefault().ModelID).ModelName;
-                    model.Mileage = carResponse.Cars.FirstOrDefault().Mileage;
-                    model.MSRP = carResponse.Cars.FirstOrDefault().MSRP;
-                    model.PictureSrc = carResponse.Cars.FirstOrDefault().PictureSrc;
-                    model.SalePrice = carResponse.Cars.FirstOrDefault().SalePrice;
-                    model.Trans = carResponse.Cars.FirstOrDefault().Transmission;
-                    model.VIN = carResponse.Cars.FirstOrDefault().VIN;
-                    model.Year = carResponse.Cars.FirstOrDefault().Year;
-                    model.BodyStyle = carResponse.Cars.FirstOrDefault().BodyStyle;
-                    model.Color = colorResponse.Colors.FirstOrDefault(c => c.id == carResponse.Cars.FirstOrDefault().ColorID).ColorName;
-                    model.Description = carResponse.Cars.FirstOrDefault().Description;
-
+                    model.Make = makeResponse.Makes.FirstOrDefault(y => y.id == modelResponse.Models.FirstOrDefault(x => x.id == a.ModelID).MakeID).MakeName;
+                    model.Model = modelResponse.Models.FirstOrDefault(x => x.id == a.ModelID).ModelName;
+                    model.Mileage = a.Mileage;
+                    model.MSRP = a.MSRP;
+                    model.PictureSrc = a.PictureSrc;
+                    model.SalePrice = a.SalePrice;
+                    model.Trans = a.Transmission;
+                    model.VIN = a.VIN;
+                    model.Year = a.Year;
+                    model.BodyStyle = a.BodyStyle;
+                    model.Color = colorResponse.Colors.FirstOrDefault(c => c.id == a.ColorID).ColorName;
+                    model.Description = a.Description;
                     list.Add(model);
                 }
             }

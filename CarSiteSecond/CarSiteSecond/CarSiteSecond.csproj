@@ -361,6 +361,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Search.js" />
     <Content Include="Scripts\Sql\CarSiteSprocs.sql" />
     <Content Include="Scripts\Sql\SeedData.sql" />
     <Content Include="Scripts\src\index.js" />
