@@ -47,6 +47,7 @@ namespace CarSiteSecond.ViewModels
             Featured = false;
             PictureSrc = "";
             UploadedFile = null;
+            Purchased = false;
         }
 
         public int id { get; set; }
@@ -66,5 +67,6 @@ namespace CarSiteSecond.ViewModels
         public bool Featured { get; set; }
         public string PictureSrc { get; set; }
         public HttpPostedFileBase UploadedFile { get; set; }
+        public bool Purchased { get; set; }
     }
 }
