@@ -1,19 +1,14 @@
--Fill Views with HTML elements, create ViewModels as needed, and write the Controller logic as needed
 -API Controller for Search Results
 -AJAX/JS for Search Results
--ID Framework
 -Secure Header buttons
 -Secure protected controllers
 -File Upload
+-Add/Edit Vehicle
+-Reports/Searches
 -Client side validation, can use alert with #id that's required
 -Server side validation for data types and sensical answers, both in DB and Controller with ModelState
 -UnitTest QA Repo: 1 pass / 1 fail for every method in Repo.
--Write Query for User Roles and User View
--BodyType and Transmission can be hardcoded, as can states and purchase types
 
 Q?s
 -How do I use filtering on the Make/Model section?
    onselect="myFunction" populate the id of the dependent select with options
--Can we go over passing a single model from Controller to View and back?
--Am I supposed to use multiple optional parameters for the API search queries?
--Can I translate a SQL like query into LINQ?

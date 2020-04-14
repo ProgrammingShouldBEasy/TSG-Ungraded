@@ -1,4 +1,4 @@
-﻿@model CarSiteSecond.Models.DTOs.Car
+﻿@model CarSiteSecond.ViewModels.VehicleViewModel
 @{
     ViewBag.Title = "AddVehicle";
 }
@@ -14,14 +14,12 @@
             </tr>
             <tr>
                 <td>
-                    <select style="margin-left:0; width:100%;"id="Make" name="Make">
-                        <option value="Audi">Audi</option>
-                    </select>
+                    @Html.DropDownListFor(p => p.Make,
+                    new SelectList(Model.Make, "Makes"))
                 </td>
                 <td>
-                    <select style="margin-left:0; width:100%;" id="Model" name="Model">
-                        <option value="A4">A4</option>
-                    </select>
+                    @Html.DropDownListFor(p => p.Model,
+                    new SelectList(Model.Model, "Models"))
                 </td>
             </tr>
             <tr>
@@ -32,12 +30,12 @@
                 <td>
                     <select style="margin-left:0; width:100%;" id="Type" name="Type">
                         <option value="New">New</option>
+                        <option value="Used">Used</option>
                     </select>
                 </td>
                 <td>
-                    <select style="margin-left:0; width:100%;" id="BodyStyle" name="BodyStyle">
-                        <option value="Car">Car</option>
-                    </select>
+                    @Html.DropDownListFor(p => p.BodyStyle,
+                    new SelectList(Model.BodyStyle, "BodyStyles"))
                 </td>
             </tr>
             <tr>
@@ -46,11 +44,12 @@
             </tr>
             <tr>
                 <td>
-                    <input style="margin-left:0; width:100%;" type="number" id="Year" value"" />
+                    <input name="Year" style="margin-left:0; width:100%;" type="number" id="Year" value"" />
                 </td>
                 <td>
-                    <select style="margin-left:0; width:100%;" id="Transmission">
+                    <select name="Transmission" style="margin-left:0; width:100%;" id="Transmission">
                         <option value="Automatic">Automatic</option>
+                        <option value="Manual">Manual</option>
                     </select>
                 </td>
             </tr>
@@ -60,14 +59,12 @@
             </tr>
             <tr>
                 <td>
-                    <select style="margin-left:0; width:100%;" id="Color">
-                        <option value="Black">Black</option>
-                    </select>
+                    @Html.DropDownListFor(p => p.Color,
+                    new SelectList(Model.Color, "Colors"))
                 </td>
                 <td>
-                    <select style="margin-left:0; width:100%;" id="Interior">
-                        <option value="Black">Black</option>
-                    </select>
+                    @Html.DropDownListFor(p => p.Interior,
+                    new SelectList(Model.Interior, "Interiors"))
                 </td>
             </tr>
             <tr>
@@ -76,10 +73,10 @@
             </tr>
             <tr>
                 <td>
-                    <input style="margin-left:0; width:100%;" type="number" id="Mileage" value="" />
+                    <input name="Mileage" style="margin-left:0; width:100%;" type="number" id="Mileage" value="" />
                 </td>
                 <td>
-                    <input style="margin-left:0; width:100%;" type="text" id="VIN" value="" />
+                    <input name="VIN" style="margin-left:0; width:100%;" type="text" id="VIN" value="" />
                 </td>
             </tr>
             <tr>
@@ -88,24 +85,32 @@
             </tr>
             <tr>
                 <td>
-                    <input style="margin-left:0; width:100%;" type="number" id="MSRP" value="" />
+                    <input name="MSRP" style="margin-left:0; width:100%;" type="number" id="MSRP" value="" />
                 </td>
                 <td>
-                    <input style="margin-left:0; width:100%;" type="number" id="SalePrice" value="" />
+                    <input name="SalePrice" style="margin-left:0; width:100%;" type="number" id="SalePrice" value="" />
                 </td>
             </tr>
             <tr>
                 <td class="left-text bold">Description</td>
             </tr>
             <tr>
-                <td colspan="2"><textarea cols="2000" rows="4" style="margin-left:0; width:100%;" id="Description"></textarea></td>
+                <td colspan="2"><textarea name="Description" cols="2000" rows="4" style="margin-left:0; width:100%;" id="Description"></textarea></td>
             </tr>
             <tr>
                 <td class="left-text bold">Picture</td>
             </tr>
             <tr>
                 <td>
-                    <input style="margin-left:0; width:100%;" type="text" id="PictureSrc" value="" />
+                    @using (Html.BeginForm("Upload", "Admin", FormMethod.Post,
+                        new { enctype = "multipart/form-data", id = "frmUpload" }))
+                    {
+                        <div class="form-group">
+                            <label>Select File:</label>
+                            @Html.TextBoxFor(m => m.UploadedFile,
+                             new { type = "file", @class = "form-control" })
+                        </div>
+                    }
                 </td>
             </tr>
         </table>

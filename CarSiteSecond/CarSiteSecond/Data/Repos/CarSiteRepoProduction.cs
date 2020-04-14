@@ -419,7 +419,7 @@ namespace CarSiteSecond.Data.Repos
                     while (dr.Read())
                     {
                         //int id, string makeName, DateTime dateAdded, string userID
-                        response.Makes.Add(new Make((int)dr["id"],dr["MakeName"].ToString(),(DateTime)dr["DateAdded"],dr["UserID"].ToString()));
+                        response.Makes.Add(new Make((int)dr["id"], dr["MakeName"].ToString(), (DateTime)dr["DateAdded"], dr["UserID"].ToString()));
                     }
                 }
             }
@@ -475,7 +475,7 @@ namespace CarSiteSecond.Data.Repos
                     while (dr.Read())
                     {
                         //(int id, string modelName, int makeID, DateTime dateAdded, string userID)
-                        response.Models.Add(new Model((int)dr["id"],dr["ModelName"].ToString(),(int)dr["MakeID"],(DateTime)dr["DateAdded"],dr["UserID"].ToString()));
+                        response.Models.Add(new Model((int)dr["id"], dr["ModelName"].ToString(), (int)dr["MakeID"], (DateTime)dr["DateAdded"], dr["UserID"].ToString()));
                     }
                 }
             }
@@ -532,6 +532,33 @@ namespace CarSiteSecond.Data.Repos
                     {
                         //(int id, string type)
                         response.PurchaseTypes.Add(new PurchaseType((int)dr["id"], dr["Type"].ToString()));
+                    }
+                }
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
+        public RoleResponse GetRolesAll(RoleRequest RoleRequest)
+        {
+            RoleResponse response = new RoleResponse();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "GetUserRolesAll"
+                };
+
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //int id, string makeName, DateTime dateAdded, string userID
+                        response.Roles.Add(new Role(dr["UserId"].ToString(), dr["RoleId"].ToString()));
                     }
                 }
             }
@@ -644,6 +671,33 @@ namespace CarSiteSecond.Data.Repos
                     {
                         //(int id, string title, string text)
                         response.Specials.Add(new Special((int)dr["id"], dr["Title"].ToString(), dr["Text"].ToString()));
+                    }
+                }
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
+        public UserRoleResponse GetUserRolesAll(UserRoleRequest UserRoleRequest)
+        {
+            UserRoleResponse response = new UserRoleResponse();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "GetRolesAll"
+                };
+
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //int id, string makeName, DateTime dateAdded, string userID
+                        response.UserRoles.Add(new UserRole(dr["Id"].ToString(), dr["Name"].ToString()));
                     }
                 }
             }

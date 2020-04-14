@@ -1,4 +1,4 @@
-﻿
+﻿@model List<CarSiteSecond.ViewModels.UserViewModel>
 @{
     ViewBag.Title = "Users";
 }
@@ -16,20 +16,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Hill</td>
-            <td>Austyn</td>
-            <td>ahill@guildcars.com</td>
-            <td>Sales</td>
-            <td>edit</td>
-        </tr>
-        <tr>
-            <td>March</td>
-            <td>Corbin</td>
-            <td>cmarch@guildcars.com</td>
-            <td>Sales</td>
-            <td>edit</td>
-        </tr>
+        @foreach(CarSiteSecond.ViewModels.UserViewModel m in Model)
+        {
+            <tr>@m.LastName</tr>
+            <tr>@m.FirstName</tr>
+            <tr>@m.Email</tr>
+            <tr>@m.Role</tr>
+            <tr>@Url.Action("edit", "EditUser", "Admin", m.id)</tr>
+        }
     </tbody>
 </table>
 

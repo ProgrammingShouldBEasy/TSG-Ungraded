@@ -21,6 +21,8 @@ namespace CarSiteSecond.Data.Repos
         List<Color> Colors = new List<Color>();
         List<PurchaseType> PurchaseTypes = new List<PurchaseType>();
         List<Interior> Interiors = new List<Interior>();
+        List<UserRole> UserRoles = new List<UserRole>();
+        List<Role> Roles = new List<Role>();
 
         public CarResponse CreateCarsOne(CarRequest carRequest)
         {
@@ -202,6 +204,17 @@ namespace CarSiteSecond.Data.Repos
             throw new NotImplementedException();
         }
 
+        public RoleResponse GetRolesAll(RoleRequest RoleRequest)
+        {
+            RoleResponse response = new RoleResponse();
+            foreach (Role u in Roles)
+            {
+                response.Roles.Add(u);
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
         public SaleResponse GetSalesAll(SaleRequest saleRequest)
         {
             SaleResponse response = new SaleResponse();
@@ -238,6 +251,17 @@ namespace CarSiteSecond.Data.Repos
             SpecialResponse response = new SpecialResponse();
             response.Specials.Add(Specials.Where(s => s.id == specialRequest.Specials.FirstOrDefault().id).FirstOrDefault());
 
+            return response;
+            throw new NotImplementedException();
+        }
+
+        public UserRoleResponse GetUserRolesAll(UserRoleRequest UserRoleRequest)
+        {
+            UserRoleResponse response = new UserRoleResponse();
+            foreach (UserRole u in UserRoles)
+            {
+                response.UserRoles.Add(u);
+            }
             return response;
             throw new NotImplementedException();
         }

@@ -55,5 +55,11 @@ namespace CarSiteSecond.Models.Interfaces
 
         //R
         PurchaseTypeResponse GetPurchaseTypesAll(PurchaseTypeRequest PurchaseTypeRequest);
+
+        //R
+        UserRoleResponse GetUserRolesAll(UserRoleRequest UserRoleRequest);
+
+        //R
+        RoleResponse GetRolesAll(RoleRequest RoleRequest);
     }
 }
