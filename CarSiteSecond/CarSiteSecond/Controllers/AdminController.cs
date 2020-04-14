@@ -74,6 +74,8 @@ namespace CarSiteSecond.Controllers
         [HttpPost]
         public ActionResult EditVehicle(VehicleViewModel vehicle)
         {
+            //Work in an int id
+            //put in a selected field and all the list data onto the VehicleViewModel
             IRepo repo = Factory.Create();
             Car car = new Car();
             CarRequest carRequest = new CarRequest();

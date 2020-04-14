@@ -1,7 +1,89 @@
-﻿ //$(document).ready(function () {
- //    alert("Ready to go!!!");
- //});
-
+﻿//$(document).ready(function () {
+//    alert("Ready to go!!!");
+//});
+$("#new-search-submit").click(function () {
+    var searchTerm = $("#new-vehicle-search-text").val();
+    var minP = parseInt($("#new-search-min-price").val());
+    var maxP = parseInt($("#new-search-max-price").val());
+    var minY = parseInt($("#new-search-min-year").val());
+    var maxY = parseInt($("#new-search-max-year").val());
+    var mileage;
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:53471/Inventory/New/Get",
+        contentType: "application/json;charset=UTF-8",
+        success: function (list) {
+            $.each(list, function (index, vehicle) {
+                if (vehicle.Mileage == 0) { mileage = 'New' } else { mileage = vehicle.Mileage };
+                if (
+                    (toString(vehicle.Make).includes(searchTerm) >= 0 || toString(vehicle.Model).includes(searchTerm) >= 0 || toString(vehicle.Year).includes(searchTerm) >= 0)
+                    &&
+                    (vehicle.SalePrice >= minP && vehicle.SalePrice <= maxP)
+                    &&
+                    (vehicle.Year >= minY && vehicle.Year <= maxY)
+                ) {
+                    var srcc = vehicle.PictureSrc.split("ory/");
+                    var src = "./";
+                    var srrcc = src.concat(srcc[1]);
+                    $("#new-results-table").append("<tr><td class='bold left-text'>"
+                        + vehicle.Year + " " + vehicle.Make + " " + vehicle.Model
+                        + "</td>"
+                        + "<td></td>"
+                        + "<td></td>"
+                        + "<td></td>"
+                        + "</tr>"
+                        + "<tr>"
+                        + "<td rowspan='3'><img src='"
+                        + srrcc
+                        + "'/></td>"
+                        + "<td class='bold right-text'>Body Style:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.BodyStyle
+                        + "</td>"
+                        + "<td class='bold right-text'>Interior:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.Interior
+                        + "</td>"
+                        + "<td class='bold right-text'>Sale Price:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.SalePrice
+                        + "</td>"
+                        + "</tr>"
+                        + "<tr>"
+                        + "<td class='bold right-text'>Trans:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.Transmission
+                        + "</td >"
+                        + "<td class='bold right-text'>Mileage:</td>"
+                        + "<td class='left-text'>"
+                        + mileage
+                        + "<td class='bold right-text'>MSRP:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.MSRP
+                        + "</td >"
+                        + "</tr>"
+                        + "<tr>"
+                        + "<td class='bold right-text'>Color:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.Color
+                        + "</td >"
+                        + "<td class='bold right-text' > Vin #:</td > "
+                            + "<td class='left-text'>"
+                            + vehicle.Vin
+                            + "</td >"
+                            + "<td></td>"
+                        + "<td class='left-text'><a href='./Details/" + vehicle.id
+                        +"'"
+                        + ">Details</a></td>"
+                            + "</tr>").text();                        
+                }
+            })
+        },
+        error: function (xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
+});
  //$("#search-button").click(function() {
  //    var term = document.forms["search-block"]["search"].value;
  //    var category = document.forms["search-block"]["dvds"].value;
