@@ -193,7 +193,37 @@ namespace CarSiteSecond.Controllers
 
         public ActionResult Makes()
         {
-            return View();
+            IRepo repo = Factory.Create();
+            MakeRequest makeRequest = new MakeRequest();
+            MakeResponse makeResponse = new MakeResponse();
+            makeResponse = repo.GetMakesAll(makeRequest);
+            UserRequest userRequest = new UserRequest();
+            UserResponse userResponse = new UserResponse();
+            userResponse = repo.GetUsersAll(userRequest);
+            List<MakeViewModel> model = new List<MakeViewModel>();
+            foreach(var a in makeResponse.Makes)
+            {
+                MakeViewModel makeViewModel = new MakeViewModel();
+                makeViewModel.DateAdded = a.DateAdded.ToShortDateString();
+                makeViewModel.Make = a.MakeName;
+                makeViewModel.User = userResponse.Users.FirstOrDefault(x => x.Id == a.UserID).UserName;
+                model.Add(makeViewModel);
+            }
+            return View(model);
+        }
+
+        public ActionResult NewMake(Make model)
+        {
+            IRepo repo = Factory.Create();
+            MakeRequest makeRequest = new MakeRequest();
+
+            UserRequest userRequest = new UserRequest();
+            UserResponse userResponse = new UserResponse();
+            userResponse = repo.GetUsersAll(userRequest);
+            model.UserID = userResponse.Users.FirstOrDefault(x => x.UserName == model.UserID).Id;
+            makeRequest.Makes.Add(model);
+            repo.CreateMakesOne(makeRequest);
+            return RedirectToAction("Makes");
         }
 
         public ActionResult Models()

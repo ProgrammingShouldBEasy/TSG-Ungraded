@@ -83,7 +83,7 @@ namespace CarSiteSecond.Data.Repos
         public MakeResponse CreateMakesOne(MakeRequest makeRequest)
         {
             MakeResponse response = new MakeResponse();
-            if (makeRequest.Makes.Count == 1 && makeRequest.Makes.FirstOrDefault() != null && makeRequest.Makes.FirstOrDefault().id > 0 && makeRequest.Makes.FirstOrDefault().MakeName != "" && makeRequest.Makes.FirstOrDefault().DateAdded <= DateTime.Now && makeRequest.Makes.Count == 1 && makeRequest.Makes.FirstOrDefault() != null && makeRequest.Makes.FirstOrDefault().id > 0 && makeRequest.Makes.FirstOrDefault().MakeName != "" && makeRequest.Makes.FirstOrDefault().UserID != "")
+            if (makeRequest.Makes.Count == 1 && makeRequest.Makes.FirstOrDefault().MakeName != "" && makeRequest.Makes.FirstOrDefault().UserID != "")
             {
                 using (SqlConnection conn = new SqlConnection())
                 {

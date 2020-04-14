@@ -1,7 +1,43 @@
-﻿
+﻿@model List<CarSiteSecond.ViewModels.MakeViewModel>
 @{
     ViewBag.Title = "Makes";
 }
 
-<h2>Makes</h2>
+<h1>Makes</h1>
 
+@using (Html.BeginForm("NewMake", "Admin", FormMethod.Post))
+{
+    <div class="border-mine" style="width:100%;">
+        <label for="MakeName"class="bold">New Make</label><input type="text" id="MakeName" name="MakeName" value="" /> <button type="submit">Save</button>
+    </div>
+    <input type="text" name="UserID" hidden readonly value="@User.Identity.Name" />
+    <input type="date" name="DateAdded" hidden readonly value="@DateTime.Today" />
+}
+
+<table>
+    <tr>
+        <td>
+            Make
+        </td>
+        <td>
+            Date Added
+        </td>
+        <td>
+            User
+        </td>
+    </tr>
+    @foreach(CarSiteSecond.ViewModels.MakeViewModel a in Model)
+    {
+        <tr>
+            <td>
+                @a.Make
+            </td>
+            <td>
+                @a.DateAdded
+            </td>
+            <td>
+                @a.User
+            </td>
+        </tr>
+    }
+</table>

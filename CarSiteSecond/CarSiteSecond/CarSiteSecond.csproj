@@ -286,6 +286,7 @@
     <Compile Include="ViewModels\HomeCarViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\MakeViewModel.cs" />
     <Compile Include="ViewModels\PurchaseViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />
