@@ -52,25 +52,24 @@ namespace CarSiteSecond.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult Upload(VehicleViewModel model)
-        {
-            IRepo repo = Factory.Create();
-            Car car = new Car();
-            CarRequest carRequest = new CarRequest();
-            CarResponse carResponse = new CarResponse();
-            repo.GetCarsAll(carRequest);
-            if (model.UploadedFile != null && model.UploadedFile.ContentLength > 0)
-            {
-                string path = Path.Combine(Server.MapPath("~/Content/Pictures"),
-                    Path.GetFileName("inventory-" + carResponse.Cars.Count()));
+        //[HttpPost]
+        //public ActionResult Upload(VehicleViewModel model)
+        //{
+        //    IRepo repo = Factory.Create();
+        //    Car car = new Car();
+        //    CarRequest carRequest = new CarRequest();
+        //    CarResponse carResponse = new CarResponse();
+        //    repo.GetCarsAll(carRequest);
+        //    if (model.UploadedFile != null && model.UploadedFile.ContentLength > 0)
+        //    {
+        //        string pictureSrc = "~/Content/Pictures" +
+        //            Path.GetFileName("inventory-" + carResponse.Cars.Count());
+        //        model.UploadedFile.SaveAs(pictureSrc);
+        //        model.PictureSrc = pictureSrc;
+        //    }
 
-                model.UploadedFile.SaveAs(path);
-                model.PictureSrc = path;
-            }
-
-            return View("AddVehicle", model);
-        }
+        //    return View("AddVehicle", model);
+        //}
 
         [HttpPost]
         public ActionResult EditVehicle(VehicleViewModel vehicle)
@@ -98,11 +97,11 @@ namespace CarSiteSecond.Controllers
             carResponse = repo.GetCarsAll(carRequest);
             if (vehicle.UploadedFile != null && vehicle.UploadedFile.ContentLength > 0)
             {
-                string path = Path.Combine(Server.MapPath("~/Content/Pictures"),
+                string path = Path.Combine(Server.MapPath("~/Content/Pictures/"),
                     Path.GetFileName("inventory-" + carResponse.Cars.Count() + ".jpg"));
 
                 vehicle.UploadedFile.SaveAs(path);
-                vehicle.PictureSrc = path;
+                vehicle.PictureSrc = "~/Content/Pictures/inventory-" + carResponse.Cars.Count() + ".jpg";
             }
             carRequest.Cars.Add(car);
             repo.CreateCarsOne(carRequest);
