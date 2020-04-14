@@ -103,13 +103,13 @@ namespace CarSiteSecond.Controllers
             }
             carRequest.Cars.Add(car);
             repo.CreateCarsOne(carRequest);
-            return View("EditVehicle", vehicle);
+            //How do I get the car id it was just added with so I can pass it through to the Edit Vehicle portion?
+            return RedirectToAction("EditVehicle");
         }
 
-        [HttpPost]
-        public ActionResult EditVehicle(int? id)
+        public ActionResult EditVehicle(VehicleViewModel model)
         {
-            if (id == null)
+            if (model.id == 0)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -118,9 +118,13 @@ namespace CarSiteSecond.Controllers
                 IRepo repo = Factory.Create();
                 CarRequest carRequest = new CarRequest();
                 Car car = new Car();
-                car.id = (int)id;
+                car.id = (int)model.id;
                 carRequest.Cars.Add(car);
                 CarResponse carResponse = new CarResponse();
+                MakeResponse makeResponse = repo.GetMakesAll(new MakeRequest());
+                ModelResponse modelResponse = repo.GetModelsAll(new ModelRequest());
+                InteriorResponse interiorResponse = repo.GetInteriorsAll(new InteriorRequest());
+                ColorResponse colorResponse = repo.GetColorsAll(new ColorRequest());
                 carResponse.Cars.Add(repo.GetCarsOne(carRequest).Cars.FirstOrDefault());
                 if (carResponse.Cars.FirstOrDefault() == null || carResponse.Cars.FirstOrDefault().id == 0)
                 {
@@ -128,39 +132,21 @@ namespace CarSiteSecond.Controllers
                 }
                 else
                 {
-                    VehicleViewModel vehicle = new VehicleViewModel();
-                    MakeResponse makeResponse = repo.GetMakesAll(new MakeRequest());
-                    ModelResponse modelResponse = repo.GetModelsAll(new ModelRequest());
-                    InteriorResponse interiorResponse = repo.GetInteriorsAll(new InteriorRequest());
-                    ColorResponse colorResponse = repo.GetColorsAll(new ColorRequest());
-                    vehicle.id = carResponse.Cars.FirstOrDefault().id;
-                    foreach (Interior i in interiorResponse.Interiors)
-                    {
-                        vehicle.Interior.Add(i.InteriorName);
-                    }
-                    foreach (Make m in makeResponse.Makes)
-                    {
-                        vehicle.Interior.Add(m.MakeName);
-                    }
-                    foreach (Model m in modelResponse.Models)
-                    {
-                        vehicle.Model.Add(m.ModelName);
-                    }
-                    foreach (Color c in colorResponse.Colors)
-                    {
-                        vehicle.Color.Add(c.ColorName);
-                    }
-                    //Gets the MakeID by checking the ModelID of the car against the Models table, then gets the Make according to the MakeID, and outputs the MakeName
-                    vehicle.Mileage = carResponse.Cars.FirstOrDefault().Mileage;
-                    vehicle.MSRP = (int)carResponse.Cars.FirstOrDefault().MSRP;
-                    vehicle.PictureSrc = carResponse.Cars.FirstOrDefault().PictureSrc;
-                    vehicle.SalePrice = (int)carResponse.Cars.FirstOrDefault().SalePrice;
-                    vehicle.Transmission = carResponse.Cars.FirstOrDefault().Transmission;
-                    vehicle.VIN = carResponse.Cars.FirstOrDefault().VIN;
-                    vehicle.Year = carResponse.Cars.FirstOrDefault().Year;
-                    vehicle.BodyStyle = carResponse.Cars.FirstOrDefault().BodyStyle;
-                    vehicle.Description = carResponse.Cars.FirstOrDefault().Description;
-                    return View(vehicle);
+                    car.ColorID = colorResponse.Colors.FirstOrDefault(x => x.ColorName == model.Color.FirstOrDefault()).id;
+                    car.InteriorID = interiorResponse.Interiors.FirstOrDefault(x => x.InteriorName == model.Interior.FirstOrDefault()).id;
+                    car.Mileage = model.Mileage;
+                    car.ModelID = modelResponse.Models.FirstOrDefault(x => x.ModelName == model.Model.FirstOrDefault()).id;
+                    car.MSRP = model.MSRP;
+                    car.PictureSrc = model.PictureSrc;
+                    car.SalePrice = model.SalePrice;
+                    car.Transmission = model.Transmission;
+                    car.VIN = model.VIN;
+                    car.Year = model.Year;
+                    car.Description = model.Description;
+                    carRequest = new CarRequest();
+                    carRequest.Cars.Add(car);
+                    repo.UpdateCarsOne(carRequest);
+                    return RedirectToAction("Index", "Home");
                 }
             }
         }
@@ -178,7 +164,7 @@ namespace CarSiteSecond.Controllers
             UserResponse userResponse = new UserResponse();
             userResponse = repo.GetUsersAll(userRequest);
             List<UserViewModel> model = new List<UserViewModel>();
-            foreach(User u in userResponse.Users)
+            foreach (User u in userResponse.Users)
             {
                 UserViewModel user = new UserViewModel();
                 user.Email = u.Email;

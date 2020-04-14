@@ -12,3 +12,7 @@
 Q?s
 -How do I use filtering on the Make/Model section?
    onselect="myFunction" populate the id of the dependent select with options
+-How do I get the car id it was just added with so I can pass it through to the Edit Vehicle portion?
+-Add Vehicle File Upload
+-Edit Vehicle car id and select drop downs?
+-Exactly what screens do I need to make for add/edit user? Can I use Identity framework?
