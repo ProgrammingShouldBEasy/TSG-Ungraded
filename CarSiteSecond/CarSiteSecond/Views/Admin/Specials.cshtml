@@ -32,7 +32,7 @@
                 <tr>
                     <td rowspan="2"><img src="~/Content/Pictures/dollarsign.png" /></td>
                     <td class="bold left-text">@s.Title</td>
-                    <td>@Html.ActionLink("Delete","DeleteSpecial",@s.id)</td>
+                    <td>@Html.ActionLink("Delete","DeleteSpecial","Admin",new {id = @s.id },null)</td>
                 </tr>
                 <tr>
                     <td class="left-text">@s.Text</td>

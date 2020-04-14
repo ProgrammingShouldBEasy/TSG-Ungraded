@@ -260,6 +260,8 @@ namespace CarSiteSecond.Data.Repos
                     CommandText = "GetSpecialsOne"
                 };
 
+                cmd.Parameters.AddWithValue("@ID", specialRequest.Specials.FirstOrDefault().id);
+
                 conn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {

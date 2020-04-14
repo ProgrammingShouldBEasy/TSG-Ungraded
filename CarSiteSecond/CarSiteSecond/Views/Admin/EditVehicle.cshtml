@@ -29,8 +29,8 @@
             </tr>
             <tr>
                 <td>
-                    @Html.DropDownListFor(e => e.Model,
-                    new SelectList(Model.Type, "Types", Model.Type))
+                    @Html.DropDownListFor(kk => kk.Type,
+                   new SelectList(Model.Type, "Types"))
                 </td>
                 <td>
                     <select style="margin-left:0; width:100%;" id="BodyStyle" name="BodyStyle">

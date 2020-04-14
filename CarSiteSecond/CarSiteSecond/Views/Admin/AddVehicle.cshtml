@@ -5,7 +5,7 @@
 
 <h1>AddVehicle</h1>
 @using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmUpload" }))
-            
+
 {
     <div class="form-group">
         <table table style="width: 80%;">
@@ -29,10 +29,8 @@
             </tr>
             <tr>
                 <td>
-                    <select style="margin-left:0; width:100%;" id="Type" name="Type">
-                        <option value="New">New</option>
-                        <option value="Used">Used</option>
-                    </select>
+                    @Html.DropDownListFor(kk => kk.Type,
+                   new SelectList(Model.Type, "Types"))
                 </td>
                 <td>
                     <select style="margin-left:0; width:100%;" id="BodyStyle" name="BodyStyle">

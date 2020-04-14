@@ -8,21 +8,19 @@
 <table id="users" class="border-mine table table-striped">
     <thead>
         <tr style="background-color: lightgray;">
-            <td>Last Name</td>
-            <td>First Name</td>
             <td>Email</td>
             <td>Role</td>
             <td></td>
         </tr>
     </thead>
     <tbody>
-        @foreach(CarSiteSecond.ViewModels.UserViewModel m in Model)
+        @foreach (CarSiteSecond.ViewModels.UserViewModel m in Model)
         {
-            <tr>@m.LastName</tr>
-            <tr>@m.FirstName</tr>
-            <tr>@m.Email</tr>
-            <tr>@m.Role</tr>
-            <tr>@Url.Action("edit", "EditUser", "Admin", m.id)</tr>
+            <tr>
+                <td>@m.Email</td>
+                <td>@m.Role</td>
+                <td>@Html.ActionLink("edit", "EditUser", "Admin", m.id)</td>
+            </tr>
         }
     </tbody>
 </table>

@@ -319,17 +319,6 @@
     <Content Include="Content\Pictures\inventory-36.jpg" />
     <Content Include="Content\Pictures\inventory-37.jpg" />
     <Content Include="Content\Pictures\logo.jpg" />
-    <Content Include="Data\Pictures\address.JPG" />
-    <Content Include="Data\Pictures\Car1.jpg" />
-    <Content Include="Data\Pictures\Car2.jpg" />
-    <Content Include="Data\Pictures\Car3.jpg" />
-    <Content Include="Data\Pictures\Car4.jpg" />
-    <Content Include="Data\Pictures\Car5.jpg" />
-    <Content Include="Data\Pictures\Car6.jpg" />
-    <Content Include="Data\Pictures\Car7.jpg" />
-    <Content Include="Data\Pictures\Car8.jpg" />
-    <Content Include="Data\Pictures\dollarsign.png" />
-    <Content Include="Data\Pictures\logo.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -507,6 +496,9 @@
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Reports\Sales.cshtml" />
     <Content Include="Views\Reports\Inventory.cshtml" />
+    <Content Include="Views\Admin\Reports.cshtml" />
+    <Content Include="Views\Admin\InventoryReport.cshtml" />
+    <Content Include="Views\Admin\SalesReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "SalesReport";
+}
+
+<h2>Sales Report</h2>
+<div class="border-mine">
+    <table>
+        <tr>
+            <td class="bold">Filters</td>
+        </tr>
+        <tr>
+            <td class="bold">Users</td>
+            <td><select id="userSelectSalesReport" name="userSelectSalesReport">
+                    <option selected value="">- All -</option>
+                </select>
+            </td>
+            <td class="bold">From Date</td>
+            <td>
+                <input type="text" id="fromDateSalesReport" name="fromDateSalesReport" value=""/>
+            </td>
+            <td class="bold">To Date</td>
+            <td>
+                <input type="text" id="toDateSalesReport" name="toDateSalesReport" value="" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button">Search</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<h4>Search Results</h4>
+<table id="salesresults" class="border-mine table table-striped">
+    <thead>
+        <tr style="background-color: lightgray;">
+            <td>User</td>
+            <td>Total Sales</td>
+            <td>Total Vehicles</td>
+        </tr>
+    </thead>
+    <tbody id="salesresultsbody">
+    </tbody>
+</table>
+

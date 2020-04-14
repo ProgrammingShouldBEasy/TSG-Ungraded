@@ -46,6 +46,8 @@ namespace CarSiteSecond.Controllers
             {
                 vehicle.Color.Add(d.ColorName);
             }
+            vehicle.Type.Add("New");
+            vehicle.Type.Add("Used");
             return View(vehicle);
 
         }
@@ -135,162 +137,179 @@ namespace CarSiteSecond.Controllers
             }
         }
 
-    public ActionResult Users()
-    {
-        IRepo repo = Factory.Create();
-        UserRoleRequest userRoleRequest = new UserRoleRequest();
-        UserRoleResponse userRoleResponse = new UserRoleResponse();
-        userRoleResponse = repo.GetUserRolesAll(userRoleRequest);
-        RoleRequest roleRequest = new RoleRequest();
-        RoleResponse roleResponse = new RoleResponse();
-        roleResponse = repo.GetRolesAll(roleRequest);
-        UserRequest userRequest = new UserRequest();
-        UserResponse userResponse = new UserResponse();
-        userResponse = repo.GetUsersAll(userRequest);
-        List<UserViewModel> model = new List<UserViewModel>();
-        foreach (User u in userResponse.Users)
+        public ActionResult Users()
         {
-            UserViewModel user = new UserViewModel();
-            user.Email = u.Email;
-            var names = u.UserName.Split(' ');
-            user.FirstName = names[0];
-            user.LastName = names[1];
-            //Gets User based on email. Gets UserID/RoleID relationship based on the UserID from the User. Gets RoleName based on the UserID/RoleID relationship to assign Roles to Users.
-            user.Role = userRoleRequest.UserRoles.FirstOrDefault(x => x.id == roleRequest.Roles.FirstOrDefault(y => y.UserID == userResponse.Users.FirstOrDefault(z => z.Email == u.Email).Id).UserID).RoleName;
-            //Gets User based on email. Assigns UserID.
-            user.id = userResponse.Users.FirstOrDefault(z => z.Email == u.Email).Id;
-            model.Add(user);
-        }
-
-        return View(model);
-    }
-
-    public ActionResult AddUser()
-    {
-        return View();
-    }
-
-    public ActionResult EditUser(string id)
-    {
-        return View();
-    }
-
-    public ActionResult Makes()
-    {
-        IRepo repo = Factory.Create();
-        MakeRequest makeRequest = new MakeRequest();
-        MakeResponse makeResponse = new MakeResponse();
-        makeResponse = repo.GetMakesAll(makeRequest);
-        UserRequest userRequest = new UserRequest();
-        UserResponse userResponse = new UserResponse();
-        userResponse = repo.GetUsersAll(userRequest);
-        List<MakeViewModel> model = new List<MakeViewModel>();
-        foreach (var a in makeResponse.Makes)
-        {
-            MakeViewModel makeViewModel = new MakeViewModel();
-            makeViewModel.DateAdded = a.DateAdded.ToShortDateString();
-            makeViewModel.Make = a.MakeName;
-            makeViewModel.User = userResponse.Users.FirstOrDefault(x => x.Id == a.UserID).UserName;
-            model.Add(makeViewModel);
-        }
-        return View(model);
-    }
-
-    public ActionResult NewMake(Make model)
-    {
-        IRepo repo = Factory.Create();
-        MakeRequest makeRequest = new MakeRequest();
-
-        UserRequest userRequest = new UserRequest();
-        UserResponse userResponse = new UserResponse();
-        userResponse = repo.GetUsersAll(userRequest);
-        model.UserID = userResponse.Users.FirstOrDefault(x => x.UserName == model.UserID).Id;
-        makeRequest.Makes.Add(model);
-        repo.CreateMakesOne(makeRequest);
-        return RedirectToAction("Makes");
-    }
-
-    public ActionResult Models()
-    {
-        IRepo repo = Factory.Create();
-        MakeRequest makeRequest = new MakeRequest();
-        MakeResponse makeResponse = new MakeResponse();
-        makeResponse = repo.GetMakesAll(makeRequest);
-        ModelRequest modelRequest = new ModelRequest();
-        ModelResponse modelResponse = new ModelResponse();
-        modelResponse = repo.GetModelsAll(modelRequest);
-        UserRequest userRequest = new UserRequest();
-        UserResponse userResponse = new UserResponse();
-        userResponse = repo.GetUsersAll(userRequest);
-        List<ModelViewModel> model = new List<ModelViewModel>();
-        foreach (var a in modelResponse.Models)
-        {
-            ModelViewModel modelViewModel = new ModelViewModel();
-            modelViewModel.DateAdded = a.DateAdded.ToShortDateString();
-            modelViewModel.Make = makeResponse.Makes.FirstOrDefault(x => x.id == a.MakeID).MakeName;
-            modelViewModel.Model = a.ModelName;
-            modelViewModel.User = userResponse.Users.FirstOrDefault(x => x.Id == a.UserID).UserName;
-            foreach (var l in makeResponse.Makes)
+            IRepo repo = Factory.Create();
+            UserRoleRequest userRoleRequest = new UserRoleRequest();
+            UserRoleResponse userRoleResponse = new UserRoleResponse();
+            userRoleResponse = repo.GetUserRolesAll(userRoleRequest);
+            RoleRequest roleRequest = new RoleRequest();
+            RoleResponse roleResponse = new RoleResponse();
+            roleResponse = repo.GetRolesAll(roleRequest);
+            UserRequest userRequest = new UserRequest();
+            UserResponse userResponse = new UserResponse();
+            userResponse = repo.GetUsersAll(userRequest);
+            List<UserViewModel> model = new List<UserViewModel>();
+            foreach (User u in userResponse.Users)
             {
-                modelViewModel.MakesList.Add(l.MakeName);
+                UserViewModel user = new UserViewModel();
+                user.Email = u.Email;
+                //Gets User based on email. Gets UserID/RoleID relationship based on the UserID from the User. Gets RoleName based on the UserID/RoleID relationship to assign Roles to Users.
+                user.Role = userRoleResponse.UserRoles.FirstOrDefault(x => x.id == roleResponse.Roles.FirstOrDefault(y => y.UserID == userResponse.Users.FirstOrDefault(z => z.Email == u.Email).Id).RoleID).RoleName;
+                //Gets User based on email. Assigns UserID.
+                user.id = userResponse.Users.FirstOrDefault(z => z.Email == u.Email).Id;
+                model.Add(user);
             }
-            model.Add(modelViewModel);
+
+            return View(model);
         }
-        return View(model);
-    }
 
-    public ActionResult NewModel(ModelForView model)
-    {
-        IRepo repo = Factory.Create();
-        ModelRequest modelRequest = new ModelRequest();
-        UserRequest userRequest = new UserRequest();
-        UserResponse userResponse = new UserResponse();
-        userResponse = repo.GetUsersAll(userRequest);
-        MakeRequest makeRequest = new MakeRequest();
-        MakeResponse makeResponse = repo.GetMakesAll(makeRequest);
-        Model modelToAdd = new Model();
-        modelToAdd.ModelName = model.ModelName;
-        modelToAdd.UserID = userResponse.Users.FirstOrDefault(x => x.UserName == model.UserID).Id;
-        modelToAdd.MakeID = makeResponse.Makes.FirstOrDefault(x => x.MakeName == model.MakeName).id;
-        modelRequest.Models.Add(modelToAdd);
-        repo.CreateModelsOne(modelRequest);
-        return RedirectToAction("Models");
-    }
-
-    public ActionResult Specials()
-    {
-        IRepo repo = Factory.Create();
-        SpecialRequest specialRequest = new SpecialRequest();
-        SpecialResponse specialResponse = repo.GetSpecialsAll(specialRequest);
-        SpecialsViewModel model = new SpecialsViewModel();
-        foreach (Special s in specialResponse.Specials)
+        public ActionResult AddUser()
         {
-            model.Specials.Add(s);
+            return View("Register", "Account");
         }
-        return View(model);
-    }
 
-    public ActionResult AddSpecial(SpecialsViewModel model)
-    {
-        IRepo repo = Factory.Create();
-        SpecialRequest specialRequest = new SpecialRequest();
-        Special newSpecial = new Special();
-        newSpecial.Text = model.Description;
-        newSpecial.Text = model.Title;
-        specialRequest.Specials.Add(newSpecial);
-        repo.DeleteSpecialsOne(specialRequest);
-        return RedirectToAction("Specials");
-    }
+        public ActionResult EditUser(string id)
+        {
+            return View();
+        }
 
-    public ActionResult DeleteSpecial(int? id)
-    {
-        IRepo repo = Factory.Create();
-        SpecialRequest specialRequest = new SpecialRequest();
-        Special deleteSpecial = new Special();
-        deleteSpecial.id = (int)id;
-        specialRequest.Specials.Add(deleteSpecial);
-        repo.DeleteSpecialsOne(specialRequest);
-        return RedirectToAction("Specials");
+        public ActionResult Makes()
+        {
+            IRepo repo = Factory.Create();
+            MakeRequest makeRequest = new MakeRequest();
+            MakeResponse makeResponse = new MakeResponse();
+            makeResponse = repo.GetMakesAll(makeRequest);
+            UserRequest userRequest = new UserRequest();
+            UserResponse userResponse = new UserResponse();
+            userResponse = repo.GetUsersAll(userRequest);
+            List<MakeViewModel> model = new List<MakeViewModel>();
+            foreach (var a in makeResponse.Makes)
+            {
+                MakeViewModel makeViewModel = new MakeViewModel();
+                makeViewModel.DateAdded = a.DateAdded.ToShortDateString();
+                makeViewModel.Make = a.MakeName;
+                makeViewModel.User = userResponse.Users.FirstOrDefault(x => x.Id == a.UserID).UserName;
+                model.Add(makeViewModel);
+            }
+            return View(model);
+        }
+
+        public ActionResult NewMake(Make model)
+        {
+            IRepo repo = Factory.Create();
+            MakeRequest makeRequest = new MakeRequest();
+
+            UserRequest userRequest = new UserRequest();
+            UserResponse userResponse = new UserResponse();
+            userResponse = repo.GetUsersAll(userRequest);
+            model.UserID = userResponse.Users.FirstOrDefault(x => x.UserName == model.UserID).Id;
+            makeRequest.Makes.Add(model);
+            repo.CreateMakesOne(makeRequest);
+            return RedirectToAction("Makes");
+        }
+
+        public ActionResult Models()
+        {
+            IRepo repo = Factory.Create();
+            MakeRequest makeRequest = new MakeRequest();
+            MakeResponse makeResponse = new MakeResponse();
+            makeResponse = repo.GetMakesAll(makeRequest);
+            ModelRequest modelRequest = new ModelRequest();
+            ModelResponse modelResponse = new ModelResponse();
+            modelResponse = repo.GetModelsAll(modelRequest);
+            UserRequest userRequest = new UserRequest();
+            UserResponse userResponse = new UserResponse();
+            userResponse = repo.GetUsersAll(userRequest);
+            List<ModelViewModel> model = new List<ModelViewModel>();
+            foreach (var a in modelResponse.Models)
+            {
+                ModelViewModel modelViewModel = new ModelViewModel();
+                modelViewModel.DateAdded = a.DateAdded.ToShortDateString();
+                modelViewModel.Make = makeResponse.Makes.FirstOrDefault(x => x.id == a.MakeID).MakeName;
+                modelViewModel.Model = a.ModelName;
+                modelViewModel.User = userResponse.Users.FirstOrDefault(x => x.Id == a.UserID).UserName;
+                foreach (var l in makeResponse.Makes)
+                {
+                    modelViewModel.MakesList.Add(l.MakeName);
+                }
+                model.Add(modelViewModel);
+            }
+            return View(model);
+        }
+
+        public ActionResult NewModel(ModelForView model)
+        {
+            IRepo repo = Factory.Create();
+            ModelRequest modelRequest = new ModelRequest();
+            UserRequest userRequest = new UserRequest();
+            UserResponse userResponse = new UserResponse();
+            userResponse = repo.GetUsersAll(userRequest);
+            MakeRequest makeRequest = new MakeRequest();
+            MakeResponse makeResponse = repo.GetMakesAll(makeRequest);
+            Model modelToAdd = new Model();
+            modelToAdd.ModelName = model.ModelName;
+            modelToAdd.UserID = userResponse.Users.FirstOrDefault(x => x.UserName == model.UserID).Id;
+            modelToAdd.MakeID = makeResponse.Makes.FirstOrDefault(x => x.MakeName == model.MakeName).id;
+            modelRequest.Models.Add(modelToAdd);
+            repo.CreateModelsOne(modelRequest);
+            return RedirectToAction("Models");
+        }
+
+        public ActionResult Specials()
+        {
+            IRepo repo = Factory.Create();
+            SpecialRequest specialRequest = new SpecialRequest();
+            SpecialResponse specialResponse = repo.GetSpecialsAll(specialRequest);
+            SpecialsViewModel model = new SpecialsViewModel();
+            foreach (Special s in specialResponse.Specials)
+            {
+                model.Specials.Add(s);
+            }
+            return View(model);
+        }
+
+        public ActionResult AddSpecial(SpecialsViewModel model)
+        {
+            IRepo repo = Factory.Create();
+            SpecialRequest specialRequest = new SpecialRequest();
+            Special newSpecial = new Special();
+            newSpecial.Text = model.Description;
+            newSpecial.Title = model.Title;
+            specialRequest.Specials.Add(newSpecial);
+            repo.CreateSpecialsOne(specialRequest);
+            return RedirectToAction("Specials");
+        }
+
+        public ActionResult DeleteSpecial(int? id)
+        {
+            IRepo repo = Factory.Create();
+            SpecialRequest specialRequest = new SpecialRequest();
+            Special deleteSpecial = new Special();
+            deleteSpecial.id = (int)id;
+            specialRequest.Specials.Add(deleteSpecial);
+            repo.DeleteSpecialsOne(specialRequest);
+            return RedirectToAction("Specials");
+        }
+
+        public ActionResult ChangePassword()
+        {
+            return RedirectToAction("ForgotPassword", "Account");
+        }
+
+        public ActionResult Reports()
+        {
+            return View();
+        }
+
+        public ActionResult InventoryReport()
+        {
+            return View();
+        }
+
+        public ActionResult SalesReport()
+        {
+            return View();
+        }
     }
-}
 }
