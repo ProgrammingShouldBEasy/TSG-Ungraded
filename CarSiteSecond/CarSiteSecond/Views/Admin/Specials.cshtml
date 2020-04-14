@@ -1,7 +1,43 @@
-﻿
+﻿@model CarSiteSecond.ViewModels.SpecialsViewModel
 @{
     ViewBag.Title = "Specials";
 }
 
-<h2>Specials</h2>
-
+<h1>Specials</h1>
+<div class="border-mine">
+    @using (Html.BeginForm("AddSpecial", "Admin"))
+    {
+        <table>
+            <tr>
+                <td class="bold">Title</td>
+                <td><input id="Title" name="Title" type="text" value="" /></td>
+            </tr>
+            <tr>
+                <td class="bold">Description</td>
+                <td><textarea id="Description" value="" name="Description"></textarea></td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+<div id="specials-container">
+    @foreach (CarSiteSecond.Models.DTOs.Special s in Model.Specials)
+    {
+        <div id="special-@s.id" class="border-mine">
+            <table>
+                <tr>
+                    <td rowspan="2"><img src="~/Content/Pictures/dollarsign.png" /></td>
+                    <td class="bold left-text">@s.Title</td>
+                    <td>@Html.ActionLink("Delete","DeleteSpecial",@s.id)</td>
+                </tr>
+                <tr>
+                    <td class="left-text">@s.Text</td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>

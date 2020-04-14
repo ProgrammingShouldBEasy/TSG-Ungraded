@@ -214,17 +214,17 @@ VALUES
 INSERT INTO [Cars]
 ([ModelID],[Year],[BodyStyle],[Transmission],[PictureSrc],[InteriorID],[Mileage],[VIN],[SalePrice],[MSRP],[Featured],[ColorID],[Description])
 VALUES
-(1,2020,'Car','Automatic','/Data/Pictures/Car1.jpg',1,1000,'1FUPCSZB8YDA97969',10000.00,15000.00,0,1,'Car1')
+(1,2020,'Car','Automatic','/Content/Pictures/Car1.jpg',1,1000,'1FUPCSZB8YDA97969',10000.00,15000.00,0,1,'Car1')
 
 INSERT INTO [Cars]
 ([ModelID],[Year],[BodyStyle],[Transmission],[PictureSrc],[InteriorID],[Mileage],[VIN],[SalePrice],[MSRP],[Featured],[ColorID],[Description])
 VALUES
-(4,2019,'SUV','Manual','/Data/Pictures/Car2.jpg',2,1,'2ACPCZZB9YDA95969',1000.00,1000.00,1,2,'Car2')
+(4,2019,'SUV','Manual','/Content/Pictures/Car2.jpg',2,1,'2ACPCZZB9YDA95969',1000.00,1000.00,1,2,'Car2')
 
 INSERT INTO [Cars]
 ([ModelID],[Year],[BodyStyle],[Transmission],[PictureSrc],[InteriorID],[Mileage],[VIN],[SalePrice],[MSRP],[Featured],[ColorID],[Description])
 VALUES
-(14,2020,'Truck','Manual','/Data/Pictures/Car3.jpg',3,10,'3CCDCSSB9YDA95969',100000.00,120000.00,1,3,'Car3')
+(14,2020,'Truck','Manual','/Content/Pictures/Car3.jpg',3,10,'3CCDCSSB9YDA95969',100000.00,120000.00,1,3,'Car3')
 
 INSERT INTO [Contacts]
 ([Name],[Email],[Phone],[Message])
