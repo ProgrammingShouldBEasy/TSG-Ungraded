@@ -10,7 +10,7 @@
         <label for="ModelName" class="bold">New Model</label><input type="text" id="ModelName" name="ModelName" value="" />
         <label for="MakeName" class="bold">Make</label>
         <select id="MakeName" name="MakeName">
-            @foreach (string d in Model.FirstOrDefault().ModelsList)
+            @foreach (string d in Model.FirstOrDefault().MakesList)
             {
                 <option value="@d">@d</option>
             }

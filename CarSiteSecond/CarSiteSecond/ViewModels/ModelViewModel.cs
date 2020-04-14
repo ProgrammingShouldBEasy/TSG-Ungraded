@@ -13,7 +13,7 @@ namespace CarSiteSecond.ViewModels
             DateAdded = dateAdded;
             User = user;
             Model = model;
-            ModelsList = modelsList;
+            MakesList = modelsList;
         }
 
         public ModelViewModel()
@@ -22,13 +22,13 @@ namespace CarSiteSecond.ViewModels
             DateAdded = "";
             User = "";
             Model = "";
-            ModelsList = new List<string>();
+            MakesList = new List<string>();
         }
 
         public string Make { get; set; }
         public string DateAdded { get; set; }
         public string User { get; set; }
         public string Model { get; set; }
-        public List<string> ModelsList { get; set; }
+        public List<string> MakesList { get; set; }
     }
 }

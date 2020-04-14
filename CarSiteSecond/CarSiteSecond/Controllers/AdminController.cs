@@ -246,9 +246,9 @@ namespace CarSiteSecond.Controllers
                 modelViewModel.Make = makeResponse.Makes.FirstOrDefault(x => x.id == a.MakeID).MakeName;
                 modelViewModel.Model = a.ModelName;
                 modelViewModel.User = userResponse.Users.FirstOrDefault(x => x.Id == a.UserID).UserName;
-                foreach (var l in modelResponse.Models)
+                foreach (var l in makeResponse.Makes)
                 {
-                    modelViewModel.ModelsList.Add(l.ModelName);
+                    modelViewModel.MakesList.Add(l.MakeName);
                 }
                 model.Add(modelViewModel);
             }
