@@ -1,68 +1,69 @@
-﻿@model CarSiteSecond.Models.DTOs.Sale
+﻿@model CarSiteSecond.ViewModels.PurchaseViewModel
 @{
     ViewBag.Title = "Purchase";
 }
 
 <h1>Purchase Vehicle</h1>
-<div id="details-container">
-    <div class="border-mine" style="padding:5px;">
-        <table id="purchase-results-table" class="results-table" style="padding:15px;">
-            <tr>
-                <td class="bold left-text">2016 Make Model</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td rowspan="3"><img src="~/Data/Pictures/Car2.jpg" /></td>
-                <td class="bold right-text">Body Style:</td>
-                <td class="left-text">SUV</td>
-                <td class="bold right-text">Interior:</td>
-                <td class="left-text">Black</td>
-                <td class="bold right-text">Sale Price:</td>
-                <td class="left-text">$12,875</td>
-            </tr>
-            <tr>
-                <td class="bold right-text">Trans:</td>
-                <td class="left-text">Automatic</td>
-                <td class="bold right-text">Mileage:</td>
-                <td class="left-text">35,000</td>
-                <td class="bold right-text">MSRP:</td>
-                <td class="left-text">$14,875</td>
-            </tr>
-            <tr>
-                <td class="bold right-text">Color:</td>
-                <td class="left-text">Silver</td>
-                <td class="bold right-text">Vin #:</td>
-                <td class="left-text">2DS820192D78S123</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td class="right-text bold">Description:</td>
-                <td colspan="5" class="left-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
-        </table>
-    </div>
-</div>
-
-<h1>Sales Information</h1>
-@using (Html.BeginForm())
+@using (Html.BeginForm("PurchaseSave", "Sales", Model))
 {
-    @Html.AntiForgeryToken()
+
+    <div id="details-container">
+        <div class="border-mine" style="padding:5px;">
+            <table id="purchase-results-table" class="results-table" style="padding:15px;">
+                <tr>
+                    <td class="bold left-text">@Model.Year @Model.Make @Model.Model</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="3"><img src="@Model.PictureSrc" /></td>
+                    <td class="bold right-text">Body Style:</td>
+                    <td class="left-text">@Model.BodyStyle</td>
+                    <td class="bold right-text">Interior:</td>
+                    <td class="left-text">@Model.Interior</td>
+                    <td class="bold right-text">Sale Price:</td>
+                    <td class="left-text">@Model.SalePrice.ToString("C")</td>
+                </tr>
+                <tr>
+                    <td class="bold right-text">Trans:</td>
+                    <td class="left-text">@Model.Trans</td>
+                    <td class="bold right-text">Mileage:</td>
+                    <td class="left-text">@Model.Mileage</td>
+                    <td class="bold right-text">MSRP:</td>
+                    <td class="left-text">@Model.MSRP.ToString("C")</td>
+                </tr>
+                <tr>
+                    <td class="bold right-text">Color:</td>
+                    <td class="left-text">@Model.Color</td>
+                    <td class="bold right-text">Vin #:</td>
+                    <td class="left-text">@Model.VIN</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="right-text bold">Description:</td>
+                    <td colspan="5" class="left-text">@Model.Description</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <h1>Sales Information</h1>
     <div class="form-group">
         <table>
             <tr>
                 <td class="left-text bold">Name</td>
                 <td class="left-text bold">Phone</td>
+                <td class="left-text bold"><input id="SaleId" name="SaleId" value="@User.Identity.Name" hidden readonly></td>
             </tr>
             <tr>
                 <td>
-                    <input type="text" id="Name" value="" name="Name" />
+                    <input type="text" id="CusName" value="" name="CusName" />
                 </td>
                 <td>
-                    <input type="text" id="Phone" value="" name="Phone" />
+                    <input type="text" id="Phone" value="" name="Phone"/>
                 </td>
             </tr>
             <tr>
@@ -93,7 +94,7 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" id="City" value=""/>
+                    <input type="text" id="City" value="" name="City"/>
                 </td>
                 <td>
                     <select id="State" name="State">
@@ -155,7 +156,7 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" id="Zip" name="Zip" value=""/>
+                    <input type="text" id="Zip" name="Zip" value="" />
                 </td>
             </tr>
             <tr class="border-bottom"></tr>
@@ -165,20 +166,18 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" id="PurchasePrice" value="" name="PurchasePrice" />
+                    <input type="number" id="PurchasePrice" value="" name="PurchasePrice" />
                 </td>
                 <td>
-                    <select id="PurchaseType" name="PurchaseType">
-                        <option value="1">Bank Finance</option>
-                        <option value="2">Cash</option>
-                        <option value="3">Dealer Finance</option>
-                    </select>
+                    @Html.DropDownListFor(p => p.PurchaseTypes,
+                    new SelectList(Model.PurchaseTypes, "PurchaseTypes"))
                 </td>
             </tr>
         </table>
     </div>
     <button type="submit">Save</button>
 }
+
 
 
 @*@using (Html.BeginForm())

@@ -7,7 +7,7 @@ namespace CarSiteSecond.Models.DTOs
 {
     public class User
     {
-        public User(string id, string email, string phoneNumber, string firstName, string lastName)
+        public User(string id, string email, string phoneNumber, string userName)
         {
             Id = id;
             Email = email;
@@ -20,8 +20,7 @@ namespace CarSiteSecond.Models.DTOs
             LockoutEndDateUtc = DateTime.Now;
             LockOutEnabled = false;
             AccessFailedCount = 0;
-            FirstName = firstName;
-            LastName = lastName;
+            UserName = userName;
         }
 
         public User()
@@ -37,8 +36,7 @@ namespace CarSiteSecond.Models.DTOs
             LockoutEndDateUtc = DateTime.Now;
             LockOutEnabled = false;
             AccessFailedCount = 0;
-            FirstName = "";
-            LastName = "";
+            UserName = "";
         }
 
         public string Id { get; set; }
@@ -52,7 +50,6 @@ namespace CarSiteSecond.Models.DTOs
         public DateTime LockoutEndDateUtc { get; set; }
         public bool LockOutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string UserName { get; set; }
     }
 }

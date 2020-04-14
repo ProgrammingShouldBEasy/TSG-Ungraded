@@ -27,9 +27,9 @@ VALUES
 ('Title 5', 'Text 5')
 
 INSERT INTO [AspNetUsers]
-([Id],[Email],[EmailConfirmed],[PhoneNumberConfirmed],[TwoFactorEnabled],[LockoutEnabled],[AccessFailedCount],[FirstName],[LastName])
+([Id],[Email],[EmailConfirmed],[PhoneNumberConfirmed],[TwoFactorEnabled],[LockoutEnabled],[AccessFailedCount],[UserName])
 VALUES
-('1','email@dot.com',1,1,0,0,0,'Cain','Taylor')
+('1','email@dot.com',1,1,0,0,0,'email@dot.com')
 
 INSERT INTO [AspNetRoles]
 ([Id],[Name])

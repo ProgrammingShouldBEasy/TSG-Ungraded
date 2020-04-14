@@ -140,7 +140,7 @@ namespace CarSiteSecond.Data.Repos
         public SaleResponse CreateSalesOne(SaleRequest saleRequest)
         {
             SaleResponse response = new SaleResponse();
-            if (saleRequest.Sales.Count == 1 && saleRequest.Sales.FirstOrDefault() != null && saleRequest.Sales.FirstOrDefault().PurchaseType > 0 && saleRequest.Sales.FirstOrDefault().Name != "" && saleRequest.Sales.FirstOrDefault().Email != "" && saleRequest.Sales.FirstOrDefault().Street1 != "" && saleRequest.Sales.FirstOrDefault().Street2 != "" && saleRequest.Sales.FirstOrDefault().City != "" && saleRequest.Sales.FirstOrDefault().State != "" && saleRequest.Sales.FirstOrDefault().Zip != "" && saleRequest.Sales.FirstOrDefault().Phone != "" && saleRequest.Sales.FirstOrDefault().CarID > 0 && saleRequest.Sales.FirstOrDefault().UserID != "" && saleRequest.Sales.FirstOrDefault().PurchasePrice < 0)
+            if (saleRequest.Sales.Count == 1 && saleRequest.Sales.FirstOrDefault() != null && saleRequest.Sales.FirstOrDefault().PurchaseType > 0 && saleRequest.Sales.FirstOrDefault().Name != "" && saleRequest.Sales.FirstOrDefault().Email != "" && saleRequest.Sales.FirstOrDefault().Street1 != "" && saleRequest.Sales.FirstOrDefault().City != "" && saleRequest.Sales.FirstOrDefault().State != "" && saleRequest.Sales.FirstOrDefault().Zip != "" && saleRequest.Sales.FirstOrDefault().Phone != "" && saleRequest.Sales.FirstOrDefault().CarID > 0 && saleRequest.Sales.FirstOrDefault().UserID != "" && saleRequest.Sales.FirstOrDefault().PurchasePrice > 0)
             {
                 using (SqlConnection conn = new SqlConnection())
                 {
@@ -669,8 +669,8 @@ namespace CarSiteSecond.Data.Repos
                 {
                     while (dr.Read())
                     {
-                        //(string id, string email, string phoneNumber, string firstName, string lastName)
-                        response.Users.Add(new User(dr["Id"].ToString(), dr["Email"].ToString(), dr["PhoneNumber"].ToString(), dr["FirstName"].ToString(), dr["LastName"].ToString()));
+                        //(string id, string email, string phoneNumber, string username)
+                        response.Users.Add(new User(dr["Id"].ToString(), dr["Email"].ToString(), dr["PhoneNumber"].ToString(), dr["UserName"].ToString()));
                     }
                 }
             }

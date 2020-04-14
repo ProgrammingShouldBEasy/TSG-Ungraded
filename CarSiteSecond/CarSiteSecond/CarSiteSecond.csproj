@@ -232,6 +232,10 @@
     <Compile Include="Migrations\202004132027123_uae.designer.cs">
       <DependentUpon>202004132027123_uae.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004132037542_fixe.cs" />
+    <Compile Include="Migrations\202004132037542_fixe.designer.cs">
+      <DependentUpon>202004132037542_fixe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DTOs\Color.cs" />
@@ -276,6 +280,7 @@
     <Compile Include="ViewModels\HomeCarViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -492,6 +497,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004132027123_uae.resx">
       <DependentUpon>202004132027123_uae.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004132037542_fixe.resx">
+      <DependentUpon>202004132037542_fixe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

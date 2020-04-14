@@ -7,17 +7,13 @@
 -File Upload
 -Client side validation, can use alert with #id that's required
 -Server side validation for data types and sensical answers, both in DB and Controller with ModelState
--UnitTest QA Repo
+-UnitTest QA Repo: 1 pass / 1 fail for every method in Repo.
+-Write Query for User Roles and User View
+-BodyType and Transmission can be hardcoded, as can states and purchase types
 
 Q?s
--Take a look at my models/view models, let me know if I need to make changes.
--Why is Add Vehicle Description box not going full colspan of 2?
--Should I create View Models to aggregate data off my models and pass them through to my views?
 -How do I use filtering on the Make/Model section?
--Should I perform more Get functions from my DB in the controller and then perform operations to pass data through a ViewModel?
--Can I use the default Identity Views or do I need to make them match the wireframes?
+   onselect="myFunction" populate the id of the dependent select with options
 -Can we go over passing a single model from Controller to View and back?
--Is it okay that I use a carousel instead of a jumbotron?
--Am I allowed to put         [DisplayFormat(DataFormatString = "{0:c}", ApplyFormatInEditMode = true)] as data annotations on View Models?
 -Am I supposed to use multiple optional parameters for the API search queries?
 -Can I translate a SQL like query into LINQ?
