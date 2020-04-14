@@ -1,6 +1,6 @@
 ﻿@model CarSiteSecond.ViewModels.VehicleViewModel
 @{
-    ViewBag.Title = "AddVehicle";
+    ViewBag.Title = "Add Vehicle";
 }
 
 <h1>AddVehicle</h1>
@@ -14,11 +14,11 @@
             </tr>
             <tr>
                 <td>
-                    @Html.DropDownListFor(p => p.Make,
+                    @Html.DropDownListFor(a => a.Make,
                     new SelectList(Model.Make, "Makes"))
                 </td>
                 <td>
-                    @Html.DropDownListFor(p => p.Model,
+                    @Html.DropDownListFor(b => b.Model,
                     new SelectList(Model.Model, "Models"))
                 </td>
             </tr>
@@ -34,8 +34,11 @@
                     </select>
                 </td>
                 <td>
-                    @Html.DropDownListFor(p => p.BodyStyle,
-                    new SelectList(Model.BodyStyle, "BodyStyles"))
+                    <select style="margin-left:0; width:100%;" id="BodyStyle" name="BodyStyle">
+                        <option value="SUV">SUV</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Car">Car</option>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -59,11 +62,11 @@
             </tr>
             <tr>
                 <td>
-                    @Html.DropDownListFor(p => p.Color,
+                    @Html.DropDownListFor(d => d.Color,
                     new SelectList(Model.Color, "Colors"))
                 </td>
                 <td>
-                    @Html.DropDownListFor(p => p.Interior,
+                    @Html.DropDownListFor(d => d.Interior,
                     new SelectList(Model.Interior, "Interiors"))
                 </td>
             </tr>
@@ -95,7 +98,7 @@
                 <td class="left-text bold">Description</td>
             </tr>
             <tr>
-                <td colspan="2"><textarea name="Description" cols="2000" rows="4" style="margin-left:0; width:100%;" id="Description"></textarea></td>
+                <td colspan="2">@Html.EditorFor(z => z.Description)</td>
             </tr>
             <tr>
                 <td class="left-text bold">Picture</td>

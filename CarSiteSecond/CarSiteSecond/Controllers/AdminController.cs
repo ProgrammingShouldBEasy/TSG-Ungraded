@@ -29,21 +29,21 @@ namespace CarSiteSecond.Controllers
             ModelResponse modelResponse = repo.GetModelsAll(new ModelRequest());
             InteriorResponse interiorResponse = repo.GetInteriorsAll(new InteriorRequest());
             ColorResponse colorResponse = repo.GetColorsAll(new ColorRequest());
-            foreach (Interior i in interiorResponse.Interiors)
+            foreach (Interior a in interiorResponse.Interiors)
             {
-                vehicle.Interior.Add(i.InteriorName);
+                vehicle.Interior.Add(a.InteriorName);
             }
-            foreach (Make m in makeResponse.Makes)
+            foreach (Make b in makeResponse.Makes)
             {
-                vehicle.Interior.Add(m.MakeName);
+                vehicle.Make.Add(b.MakeName);
             }
-            foreach (Model m in modelResponse.Models)
+            foreach (Model c in modelResponse.Models)
             {
-                vehicle.Model.Add(m.ModelName);
+                vehicle.Model.Add(c.ModelName);
             }
-            foreach (Color c in colorResponse.Colors)
+            foreach (Color d in colorResponse.Colors)
             {
-                vehicle.Color.Add(c.ColorName);
+                vehicle.Color.Add(d.ColorName);
             }
             return View(vehicle);
 
@@ -90,6 +90,7 @@ namespace CarSiteSecond.Controllers
             car.Transmission = vehicle.Transmission;
             car.VIN = vehicle.VIN;
             car.Year = vehicle.Year;
+            car.Description = vehicle.Description;
             CarResponse carResponse = new CarResponse();
             repo.GetCarsAll(carRequest);
             if (vehicle.UploadedFile != null && vehicle.UploadedFile.ContentLength > 0)
@@ -102,9 +103,10 @@ namespace CarSiteSecond.Controllers
             }
             carRequest.Cars.Add(car);
             repo.CreateCarsOne(carRequest);
-            return RedirectToAction("Index","Home");
+            return View("EditVehicle", vehicle);
         }
 
+        [HttpPost]
         public ActionResult EditVehicle(int? id)
         {
             if (id == null)
