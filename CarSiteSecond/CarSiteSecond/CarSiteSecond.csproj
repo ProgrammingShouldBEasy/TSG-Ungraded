@@ -240,6 +240,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DTOs\Color.cs" />
     <Compile Include="Models\DTOs\Interior.cs" />
+    <Compile Include="Models\DTOs\ModelForView.cs" />
     <Compile Include="Models\DTOs\PurchaseType.cs" />
     <Compile Include="Models\DTOs\Role.cs" />
     <Compile Include="Models\DTOs\Special.cs" />
@@ -287,6 +288,7 @@
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\CarViewModel.cs" />
     <Compile Include="ViewModels\MakeViewModel.cs" />
+    <Compile Include="ViewModels\ModelViewModel.cs" />
     <Compile Include="ViewModels\PurchaseViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />

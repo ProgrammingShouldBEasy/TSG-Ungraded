@@ -228,7 +228,49 @@ namespace CarSiteSecond.Controllers
 
         public ActionResult Models()
         {
-            return View();
+            IRepo repo = Factory.Create();
+            MakeRequest makeRequest = new MakeRequest();
+            MakeResponse makeResponse = new MakeResponse();
+            makeResponse = repo.GetMakesAll(makeRequest);
+            ModelRequest modelRequest = new ModelRequest();
+            ModelResponse modelResponse = new ModelResponse();
+            modelResponse = repo.GetModelsAll(modelRequest);
+            UserRequest userRequest = new UserRequest();
+            UserResponse userResponse = new UserResponse();
+            userResponse = repo.GetUsersAll(userRequest);
+            List<ModelViewModel> model = new List<ModelViewModel>();
+            foreach (var a in modelResponse.Models)
+            {
+                ModelViewModel modelViewModel = new ModelViewModel();
+                modelViewModel.DateAdded = a.DateAdded.ToShortDateString();
+                modelViewModel.Make = makeResponse.Makes.FirstOrDefault(x => x.id == a.MakeID).MakeName;
+                modelViewModel.Model = a.ModelName;
+                modelViewModel.User = userResponse.Users.FirstOrDefault(x => x.Id == a.UserID).UserName;
+                foreach (var l in modelResponse.Models)
+                {
+                    modelViewModel.ModelsList.Add(l.ModelName);
+                }
+                model.Add(modelViewModel);
+            }
+            return View(model);
+        }
+
+        public ActionResult NewModel(ModelForView model)
+        {
+            IRepo repo = Factory.Create();
+            ModelRequest modelRequest = new ModelRequest();
+            UserRequest userRequest = new UserRequest();
+            UserResponse userResponse = new UserResponse();
+            userResponse = repo.GetUsersAll(userRequest);
+            MakeRequest makeRequest = new MakeRequest();
+            MakeResponse makeResponse = repo.GetMakesAll(makeRequest);
+            Model modelToAdd = new Model();
+            modelToAdd.ModelName = model.ModelName;
+            modelToAdd.UserID = userResponse.Users.FirstOrDefault(x => x.UserName == model.UserID).Id;
+            modelToAdd.MakeID = makeResponse.Makes.FirstOrDefault(x => x.MakeName == model.MakeName).id;
+            modelRequest.Models.Add(modelToAdd);
+            repo.CreateModelsOne(modelRequest);
+            return RedirectToAction("Models");
         }
 
         public ActionResult Specials()

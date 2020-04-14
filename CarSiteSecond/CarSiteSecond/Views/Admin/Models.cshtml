@@ -1,7 +1,57 @@
-﻿
+﻿@model List<CarSiteSecond.ViewModels.ModelViewModel>
 @{
     ViewBag.Title = "Models";
 }
 
-<h2>Models</h2>
+<h1>Models</h1>
+@using (Html.BeginForm("NewModel", "Admin", FormMethod.Post))
+{
+    <div class="border-mine" style="width:100%;">
+        <label for="ModelName" class="bold">New Model</label><input type="text" id="ModelName" name="ModelName" value="" />
+        <label for="MakeName" class="bold">Make</label>
+        <select id="MakeName" name="MakeName">
+            @foreach (string d in Model.FirstOrDefault().ModelsList)
+            {
+                <option value="@d">@d</option>
+            }
+        </select>
+        <button type="submit">Save</button>
+    </div>
+    <input type="text" name="UserID" hidden readonly value="@User.Identity.Name" />
+    <input type="date" name="DateAdded" hidden readonly value="@DateTime.Today" />
+}
+
+<table>
+    <tr>
+        <td>
+            Make
+        </td>
+        <td>
+            Model
+        </td>
+        <td>
+            Date Added
+        </td>
+        <td>
+            User
+        </td>
+    </tr>
+    @foreach (CarSiteSecond.ViewModels.ModelViewModel a in Model)
+    {
+        <tr>
+            <td>
+                @a.Make
+            </td>
+            <td>
+                @a.Model
+            </td>
+            <td>
+                @a.DateAdded
+            </td>
+            <td>
+                @a.User
+            </td>
+        </tr>
+    }
+</table>
 
