@@ -42,7 +42,7 @@ namespace CarSiteSecond.Controllers
                     model.Model = modelResponse.Models.FirstOrDefault(x => x.id == a.ModelID).ModelName;
                     model.Mileage = a.Mileage;
                     model.MSRP = a.MSRP;
-                    model.PictureSrc = a.PictureSrc.Split(new string[] { "t/" }, StringSplitOptions.None)[1];
+                    model.PictureSrc = "../" + a.PictureSrc.Split(new string[] { "~" }, StringSplitOptions.None)[1];
                     model.SalePrice = a.SalePrice;
                     model.Trans = a.Transmission;
                     model.VIN = a.VIN;

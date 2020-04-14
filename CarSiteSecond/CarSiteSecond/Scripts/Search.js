@@ -22,9 +22,6 @@ $("#new-search-submit").click(function () {
                     &&
                     (vehicle.Year >= minY && vehicle.Year <= maxY)
                 ) {
-                    var srcc = vehicle.PictureSrc.split("ory/");
-                    var src = "./";
-                    var srrcc = src.concat(srcc[1]);
                     $("#new-results-table").append("<tr><td class='bold left-text'>"
                         + vehicle.Year + " " + vehicle.Make + " " + vehicle.Model
                         + "</td>"
@@ -34,7 +31,7 @@ $("#new-search-submit").click(function () {
                         + "</tr>"
                         + "<tr>"
                         + "<td rowspan='3'><img src='"
-                        + srrcc
+                        + vehicle.PictureSrc
                         + "'/></td>"
                         + "<td class='bold right-text'>Body Style:</td>"
                         + "<td class='left-text'>"
