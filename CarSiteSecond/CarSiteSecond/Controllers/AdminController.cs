@@ -76,6 +76,114 @@ namespace CarSiteSecond.Controllers
         {
             //Work in an int id
             //put in a selected field and all the list data onto the VehicleViewModel
+            //Save Vehicle in add method, pass id to Edit method.
+            IRepo repo = Factory.Create();
+            Car car = new Car();
+            CarRequest carRequest = new CarRequest();
+            car.BodyStyle = vehicle.BodyStyle;
+            MakeResponse makeResponse = repo.GetMakesAll(new MakeRequest());
+            ModelResponse modelResponse = repo.GetModelsAll(new ModelRequest());
+            InteriorResponse interiorResponse = repo.GetInteriorsAll(new InteriorRequest());
+            ColorResponse colorResponse = repo.GetColorsAll(new ColorRequest());
+            car.ColorID = colorResponse.Colors.FirstOrDefault(x => x.ColorName == vehicle.Color.FirstOrDefault()).id;
+            car.InteriorID = interiorResponse.Interiors.FirstOrDefault(x => x.InteriorName == vehicle.Interior.FirstOrDefault()).id;
+            car.Mileage = vehicle.Mileage;
+            car.ModelID = modelResponse.Models.FirstOrDefault(x => x.ModelName == vehicle.Model.FirstOrDefault()).id;
+            car.MSRP = vehicle.MSRP;
+            car.SalePrice = vehicle.SalePrice;
+            car.Transmission = vehicle.Transmission;
+            car.VIN = vehicle.VIN;
+            car.Year = vehicle.Year;
+            car.Description = vehicle.Description;
+            CarResponse carResponse = new CarResponse();
+            carResponse = repo.GetCarsAll(carRequest);
+            if (vehicle.UploadedFile != null && vehicle.UploadedFile.ContentLength > 0)
+            {
+                string path = Path.Combine(Server.MapPath("~/Content/Pictures/"),
+                    Path.GetFileName("inventory-" + carResponse.Cars.Max(x => x.id + 1) + ".jpg"));
+
+                vehicle.UploadedFile.SaveAs(path);
+                car.PictureSrc = "~/Content/Pictures/Inventory-" + carResponse.Cars.Max(x => x.id + 1) + ".jpg";
+            }
+            carRequest.Cars.Add(car);
+            repo.CreateCarsOne(carRequest);
+            //How do I get the car id it was just added with so I can pass it through to the Edit Vehicle portion?
+
+            carRequest.Cars.Add(car);
+            car.id = repo.GetCarsAll(new CarRequest()).Cars.Max(x => x.id);
+            carResponse.Cars.Add(repo.GetCarsOne(carRequest).Cars.FirstOrDefault());
+            if (carResponse.Cars.FirstOrDefault() == null || carResponse.Cars.FirstOrDefault().id == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return RedirectToAction("EditGet", new RouteValueDictionary(
+                    new { controller = "Admin", action = "EditGet", Id = car.id }));
+            }
+        }
+
+        public ActionResult EditGet(int? id)
+        {
+            IRepo repo = Factory.Create();
+            CarRequest carRequest = new CarRequest();
+            Car car = new Car();
+            car.id = (int)id;
+            carRequest.Cars.Add(car);
+            CarResponse carResponse = repo.GetCarsOne(carRequest);
+            VehicleViewModel model = new VehicleViewModel();
+            model.PictureSrc = carResponse.Cars.FirstOrDefault().PictureSrc;
+            model.Mileage = carResponse.Cars.FirstOrDefault().Mileage;
+            model.MSRP = (int)carResponse.Cars.FirstOrDefault().MSRP;
+            model.SalePrice = (int)carResponse.Cars.FirstOrDefault().SalePrice;
+            model.Transmission = carResponse.Cars.FirstOrDefault().Transmission;
+            model.VIN = carResponse.Cars.FirstOrDefault().VIN;
+            model.Year = carResponse.Cars.FirstOrDefault().Year;
+            model.Description = carResponse.Cars.FirstOrDefault().Description;
+            model.BodyStyle = carResponse.Cars.FirstOrDefault().BodyStyle;
+            MakeResponse makeResponse = repo.GetMakesAll(new MakeRequest());
+            ModelResponse modelResponse = repo.GetModelsAll(new ModelRequest());
+            InteriorResponse interiorResponse = repo.GetInteriorsAll(new InteriorRequest());
+            ColorResponse colorResponse = repo.GetColorsAll(new ColorRequest());
+            foreach (Interior a in interiorResponse.Interiors)
+            {
+                model.Interior.Add(a.InteriorName);
+            }
+            foreach (Make b in makeResponse.Makes)
+            {
+                model.Make.Add(b.MakeName);
+            }
+            foreach (Model c in modelResponse.Models)
+            {
+                model.Model.Add(c.ModelName);
+            }
+            foreach (Color d in colorResponse.Colors)
+            {
+                model.Color.Add(d.ColorName);
+            }
+            model.Type.Add("New");
+            model.Type.Add("Used");
+            model.InteriorSelected = interiorResponse.Interiors.FirstOrDefault(x => x.id == carResponse.Cars.FirstOrDefault().InteriorID).InteriorName;
+            model.MakeSelected = makeResponse.Makes.FirstOrDefault(x => x.id == modelResponse.Models.FirstOrDefault(y => y.id == carResponse.Cars.FirstOrDefault().ModelID).MakeID).MakeName;
+            model.ModelSelected = modelResponse.Models.FirstOrDefault(x => x.id == carResponse.Cars.FirstOrDefault().ModelID).ModelName;
+            if(model.Year >= DateTime.Today.Year)
+            {
+                model.TypeSelected = "New";
+            }
+            else
+            {
+                model.TypeSelected = "Used";
+            }
+            model.ColorSelected = colorResponse.Colors.FirstOrDefault(x => x.id == carResponse.Cars.FirstOrDefault().ColorID).ColorName;
+
+            //                makeResponse.Makes.FirstOrDefault(y => y.id == modelResponse.Models.FirstOrDefault(x => x.id == c.ModelID).MakeID).MakeName, 
+            //modelResponse.Models.FirstOrDefault(x => x.id == c.ModelID).ModelName, c.SalePrice));
+            return View("EditVehicle", model);
+        }
+
+        public ActionResult SaveEdit(VehicleViewModel vehicle)
+        {
+
             IRepo repo = Factory.Create();
             Car car = new Car();
             CarRequest carRequest = new CarRequest();
@@ -100,42 +208,16 @@ namespace CarSiteSecond.Controllers
             if (vehicle.UploadedFile != null && vehicle.UploadedFile.ContentLength > 0)
             {
                 string path = Path.Combine(Server.MapPath("~/Content/Pictures/"),
-                    Path.GetFileName("inventory-" + carResponse.Cars.Count() + ".jpg"));
+                    Path.GetFileName("Inventory-" + carResponse.Cars.Count() + ".jpg"));
 
                 vehicle.UploadedFile.SaveAs(path);
-                vehicle.PictureSrc = "~/Content/Pictures/inventory-" + carResponse.Cars.Count() + ".jpg";
+                vehicle.PictureSrc = "~/Content/Pictures/Inventory-" + carResponse.Cars.Count() + ".jpg";
             }
             carRequest.Cars.Add(car);
-            repo.CreateCarsOne(carRequest);
+            repo.UpdateCarsOne(carRequest);
             vehicle.id = carResponse.Cars.Max(x => x.id);
             //How do I get the car id it was just added with so I can pass it through to the Edit Vehicle portion?
-
-
-            car.id = (int)vehicle.id;
-            carRequest.Cars.Add(car);
-            carResponse.Cars.Add(repo.GetCarsOne(carRequest).Cars.FirstOrDefault());
-            if (carResponse.Cars.FirstOrDefault() == null || carResponse.Cars.FirstOrDefault().id == 0)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                car.ColorID = colorResponse.Colors.FirstOrDefault(x => x.ColorName == vehicle.Color.FirstOrDefault()).id;
-                car.InteriorID = interiorResponse.Interiors.FirstOrDefault(x => x.InteriorName == vehicle.Interior.FirstOrDefault()).id;
-                car.Mileage = vehicle.Mileage;
-                car.ModelID = modelResponse.Models.FirstOrDefault(x => x.ModelName == vehicle.Model.FirstOrDefault()).id;
-                car.MSRP = vehicle.MSRP;
-                car.PictureSrc = vehicle.PictureSrc;
-                car.SalePrice = vehicle.SalePrice;
-                car.Transmission = vehicle.Transmission;
-                car.VIN = vehicle.VIN;
-                car.Year = vehicle.Year;
-                car.Description = vehicle.Description;
-                carRequest = new CarRequest();
-                carRequest.Cars.Add(car);
-                repo.UpdateCarsOne(carRequest);
-                return View(vehicle);
-            }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Users()

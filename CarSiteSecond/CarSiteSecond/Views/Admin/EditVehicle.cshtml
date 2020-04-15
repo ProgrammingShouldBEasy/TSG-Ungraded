@@ -16,11 +16,11 @@
             <tr>
                 <td>
                     @Html.DropDownListFor(a => a.Make,
-                    new SelectList(Model.Make, "Makes", Model.Make))
+                    new SelectList(Model.Make, Model.MakeSelected))
                 </td>
                 <td>
                     @Html.DropDownListFor(b => b.Model,
-                    new SelectList(Model.Model, "Models", Model.Model))
+                    new SelectList(Model.Model, Model.ModelSelected))
                 </td>
             </tr>
             <tr>
@@ -30,7 +30,7 @@
             <tr>
                 <td>
                     @Html.DropDownListFor(kk => kk.Type,
-                   new SelectList(Model.Type, "Types"))
+                   new SelectList(Model.Type, Model.TypeSelected))
                 </td>
                 <td>
                     <select style="margin-left:0; width:100%;" id="BodyStyle" name="BodyStyle">
@@ -82,11 +82,11 @@
             <tr>
                 <td>
                     @Html.DropDownListFor(d => d.Color,
-                    new SelectList(Model.Color, "Colors", Model.Color))
+                    new SelectList(Model.Color, Model.ColorSelected))
                 </td>
                 <td>
                     @Html.DropDownListFor(d => d.Interior,
-                    new SelectList(Model.Interior, "Interiors", Model.Interior))
+                    new SelectList(Model.Interior, Model.InteriorSelected))
                 </td>
             </tr>
             <tr>
@@ -117,7 +117,7 @@
                 <td class="left-text bold">Description</td>
             </tr>
             <tr>
-                <td colspan="2">@Html.EditorFor(z => z.Description)</td>
+                <td colspan="2"><textarea name="Description" value="@Model.Description"></textarea></td>
             </tr>
             <tr>
                 <td class="left-text bold">Picture</td>

@@ -17,7 +17,7 @@ namespace CarSiteSecond.Data.Repos
         public CarResponse CreateCarsOne(CarRequest carRequest)
         {
             CarResponse response = new CarResponse();
-            if (carRequest.Cars.Count == 1 && carRequest.Cars.FirstOrDefault() != null && carRequest.Cars.FirstOrDefault().ModelID > 0 && carRequest.Cars.FirstOrDefault().Year > 1900 && carRequest.Cars.FirstOrDefault().BodyStyle != "" && carRequest.Cars.FirstOrDefault().Transmission != "" && carRequest.Cars.FirstOrDefault().InteriorID > 0 && carRequest.Cars.FirstOrDefault().Mileage > 0 && carRequest.Cars.FirstOrDefault().VIN != "" && carRequest.Cars.FirstOrDefault().SalePrice > 0 && carRequest.Cars.FirstOrDefault().MSRP > 0 && carRequest.Cars.FirstOrDefault().ColorID > 0)
+            if (carRequest.Cars.Count == 1 && carRequest.Cars.FirstOrDefault() != null && carRequest.Cars.FirstOrDefault().ModelID > 0 && carRequest.Cars.FirstOrDefault().Year > 1900 && carRequest.Cars.FirstOrDefault().BodyStyle != "" && carRequest.Cars.FirstOrDefault().Transmission != "" && carRequest.Cars.FirstOrDefault().InteriorID > 0 && carRequest.Cars.FirstOrDefault().Mileage >= 0 && carRequest.Cars.FirstOrDefault().VIN != "" && carRequest.Cars.FirstOrDefault().SalePrice > 0 && carRequest.Cars.FirstOrDefault().MSRP > 0 && carRequest.Cars.FirstOrDefault().ColorID > 0)
             {
                 using (SqlConnection conn = new SqlConnection())
                 {

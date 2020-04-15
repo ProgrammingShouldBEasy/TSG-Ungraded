@@ -24,9 +24,10 @@ namespace CarSiteSecond.ViewModels
             PictureSrc = "";
             Make = "";
             Model = "";
-        }
+            UploadedFile = null;
+    }
 
-        public CarViewModel(int id, int year, string bodyStyle, string trans, string color, string interior, int mileage, string vIN, decimal salePrice, decimal mSRP, string description, string pictureSrc, string make, string model)
+        public CarViewModel(int id, int year, string bodyStyle, string trans, string color, string interior, int mileage, string vIN, decimal salePrice, decimal mSRP, string description, string pictureSrc, string make, string model, HttpPostedFileBase file)
         {
             this.id = id;
             Year = year;
@@ -42,6 +43,7 @@ namespace CarSiteSecond.ViewModels
             PictureSrc = pictureSrc;
             Make = make;
             Model = model;
+            UploadedFile = file;
         }
 
         public int id { get; set; }
@@ -61,5 +63,6 @@ namespace CarSiteSecond.ViewModels
         public string PictureSrc { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
+        public HttpPostedFileBase UploadedFile { get; set; }
     }
 }

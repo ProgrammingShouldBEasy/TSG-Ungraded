@@ -68,5 +68,10 @@ namespace CarSiteSecond.ViewModels
         public string PictureSrc { get; set; }
         public HttpPostedFileBase UploadedFile { get; set; }
         public bool Purchased { get; set; }
+        public string MakeSelected { get; set; }
+        public string ModelSelected { get; set; }
+        public string TypeSelected { get; set; }
+        public string ColorSelected { get; set; }
+        public string InteriorSelected { get; set; }
     }
 }
