@@ -1058,3 +1058,26 @@ JOIN Make ON Make.id = Model.MakeID
 GROUP BY Model.ModelName, Make.MakeName, Cars.Year
 END
 GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'SalesReport'
+)
+BEGIN
+DROP PROCEDURE [SalesReport]
+END
+GO
+
+CREATE PROCEDURE [SalesReport]
+AS
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'AspNetUsers')
+AND exists(Select * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')
+AND exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Sales'))
+BEGIN
+SELECT AspNetUsers.UserName, SUM(Sales.PurchasePrice) as TotalSales, SUM(Sales.CarID) as TotalVehicles
+FROM AspNetUsers
+JOIN Sales ON Sales.UserID = AspNetUsers.Id
+GROUP BY AspNetUsers.UserName
+END
+GO
