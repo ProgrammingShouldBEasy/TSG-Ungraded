@@ -14,6 +14,10 @@
             <td>
                 <select id="userSelectSalesReport" name="userSelectSalesReport">
                     <option selected value="">- All -</option>
+                    @foreach (CarSiteSecond.ViewModels.SalesReportViewModel n in Model)
+                    {
+                        <option name="@n.UserName" value="@n.UserName">@n.UserName</option>
+                    }
                 </select>
             </td>
             <td class="bold">From Date</td>
@@ -27,7 +31,7 @@
         </tr>
         <tr>
             <td>
-                <button type="button">Search</button>
+                <button type="button" id="sales-submit" name="sales-submit">Search</button>
             </td>
         </tr>
     </table>
@@ -45,7 +49,7 @@
     <tbody id="salesresultsbody">
         @foreach (CarSiteSecond.ViewModels.SalesReportViewModel m in Model)
         {
-            <tr>
+            <tr id="@m.UserName">
                 <td>
                     @m.UserName
                 </td>

@@ -621,7 +621,7 @@ namespace CarSiteSecond.Data.Repos
                     while (dr.Read())
                     {
                         //(int id, int purchaseType, string name, string email, string street1, string street2, string city, string state, string zip, string phone, int carID, string userID, decimal purchasePrice)
-                        response.Sales.Add(new Sale((int)dr["id"], (int)dr["PurchaseType"], dr["Name"].ToString(), dr["Email"].ToString(), dr["Street1"].ToString(), dr["Street2"].ToString(), dr["City"].ToString(), dr["State"].ToString(), dr["Zip"].ToString(), dr["Phone"].ToString(), (int)dr["CarID"], dr["UserID"].ToString(), (decimal)dr["PurchasePrice"]));
+                        response.Sales.Add(new Sale((int)dr["id"], (int)dr["PurchaseType"], dr["Name"].ToString(), dr["Email"].ToString(), dr["Street1"].ToString(), dr["Street2"].ToString(), dr["City"].ToString(), dr["State"].ToString(), dr["Zip"].ToString(), dr["Phone"].ToString(), (int)dr["CarID"], dr["UserID"].ToString(), (decimal)dr["PurchasePrice"], dr["Date"].ToString()));
                     }
                 }
             }
@@ -650,7 +650,7 @@ namespace CarSiteSecond.Data.Repos
                     while (dr.Read())
                     {
                         //(int id, int purchaseType, string name, string email, string street1, string street2, string city, string state, string zip, string phone, int carID, string userID, decimal purchasePrice)
-                        response.Sales.Add(new Sale((int)dr["id"], (int)dr["PurchaseType"], dr["Name"].ToString(), dr["Email"].ToString(), dr["Street1"].ToString(), dr["Street2"].ToString(), dr["City"].ToString(), dr["State"].ToString(), dr["Zip"].ToString(), dr["Phone"].ToString(), (int)dr["CarID"], dr["UserID"].ToString(), (decimal)dr["PurchasePrice"]));
+                        response.Sales.Add(new Sale((int)dr["id"], (int)dr["PurchaseType"], dr["Name"].ToString(), dr["Email"].ToString(), dr["Street1"].ToString(), dr["Street2"].ToString(), dr["City"].ToString(), dr["State"].ToString(), dr["Zip"].ToString(), dr["Phone"].ToString(), (int)dr["CarID"], dr["UserID"].ToString(), (decimal)dr["PurchasePrice"], dr["Date"].ToString()));
                     }
                 }
             }
@@ -670,6 +670,40 @@ namespace CarSiteSecond.Data.Repos
                     CommandType = CommandType.StoredProcedure,
                     CommandText = "SalesReport"
                 };
+
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
+                        SalesReportViewModel model = new SalesReportViewModel();
+                        model.TotalSales = (int)(decimal)dr["TotalSales"];
+                        model.UserName = dr["UserName"].ToString();
+                        model.TotalVehicles = (int)dr["TotalVehicles"];
+                        response.Add(model);
+                    }
+                }
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
+        public List<SalesReportViewModel> GetSalesReport(string fromDate, string toDate)
+        {
+            List<SalesReportViewModel> response = new List<SalesReportViewModel>();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "SalesReportParams"
+                };
+
+                cmd.Parameters.AddWithValue("@fromDate", fromDate);
+                cmd.Parameters.AddWithValue("@toDate", toDate);
 
                 conn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())

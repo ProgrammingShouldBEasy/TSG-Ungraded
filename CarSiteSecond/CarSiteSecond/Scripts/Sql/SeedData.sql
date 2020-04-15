@@ -237,16 +237,16 @@ VALUES
 ('Jerry','jerry@email.com','ABCDEFGHIJK','I hate cars.')
 
 INSERT INTO [Sales]
-([PurchaseType],[Name],[Email],[Street1],[Street2],[City],[State],[Zip],[Phone],[CarID],[UserID],[PurchasePrice])
+([PurchaseType],[Name],[Email],[Street1],[Street2],[City],[State],[Zip],[Phone],[CarID],[UserID],[PurchasePrice],[Date])
 VALUES
-(1,'Name','Email@email.com','Street1','Street2','City','State','12345','123456789',1,1,10000.00)
+(1,'Name','Email@email.com','Street1','Street2','City','State','12345','123456789',1,1,10000.00,'2020-04-04')
 
 INSERT INTO [Sales]
-([PurchaseType],[Name],[Email],[Street1],[Street2],[City],[State],[Zip],[Phone],[CarID],[UserID],[PurchasePrice])
+([PurchaseType],[Name],[Email],[Street1],[Street2],[City],[State],[Zip],[Phone],[CarID],[UserID],[PurchasePrice],[Date])
 VALUES
-(2,'Name2','Email2@email.com','2Street1','2Street2','City2','State2','22345','223456789',2,1,1000.00)
+(2,'Name2','Email2@email.com','2Street1','2Street2','City2','State2','22345','223456789',2,1,1000.00,'2020-04-04')
 
 INSERT INTO [Sales]
-([PurchaseType],[Name],[Email],[Street1],[Street2],[City],[State],[Zip],[Phone],[CarID],[UserID],[PurchasePrice])
+([PurchaseType],[Name],[Email],[Street1],[Street2],[City],[State],[Zip],[Phone],[CarID],[UserID],[PurchasePrice],[Date])
 VALUES
-(3,'Name3','Email3@email.com','3Street1','3Street2','City3','State3','32345','323456789',3,1,100000.00)
+(3,'Name3','Email3@email.com','3Street1','3Street2','City3','State3','32345','323456789',3,1,100000.00,'2020-04-04')

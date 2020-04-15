@@ -37,7 +37,8 @@ CREATE TABLE [Sales]
 [Phone] nvarchar(50) ,
 [CarID] int ,
 [UserID] nvarchar(128) ,
-[PurchasePrice] decimal(15,2) )
+[PurchasePrice] decimal(15,2),
+[Date] date)
 
 CREATE TABLE [Interior]
 ([id] INT Primary Key Identity (1,1),
@@ -293,7 +294,8 @@ CREATE TABLE [Sales]
 [Phone] nvarchar(50),
 [CarID] int,
 [UserID] nvarchar(128),
-[PurchasePrice] decimal(15,2))
+[PurchasePrice] decimal(15,2),
+[Date] date)
 
 CREATE TABLE [Interior]
 ([id] INT Primary Key Identity (1,1),
@@ -1022,15 +1024,15 @@ DROP PROCEDURE [CreateSalesOne]
 END
 GO
 
-CREATE PROCEDURE [CreateSalesOne] (@PurchaseType int, @Name nvarchar(50), @Email nvarchar(50), @Street1 nvarchar(50), @Street2 nvarchar(50), @City nvarchar(50), @State nvarchar(50), @Zip varchar(10), @Phone nvarchar(50), @CarID int, @UserID nvarchar(50), @PurchasePrice decimal(15,2))
+CREATE PROCEDURE [CreateSalesOne] (@PurchaseType int, @Name nvarchar(50), @Email nvarchar(50), @Street1 nvarchar(50), @Street2 nvarchar(50), @City nvarchar(50), @State nvarchar(50), @Zip varchar(10), @Phone nvarchar(50), @CarID int, @UserID nvarchar(50), @PurchasePrice decimal(15,2), @Date date)
 AS
 
 IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Sales')) 
 BEGIN
 INSERT INTO [Sales]
-([PurchaseType], [Name], [Email], [Street1], [Street2], [City], [State], [Zip], [Phone], [CarID], [UserID], [PurchasePrice])
+([PurchaseType], [Name], [Email], [Street1], [Street2], [City], [State], [Zip], [Phone], [CarID], [UserID], [PurchasePrice], [Date])
 VALUES
-(@PurchaseType, @Name, @Email, @Street1, @Street2, @City, @State, @Zip, @Phone, @CarID, @UserID, @PurchasePrice)
+(@PurchaseType, @Name, @Email, @Street1, @Street2, @City, @State, @Zip, @Phone, @CarID, @UserID, @PurchasePrice, @Date)
 END
 
 GO
@@ -1075,9 +1077,33 @@ IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'AspNetUse
 AND exists(Select * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')
 AND exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Sales'))
 BEGIN
+SELECT AspNetUsers.UserName, SUM(Sales.PurchasePrice) as TotalSales, SUM(Sales.CarID) as TotalVehicles, Sales.[Date]
+FROM AspNetUsers
+JOIN Sales ON Sales.UserID = AspNetUsers.Id
+GROUP BY AspNetUsers.UserName, Sales.[Date]
+END
+GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'SalesReportParams'
+)
+BEGIN
+DROP PROCEDURE [SalesReportParams]
+END
+GO
+
+CREATE PROCEDURE [SalesReportParams](@fromDate Date, @toDate Date)
+AS
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'AspNetUsers')
+AND exists(Select * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')
+AND exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Sales'))
+BEGIN
 SELECT AspNetUsers.UserName, SUM(Sales.PurchasePrice) as TotalSales, SUM(Sales.CarID) as TotalVehicles
 FROM AspNetUsers
 JOIN Sales ON Sales.UserID = AspNetUsers.Id
+WHERE Sales.[Date] BETWEEN @fromDate AND @toDate
 GROUP BY AspNetUsers.UserName
 END
 GO

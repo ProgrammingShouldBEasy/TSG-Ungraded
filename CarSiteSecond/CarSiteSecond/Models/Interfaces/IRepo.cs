@@ -68,5 +68,8 @@ namespace CarSiteSecond.Models.Interfaces
 
         //R
         List<SalesReportViewModel> GetSalesReport();
+
+        //R
+        List<SalesReportViewModel> GetSalesReport(string fromDate, string toDate);
     }
 }

@@ -7,7 +7,7 @@ namespace CarSiteSecond.Models.DTOs
 {
     public class Sale
     {
-        public Sale(int id, int purchaseType, string name, string email, string street1, string street2, string city, string state, string zip, string phone, int carID, string userID, decimal purchasePrice)
+        public Sale(int id, int purchaseType, string name, string email, string street1, string street2, string city, string state, string zip, string phone, int carID, string userID, decimal purchasePrice, string date)
         {
             this.id = id;
             PurchaseType = purchaseType;
@@ -22,6 +22,7 @@ namespace CarSiteSecond.Models.DTOs
             CarID = carID;
             UserID = userID;
             PurchasePrice = purchasePrice;
+            Date = date;
         }
 
         public Sale()
@@ -39,6 +40,7 @@ namespace CarSiteSecond.Models.DTOs
             CarID = 0;
             UserID = "";
             PurchasePrice = 0m;
+            Date = DateTime.Today.ToShortDateString();
         }
 
         public int id { get; set; }
@@ -54,5 +56,6 @@ namespace CarSiteSecond.Models.DTOs
         public int CarID { get; set; }
         public string UserID { get; set; }
         public decimal PurchasePrice { get; set; }
+        public string Date { get; set; }
     }
 }
