@@ -79,28 +79,32 @@ namespace CarSiteSecond.Controllers
         [HttpPost]
         public ActionResult PurchaseSave(PurchaseViewModel sale)
         {
-            IRepo repo = Factory.Create();
-            SaleRequest saleRequest = new SaleRequest();
-            Sale sales = new Sale();
-            sales.CarID = sale.carId;
-            sales.City = sale.City;
-            sales.Email = sale.Email;
-            sales.Name = sale.CusName;
-            sales.Phone = sale.Phone;
-            sales.PurchasePrice = sale.PurchasePrice;
-            PurchaseTypeRequest purchaseTypeRequest = new PurchaseTypeRequest();
-            PurchaseTypeResponse purchaseTypeResponse = repo.GetPurchaseTypesAll(purchaseTypeRequest);
-            sales.PurchaseType = purchaseTypeResponse.PurchaseTypes.FirstOrDefault().id;
-            sales.State = sale.State;
-            sales.Street1 = sale.Street1;
-            sales.Street2 = sale.Street2;
-            UserRequest userRequest = new UserRequest();
-            UserResponse userResponse = new UserResponse();
-            userResponse = repo.GetUsersAll(userRequest);
-            sales.UserID = userResponse.Users.FirstOrDefault(x => x.UserName == sale.SaleId).Id;
-            sales.Zip = sale.Zip;
-            saleRequest.Sales.Add(sales);
-            repo.CreateSalesOne(saleRequest);
+            if (sale.SaleId != "")
+            {
+                IRepo repo = Factory.Create();
+                SaleRequest saleRequest = new SaleRequest();
+                Sale sales = new Sale();
+                sales.CarID = sale.carId;
+                sales.City = sale.City;
+                sales.Email = sale.Email;
+                sales.Name = sale.CusName;
+                sales.Phone = sale.Phone;
+                sales.PurchasePrice = sale.PurchasePrice;
+                PurchaseTypeRequest purchaseTypeRequest = new PurchaseTypeRequest();
+                PurchaseTypeResponse purchaseTypeResponse = repo.GetPurchaseTypesAll(purchaseTypeRequest);
+                sales.PurchaseType = purchaseTypeResponse.PurchaseTypes.FirstOrDefault().id;
+                sales.State = sale.State;
+                sales.Street1 = sale.Street1;
+                sales.Street2 = sale.Street2;
+                UserRequest userRequest = new UserRequest();
+                UserResponse userResponse = new UserResponse();
+                userResponse = repo.GetUsersAll(userRequest);
+                sales.UserID = userResponse.Users.FirstOrDefault(x => x.UserName == sale.SaleId).Id;
+                sales.Zip = sale.Zip;
+                saleRequest.Sales.Add(sales);
+                repo.CreateSalesOne(saleRequest);
+                return RedirectToAction("Index", "Home");
+            }
             return RedirectToAction("Index", "Home");
         }
     }

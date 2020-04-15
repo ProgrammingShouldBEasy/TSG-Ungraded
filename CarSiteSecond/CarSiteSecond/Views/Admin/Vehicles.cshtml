@@ -23,7 +23,7 @@
                             <input style="width:100%;" type="text" id="admin-vehicle-search-text" name="admin-vehicle-search-text" value="Enter make, model, or year" />
                         </td>
                         <td style="font-weight:bold;" class="center-text">
-                            Price <select style="font-weight:normal;" id="admin-search-min-price" name="admin-search-min-price">
+                            Price <select style="font-weight:normal;" id="admin-search-min-price" name="admin-vehicles-search-min-price">
                                 <option value="No Min">No Min</option>
                                 <option value="100">100</option>
                                 <option value="1000">1000</option>
@@ -46,7 +46,7 @@
                                 <option value="90000">90000</option>
                                 <option value="100000">100000</option>
                             </select>
-                            <select id="admin-search-max-price" name="admin-search-max-price">
+                            <select id="admin-vehicles-search-max-price" name="admin-search-max-price">
                                 <option value="No Max">No Max</option>
                                 <option value="100">100</option>
                                 <option value="1000">1000</option>
@@ -81,7 +81,7 @@
                         </td>
                         <td style="font-weight:bold;" class="right-text">
                             Year
-                            <select style="font-weight:normal;" id="admin-search-min-year" name="admin-search-min-year">
+                            <select style="font-weight:normal;" id="admin-vehicles-search-min-year" name="admin-search-min-year">
                                 <option value="No Min">No Min</option>
                                 <option value="1990">1990</option>
                                 <option value="1991">1991</option>
@@ -115,7 +115,7 @@
                                 <option value="2019">2019</option>
                                 <option value="2020">2020</option>
                             </select>
-                            <select id="admin-search-max-year" name="admin-search-max-year">
+                            <select id="admin-search-max-year" name="admin-vehicles-search-max-year">
                                 <option value="No Max">No Max</option>
                                 <option value="1990">1990</option>
                                 <option value="1991">1991</option>
@@ -153,7 +153,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td class="center-text"><button style="width:100%;" type="button" id="admin-search-submit">Search</button></td>
+                        <td class="center-text"><button style="width:100%;" type="button" id="admin-vehicles-search-submit">Search</button></td>
                         <td></td>
                     </tr>
                 </tbody>
@@ -164,8 +164,8 @@
 <h1>Search Results</h1>
 <div class="results">
     <div id="results" class="border-mine" style="padding:5px;">
-        <table id="admin-results-table" class="results-table" style="padding:15px;">
-            <tr>
+        <table id="admin-vehicles-results-table" class="results-table" style="padding:15px;">
+            @*<tr>
                 <td class="bold left-text">2016 Make Model</td>
                 <td></td>
                 <td></td>
@@ -194,8 +194,8 @@
                 <td class="bold right-text">Vin #:</td>
                 <td class="left-text">2DS820192D78S123</td>
                 <td></td>
-                <td class="left-text"><button type="button" id="admin-details-#" name="admin-edit-details-#">Edit</button></td>
-            </tr>
+                <td class="left-text"><button type="button" id="admin-details-#" name="admin-vehicles-edit-details-#">Edit</button></td>
+            </tr>*@
         </table>
     </div>
 </div>

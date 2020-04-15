@@ -277,9 +277,105 @@ $("#sales-search-submit").click(function () {
                         + vehicle.VIN
                         + "</td>"
                         + "<td></td>"
-                        + "<td class='left-text'><a href='../Admin/EditGet/" + vehicle.id
+                        + "<td class='left-text'><a href='../Sales/Purchase/" + vehicle.id
                         + "'"
                         + ">Purchase</a></td>"
+                        + "</tr>").text();
+                }
+            })
+        },
+        error: function (xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    });
+});
+
+$("#admin-vehicles-search-submit").click(function () {
+    $("#admin-vehicles-results-table").empty();
+    var searchTerm = $("#admin-vehicles-vehicle-search-text").val();
+    var minP = parseInt($("#admin-vehicles-search-min-price").val());
+    var maxP = parseInt($("#admin-vehicles-search-max-price").val());
+    var minY = parseInt($("#admin-vehicles-search-min-year").val());
+    var maxY = parseInt($("#admin-vehicles-search-max-year").val());
+    var mileage;
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:53471/Admin/Vehicles/Get",
+        contentType: "application/json;charset=UTF-8",
+        success: function (list) {
+            $.each(list, function (index, vehicle) {
+                if (vehicle.Mileage == 0) { mileage = 'New' } else { mileage = vehicle.Mileage };
+                if (isNaN(minP)) {
+                    minP = 100;
+                };
+                if (isNaN(maxP)) {
+                    maxP = 1000000;
+                };
+
+                if (isNaN(minY)) {
+                    minY = 1990;
+                };
+
+                if (isNaN(maxY)) {
+                    maxY = 2020;
+                };
+                if (
+                    (toString(vehicle.Make).includes(searchTerm) >= 0 || toString(vehicle.Model).includes(searchTerm) >= 0 || toString(vehicle.Year).includes(searchTerm) >= 0 || (searchTerm == "" || searchTerm == "Enter make, model, or year"))
+                    &&
+                    ((vehicle.SalePrice >= minP && vehicle.SalePrice <= maxP))
+                    &&
+                    ((vehicle.Year >= minY && vehicle.Year <= maxY))
+                ) {
+                    $("#admin-vehicles-results-table").append("<tr><td class='bold left-text'>"
+                        + vehicle.Year + " " + vehicle.Make + " " + vehicle.Model
+                        + "</td>"
+                        + "<td></td>"
+                        + "<td></td>"
+                        + "<td></td>"
+                        + "</tr>"
+                        + "<tr>"
+                        + "<td rowspan='3'><img src='"
+                        + vehicle.PictureSrc
+                        + "'/></td>"
+                        + "<td class='bold right-text'>Body Style:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.BodyStyle
+                        + "</td>"
+                        + "<td class='bold right-text'>Interior:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.Interior
+                        + "</td>"
+                        + "<td class='bold right-text'>Sale Price:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.SalePrice
+                        + "</td>"
+                        + "</tr>"
+                        + "<tr>"
+                        + "<td class='bold right-text'>Trans:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.Trans
+                        + "</td>"
+                        + "<td class='bold right-text'>Mileage:</td>"
+                        + "<td class='left-text'>"
+                        + mileage
+                        + "<td class='bold right-text'>MSRP:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.MSRP
+                        + "</td >"
+                        + "</tr>"
+                        + "<tr>"
+                        + "<td class='bold right-text'>Color:</td>"
+                        + "<td class='left-text'>"
+                        + vehicle.Color
+                        + "</td >"
+                        + "<td class='bold right-text' > Vin #:</td > "
+                        + "<td class='left-text'>"
+                        + vehicle.VIN
+                        + "</td>"
+                        + "<td></td>"
+                        + "<td class='left-text'><a href='../Admin/EditGet/" + vehicle.id
+                        + "'"
+                        + ">Edit</a></td>"
                         + "</tr>").text();
                 }
             })

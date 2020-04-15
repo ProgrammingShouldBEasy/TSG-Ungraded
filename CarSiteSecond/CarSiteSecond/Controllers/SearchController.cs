@@ -148,7 +148,7 @@ namespace CarSiteSecond.Controllers
             foreach (Car a in carResponse.Cars)
             {
 
-                if (a.Year != DateTime.Now.Year && saleResponse.Sales.FirstOrDefault(x => x.CarID == a.id) == null)
+                if (saleResponse.Sales.FirstOrDefault(x => x.CarID == a.id) == null)
                 {
                     CarViewModel model = new CarViewModel();
                     MakeResponse makeResponse = repo.GetMakesAll(new MakeRequest());
