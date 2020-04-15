@@ -241,6 +241,11 @@ namespace CarSiteSecond.Data.Repos
             throw new NotImplementedException();
         }
 
+        public List<SalesReportViewModel> GetSalesReport()
+        {
+            throw new NotImplementedException();
+        }
+
         public SpecialResponse GetSpecialsAll(SpecialRequest specialRequest)
         {
             SpecialResponse response = new SpecialResponse();

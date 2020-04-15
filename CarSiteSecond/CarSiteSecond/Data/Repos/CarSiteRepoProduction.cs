@@ -658,6 +658,37 @@ namespace CarSiteSecond.Data.Repos
             throw new NotImplementedException();
         }
 
+        public List<SalesReportViewModel> GetSalesReport()
+        {
+            List<SalesReportViewModel> response = new List<SalesReportViewModel>();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "SalesReport"
+                };
+
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
+                        SalesReportViewModel model = new SalesReportViewModel();
+                        model.TotalSales = (int)(decimal)dr["TotalSales"];
+                        model.UserName = dr["UserName"].ToString();
+                        model.TotalVehicles = (int)dr["TotalVehicles"];
+                        response.Add(model);
+                    }
+                }
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
         public SpecialResponse GetSpecialsAll(SpecialRequest specialRequest)
         {
             SpecialResponse response = new SpecialResponse();

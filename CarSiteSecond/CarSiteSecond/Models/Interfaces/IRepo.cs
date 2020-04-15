@@ -65,5 +65,8 @@ namespace CarSiteSecond.Models.Interfaces
 
         //R
         List<InventoryViewModel> GetInventoryReport();
+
+        //R
+        List<SalesReportViewModel> GetSalesReport();
     }
 }

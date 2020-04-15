@@ -395,7 +395,6 @@ namespace CarSiteSecond.Controllers
         public ActionResult InventoryReport()
         {
             IRepo repo = Factory.Create();
-            CarResponse carResponse = repo.GetCarsAll(new CarRequest());
             List<InventoryViewModel> model = new List<InventoryViewModel>();
             model = repo.GetInventoryReport();
             return View(model);
@@ -403,7 +402,10 @@ namespace CarSiteSecond.Controllers
 
         public ActionResult SalesReport()
         {
-            return View();
+            IRepo repo = Factory.Create();
+            List<SalesReportViewModel> model = new List<SalesReportViewModel>();
+            model = repo.GetSalesReport();
+            return View(model);
         }
 
         public ActionResult Delete(int? id)

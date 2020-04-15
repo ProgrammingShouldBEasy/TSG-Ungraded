@@ -291,6 +291,7 @@
     <Compile Include="ViewModels\MakeViewModel.cs" />
     <Compile Include="ViewModels\ModelViewModel.cs" />
     <Compile Include="ViewModels\PurchaseViewModel.cs" />
+    <Compile Include="ViewModels\SalesReportViewModel.cs" />
     <Compile Include="ViewModels\SpecialsViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />

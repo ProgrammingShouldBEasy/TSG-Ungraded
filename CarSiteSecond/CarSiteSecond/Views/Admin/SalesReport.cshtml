@@ -1,4 +1,4 @@
-﻿
+﻿@model List<CarSiteSecond.ViewModels.SalesReportViewModel>
 @{
     ViewBag.Title = "SalesReport";
 }
@@ -11,13 +11,14 @@
         </tr>
         <tr>
             <td class="bold">Users</td>
-            <td><select id="userSelectSalesReport" name="userSelectSalesReport">
+            <td>
+                <select id="userSelectSalesReport" name="userSelectSalesReport">
                     <option selected value="">- All -</option>
                 </select>
             </td>
             <td class="bold">From Date</td>
             <td>
-                <input type="text" id="fromDateSalesReport" name="fromDateSalesReport" value=""/>
+                <input type="text" id="fromDateSalesReport" name="fromDateSalesReport" value="" />
             </td>
             <td class="bold">To Date</td>
             <td>
@@ -42,6 +43,20 @@
         </tr>
     </thead>
     <tbody id="salesresultsbody">
+        @foreach (CarSiteSecond.ViewModels.SalesReportViewModel m in Model)
+        {
+            <tr>
+                <td>
+                    @m.UserName
+                </td>
+                <td>
+                    @m.TotalSales.ToString("C")
+                </td>
+                <td>
+                    @m.TotalVehicles
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
