@@ -230,7 +230,7 @@ $("#sales-search-submit").click(function () {
                     &&
                     ((vehicle.Year >= minY && vehicle.Year <= maxY))
                 ) {
-                    $("#used-results-table").append("<tr><td class='bold left-text'>"
+                    $("#sales-results-table").append("<tr><td class='bold left-text'>"
                         + vehicle.Year + " " + vehicle.Make + " " + vehicle.Model
                         + "</td>"
                         + "<td></td>"
@@ -277,7 +277,7 @@ $("#sales-search-submit").click(function () {
                         + vehicle.VIN
                         + "</td>"
                         + "<td></td>"
-                        + "<td class='left-text'><a href='../Admin/GetEdit" + vehicle.id
+                        + "<td class='left-text'><a href='../Admin/EditGet/" + vehicle.id
                         + "'"
                         + ">Purchase</a></td>"
                         + "</tr>").text();
