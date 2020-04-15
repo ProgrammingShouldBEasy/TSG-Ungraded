@@ -205,6 +205,7 @@ namespace CarSiteSecond.Controllers
             car.VIN = vehicle.VIN;
             car.Year = vehicle.Year;
             car.Description = vehicle.Description;
+            car.Featured = vehicle.Featured;
             CarResponse carResponse = new CarResponse();
             carResponse = repo.GetCarsAll(carRequest);
             if (vehicle.UploadedFile != null && vehicle.UploadedFile.ContentLength > 0)
@@ -214,6 +215,10 @@ namespace CarSiteSecond.Controllers
 
                 vehicle.UploadedFile.SaveAs(path);
                 car.PictureSrc = "~/Content/Pictures/Inventory-" + vehicle.id + ".jpg";
+            }
+            else
+            {
+                car.PictureSrc = carResponse.Cars.FirstOrDefault(x => x.id == car.id).PictureSrc;
             }
             carRequest.Cars.Add(car);
             repo.UpdateCarsOne(carRequest);
@@ -389,12 +394,30 @@ namespace CarSiteSecond.Controllers
 
         public ActionResult InventoryReport()
         {
-            return View();
+            IRepo repo = Factory.Create();
+            CarResponse carResponse = repo.GetCarsAll(new CarRequest());
+            List<InventoryViewModel> model = new List<InventoryViewModel>();
+            model = repo.GetInventoryReport();
+            return View(model);
         }
 
         public ActionResult SalesReport()
         {
             return View();
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            IRepo repo = Factory.Create();
+            Car car = new Car();
+            car.id = (int)id;
+            CarRequest carRequest = new CarRequest();
+            carRequest.Cars.Add(car);
+            if (repo.GetCarsOne(carRequest).Cars.FirstOrDefault().Year >= 1900)
+            {
+                repo.DeleteCarsOne(carRequest);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

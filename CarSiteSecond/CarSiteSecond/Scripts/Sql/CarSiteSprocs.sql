@@ -1034,3 +1034,27 @@ VALUES
 END
 
 GO
+
+IF EXISTS(
+SELECT *
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE ROUTINE_NAME = 'InventoryReport'
+)
+BEGIN
+DROP PROCEDURE [InventoryReport]
+END
+GO
+
+CREATE PROCEDURE [InventoryReport]
+AS
+IF (exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Cars')
+AND exists(Select * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Make')
+AND exists(SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Model'))
+BEGIN
+SELECT Cars.Year, Model.ModelName as Model, Make.MakeName as Make,COUNT(DISTINCT Cars.id) as "Count", SUM(Cars.MSRP) as StockValue
+FROM [Cars]
+JOIN Model ON Model.id = Cars.ModelID
+JOIN Make ON Make.id = Model.MakeID
+GROUP BY Model.ModelName, Make.MakeName, Cars.Year
+END
+GO

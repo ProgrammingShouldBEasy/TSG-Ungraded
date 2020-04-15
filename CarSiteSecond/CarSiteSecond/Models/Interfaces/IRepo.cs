@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CarSiteSecond.Models.DTOs;
 using CarSiteSecond.Models.Requests;
 using CarSiteSecond.Models.Responses;
+using CarSiteSecond.ViewModels;
 
 namespace CarSiteSecond.Models.Interfaces
 {
@@ -61,5 +62,8 @@ namespace CarSiteSecond.Models.Interfaces
 
         //R
         RoleResponse GetRolesAll(RoleRequest RoleRequest);
+
+        //R
+        List<InventoryViewModel> GetInventoryReport();
     }
 }

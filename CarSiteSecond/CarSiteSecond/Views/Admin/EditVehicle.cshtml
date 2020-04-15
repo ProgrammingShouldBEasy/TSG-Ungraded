@@ -133,8 +133,14 @@
                      new { type = "file", @class = "form-control" })
                 </td>
             </tr>
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(m => m.Featured)<span class="bold">Featured</span>
+                </td>
+            </tr>
         </table>
     </div>
+    @Html.ActionLink("Delete", "Delete", "Admin", new { id = Model.id }, null)
     <button type="submit">Save</button>
 }
 

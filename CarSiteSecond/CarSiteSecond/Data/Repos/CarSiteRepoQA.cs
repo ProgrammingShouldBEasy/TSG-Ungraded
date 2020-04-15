@@ -6,6 +6,7 @@ using CarSiteSecond.Models.Interfaces;
 using CarSiteSecond.Models.DTOs;
 using CarSiteSecond.Models.Requests;
 using CarSiteSecond.Models.Responses;
+using CarSiteSecond.ViewModels;
 
 namespace CarSiteSecond.Data.Repos
 {
@@ -152,6 +153,11 @@ namespace CarSiteSecond.Data.Repos
                 response.Interiors.Add(i);
             }
             return response;
+            throw new NotImplementedException();
+        }
+
+        public List<InventoryViewModel> GetInventoryReport()
+        {
             throw new NotImplementedException();
         }
 

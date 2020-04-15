@@ -9,6 +9,7 @@ using CarSiteSecond.Models.Responses;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using CarSiteSecond.ViewModels;
 
 namespace CarSiteSecond.Data.Repos
 {
@@ -395,6 +396,39 @@ namespace CarSiteSecond.Data.Repos
                     {
                         //(int id, string interiorName)
                         response.Interiors.Add(new Interior((int)dr["id"], dr["InteriorName"].ToString()));
+                    }
+                }
+            }
+            return response;
+            throw new NotImplementedException();
+        }
+
+        public List<InventoryViewModel> GetInventoryReport()
+        {
+            List<InventoryViewModel> response = new List<InventoryViewModel>();
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "InventoryReport"
+                };
+
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        //(int id, int modelID, int year, string bodyStyle, string transmission, string pictureSrc, int interiorID, int mileage, string vIN, decimal salePrice, decimal mSRP, bool featured, int colorID)
+                        InventoryViewModel model = new InventoryViewModel();
+                        model.Count = (int)dr["Count"];
+                        model.Year = (int)dr["Year"];
+                        model.Model = dr["Model"].ToString();
+                        model.Make = dr["Make"].ToString();
+                        model.StockValue = (int)(decimal)dr["StockValue"];
+                        response.Add(model);
                     }
                 }
             }
