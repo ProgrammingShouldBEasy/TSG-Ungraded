@@ -18,12 +18,14 @@ namespace CarSiteSecond.Controllers
     public class SalesController : Controller
     {
         // GET: Sales
+        [Authorize(Roles = "Sales")]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
+        [Authorize(Roles = "Sales")]
         public ActionResult Purchase(int? id)
         {
             if (id == null)
@@ -77,6 +79,7 @@ namespace CarSiteSecond.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Sales")]
         public ActionResult PurchaseSave(PurchaseViewModel sale)
         {
             if (sale.SaleId != "")

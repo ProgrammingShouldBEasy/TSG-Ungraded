@@ -17,11 +17,13 @@ namespace CarSiteSecond.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+        [Authorize(Roles = "Admin")]
         public ActionResult Vehicles()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddVehicle()
         {
             IRepo repo = Factory.Create();
@@ -72,6 +74,7 @@ namespace CarSiteSecond.Controllers
         //}
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditVehicle(VehicleViewModel vehicle)
         {
             //Work in an int id
@@ -123,6 +126,7 @@ namespace CarSiteSecond.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult EditGet(int? id)
         {
             IRepo repo = Factory.Create();
@@ -182,6 +186,7 @@ namespace CarSiteSecond.Controllers
             return View("EditVehicle", model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult SaveEdit(VehicleViewModel vehicle)
         {
 
@@ -227,6 +232,7 @@ namespace CarSiteSecond.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Users()
         {
             IRepo repo = Factory.Create();
@@ -254,16 +260,19 @@ namespace CarSiteSecond.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddUser()
         {
             return View("Register", "Account");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult EditUser(string id)
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Makes()
         {
             IRepo repo = Factory.Create();
@@ -285,6 +294,7 @@ namespace CarSiteSecond.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult NewMake(Make model)
         {
             IRepo repo = Factory.Create();
@@ -299,6 +309,7 @@ namespace CarSiteSecond.Controllers
             return RedirectToAction("Makes");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Models()
         {
             IRepo repo = Factory.Create();
@@ -328,6 +339,7 @@ namespace CarSiteSecond.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult NewModel(ModelForView model)
         {
             IRepo repo = Factory.Create();
@@ -346,6 +358,7 @@ namespace CarSiteSecond.Controllers
             return RedirectToAction("Models");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Specials()
         {
             IRepo repo = Factory.Create();
@@ -359,6 +372,7 @@ namespace CarSiteSecond.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddSpecial(SpecialsViewModel model)
         {
             IRepo repo = Factory.Create();
@@ -371,6 +385,7 @@ namespace CarSiteSecond.Controllers
             return RedirectToAction("Specials");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteSpecial(int? id)
         {
             IRepo repo = Factory.Create();
@@ -382,16 +397,19 @@ namespace CarSiteSecond.Controllers
             return RedirectToAction("Specials");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult ChangePassword()
         {
             return RedirectToAction("ForgotPassword", "Account");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Reports()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult InventoryReport()
         {
             IRepo repo = Factory.Create();
@@ -400,6 +418,7 @@ namespace CarSiteSecond.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult SalesReport()
         {
             IRepo repo = Factory.Create();
@@ -408,6 +427,7 @@ namespace CarSiteSecond.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             IRepo repo = Factory.Create();
