@@ -18,14 +18,12 @@
                 <span class="border-right">@Html.ActionLink("Used Inventory", "Used", "Inventory")</span>
                 <span class="border-right">@Html.ActionLink("Specials", "Specials", "Home")</span>
                 <span class="border-right">@Html.ActionLink("Contact", "Contact", "Home")</span>
-                @if(User.Identity.IsAuthenticated && (User.IsInRole("Sales") || @User.IsInRole("Admin")))
-                {
+
                 <span class="border-right">@Html.ActionLink("Sales", "Index", "Sales")</span>
-                }
-                @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                {
+
+
                 <span>@Html.ActionLink("Admin", "Vehicles", "Admin")</span>
-                }
+
             </div>
         </div>
     </div>

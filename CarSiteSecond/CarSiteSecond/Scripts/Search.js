@@ -390,7 +390,7 @@ $("#sales-submit").click(function () {
     $("#salesresultsbody").empty();
     var fromDate;
     var toDate;
-    var style;
+    var style ="";
     if ($("#fromDateSalesReport").val() == "") {
         fromDate = "1753-01-01";
     }
@@ -420,7 +420,7 @@ $("#sales-submit").click(function () {
                 }
                 else 
                 {
-                    style = +" hidden ";
+                    style = " hidden ";
                 };
                 $("#salesresultsbody").append("<tr "
                     + style

@@ -1033,6 +1033,10 @@ INSERT INTO [Sales]
 ([PurchaseType], [Name], [Email], [Street1], [Street2], [City], [State], [Zip], [Phone], [CarID], [UserID], [PurchasePrice], [Date])
 VALUES
 (@PurchaseType, @Name, @Email, @Street1, @Street2, @City, @State, @Zip, @Phone, @CarID, @UserID, @PurchasePrice, @Date)
+UPDATE [CARS]
+SET [Featured] = 0
+WHERE
+[id] = @CarID
 END
 
 GO

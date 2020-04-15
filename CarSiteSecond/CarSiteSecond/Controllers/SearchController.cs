@@ -33,7 +33,7 @@ namespace CarSiteSecond.Controllers
             foreach (Car a in carResponse.Cars)
             {
                 CarViewModel model = new CarViewModel();
-                if (a.Year == DateTime.Now.Year)
+                if (a.Mileage <= 1000)
                 {
                     model.id = a.id;
                     model.Interior = interiorResponse.Interiors.FirstOrDefault(i => i.id == a.InteriorID).InteriorName;
@@ -70,7 +70,7 @@ namespace CarSiteSecond.Controllers
             SaleResponse saleResponse = repo.GetSalesAll(new SaleRequest());
             foreach (Car a in carResponse.Cars)
             {
-                if (a.Year != DateTime.Now.Year)
+                if (a.Mileage > 1000)
                 {
                     CarViewModel model = new CarViewModel();
 

@@ -165,6 +165,7 @@ namespace CarSiteSecond.Data.Repos
                     cmd.Parameters.AddWithValue("@CarID", saleRequest.Sales.FirstOrDefault().CarID);
                     cmd.Parameters.AddWithValue("@UserID", saleRequest.Sales.FirstOrDefault().UserID);
                     cmd.Parameters.AddWithValue("@PurchasePrice", saleRequest.Sales.FirstOrDefault().PurchasePrice);
+                    cmd.Parameters.AddWithValue("@Date", DateTime.Now.ToShortDateString());
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
