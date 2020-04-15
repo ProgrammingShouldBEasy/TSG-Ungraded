@@ -10,6 +10,7 @@ using CarSiteSecond.ViewModels;
 
 namespace CarSiteSecond.Data.Repos
 {
+
     public class CarSiteRepoQA : IRepo
     {
         List<Car> Cars = new List<Car>();
@@ -24,6 +25,8 @@ namespace CarSiteSecond.Data.Repos
         List<Interior> Interiors = new List<Interior>();
         List<UserRole> UserRoles = new List<UserRole>();
         List<Role> Roles = new List<Role>();
+        List<InventoryViewModel> InventoryReport = new List<InventoryViewModel>();
+        List<SalesReportViewModel> SalesReport = new List<SalesReportViewModel>();
 
         public CarResponse CreateCarsOne(CarRequest carRequest)
         {
@@ -158,7 +161,7 @@ namespace CarSiteSecond.Data.Repos
 
         public List<InventoryViewModel> GetInventoryReport()
         {
-            throw new NotImplementedException();
+            return InventoryReport;
         }
 
         public MakeResponse GetMakesAll(MakeRequest makeRequest)
@@ -243,9 +246,10 @@ namespace CarSiteSecond.Data.Repos
 
         public List<SalesReportViewModel> GetSalesReport()
         {
-            throw new NotImplementedException();
+            return SalesReport;
         }
 
+        //Do I need to test this? This is some heavy SQL join logic.
         public List<SalesReportViewModel> GetSalesReport(string fromDate, string toDate)
         {
             throw new NotImplementedException();
