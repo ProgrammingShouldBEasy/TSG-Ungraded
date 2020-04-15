@@ -5,8 +5,8 @@
 
 <h1>EditVehicle</h1>
 
-@using (Html.BeginForm(new { enctype = "multipart/form-data", id = "frmUpload" }))
-{
+@using (Html.BeginForm("SaveEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmUpload" }))
+{<input type="number" hidden readonly name="id" value="@Model.id" />
     <div class="form-group">
         <table table style="width: 80%;">
             <tr>

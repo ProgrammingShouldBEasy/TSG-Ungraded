@@ -119,7 +119,7 @@ namespace CarSiteSecond.Controllers
             else
             {
                 return RedirectToAction("EditGet", new RouteValueDictionary(
-                    new { controller = "Admin", action = "EditGet", Id = car.id }));
+                    new { controller = "Admin", action = "EditGet", id = car.id }));
             }
         }
 
@@ -132,6 +132,7 @@ namespace CarSiteSecond.Controllers
             carRequest.Cars.Add(car);
             CarResponse carResponse = repo.GetCarsOne(carRequest);
             VehicleViewModel model = new VehicleViewModel();
+            model.id = (int)id;
             model.PictureSrc = carResponse.Cars.FirstOrDefault().PictureSrc;
             model.Mileage = carResponse.Cars.FirstOrDefault().Mileage;
             model.MSRP = (int)carResponse.Cars.FirstOrDefault().MSRP;
@@ -192,6 +193,7 @@ namespace CarSiteSecond.Controllers
             ModelResponse modelResponse = repo.GetModelsAll(new ModelRequest());
             InteriorResponse interiorResponse = repo.GetInteriorsAll(new InteriorRequest());
             ColorResponse colorResponse = repo.GetColorsAll(new ColorRequest());
+            car.id = vehicle.id;
             car.ColorID = colorResponse.Colors.FirstOrDefault(x => x.ColorName == vehicle.Color.FirstOrDefault()).id;
             car.InteriorID = interiorResponse.Interiors.FirstOrDefault(x => x.InteriorName == vehicle.Interior.FirstOrDefault()).id;
             car.Mileage = vehicle.Mileage;
@@ -208,10 +210,10 @@ namespace CarSiteSecond.Controllers
             if (vehicle.UploadedFile != null && vehicle.UploadedFile.ContentLength > 0)
             {
                 string path = Path.Combine(Server.MapPath("~/Content/Pictures/"),
-                    Path.GetFileName("Inventory-" + carResponse.Cars.Count() + ".jpg"));
+                    Path.GetFileName("Inventory-" + vehicle.id + ".jpg"));
 
                 vehicle.UploadedFile.SaveAs(path);
-                vehicle.PictureSrc = "~/Content/Pictures/Inventory-" + carResponse.Cars.Count() + ".jpg";
+                car.PictureSrc = "~/Content/Pictures/Inventory-" + vehicle.id + ".jpg";
             }
             carRequest.Cars.Add(car);
             repo.UpdateCarsOne(carRequest);
